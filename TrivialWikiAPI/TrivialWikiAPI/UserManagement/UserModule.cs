@@ -1,10 +1,4 @@
 ﻿using Nancy;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using TrivialWikiAPI.DatabaseModels;
 
 namespace TrivialWikiAPI.UserManagement
 {
@@ -16,8 +10,7 @@ namespace TrivialWikiAPI.UserManagement
         {
             Get["/users"] = param =>
             {
-                var allUsers = userManager.GetAllUsers();
-                return allUsers;
+                return userManager.GetAllUsers();
                 //return JsonConvert.SerializeObject(allUsers, Formatting.Indented,
                 //    new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
             };
