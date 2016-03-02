@@ -14,15 +14,8 @@ namespace TrivialWikiAPI
         protected override void ApplicationStartup(TinyIoCContainer container, IPipelines pipelines)
         {
             base.ApplicationStartup(container, pipelines);
-
-            using (var databaseContext = new DatabaseContext())
-            {
-                //var role = new Role() { Name = "Admin" };
-                //databaseContext.Roles.Add(role);
-                //databaseContext.SaveChanges();
-
-                //var roles = databaseContext.Roles.ToList();
-            }
         }
+
+
     }
 }
