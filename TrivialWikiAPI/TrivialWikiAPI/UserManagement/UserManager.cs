@@ -1,11 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using TrivialWikiAPI.DatabaseModels;
 
 namespace TrivialWikiAPI.UserManagement
 {
     public class UserManager
     {
+        
+
         public List<User> GetAllUsers()
         {
             using (var databaseContext = new DatabaseContext())
@@ -13,5 +17,6 @@ namespace TrivialWikiAPI.UserManagement
                 return databaseContext.Users.ToList();
             }
         }
+
     }
 }

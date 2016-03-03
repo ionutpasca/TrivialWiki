@@ -175,8 +175,12 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserManagement\Login\LoginManager.cs" />
+    <Compile Include="UserManagement\Login\LoginModule.cs" />
+    <Compile Include="UserManagement\Login\LoginResponse.cs" />
     <Compile Include="UserManagement\UserManager.cs" />
     <Compile Include="UserManagement\UserModule.cs" />
+    <Compile Include="Utilities\Encrypt.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201603021845246_InitialCreate.resx">

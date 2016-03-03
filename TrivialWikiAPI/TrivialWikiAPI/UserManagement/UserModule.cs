@@ -1,4 +1,8 @@
 ﻿using Nancy;
+using Nancy.ModelBinding;
+using System.Linq;
+using TrivialWikiAPI.DatabaseModels;
+using TrivialWikiAPI.Utilities;
 
 namespace TrivialWikiAPI.UserManagement
 {
@@ -8,13 +12,6 @@ namespace TrivialWikiAPI.UserManagement
 
         public UserModule()
         {
-            Get["/users"] = param =>
-            {
-                return userManager.GetAllUsers();
-                //return JsonConvert.SerializeObject(allUsers, Formatting.Indented,
-                //    new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
-            };
         }
-
     }
 }
