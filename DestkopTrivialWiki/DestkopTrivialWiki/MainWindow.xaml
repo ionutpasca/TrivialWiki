@@ -1,0 +1,13 @@
+﻿<Window x:Class="DestkopTrivialWiki.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DestkopTrivialWiki"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="300" Width="300">
+    <Grid>
+        <TextBox x:Name="textBox" FontSize="50" HorizontalAlignment="Left" Height="130" Margin="70,90,0,0" TextWrapping="Wrap" Text="Hello" VerticalAlignment="Top" Width="180"/>
+
+    </Grid>
+</Window>

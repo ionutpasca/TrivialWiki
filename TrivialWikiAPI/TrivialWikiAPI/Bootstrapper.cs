@@ -8,6 +8,7 @@ using Nancy.TinyIoc;
 using TrivialWikiAPI.DatabaseModels;
 using Nancy.Authentication.Stateless;
 using Nancy.Security;
+using TrivialWikiAPI.Utilities;
 
 namespace TrivialWikiAPI
 {
@@ -16,7 +17,17 @@ namespace TrivialWikiAPI
         protected override void ApplicationStartup(TinyIoCContainer container, IPipelines pipelines)
         {
             base.ApplicationStartup(container, pipelines);
+            //using (var dbcontext = new databasecontext())
+            //{
+            //    var test = new user()
+            //    {
+            //        username = "test",
+            //        password = encrypt.getmd5("test")
+            //    };
 
+            //    dbcontext.users.add(test);
+            //    dbcontext.savechanges();
+            //}
             ConfigStatelessAuthentication(pipelines);
         }
 
