@@ -1,3 +1,3 @@
 ﻿"use strict";
 
-App.module = angular.module(App.name, ['ngRoute']);
+App.module = angular.module(App.name, ['ui.router']);

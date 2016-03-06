@@ -9,16 +9,16 @@
 </head>
 <body ng-controller="loginController">
 
-    <form class="form">
-        <input type="text" placeholder="Username" ng-model="username" />
-        <input type="password" placeholder="Password" ng-model="password" />
-    </form>
-    <button ng-click="login()">Login</button>
+    <a ui-sref=".login">LOGIN</a>
+
+    <div class="container">
+        <div ui-view></div>
+    </div>
 
     <script src="../js/libs/jquery.min.js" type="text/javascript"></script>
     <script src="../js/libs/angular.min.js" type="text/javascript"></script>
     <script src="../js/libs/angular-growl.min.js" type="text/javascript"></script>
-    <script src="../js/libs/angular-route.js" type="text/javascript"></script>
+    <script src="../js/libs/angular-ui-router.min.js" type="text/javascript"></script>
     <script src="../js/libs/bootstrap.min.js" type="text/javascript"></script>
     <script src="js/libs/lodash.js" type="text/javascript"></script>
 
