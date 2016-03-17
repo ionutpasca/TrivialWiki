@@ -1,13 +1,13 @@
 ﻿"use strict";
 
-App.module.config(function ($routeProvider) {
+App.module.config(function ($stateProvider) {
 
-    $routeProvider.when('/login', {
+    $stateProvider
+    .state('login', {
+        url: '/login',
         templateUrl: 'templates/login.html',
-        controller:'loginController'
+        controller: 'loginController',
+        roles: []
     })
-    .otherwise({
-        redirectTo: '/home'
-    });
 
 });

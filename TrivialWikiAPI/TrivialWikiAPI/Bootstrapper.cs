@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using Nancy;
+using Nancy.Authentication.Stateless;
 using Nancy.Bootstrapper;
+using Nancy.Security;
 using Nancy.TinyIoc;
 using TrivialWikiAPI.DatabaseModels;
-using Nancy.Authentication.Stateless;
-using Nancy.Security;
-using TrivialWikiAPI.Utilities;
 
 namespace TrivialWikiAPI
 {
@@ -17,17 +13,7 @@ namespace TrivialWikiAPI
         protected override void ApplicationStartup(TinyIoCContainer container, IPipelines pipelines)
         {
             base.ApplicationStartup(container, pipelines);
-            //using (var dbcontext = new databasecontext())
-            //{
-            //    var test = new user()
-            //    {
-            //        username = "test",
-            //        password = encrypt.getmd5("test")
-            //    };
 
-            //    dbcontext.users.add(test);
-            //    dbcontext.savechanges();
-            //}
             ConfigStatelessAuthentication(pipelines);
         }
 
@@ -39,7 +25,7 @@ namespace TrivialWikiAPI
 
         private static string ReadAuthToken(NancyContext ctx)
         {
-            string token = ctx.Request.Headers.Authorization;
+            var token = ctx.Request.Headers.Authorization;
             if (string.IsNullOrEmpty(token))
             {
                 token = ctx.Request.Query.token;
@@ -53,14 +39,13 @@ namespace TrivialWikiAPI
             {
                 return null;
             }
-            using(var databaseContext = new DatabaseContext())
+            using (var databaseContext = new DatabaseContext())
             {
                 var user = databaseContext.Users
                     .Include("Roles")
-                    .Where(u => u.SecurityToken == token)
-                    .FirstOrDefault();
+                    .FirstOrDefault(u => u.SecurityToken == token);
 
-                if(user == null)
+                if (user == null)
                 {
                     return null;
                 }
@@ -69,11 +54,6 @@ namespace TrivialWikiAPI
 
                 return user;
             }
-        }
-
-        protected override void RequestStartup(Nancy.TinyIoc.TinyIoCContainer container, Nancy.Bootstrapper.IPipelines pipelines, NancyContext context)
-        {
-            base.RequestStartup(container, pipelines, context);
         }
     }
 }
