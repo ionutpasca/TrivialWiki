@@ -19,6 +19,10 @@ bld/
 # NuGet Packages
 *.nupkg
 
+.vs/
+_ReSharper*
+TrivialWikiAPI/.vs
+
 *.nuget.props
 *.nuget.targets
 
