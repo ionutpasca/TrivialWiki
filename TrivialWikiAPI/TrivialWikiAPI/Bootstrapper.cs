@@ -55,10 +55,5 @@ namespace TrivialWikiAPI
                 return user;
             }
         }
-
-        protected override void RequestStartup(TinyIoCContainer container, IPipelines pipelines, NancyContext context)
-        {
-            base.RequestStartup(container, pipelines, context);
-        }
     }
 }
