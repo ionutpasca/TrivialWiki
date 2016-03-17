@@ -25,6 +25,8 @@ _ReSharper*
 *.nuget.props
 *.nuget.targets
 
+TrivialWikiAPI/.vs
+
 tmp
 .tmp
 .sass-cache
