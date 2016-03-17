@@ -21,14 +21,14 @@ namespace TrivialWikiAPI.UserManagement.Login
                 CreateUserSecurityToken(user);
                 databaseContext.SaveChanges();
 
-                return (User)user;
+                return user;
             }
         }
 
         private static void CreateUserSecurityToken(User user)
         {
-            byte[] salt = new byte[32];
-            using (RNGCryptoServiceProvider random = new RNGCryptoServiceProvider())
+            var salt = new byte[32];
+            using (var random = new RNGCryptoServiceProvider())
             {
                 random.GetNonZeroBytes(salt);
             }
