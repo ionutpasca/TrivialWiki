@@ -46,8 +46,7 @@ namespace TrivialWikiAPI
             {
                 var user = databaseContext.Users
                     .Include("Roles")
-                    .Where(u => u.SecurityToken == token)
-                    .FirstOrDefault();
+                    .FirstOrDefault(u => u.SecurityToken == token);
 
                 if(user == null)
                 {
