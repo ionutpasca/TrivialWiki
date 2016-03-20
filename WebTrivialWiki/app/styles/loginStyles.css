@@ -1,0 +1,166 @@
+﻿.loginBackground {
+    position: fixed;
+    top:0px;
+    left:0px;
+    width:100%;
+    height:100%;
+    z-index:1000;
+    background: url('http://i.imgur.com/Eor57Ae.jpg') no-repeat fixed center center;
+    -ms-background-size: cover;
+    background-size: cover;
+    font-family:Montserrat;
+    overflow-y: auto;
+}
+
+.logo {
+    width:213px;
+    height:36px;
+    background: url('http://i.imgur.com/fd8Lcso.png') no-repeat;
+    margin: 30px auto;
+}
+
+.login-block {
+    width:320px;
+    padding:20px;
+    background:#fff;
+    -ms-border-radius:5px;
+    border-radius:5px;
+    border-top:5px solid #ff656c;
+    margin: 0 auto;
+}
+
+.login-block h1 {
+    text-align: center;
+    color:#000;
+    font-size:18px;
+    text-transform: uppercase;
+    margin-top:0px;
+    margin-bottom:20px;
+}
+
+.login-block input {
+    width: 100%;
+    height: 42px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-family: Montserrat;
+    padding: 0 20px 0 50px;
+    outline: none;
+}
+
+.login-block input#username {
+    background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px top no-repeat;
+    -ms-background-size: 16px 80px;
+    background-size: 16px 80px;
+}
+
+.login-block input#username:focus {
+    background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px bottom no-repeat;
+    -ms-background-size: 16px 80px;
+    background-size: 16px 80px;
+}
+
+.login-block input#password {
+    background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px top no-repeat;
+    -ms-background-size: 16px 80px;
+    background-size: 16px 80px;
+}
+
+.login-block input#password:focus {
+    background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px bottom no-repeat;
+    -ms-background-size: 16px 80px;
+    background-size: 16px 80px;
+}
+
+.login-block input#password1 {
+    background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px top no-repeat;
+    -ms-background-size: 16px 80px;
+    background-size: 16px 80px;
+}
+
+.login-block input#password1:focus {
+    background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px bottom no-repeat;
+    -ms-background-size: 16px 80px;
+    background-size: 16px 80px;
+}
+
+.login-block input:active, .login-block input:focus {
+    border: 1px solid #ff656c;
+}
+
+.login-block button {
+    width: 100%;
+    height: 40px;
+    background: #ff656c;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid #e15960;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-family: Montserrat;
+    outline: none;
+    cursor: pointer;
+}
+
+.login-block button:hover {
+    background: #ff7b81;
+}
+
+#facebookLink {
+    text-align: center;
+}
+
+#facebookLink i{
+    position: relative;
+    color: #ccc;
+    margin-top:5px;
+    -ms-text-shadow:1px 1px 1px #ccc;
+    text-shadow:1px 1px 1px #ccc;
+    font-size: 2.5em;
+}
+
+#facebookLink i:hover {
+    color: #808080;
+}
+
+.signUpButton {
+    background-color: #6A7BA9 !important;
+    margin-top:10px;
+    border: none !important;
+}
+
+.signUpButton:hover {
+    background-color: #7D8BB3 !important;
+}
+
+.cancelRegister {
+    background-color: #6A7BA9 !important;
+    margin-top:10px;
+    border: none !important;
+}
+
+.cancelRegister:hover {
+    background-color: #7D8BB3 !important;
+}
+
+.registerPanel {
+    margin-top:70px;
+}
+
+.errorMessage {
+    margin-top:-5px !important;
+    margin-left:5px;
+    font-size:13px;
+    color:red;
+}

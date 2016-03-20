@@ -1,4 +1,4 @@
-﻿"use strict";
+﻿'use strict';
 
 App.module.service('loginService', ['$http', '$q', function ($http, $q) {
     this.login = function (params) {

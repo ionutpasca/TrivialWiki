@@ -1,8 +1,8 @@
-﻿"use strict";
+﻿'use strict';
 
 App.module.service('signUpService', ['$http', '$q', function ($http, $q) {
 
-    this.signUpNewUser = function (params) {
+    this.registerNewUser = function (params) {
         var def = $q.defer();
 
         $http({
@@ -17,7 +17,7 @@ App.module.service('signUpService', ['$http', '$q', function ($http, $q) {
             def.reject({ status: status });
         });
 
-        return def.promise();
+        return def.promise;
     }
 
 }]);

@@ -1,6 +1,6 @@
-﻿"use strict";
+﻿'use strict';
 
-App.module.controller('loginController', ['$scope', 'loginService', '$window', '$http', function ($scope, loginService, $window, $http) {
+App.module.controller('loginController', ['$scope', 'loginService', '$window', '$location', function ($scope, loginService, $window, $location) {
     $scope.login = function () {
         var params = {
             Username: $scope.username,
@@ -12,7 +12,9 @@ App.module.controller('loginController', ['$scope', 'loginService', '$window', '
                 $window.localStorage[key] = value;
             });
             $window.localStorage.isLoggedId = true;
-        }, function () {
+            debugger;
+            $location.path('/');
+            }, function () {
             //ERROR
         });
     }
@@ -20,6 +22,10 @@ App.module.controller('loginController', ['$scope', 'loginService', '$window', '
     $scope.logOut = function() {
         $window.localStorage.clear();
         $window.localStorage.isLoggedId = false;
+    }
+
+    $scope.registerNewAccount = function () {
+        $location.path('/register');
     }
 
     function statusChangeCallback(response) {
