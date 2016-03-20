@@ -1,6 +1,6 @@
-﻿using Nancy;
+﻿using System.Linq;
+using Nancy;
 using Nancy.ModelBinding;
-using System.Linq;
 using TrivialWikiAPI.DatabaseModels;
 using TrivialWikiAPI.UserManagement.Login;
 using TrivialWikiAPI.Utilities;
@@ -10,6 +10,7 @@ namespace TrivialWikiAPI.UserManagement
     public class LoginModule : NancyModule
     {
         private readonly LoginManager loginManager = new LoginManager();
+
         public LoginModule()
         {
             Get["/login"] = param => LoginUser();
@@ -25,7 +26,7 @@ namespace TrivialWikiAPI.UserManagement
 
             var userPassword = Encrypt.GetMD5(user.Password);
 
-            User loggedUser = loginManager.Login(user.UserName, userPassword);
+            var loggedUser = loginManager.Login(user.UserName, userPassword);
             if (loggedUser == null)
             {
                 return HttpStatusCode.Unauthorized;
@@ -45,8 +46,7 @@ namespace TrivialWikiAPI.UserManagement
                 SecurityToken = loggedUser.SecurityToken
             };
 
-            return this.Response.AsJson(data);
+            return Response.AsJson(data);
         }
-
     }
 }

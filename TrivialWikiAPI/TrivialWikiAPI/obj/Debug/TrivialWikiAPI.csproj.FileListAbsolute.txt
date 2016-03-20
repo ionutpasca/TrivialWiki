@@ -36,7 +36,6 @@ F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\M
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Nancy.xml
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Nancy.Hosting.Aspnet.xml
-F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.csprojResolveAssemblyReference.cache
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.dll
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.pdb
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.Migrations.InitialCreate.resources
@@ -50,3 +49,56 @@ F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\N
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Newtonsoft.Json.dll
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Nancy.Authentication.Stateless.xml
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Newtonsoft.Json.xml
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.csprojResolveAssemblyReference.cache
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.Migrations.InitialCreate.resources
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.Migrations._0001.resources
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.Migrations._0002.resources
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.Migrations._0003.resources
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.Migrations._0004.resources
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.Migrations._0005.resources
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.csproj.GenerateResource.Cache
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\ApplicationInsights.config
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\roslyn\csc.exe
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\roslyn\System.Collections.Immutable.dll
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\roslyn\System.Reflection.Metadata.dll
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\roslyn\vbc.exe
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\roslyn\VBCSCompiler.exe
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\roslyn\VBCSCompiler.exe.config
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\TrivialWikiAPI.dll.config
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\TrivialWikiAPI.dll
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\TrivialWikiAPI.pdb
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\EntityFramework.dll
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\EntityFramework.SqlServer.dll
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.AI.Agent.Intercept.dll
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.AI.DependencyCollector.dll
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.AI.Web.dll
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.AI.WindowsServer.dll
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.ApplicationInsights.dll
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Nancy.Authentication.Stateless.dll
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Nancy.dll
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Nancy.Hosting.Aspnet.dll
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Newtonsoft.Json.dll
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\EntityFramework.xml
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\EntityFramework.SqlServer.xml
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.AI.DependencyCollector.xml
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.AI.Web.xml
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.AI.WindowsServer.xml
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.ApplicationInsights.xml
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Nancy.xml
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Nancy.Authentication.Stateless.xml
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Nancy.Hosting.Aspnet.xml
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Newtonsoft.Json.xml
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.dll
+D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.pdb
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.csprojResolveAssemblyReference.cache

@@ -16,12 +16,17 @@ bld/
 [Oo]bj/
 [Ll]og/
 
+.vs/
+_ReSharper*
+
 # NuGet Packages
 *.nupkg
 
 *.nuget.props
 *.nuget.targets
 
+TrivialWikiAPI/.vs
+packages
 tmp
 .tmp
 .sass-cache
