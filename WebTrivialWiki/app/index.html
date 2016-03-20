@@ -14,6 +14,8 @@
     <!-- build:css(.tmp) styles/main.css -->
       <link rel="stylesheet" href="styles/main.css">
       <link rel="stylesheet" href="styles/loginStyles.css"/>
+      <link rel="stylesheet" href="styles/header.css"/>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <!-- endbuild -->
   </head>
   <body ng-app="webTrivialWikiApp">
@@ -40,36 +42,23 @@
        }(document, 'script', 'facebook-jssdk'));
     </script>
 
-  <!-- Add your site or application content here -->
-    <div class="header" ng-show="localStorage.isLoggedIn">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-
-            <a class="navbar-brand" href="#/">webTrivialWiki</a>
-          </div>
-
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
-            </ul>
-          </div>
-        </div>
+    <!-- Add your site or application content here -->
+  <div class="header headerContainer">
+      <div class="wikiLogo row">
+          <img class="hidden-xs" src="images/wikipedia-icon.png" ng-click="javascript(0);"/>
+          <span class="wikiTitle" ng-click="javascript(0);">WikiTrivia</span>
       </div>
-    </div>
+
+      <div class="loginHomeContainer">
+            <button class="loginButton col-sm-12 col-md-5">Login</button>
+            <button class="newInGameButton col-sm-12 col-md-5">New in the game</button>
+      </div>
+  </div>
+
+
 
     <div class="container">
-    <div ng-view=""></div>
+        <div ng-view=""></div>
     </div>
 
     <div class="footer">
