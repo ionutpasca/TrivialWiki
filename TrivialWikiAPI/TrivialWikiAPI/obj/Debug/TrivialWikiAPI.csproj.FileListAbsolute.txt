@@ -101,5 +101,4 @@ D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Nancy.Hosting.Aspnet.xm
 D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Newtonsoft.Json.xml
 D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.dll
 D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.pdb
-F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\TrivialWikiAPI.dll.CodeAnalysisLog.xml
-F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\TrivialWikiAPI.dll.lastcodeanalysissucceeded
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.csprojResolveAssemblyReference.cache
