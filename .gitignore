@@ -16,6 +16,9 @@ bld/
 [Oo]bj/
 [Ll]og/
 
+.vs/
+_ReSharper*
+
 # NuGet Packages
 *.nupkg
 
@@ -28,6 +31,8 @@ TrivialWikiAPI/.vs
 *.nuget.props
 *.nuget.targets
 
+TrivialWikiAPI/.vs
+packages
 tmp
 .tmp
 .sass-cache
