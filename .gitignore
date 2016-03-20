@@ -19,6 +19,8 @@ bld/
 # NuGet Packages
 *.nupkg
 
+TrivialWikiAPI/.vs/config
+
 .vs/
 _ReSharper*
 TrivialWikiAPI/.vs
