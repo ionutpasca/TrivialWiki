@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-App.module.controller('loginController', ['$scope', 'loginService', '$window', '$location', 'persistService', function ($scope, loginService, $window, $location, persistService) {
+App.module.controller('loginController', ['$scope', 'loginService', '$location', 'persistService', function ($scope, loginService, $location, persistService) {
     $scope.login = function () {
         persistService.storeData(1, 1);
 
@@ -11,19 +11,18 @@ App.module.controller('loginController', ['$scope', 'loginService', '$window', '
         loginService.login(params)
         .then(function (data) {
             _.map(data, function (value, key) {
-                $window.localStorage[key] = value;
+                persistService.storeData(key, value);
             });
-            $window.localStorage.isLoggedId = true;
-            debugger;
+            persistService.storeData('isLoggedIn', true);
             $location.path('/');
             }, function () {
             //ERROR
         });
     }
 
-    $scope.logOut = function() {
-        $window.localStorage.clear();
-        $window.localStorage.isLoggedId = false;
+    $scope.logOut = function () {
+        persistService.clearLocalStorage();
+        persistService.storeData('isLoggedIn', false);
     }
 
     $scope.registerNewAccount = function () {

@@ -2,7 +2,7 @@
     'use strict';
 
     App.module.service('persistService', [
-        '$cookieStore', '$window', function($cookieStore, $window) {
+        '$cookies', '$window', function($cookieStore, $window) {
 
             var hasLocalStorage = Boolean($window.localStorage),
                 hasSessionStorage = Boolean($window.sessionStorage);
@@ -75,12 +75,25 @@
                 $cookieStore.remove(key);
             }
 
+            function clearLocalStorage() {
+                if (hasLocalStorage) {
+                    $window.localStorage.clear();
+                    return;
+                }
+                if (hasSessionStorage) {
+                    $window.sessionStorage.clear();
+                    return;
+                }
+                $cookieStore.clear();
+            }
+
             this.storeData = storeData;
             this.readData = readData;
             this.removeData = removeData;
             this.storeSessionData = storeSessionData;
             this.readSessionData = readSessionData;
             this.removeSessionData = removeSessionData;
+            this.clearLocalStorage = clearLocalStorage;
         }
     ]);
 

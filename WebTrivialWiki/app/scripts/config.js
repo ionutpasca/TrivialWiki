@@ -18,5 +18,5 @@ App.module.service('APIInterceptor', ['$rootScope', function ($rootScope) {
             //$rootScope.$broadcast('unauthorized');
         }
         return response;
-    }
+    };
 }]);
