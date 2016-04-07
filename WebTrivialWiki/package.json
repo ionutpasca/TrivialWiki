@@ -1,7 +1,10 @@
 {
   "name": "webtrivialwiki",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "grunt-karma": "^0.12.2",
+    "karma": "^0.13.22"
+  },
   "repository": {},
   "devDependencies": {
     "grunt": "^0.4.5",

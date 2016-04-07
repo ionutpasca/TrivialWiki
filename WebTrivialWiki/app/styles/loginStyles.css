@@ -13,14 +13,14 @@
 }
 
 .logo {
-    width:213px;
+    width:100%;
     height:36px;
     background: url('http://i.imgur.com/fd8Lcso.png') no-repeat;
     margin: 30px auto;
 }
 
 .login-block {
-    width:320px;
+    width:100%;
     padding:20px;
     background:#fff;
     -ms-border-radius:5px;
@@ -152,10 +152,6 @@
 
 .cancelRegister:hover {
     background-color: #7D8BB3 !important;
-}
-
-.registerPanel {
-    margin-top:70px;
 }
 
 .errorMessage {

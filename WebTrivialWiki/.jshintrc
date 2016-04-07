@@ -18,6 +18,9 @@
   "trailing": true,
   "smarttabs": true,
   "globals": {
-    "angular": false
+    "angular": false,
+	"App": true,
+	"App.name": true,
+	"App.url": true
   }
 }

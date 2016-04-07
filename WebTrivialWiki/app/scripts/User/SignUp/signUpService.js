@@ -1,23 +1,27 @@
-﻿'use strict';
+﻿(function () {
 
-App.module.service('signUpService', ['$http', '$q', function ($http, $q) {
+    'use strict';
 
-    this.registerNewUser = function (params) {
-        var def = $q.defer();
+    App.module.service('signUpService', ['$http', '$q', function ($http, $q) {
 
-        $http({
-            url: App.url + '/addNewUser',
-            method: 'POST',
-            params: params
-        })
-        .success(function (data) {
-            def.resolve(data);
-        })
-        .error(function (data, status) {
-            def.reject({ status: status });
-        });
+        this.registerNewUser = function (params) {
+            var def = $q.defer();
 
-        return def.promise;
-    }
+            $http({
+                url: App.url + '/addNewUser',
+                method: 'POST',
+                params: params
+            })
+            .success(function (data) {
+                def.resolve(data);
+            })
+            .error(function (data, status) {
+                def.reject({ status: status });
+            });
 
-}]);
+            return def.promise;
+        }
+
+    }]);
+
+}).call(this);
