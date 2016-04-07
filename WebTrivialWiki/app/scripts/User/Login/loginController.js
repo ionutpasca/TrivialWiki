@@ -1,7 +1,9 @@
 ﻿'use strict';
 
-App.module.controller('loginController', ['$scope', 'loginService', '$window', '$location', function ($scope, loginService, $window, $location) {
+App.module.controller('loginController', ['$scope', 'loginService', '$window', '$location', 'persistService', function ($scope, loginService, $window, $location, persistService) {
     $scope.login = function () {
+        persistService.storeData(1, 1);
+
         var params = {
             Username: $scope.username,
             Password: $scope.password
