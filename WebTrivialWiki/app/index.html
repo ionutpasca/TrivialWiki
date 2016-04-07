@@ -24,39 +24,19 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <div id="fb-root"></div>
-    <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-            appId: '674147732724867',
-            cookie: true,
-            xfbml: true,
-            version: 'v2.5'
-        });
-      };
-
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "//connect.facebook.net/en_US/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
-    </script>
 
     <!-- Add your site or application content here -->
-  <div class="header headerContainer">
+  <div class="header headerContainer" ng-controller="MainCtrl">
       <div class="wikiLogo row">
           <img class="hidden-xs" src="images/wikipedia-icon.png" ng-click="javascript(0);"/>
           <span class="wikiTitle" ng-click="javascript(0);">WikiTrivia</span>
       </div>
 
-      <div class="loginHomeContainer">
-            <button class="loginButton col-sm-12 col-md-5">Login</button>
-            <button class="newInGameButton col-sm-12 col-md-5">New in the game</button>
+      <div class="loginHomeContainer" ng-hide="window.isLoggedIn">
+            <button class="loginButton col-sm-12 col-md-5" ng-click="openLoginModal()">Login</button>
+            <button class="newInGameButton col-sm-12 col-md-5" ng-click="openRegisterModal()">New in the game</button>
       </div>
   </div>
-
-
 
     <div class="container">
         <div ng-view=""></div>
@@ -88,6 +68,7 @@
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
