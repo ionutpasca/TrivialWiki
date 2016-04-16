@@ -9,7 +9,7 @@ namespace TrivialWikiAPI.Utilities
         {
             using (var md5 = new MD5CryptoServiceProvider())
             {
-                md5.ComputeHash(ASCIIEncoding.ASCII.GetBytes(text));
+                md5.ComputeHash(Encoding.ASCII.GetBytes(text));
                 byte[] result = md5.Hash;
                 StringBuilder str = new StringBuilder();
                 for (int i = 1; i < result.Length; i++)

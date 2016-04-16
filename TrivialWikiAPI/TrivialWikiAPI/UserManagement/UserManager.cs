@@ -9,11 +9,11 @@ namespace TrivialWikiAPI.UserManagement
 {
     public class UserManager
     {
-        public List<User> GetAllUsers()
+        public async Task<List<User>> GetAllUsers()
         {
             using (var databaseContext = new DatabaseContext())
             {
-                return databaseContext.Users.ToList();
+                return await databaseContext.Users.ToListAsync();
             }
         }
 
@@ -34,54 +34,54 @@ namespace TrivialWikiAPI.UserManagement
             }
         }
 
-        public void ChangeUserPassword(User user)
+        public async Task ChangeUserPassword(User user)
         {
             using (var databaseContext = new DatabaseContext())
             {
-                var usr = databaseContext.Users.Single(u => u.UserName == user.UserName);
+                var usr = await databaseContext.Users.SingleAsync(u => u.UserName == user.UserName);
                 if (usr == null)
                 {
                     return;
                 }
                 var password = Encrypt.GetMD5(user.Password);
                 usr.Password = password;
-                databaseContext.SaveChanges();
+                await databaseContext.SaveChangesAsync();
             }
         }
 
-        public void RemoveUserFromDatabase(string userName)
+        public async Task RemoveUserFromDatabase(string userName)
         {
             using (var databaseContext = new DatabaseContext())
             {
-                var user = databaseContext.Users.Single(u => u.UserName == userName);
+                var user = await databaseContext.Users.SingleAsync(u => u.UserName == userName);
                 databaseContext.Users.Remove(user);
-                databaseContext.SaveChanges();
+                await databaseContext.SaveChangesAsync();
             }
         }
 
-        public void AddPointsToUser(string userName, int points)
+        public async Task AddPointsToUser(string userName, int points)
         {
             using (var databaseContext = new DatabaseContext())
             {
-                var user = databaseContext.Users.Single(u => u.UserName == userName);
+                var user = await databaseContext.Users.SingleAsync(u => u.UserName == userName);
 
                 if (points > 0)
                 {
-                    IncrementUserRank(points, databaseContext, user);
+                    await IncrementUserRank(points, databaseContext, user);
                 }
                 else
                 {
-                    DecrementUserRank(points, databaseContext, user);
+                    await DecrementUserRank(points, databaseContext, user);
                 }
 
-                databaseContext.SaveChanges();
+                await databaseContext.SaveChangesAsync();
             }
         }
-        private static void IncrementUserRank(int points, DatabaseContext databaseContext, User user)
+        private static async Task IncrementUserRank(int points, DatabaseContext databaseContext, User user)
         {
-            var usersWithRankDepreciated = databaseContext.Users
+            var usersWithRankDepreciated = await databaseContext.Users
                 .Where(u => u.Points > user.Points && u.Points < user.Points + points)
-                .ToList();
+                .ToListAsync();
             if (usersWithRankDepreciated.Count == 0)
             {
                 return;
@@ -92,11 +92,11 @@ namespace TrivialWikiAPI.UserManagement
             user.Rank = user.Rank - usersWithRankDepreciated.Count;
         }
 
-        private static void DecrementUserRank(int points, DatabaseContext databaseContext, User user)
+        private static async Task DecrementUserRank(int points, DatabaseContext databaseContext, User user)
         {
-            var usersToIncreaseRank = databaseContext.Users
+            var usersToIncreaseRank = await databaseContext.Users
                 .Where(u => u.Points < user.Points && u.Points > user.Points + points)
-                .ToList();
+                .ToListAsync();
             if (usersToIncreaseRank.Count == 0)
             {
                 return;
@@ -107,15 +107,15 @@ namespace TrivialWikiAPI.UserManagement
             user.Rank = user.Rank - usersToIncreaseRank.Count;
         }
 
-        public void ChangeUserRole(string userName, int roleId)
+        public async Task ChangeUserRole(string userName, int roleId)
         {
             using (var databaseContext = new DatabaseContext())
             {
-                var user = databaseContext.Users.Single(u => u.UserName == userName);
-                var role = databaseContext.Roles.Single(r => r.Id == roleId);
+                var user = await databaseContext.Users.SingleAsync(u => u.UserName == userName);
+                var role = await databaseContext.Roles.SingleAsync(r => r.Id == roleId);
                 user.Roles.Clear();
                 user.Roles.Add(role);
-                databaseContext.SaveChanges();
+                await databaseContext.SaveChangesAsync();
             }
         }
 
@@ -127,11 +127,11 @@ namespace TrivialWikiAPI.UserManagement
             }
         }
 
-        public bool RoleExists(int roleId)
+        public async Task<bool> RoleExists(int roleId)
         {
             using (var databaseContext = new DatabaseContext())
             {
-                return databaseContext.Roles.Any(r => r.Id == roleId);
+                return await databaseContext.Roles.AnyAsync(r => r.Id == roleId);
             }
         }
 
