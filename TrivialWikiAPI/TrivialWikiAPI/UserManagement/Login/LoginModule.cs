@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Nancy;
 using Nancy.ModelBinding;
 using TrivialWikiAPI.DatabaseModels;
@@ -14,6 +15,12 @@ namespace TrivialWikiAPI.UserManagement
         public LoginModule()
         {
             Get["/login"] = param => LoginUser();
+            Get["/loginWithFacebook"] = param => LoginUserWithFacebook();
+        }
+
+        private dynamic LoginUserWithFacebook()
+        {
+            return HttpStatusCode.OK;
         }
 
         private dynamic LoginUser()

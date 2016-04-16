@@ -25,20 +25,16 @@
             });
         });
 
-    App.module
-        .factory('responseErrorInterceptor', [
-            '$q', '$location', function ($q, $location) {
-
-                var responseErrorMarker = {
-                    'responseError': function (rejection) {
-                        if (rejection.status === 500 || rejection.status === 400) {
-                            $location.path('/somethingWrong');
-                        }
+    App.module.factory('responseErrorInterceptor', ['$q', '$location', function ($q, $location) {
+            var responseErrorMarker = {
+                'responseError': function (rejection) {
+                    if (rejection.status === 500 || rejection.status === 400) {
+                        $location.path('/somethingWrong');
                     }
-                };
-                return responseErrorMarker;
-            }
-        ])
+                }
+            };
+            return responseErrorMarker;
+        }])
         .config([
             '$httpProvider', function ($httpProvider) {
                 $httpProvider.interceptors.push('responseErrorInterceptor');
@@ -59,7 +55,7 @@
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) { return; }
         js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js";
+        js.src = '//connect.facebook.net/en_US/sdk.js';
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 
