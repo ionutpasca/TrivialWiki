@@ -45,8 +45,6 @@ namespace TrivialWikiAPI.UserManagement
             {
                 Avatar = loggedUser.Avatar,
                 UserName = loggedUser.UserName,
-                FirstName = loggedUser.FirstName,
-                LastName = loggedUser.LastName,
                 Email = loggedUser.Email,
                 Rank = loggedUser.Rank,
                 Roles = userRoles,

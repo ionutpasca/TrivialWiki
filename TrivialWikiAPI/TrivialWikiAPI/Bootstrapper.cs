@@ -5,6 +5,7 @@ using Nancy.Bootstrapper;
 using Nancy.Security;
 using Nancy.TinyIoc;
 using TrivialWikiAPI.DatabaseModels;
+using TrivialWikiAPI.Utilities;
 
 namespace TrivialWikiAPI
 {
@@ -13,7 +14,6 @@ namespace TrivialWikiAPI
         protected override void ApplicationStartup(TinyIoCContainer container, IPipelines pipelines)
         {
             base.ApplicationStartup(container, pipelines);
-
             ConfigStatelessAuthentication(pipelines);
         }
 

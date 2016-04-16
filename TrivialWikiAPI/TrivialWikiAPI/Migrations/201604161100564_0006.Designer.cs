@@ -7,13 +7,13 @@ namespace TrivialWikiAPI.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class _0001 : IMigrationMetadata
+    public sealed partial class _0006 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(_0001));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(_0006));
         
         string IMigrationMetadata.Id
         {
-            get { return "201603021856003_0001"; }
+            get { return "201604161100564_0006"; }
         }
         
         string IMigrationMetadata.Source
