@@ -16,7 +16,7 @@ bld/
 [Oo]bj/
 [Ll]og/
 
-TrivialWikiAPI/.vs/
+TrivialWikiAPI/.vs/config/applicationhost.config
 _ReSharper*
 
 # NuGet Packages
