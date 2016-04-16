@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using TrivialWikiAPI.DatabaseModels;
 using TrivialWikiAPI.Utilities;
 
@@ -15,20 +17,20 @@ namespace TrivialWikiAPI.UserManagement
             }
         }
 
-        public void AddNewUserToDatabase(User user)
+        public async Task AddNewUserToDatabase(User user)
         {
             user.Points = 0;
             user.Password = Encrypt.GetMD5(user.Password);
 
             using (var databaseContext = new DatabaseContext())
             {
-                user.Rank = databaseContext.Users.Count();
+                user.Rank = await databaseContext.Users.CountAsync();
 
-                var playerRole = databaseContext.Roles.FirstOrDefault(r => r.Name == "Player");
+                var playerRole =await databaseContext.Roles.FirstAsync(r => r.Name == "Player");
                 user.Roles.Add(playerRole);
 
                 databaseContext.Users.Add(user);
-                databaseContext.SaveChanges();
+                await databaseContext.SaveChangesAsync();
             }
         }
 
@@ -117,11 +119,11 @@ namespace TrivialWikiAPI.UserManagement
             }
         }
 
-        public bool UserExists(string userName)
+        public async Task<bool> UserExists(string userName)
         {
             using (var databaseContext = new DatabaseContext())
             {
-                return databaseContext.Users.Any(u => u.UserName == userName);
+                return await databaseContext.Users.AnyAsync(u => u.UserName == userName);
             }
         }
 

@@ -1,4 +1,5 @@
-﻿using Nancy;
+﻿using System.Threading.Tasks;
+using Nancy;
 using Nancy.ModelBinding;
 using TrivialWikiAPI.DatabaseModels;
 using TrivialWikiAPI.Utilities;
@@ -11,7 +12,7 @@ namespace TrivialWikiAPI.UserManagement
 
         public UserModule()
         {
-            Post["/addNewUser"] = param => AddNewUserToDatabase();
+            Post["/addNewUser", true] = async (param, p) => await AddNewUserToDatabase();
             Post["/removeUser/{userName}"] = param => RemoveUser(param.userName);
             Post["/addPointsToUser/{userName}/{points}"] = param => AddPointsToUser(param.userName, param.points);
 
@@ -19,7 +20,7 @@ namespace TrivialWikiAPI.UserManagement
             Put["/changeUserRole/{userName}/{roleId}"] = param => ChangeUserRole(param.userName, param.roleId);
         }
 
-        private dynamic AddNewUserToDatabase()
+        private async Task<Response> AddNewUserToDatabase()
         {
             var user = this.Bind<User>();
             if (string.IsNullOrEmpty(user?.UserName) || string.IsNullOrEmpty(user.Password))
@@ -27,17 +28,17 @@ namespace TrivialWikiAPI.UserManagement
                 return HttpStatusCode.BadRequest;
             }
 
-            var userExists = userManager.UserExists(user.UserName);
+            var userExists = await userManager.UserExists(user.UserName);
             if (userExists)
             {
                 return HttpStatusCode.Conflict;
             }
 
-            userManager.AddNewUserToDatabase(user);
+            await userManager.AddNewUserToDatabase(user);
             return HttpStatusCode.OK;
         }
 
-        private dynamic ChangeUserPassword()
+        private async Task<Response> ChangeUserPassword()
         {
             var user = this.Bind<User>();
             if (user?.UserName == null)
@@ -45,7 +46,7 @@ namespace TrivialWikiAPI.UserManagement
                 return HttpStatusCode.BadRequest;
             }
 
-            var userExists = userManager.UserExists(user.UserName);
+            var userExists = await userManager.UserExists(user.UserName);
             if (!userExists)
             {
                 return HttpStatusCode.BadRequest;
