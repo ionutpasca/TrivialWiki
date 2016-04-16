@@ -16,7 +16,7 @@ bld/
 [Oo]bj/
 [Ll]og/
 
-.vs/
+TrivialWikiAPI/.vs/
 _ReSharper*
 
 # NuGet Packages
