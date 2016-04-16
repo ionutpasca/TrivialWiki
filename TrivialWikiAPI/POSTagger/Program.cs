@@ -2,6 +2,7 @@
 using edu.stanford.nlp.tagger.maxent;
 using java.io;
 using java.util;
+using WikipediaResourceFinder;
 using Console = System.Console;
 
 namespace POSTagger
@@ -11,6 +12,9 @@ namespace POSTagger
         private static void Main(string[] args)
         {
             var tagger = new MaxentTagger("wsj-0-18-bidirectional-nodistsim.tagger");
+
+            IResourceFinder res = new ResourceFinder();
+            res.GetWikipediaRawText("Faltceva");
 
             var text = "A Part-Of-Speech Tagger (POS Tagger) is a piece of software that reads text"
                        + "in some language and assigns parts of speech to each word (and other token),"
