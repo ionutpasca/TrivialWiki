@@ -10,55 +10,36 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css" />
     <link rel="stylesheet" href="bower_components/bootstrap-css-only/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/hover/css/hover.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
       <link rel="stylesheet" href="styles/main.css">
       <link rel="stylesheet" href="styles/loginStyles.css"/>
       <link rel="stylesheet" href="styles/header.css"/>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+      <link rel="stylesheet" href="styles/general.css"/>
     <!-- endbuild -->
   </head>
-  <body ng-app="webTrivialWikiApp">
+  <body ng-app="webTrivialWikiApp" on-scroll>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <div id="fb-root"></div>
 
-    <!-- Add your site or application content here -->
-  <div class="header headerContainer" ng-controller="MainCtrl">
-      <div class="wikiLogo row">
-          <img class="hidden-xs" src="images/wikipedia-icon.png" ng-click="javascript(0);"/>
-          <span class="wikiTitle" ng-click="javascript(0);">WikiTrivia</span>
-      </div>
-
-      <div class="loginHomeContainer" ng-hide="window.isLoggedIn">
-            <button class="loginButton col-sm-12 col-md-5" ng-click="openLoginModal()">Login</button>
-            <button class="newInGameButton col-sm-12 col-md-5" ng-click="openRegisterModal()">New in the game</button>
-      </div>
+  <div>
+      <!-- ReSharper disable Html.TagNotResolved -->
+      <header-menu></header-menu>
+      <!-- ReSharper restore Html.TagNotResolved -->
   </div>
 
     <div class="container">
-        <div ng-view=""></div>
+        <div class="views" ng-view=""></div>
     </div>
 
     <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
+        <div class="container">
+        <p><span class="glyphicon glyphicon-heart"></span> </p>
+        </div>
     </div>
-
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
-    </script>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -89,6 +70,8 @@
     <script src="scripts/User/SignUp/signUpService.js"></script>
     <script src="scripts/User/SignUp/signUpController.js"></script>
     <script src="scripts/config.js"></script>
-    <!-- endbuild -->
-</body>
+    <script src="scripts/directives/header/headerDirective.js"></script>
+    <script src="scripts/directives/header/headerController.js"></script>
+    <script src="scripts/directives/header/onScrollDirective.js"></script>
+  </body>
 </html>

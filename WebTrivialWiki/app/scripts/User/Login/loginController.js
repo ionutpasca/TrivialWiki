@@ -1,27 +1,37 @@
-﻿(function () {
+﻿(function (_) {
     'use strict';
 
     App.module.controller('loginController', ['$scope', 'loginService', '$location', 'persistService', '$uibModal','$uibModalInstance',
             function ($scope, loginService, $location, persistService, $modal, $modalInstance) {
+        
+        function init() {
+            $scope.credentialsAreInvalid = false;
+        }
 
         $scope.login = function () {
+            if ($scope.username === "" || $scope.username === undefined
+                || $scope.password === "" || $scope.password === undefined) {
+                $scope.credentialsAreInvalid = true;
+                return;
+            }
+
             var params = {
                 Username: $scope.username,
                 Password: $scope.password
             };
             loginService.login(params)
-            .then(function (data) {
-                _.map(data, function (value, key) {
-                    persistService.storeData(key, value);
+                .then(function(data) {
+                    _.map(data, function(value, key) {
+                        persistService.storeData(key, value);
+                    });
+                    persistService.storeData('isLoggedIn', true);
+                    $location.path('/');
+                }, function() {
+                    //ERROR
                 });
-                persistService.storeData('isLoggedIn', true);
-                $location.path('/');
-            }, function () {
-                //ERROR
-            });
-        }
+        };
 
-        $scope.openRegisterModal = function () {
+        $scope.openRegisterModal = function() {
             $modalInstance.close();
 
             $modal.open({
@@ -29,20 +39,14 @@
                 controller: 'signUpController',
                 size: 'sm'
             });
-        }
+        };
+        init();
 
-        $scope.loginWithFacebook = function () {
-
-            FB.login(function (response) {
-                if (response.authResponse) {
-                    console.log(response);
-                    //statusChangeCallback(response);
-                    FB.api('/me', { fields: 'email' }, function (response) {
-                        //console.log(JSON.stringify(response));
-                        console.log(response);
-                    });
-                }
-            });
-        }
+        $scope.$watch('username',function() {
+            $scope.credentialsAreInvalid = false;
+        });
+        $scope.$watch('password', function () {
+            $scope.credentialsAreInvalid = false;
+        });
     }]);
-}).call(this);
+}).call(this, this._);

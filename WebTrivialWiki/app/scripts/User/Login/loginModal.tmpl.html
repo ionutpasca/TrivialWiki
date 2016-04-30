@@ -2,7 +2,8 @@
     <div class="login-block">
         <h1>Login</h1>
         <input id="username" type="text" placeholder="Username" ng-model="username" />
-        <input id="password" type="password" placeholder="Password" ng-model="password" />
+        <input id="password" type="password" placeholder="Password" ng-model="password"/>
+        <p class="errorMessage" ng-show="credentialsAreInvalid">Invalid credentials.</p>
         <button title="Login" ng-click="login()">Start playing</button>
         <button class="signUpButton" title="Register" ng-click="openRegisterModal()">New to the site</button>
         <div id="facebookLink">

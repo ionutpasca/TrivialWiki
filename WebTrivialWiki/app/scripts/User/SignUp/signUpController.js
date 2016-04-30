@@ -21,8 +21,6 @@
                 UserName: $scope.username,
                 Password: $scope.password,
                 Email: $scope.email,
-                FirstName: $scope.firstName,
-                LastName: $scope.lastName
             };
             signUpService.registerNewUser(newUser)
             .then(function () {
