@@ -1,4 +1,5 @@
-﻿using Nancy;
+﻿using System.Threading.Tasks;
+using Nancy;
 using Nancy.ModelBinding;
 using TrivialWikiAPI.DatabaseModels;
 using TrivialWikiAPI.Utilities;
@@ -11,15 +12,15 @@ namespace TrivialWikiAPI.UserManagement
 
         public UserModule()
         {
-            Post["/addNewUser"] = param => AddNewUserToDatabase();
-            Post["/removeUser/{userName}"] = param => RemoveUser(param.userName);
-            Post["/addPointsToUser/{userName}/{points}"] = param => AddPointsToUser(param.userName, param.points);
+            Post["/addNewUser", true] = async (param, p) => await AddNewUserToDatabase();
+            Post["/removeUser/{userName}", true] = async (param, p) => await RemoveUser(param.userName);
+            Post["/addPointsToUser/{userName}/{points}", true] = async (param, p) => await AddPointsToUser(param.userName, param.points);
 
-            Put["/changePassword"] = param => ChangeUserPassword();
-            Put["/changeUserRole/{userName}/{roleId}"] = param => ChangeUserRole(param.userName, param.roleId);
+            Put["/changePassword", true] = async (param, p) => await ChangeUserPassword();
+            Put["/changeUserRole/{userName}/{roleId}", true] = async (param, p) => await ChangeUserRole(param.userName, param.roleId);
         }
 
-        private dynamic AddNewUserToDatabase()
+        private async Task<Response> AddNewUserToDatabase()
         {
             var user = this.Bind<User>();
             if (string.IsNullOrEmpty(user?.UserName) || string.IsNullOrEmpty(user.Password))
@@ -27,17 +28,17 @@ namespace TrivialWikiAPI.UserManagement
                 return HttpStatusCode.BadRequest;
             }
 
-            var userExists = userManager.UserExists(user.UserName);
+            var userExists = await userManager.UserExists(user.UserName);
             if (userExists)
             {
                 return HttpStatusCode.Conflict;
             }
 
-            userManager.AddNewUserToDatabase(user);
+            await userManager.AddNewUserToDatabase(user);
             return HttpStatusCode.OK;
         }
 
-        private dynamic ChangeUserPassword()
+        private async Task<Response> ChangeUserPassword()
         {
             var user = this.Bind<User>();
             if (user?.UserName == null)
@@ -45,27 +46,27 @@ namespace TrivialWikiAPI.UserManagement
                 return HttpStatusCode.BadRequest;
             }
 
-            var userExists = userManager.UserExists(user.UserName);
+            var userExists = await userManager.UserExists(user.UserName);
             if (!userExists)
             {
                 return HttpStatusCode.BadRequest;
             }
 
-            userManager.ChangeUserPassword(user);
+            await userManager.ChangeUserPassword(user);
             return HttpStatusCode.OK;
         }
 
-        private dynamic RemoveUser(string userName)
+        private async Task<Response> RemoveUser(string userName)
         {
             if (userName == null)
             {
                 return HttpStatusCode.BadRequest;
             }
-            userManager.RemoveUserFromDatabase(userName);
+            await userManager.RemoveUserFromDatabase(userName);
             return HttpStatusCode.OK;
         }
 
-        private dynamic AddPointsToUser(string userName, int points)
+        private async Task<Response> AddPointsToUser(string userName, int points)
         {
             if (userName == null)
             {
@@ -76,22 +77,23 @@ namespace TrivialWikiAPI.UserManagement
                 return HttpStatusCode.Continue;
             }
 
-            userManager.AddPointsToUser(userName, points);
+            await userManager.AddPointsToUser(userName, points);
             return HttpStatusCode.OK;
         }
 
-        private dynamic ChangeUserRole(string userName, int roleId)
+        private async Task<Response> ChangeUserRole(string userName, int roleId)
         {
             if (userName == null)
             {
                 return HttpStatusCode.BadRequest;
             }
-            if (!userManager.RoleExists(roleId))
+            var roleExists = await userManager.RoleExists(roleId);
+            if (!roleExists)
             {
                 return HttpStatusCode.BadRequest;
             }
 
-            userManager.ChangeUserRole(userName, roleId);
+            await userManager.ChangeUserRole(userName, roleId);
             return HttpStatusCode.OK;
         }
     }

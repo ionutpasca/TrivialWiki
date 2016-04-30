@@ -170,6 +170,12 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WikipediaResourceFinder\WikipediaResourceFinder.csproj">
+      <Project>{400be6e8-5e92-4d67-847e-81e508ff582b}</Project>
+      <Name>WikipediaResourceFinder</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,5 +1,7 @@
-'use strict';
+(function () {
+    'use strict';
 
-App.module.controller('MainCtrl', function ($scope) {
+    App.module.controller('MainCtrl', [function () {
 
-});
+    }]);
+}).call(this);
