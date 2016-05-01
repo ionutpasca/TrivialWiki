@@ -1,13 +1,12 @@
-(function () {
+(function (angular) {
     'use strict';
 
     App.module = angular.module('webTrivialWikiApp',
-        ['ngAnimate', 'ngCookies', 'ngResource', 'ngRoute', 'ngSanitize', 'ngTouch', 'ui.bootstrap'])
+        ['adminModule', 'ngAnimate', 'ngCookies', 'ngResource', 'ngRoute', 'ngSanitize', 'ngTouch', 'ui.bootstrap', 'angular-growl'])
         .config(function ($routeProvider) {
             $routeProvider
             .when('/', {
-                templateUrl: 'views/about.html',
-                controller: 'AboutCtrl'
+                templateUrl: 'views/about.html'
             })
             .when('/login', {
                 templateUrl: 'views/User/login.html',
@@ -41,4 +40,8 @@
             }
         ]);
 
-}).call(this);
+    App.module.config(['growlProvider', function (growlProvider) {
+        growlProvider.globalTimeToLive(3000);
+    }]);
+
+}).call(this, this.angular);

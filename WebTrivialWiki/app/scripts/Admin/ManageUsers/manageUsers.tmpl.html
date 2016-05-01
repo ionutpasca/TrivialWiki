@@ -1,0 +1,35 @@
+﻿<div class="table-container">
+    <button class="btn btn-default small-margin-top small-margin-bottom" ng-click="addNewUser()">Add new user</button>
+
+    <table class="table users-table">
+        <thead class="users-table-header">
+        <tr class="">
+            <th class="col-md-2">Username</th>
+            <th class="col-md-3">Email</th>
+            <th class="col-md-3">Role</th>
+            <th class="col-md-1">Rank</th>
+            <th class="col-md-1">Points</th>
+            <th class="col-md-2">Actions</th>
+        </tr>
+        </thead>
+        <tbody class="users-table-body">
+        <tr ng-repeat="user in users">
+            <td>{{user.username}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.role}}</td>
+            <td>{{user.rank}}</td>
+            <td>{{user.points}}</td>
+            <td class="table-action">
+                <i class="fa fa-pencil fa-2x small-margin-right" aria-hidden="true" title="Update {{user.username}}" ng-click="updateUser(user)"></i>
+                <i class="fa fa-times fa-2x" aria-hidden="true" title="Remove {{user.username}}" ng-click="removeUser(user)"></i>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- ReSharper disable Html.TagNotResolved -->
+    <uib-pagination total-items="numberOfUsers" ng-model="currentPage" ng-change="pageChanged()"></uib-pagination>
+    <!-- ReSharper restore Html.TagNotResolved -->
+</div>
+
+

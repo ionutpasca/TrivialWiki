@@ -1,0 +1,34 @@
+﻿<div class="modal-container update-modal">
+    <h1>Update user</h1>
+    <span class="row">
+        <span class="small-margin-right small-margin-top col-md-3">Username: </span>
+        <input class="username col-md-7" type="text" placeholder="Username" ng-model="user.username" disabled />
+    </span>
+    <span class="row">
+        <span class="small-margin-right small-margin-top col-md-3"> Email: </span>
+        <input class="col-md-7" type="email" placeholder="Email" ng-model="user.email" />
+    </span>
+    <p class="update-user-errorMessage small-margin-top" ng-show="!emailIsValid">Email is invalid.</p>
+    <p class="update-user-errorMessage small-margin-top" ng-show="emailExists">Email already exists.</p>
+
+    <span>
+        <span class="small-margin-right small-margin-top col-md-3"> Role: </span>
+        <select class="col-md-7" ng-model="user.role">
+            <option class="role-option" ng-repeat="role in roles" style="height: 100px !important;">{{role.name}}</option>
+        </select>
+    </span>
+
+    <span class="row">
+        <span class="small-margin-right small-margin-top col-md-3"> Points: </span>
+        <input class="col-md-7" type="text" ng-model="user.points" />
+    </span>
+    <p class="update-user-errorMessage small-margin-top" ng-show="!pointsAreValid">The points field must be a number.</p>
+
+    <span class="row">
+        <span class="small-margin-right small-margin-top col-md-3"> Rank: </span>
+        <input class="col-md-7" type="text" ng-model="user.rank" disabled />
+    </span>
+
+    <button class="confirm-button" title="Confirm" ng-click="updateUser()">Update</button>
+    <button class="cancel-button" title="Cancel" ng-click="cancel()">Cancel</button>
+</div>

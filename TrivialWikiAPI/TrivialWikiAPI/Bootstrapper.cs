@@ -5,6 +5,7 @@ using Nancy.Bootstrapper;
 using Nancy.Security;
 using Nancy.TinyIoc;
 using TrivialWikiAPI.DatabaseModels;
+using TrivialWikiAPI.UserManagement;
 using TrivialWikiAPI.Utilities;
 
 namespace TrivialWikiAPI
@@ -44,13 +45,6 @@ namespace TrivialWikiAPI
                 var user = databaseContext.Users
                     .Include("Roles")
                     .FirstOrDefault(u => u.SecurityToken == token);
-
-                if (user == null)
-                {
-                    return null;
-                }
-                var claims = user.Roles.Select(r => r.Name).ToList();
-                user.Claims = claims;
 
                 return user;
             }

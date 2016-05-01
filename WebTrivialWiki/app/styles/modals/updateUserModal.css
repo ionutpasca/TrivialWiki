@@ -1,0 +1,87 @@
+﻿.modal-container input {
+    width: 70%;
+    height: 42px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-family: Montserrat;
+    padding: 0 20px 0 50px;
+    outline: none;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.modal-container select {
+    width: 70%;
+    height: 42px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-family: Montserrat;
+    padding: 0 20px 0 50px;
+    outline: none;
+}
+
+.role-option {
+    width: 70%;
+    height: 42px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-family: Montserrat;
+    padding: 0 20px 0 50px;
+    outline: none;
+}
+
+.modal-container span {
+    font-family: Montserrat;
+    font-size: 14px;
+}
+
+/*.modal-container  input.username {
+    background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px top no-repeat;
+    -ms-background-size: 16px 80px;
+    background-size: 16px 80px;
+}*/
+
+/*.modal-container input.username:focus {
+    background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px bottom no-repeat;
+    -ms-background-size: 16px 80px;
+    background-size: 16px 80px;
+}*/
+
+.modal-container input:active, .modal-container input:focus {
+    border: 1px solid #ff656c;
+}
+
+.modal-container.role-option:active, .modal-container.role-option:focus {
+    border: 1px solid #ff656c;
+}
+
+
+.update-user-errorMessage {
+    margin-top: -35px !important;
+    margin-left:15px;
+    color:#ff656c;
+    font-family: Montserrat;
+    font-size:12px;
+}

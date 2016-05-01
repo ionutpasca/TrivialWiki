@@ -9,7 +9,7 @@ namespace TrivialWikiAPI.UserManagement.Login
         public string LastName { get; set; }
         public string Email { get; set; }
         public string SecurityToken { get; set; }
-        public ICollection<string> Roles { get; set; }
+        public string Role { get; set; }
         public int Rank { get; set; }
         public byte[] Avatar { get; set; }
     }

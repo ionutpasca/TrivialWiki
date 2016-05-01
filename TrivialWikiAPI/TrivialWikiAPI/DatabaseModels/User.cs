@@ -10,7 +10,6 @@ namespace TrivialWikiAPI.DatabaseModels
         public User()
         {
             this.Achievements = new HashSet<Achievement>();
-            this.Roles = new HashSet<Role>();
             this.Claims = new HashSet<string>();
         }
 
@@ -19,7 +18,7 @@ namespace TrivialWikiAPI.DatabaseModels
         public string UserName { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
-        public ICollection<Role> Roles { get; set; }
+        public Role Role { get; set; }
         public ICollection<Achievement> Achievements { get; set; }
         public byte[] Avatar { get; set; }
         public IEnumerable<string> Claims { get; set; }

@@ -39,7 +39,7 @@ namespace TrivialWikiAPI.UserManagement
                 return HttpStatusCode.Unauthorized;
             }
 
-            var userRoles = loggedUser.Roles.Select(r => r.Name).ToList();
+            var userRole = loggedUser.Role.Name;
 
             var data = new LoginResponse
             {
@@ -47,7 +47,7 @@ namespace TrivialWikiAPI.UserManagement
                 UserName = loggedUser.UserName,
                 Email = loggedUser.Email,
                 Rank = loggedUser.Rank,
-                Roles = userRoles,
+                Role = userRole,
                 SecurityToken = loggedUser.SecurityToken
             };
 

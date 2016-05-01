@@ -2,6 +2,30 @@
     padding-bottom:5px;
 }
 
+.small-margin-right {
+    margin-right: 10px;
+}
+
+.small-margin-top {
+    margin-top: 10px;
+}
+
+.small-margin-bottom{
+    margin-bottom:10px;
+}
+
+.small-margin-left{
+    margin-left:10px;
+}
+
+.medium-margin-bottom{
+    margin-bottom:50px;
+}
+
+.medium-margin-left{
+    margin-left:50px !important;
+}
+
 .views {
     margin-top:120px;
 }
@@ -9,4 +33,18 @@
 .center-modal {
     position: fixed;
     top:5%;
+}
+
+.pagination>li>a, .pagination>li>span{
+    color: #7D8BB3;
+}
+
+.pagination>.active>a, 
+.pagination>.active>a:focus, 
+.pagination>.active>a:hover, 
+.pagination>.active>span, 
+.pagination>.active>span:focus, 
+.pagination>.active>span:hover {
+    background-color: #7D8BB3;
+    border-color: #7D8BB3;
 }

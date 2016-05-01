@@ -100,6 +100,7 @@
       <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Collections.Immutable, Version=1.1.36.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -132,7 +133,9 @@
   <ItemGroup>
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
@@ -157,13 +160,20 @@
     <Compile Include="Migrations\201604161100564_0006.Designer.cs">
       <DependentUpon>201604161100564_0006.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604301654153_0007.cs" />
+    <Compile Include="Migrations\201604301654153_0007.Designer.cs">
+      <DependentUpon>201604301654153_0007.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Roles\RolesManager.cs" />
+    <Compile Include="Roles\RolesModule.cs" />
     <Compile Include="UserManagement\Login\LoginManager.cs" />
     <Compile Include="UserManagement\Login\LoginModule.cs" />
     <Compile Include="UserManagement\Login\LoginResponse.cs" />
     <Compile Include="UserManagement\UserManager.cs" />
     <Compile Include="UserManagement\UserModule.cs" />
+    <Compile Include="UserManagement\UserResponse.cs" />
     <Compile Include="Utilities\Encrypt.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -172,6 +182,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604161100564_0006.resx">
       <DependentUpon>201604161100564_0006.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604301654153_0007.resx">
+      <DependentUpon>201604301654153_0007.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

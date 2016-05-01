@@ -7,8 +7,7 @@
             $uibModal.open({
                 templateUrl: 'scripts/User/Login/loginModal.tmpl.html',
                 controller: 'loginController',
-                size: 'sm',
-                windowClass: 'center-modal'
+                size: 'sm'
             });
         };
 
@@ -16,8 +15,7 @@
             $uibModal.open({
                 templateUrl: 'scripts/User/SignUp/signUpModal.tmpl.html',
                 controller: 'signUpController',
-                size: 'sm',
-                windowClass: 'center-modal'
+                size: 'sm'
             });
         };
     }]);
