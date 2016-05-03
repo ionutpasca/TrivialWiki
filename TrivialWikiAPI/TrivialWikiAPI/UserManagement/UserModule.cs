@@ -12,7 +12,6 @@ namespace TrivialWikiAPI.UserManagement
 
         public UserModule()
         {
-            Get["/getNumberOfUsers", true] = async (param, p) => await GetNumberOfUsers();
             Get["/getUserBatch/{pageNumber}", true] = async(param, p) => await GetUsersBatch(param.PageNumber);
             Get["/emailExists/{email}", true] = async (param, p) => await GivenEmailExists(param.email);
             Get["/usernameExists/{username}", true] = async (param, p) => await GivenUsernameExists(param.username);
@@ -32,20 +31,10 @@ namespace TrivialWikiAPI.UserManagement
             Put["/changeUserRole/{userName}/{roleId}", true] = async (param, p) => await ChangeUserRole(param.userName, param.roleId);
         }
 
-        private async Task<Response> GetNumberOfUsers()
-        {
-            var numberOfUsers = await userManager.GetNumberOfUsers();
-            return this.Response.AsJson(numberOfUsers);
-        }
-
         private async Task<Response> GetUsersBatch(int pageNumber)
         {
-            var users = await userManager.GetUsersBatch(pageNumber);
-            if (users.Count == 0)
-            {
-                return HttpStatusCode.BadRequest;
-            }
-
+            string queryString = this.Request.Query["queryString"];
+            var users = await userManager.GetUsersBatch(queryString, pageNumber);
             return this.Response.AsJson(users);
         }
 

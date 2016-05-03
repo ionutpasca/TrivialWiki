@@ -9,19 +9,13 @@ namespace TrivialWikiAPI.UserManagement
 {
     public class UserManager
     {
-        public async Task<int> GetNumberOfUsers()
-        {
-            using(var databaseContext = new DatabaseContext())
-            {
-                return await databaseContext.Users.CountAsync();
-            }
-        }
-        public async Task<List<UserResponse>> GetUsersBatch(int pageNumber = 1)
+        public async Task<UserResponseWithCount> GetUsersBatch( string queryString, int pageNumber = 1)
         {
             var usersToSkip = (pageNumber-1) * 10;
             using (var databaseContext = new DatabaseContext())
             {
-                return await databaseContext.Users.Include("Role")
+                var users = await databaseContext.Users.Include("Role")
+                    .Where(u => queryString == null || u.UserName.Contains(queryString))
                     .OrderBy(u => u.Id)
                     .Skip(usersToSkip)
                     .Take(10)
@@ -35,6 +29,22 @@ namespace TrivialWikiAPI.UserManagement
                     })
                     .OrderBy(u => u.Rank)
                     .ToListAsync();
+
+                return new UserResponseWithCount()
+                {
+                    Users = users,
+                    TotalNumberOfUsers = await GetNumberOfUsers(queryString)
+                };
+            }
+        }
+
+        private async Task<int> GetNumberOfUsers(string queryString)
+        {
+            using (var databaseContext = new DatabaseContext())
+            {
+                return await databaseContext.Users
+                    .Where(u=>u.UserName.Contains(queryString))
+                    .CountAsync();
             }
         }
 
