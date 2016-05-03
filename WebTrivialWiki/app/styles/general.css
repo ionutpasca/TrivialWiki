@@ -48,3 +48,21 @@
     background-color: #7D8BB3;
     border-color: #7D8BB3;
 }
+
+.user-search-input {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    padding: 6px 12px !important;
+    box-sizing: border-box;
+    -ms-border-radius: 5px;
+    line-height: 1.42857143;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    font-family: Montserrat;
+    outline: none;
+}
+
+.user-search-input:active, .user-search-input:focus {
+    border: 1px solid #7D8BB3;
+}

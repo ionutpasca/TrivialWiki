@@ -1,4 +1,4 @@
-﻿(function(angular) {
+﻿(function(angular, _) {
 
     angular.module('adminModule')
         .controller('manageUsersController', ['$scope', 'manageUsersService','growl', '$uibModal',
@@ -43,9 +43,10 @@
             }
 
             $scope.getUsersBatch = function () {
-                usersService.getUserBatch($scope.currentPage)
+                usersService.getUserBatch($scope.currentPage, $scope.queryString)
                 .then(function (data) {
-                    $scope.users = data;
+                    $scope.users = data.users;
+                    $scope.numberOfUsers = data.totalNumberOfUsers;
                 });
             };
 
@@ -98,20 +99,23 @@
             };
 
             $scope.pageChanged = function() {
-                $scope.getUsersBatch($scope.currentPage);
+                $scope.getUsersBatch();
             };
 
             function init() {
+                $scope.queryString = '';
                 $scope.currentPage = 1;
-
-                usersService.getNumberOfUsers()
-                .then(function (data) {
-                    $scope.numberOfUsers = data;
-                    $scope.getUsersBatch($scope.currentPage);
-                });
+                $scope.getUsersBatch();
             }
+
+            $scope.$watch('queryString', _.debounce(function (newQuery) {
+                if (newQuery.length < 2 && newQuery !== '') {
+                    return;
+                }
+                $scope.getUsersBatch();
+            }, 300));
 
             init();
         }]);
 
-}).call(this, this.angular);
+}).call(this, this.angular, this._);

@@ -21,9 +21,9 @@
             return def.promise;
         }
 
-        this.getUserBatch = function(pageNumber) {
+        this.getUserBatch = function(pageNumber, queryString) {
             var def = $q.defer();
-            $http.get(App.url + '/getUserBatch/' + pageNumber)
+            $http.get(App.url + '/getUserBatch/' + pageNumber + '?queryString=' + queryString)
                 .success(function (data) {
                     def.resolve(data);
                 })
@@ -97,19 +97,6 @@
                 def.resolve(data);
             })
             .error(function(data) {
-                def.reject(data);
-            });
-            return def.promise;
-        }
-
-        this.getNumberOfUsers = function() {
-            var def = $q.defer();
-
-            $http.get(App.url + '/getNumberOfUsers')
-            .success(function (data) {
-                def.resolve(data);
-            })
-            .error(function (data) {
                 def.reject(data);
             });
             return def.promise;
