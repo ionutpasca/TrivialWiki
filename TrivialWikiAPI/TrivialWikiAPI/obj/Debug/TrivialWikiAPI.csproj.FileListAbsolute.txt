@@ -96,3 +96,17 @@ D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.Mi
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.Migrations._0006.resources
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.Migrations._0007.resources
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\System.Collections.Immutable.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.AspNet.Identity.Core.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.AspNet.Identity.Owin.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.Owin.Security.Cookies.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.Owin.Security.OAuth.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\System.Net.Http.Formatting.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\System.Web.Http.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\System.Web.Http.Owin.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.AspNet.Identity.Core.xml
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.AspNet.Identity.Owin.xml
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.Owin.Security.Cookies.xml
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.Owin.Security.OAuth.xml
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\System.Net.Http.Formatting.xml
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\System.Web.Http.xml
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\System.Web.Http.Owin.xml
