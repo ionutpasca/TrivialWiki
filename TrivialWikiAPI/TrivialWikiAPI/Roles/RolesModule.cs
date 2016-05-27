@@ -1,5 +1,5 @@
-﻿using System.Threading.Tasks;
-using Nancy;
+﻿using Nancy;
+using System.Threading.Tasks;
 
 namespace TrivialWikiAPI.Roles
 {

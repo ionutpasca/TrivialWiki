@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace TrivialWikiAPI.UserManagement.Login
+﻿namespace TrivialWikiAPI.UserManagement.Login
 {
     public class LoginResponse
     {

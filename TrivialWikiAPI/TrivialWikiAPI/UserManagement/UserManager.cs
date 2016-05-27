@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using TrivialWikiAPI.DatabaseModels;
@@ -9,9 +8,9 @@ namespace TrivialWikiAPI.UserManagement
 {
     public class UserManager
     {
-        public async Task<UserResponseWithCount> GetUsersBatch( string queryString, int pageNumber = 1)
+        public async Task<UserResponseWithCount> GetUsersBatch(string queryString, int pageNumber = 1)
         {
-            var usersToSkip = (pageNumber-1) * 10;
+            var usersToSkip = (pageNumber - 1) * 10;
             using (var databaseContext = new DatabaseContext())
             {
                 var users = await databaseContext.Users.Include("Role")
@@ -21,11 +20,11 @@ namespace TrivialWikiAPI.UserManagement
                     .Take(10)
                     .Select(u => new UserResponse
                     {
-                       Username = u.UserName,
-                       Email = u.Email,
-                       Role = u.Role.Name,
-                       Rank = u.Rank,
-                       Points = u.Points
+                        Username = u.UserName,
+                        Email = u.Email,
+                        Role = u.Role.Name,
+                        Rank = u.Rank,
+                        Points = u.Points
                     })
                     .OrderBy(u => u.Rank)
                     .ToListAsync();
@@ -43,7 +42,7 @@ namespace TrivialWikiAPI.UserManagement
             using (var databaseContext = new DatabaseContext())
             {
                 return await databaseContext.Users
-                    .Where(u=>u.UserName.Contains(queryString))
+                    .Where(u => u.UserName.Contains(queryString))
                     .CountAsync();
             }
         }
@@ -57,7 +56,7 @@ namespace TrivialWikiAPI.UserManagement
             {
                 user.Rank = await databaseContext.Users.CountAsync() + 1;
 
-                var playerRole =await databaseContext.Roles.FirstAsync(r => r.Name == "Player");
+                var playerRole = await databaseContext.Roles.FirstAsync(r => r.Name == "Player");
                 user.Role = playerRole;
 
                 databaseContext.Users.Add(user);
@@ -119,7 +118,7 @@ namespace TrivialWikiAPI.UserManagement
 
         private async Task UpdateUsersRankAfterOneUserIsRemoved()
         {
-            using(var databaseContext = new DatabaseContext())
+            using (var databaseContext = new DatabaseContext())
             {
                 var users = await databaseContext.Users.ToListAsync();
                 users.ForEach(u => u.Rank = u.Rank - 1);
@@ -148,9 +147,9 @@ namespace TrivialWikiAPI.UserManagement
         private static async Task IncrementUserRank(int points, DatabaseContext databaseContext, User user)
         {
             var usersWithRankDepreciated = await databaseContext.Users
-                .Where(u => 
-                    u.Points >= user.Points 
-                    && u.Points < (user.Points + points) 
+                .Where(u =>
+                    u.Points >= user.Points
+                    && u.Points < (user.Points + points)
                     && u.UserName != user.UserName
                 ).ToListAsync();
 
@@ -168,9 +167,9 @@ namespace TrivialWikiAPI.UserManagement
         private static async Task DecrementUserRank(int points, DatabaseContext databaseContext, User user)
         {
             var usersToIncreaseRank = await databaseContext.Users
-                .Where(u => 
-                    u.Points > (user.Points + points) 
-                    && u.Points <= user.Points 
+                .Where(u =>
+                    u.Points > (user.Points + points)
+                    && u.Points <= user.Points
                     && u.UserName != user.UserName)
                 .ToListAsync();
 

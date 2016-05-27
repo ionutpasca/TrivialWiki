@@ -1,12 +1,10 @@
-﻿using System.Linq;
-using Nancy;
+﻿using Nancy;
 using Nancy.Authentication.Stateless;
 using Nancy.Bootstrapper;
 using Nancy.Security;
 using Nancy.TinyIoc;
+using System.Linq;
 using TrivialWikiAPI.DatabaseModels;
-using TrivialWikiAPI.UserManagement;
-using TrivialWikiAPI.Utilities;
 
 namespace TrivialWikiAPI
 {

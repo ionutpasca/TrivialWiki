@@ -6,7 +6,7 @@ using TrivialWikiAPI.DatabaseModels;
 
 namespace TrivialWikiAPI.Roles
 {
-    public sealed class RolesManager 
+    public sealed class RolesManager
     {
         public async Task<List<Role>> GetAllRoles()
         {

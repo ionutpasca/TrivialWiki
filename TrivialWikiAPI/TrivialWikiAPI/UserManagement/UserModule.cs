@@ -1,7 +1,6 @@
-﻿using System;
-using System.Threading.Tasks;
-using Nancy;
+﻿using Nancy;
 using Nancy.ModelBinding;
+using System.Threading.Tasks;
 using TrivialWikiAPI.DatabaseModels;
 
 namespace TrivialWikiAPI.UserManagement
@@ -12,7 +11,7 @@ namespace TrivialWikiAPI.UserManagement
 
         public UserModule()
         {
-            Get["/getUserBatch/{pageNumber}", true] = async(param, p) => await GetUsersBatch(param.PageNumber);
+            Get["/getUserBatch/{pageNumber}", true] = async (param, p) => await GetUsersBatch(param.PageNumber);
             Get["/emailExists/{email}", true] = async (param, p) => await GivenEmailExists(param.email);
             Get["/usernameExists/{username}", true] = async (param, p) => await GivenUsernameExists(param.username);
 
@@ -25,7 +24,7 @@ namespace TrivialWikiAPI.UserManagement
             };
             Post["/removeUser/{userName}", true] = async (param, p) => await RemoveUser(param.userName);
             Post["/addPointsToUser/{userName}/{points}", true] = async (param, p) => await AddPointsToUser(param.userName, param.points);
-            
+
 
             Put["/changePassword", true] = async (param, p) => await ChangeUserPassword();
             Put["/changeUserRole/{userName}/{roleId}", true] = async (param, p) => await ChangeUserRole(param.userName, param.roleId);
@@ -48,7 +47,7 @@ namespace TrivialWikiAPI.UserManagement
             return this.Response.AsJson(false);
         }
 
-        private async  Task<Response> GivenEmailExists(string email)
+        private async Task<Response> GivenEmailExists(string email)
         {
             var userEmailExists = await userManager.EmailExists(email);
             if (userEmailExists)
