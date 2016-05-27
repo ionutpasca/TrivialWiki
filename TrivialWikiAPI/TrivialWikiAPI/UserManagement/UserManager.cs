@@ -15,7 +15,7 @@ namespace TrivialWikiAPI.UserManagement
             {
                 var users = await databaseContext.Users.Include("Role")
                     .Where(u => queryString == null || u.UserName.Contains(queryString))
-                    .OrderBy(u => u.Id)
+                    .OrderBy(u => u.Rank)
                     .Skip(usersToSkip)
                     .Take(10)
                     .Select(u => new UserResponse
@@ -26,7 +26,6 @@ namespace TrivialWikiAPI.UserManagement
                         Rank = u.Rank,
                         Points = u.Points
                     })
-                    .OrderBy(u => u.Rank)
                     .ToListAsync();
 
                 return new UserResponseWithCount()
