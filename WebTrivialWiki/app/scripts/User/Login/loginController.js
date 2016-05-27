@@ -30,16 +30,6 @@
                     //ERROR
                 });
         };
-
-        $scope.openRegisterModal = function() {
-            $modalInstance.close();
-
-            $modal.open({
-                templateUrl: 'scripts/User/SignUp/signUpModal.tmpl.html',
-                controller: 'signUpController',
-                size: 'sm'
-            });
-        };
         init();
 
         $scope.$watch('username',function() {

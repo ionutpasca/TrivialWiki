@@ -1,10 +1,8 @@
 ﻿.modal-container {
     width:100%;
-    border-top:5px solid #dd656c !important;
+    border-top:5px solid #cc1935 !important;
     padding:20px;
     background:#fff;
-    -ms-border-radius:5px;
-    border-radius:5px;
     margin: 0 auto;
 }
 
@@ -20,13 +18,11 @@
     width: 47%;
     height: 40px;
     margin-left:1%;
-    background: #ff656c;
+    background: #cc1935;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    -ms-border-radius: 5px;
-    border-radius: 5px;
-    border: 1px solid #e15960;
+    border: 1px solid #cc1935;
     color: #fff;
     font-weight: bold;
     text-transform: uppercase;
@@ -37,20 +33,18 @@
 }
 
 .modal-container .confirm-button:hover {
-    background: #ff7b81;
+    background: #DD425A;
 }
 
 .modal-container .cancel-button {
     width: 47%;
     height: 40px;
     margin-left:4%;
-    background: #99A6CA;
+    background: #356798;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    -ms-border-radius: 5px;
-    border-radius: 5px;
-    border: 1px solid #6A7BA9;
+    border: 1px solid #356798;
     color: #fff;
     font-weight: bold;
     text-transform: uppercase;
@@ -61,5 +55,5 @@
 }
 
 .modal-container .cancel-button:hover {
-    background: #7D8BB3;
+    background: #5481AC;
 }

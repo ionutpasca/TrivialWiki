@@ -4,8 +4,6 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    -ms-border-radius: 5px;
-    border-radius: 5px;
     border: 1px solid #ccc;
     margin-bottom: 20px;
     font-size: 14px;
@@ -70,18 +68,18 @@ select {
 }*/
 
 .modal-container input:active, .modal-container input:focus {
-    border: 1px solid #ff656c;
+    border: 1px solid #cc1935;
 }
 
 .modal-container.role-option:active, .modal-container.role-option:focus {
-    border: 1px solid #ff656c;
+    border: 1px solid #cc1935;
 }
 
 
 .update-user-errorMessage {
     margin-top: -35px !important;
     margin-left:15px;
-    color:#ff656c;
+    color:#cc1935;
     font-family: Montserrat;
     font-size:12px;
 }

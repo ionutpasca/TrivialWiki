@@ -28,10 +28,6 @@
             });
         };
 
-        $scope.closeRegisterModal = function () {
-            $modalInstance.close();
-        }
-
     }]);
 
 }).call(this);

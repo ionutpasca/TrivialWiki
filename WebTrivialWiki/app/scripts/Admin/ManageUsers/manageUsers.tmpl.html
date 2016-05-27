@@ -1,39 +1,42 @@
-﻿<div class="table-container">
-    <button class="btn btn-default small-margin-top small-margin-bottom col-md-2" ng-click="addNewUser()">Add new user</button>
-    <input class="user-search-input small-margin-left small-margin-top small-margin-bottom col-md-3" placeholder="Search user.." ng-model="queryString"/>
-
-    <table class="table users-table" ng-show="users.length > 0">
-        <thead class="users-table-header">
-        <tr class="">
-            <th class="col-md-2">Username</th>
-            <th class="col-md-3">Email</th>
-            <th class="col-md-3">Role</th>
-            <th class="col-md-1">Rank</th>
-            <th class="col-md-1">Points</th>
-            <th class="col-md-2">Actions</th>
-        </tr>
-        </thead>
-        <tbody class="users-table-body">
-        <tr ng-repeat="user in users">
-            <td>{{user.username}}</td>
-            <td>{{user.email}}</td>
-            <td>{{user.role}}</td>
-            <td>{{user.rank}}</td>
-            <td>{{user.points}}</td>
-            <td class="table-action">
-                <i class="fa fa-pencil fa-2x small-margin-right" aria-hidden="true" title="Update {{user.username}}" ng-click="updateUser(user)"></i>
-                <i class="fa fa-times fa-2x" aria-hidden="true" title="Remove {{user.username}}" ng-click="removeUser(user)"></i>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-
-    <div class="row" ng-show="users.length === 0">
-        <p class="col-md-10">No users found for " {{queryString}} "</p>
+﻿<div class="panel panel-default admin-panel">
+    <div class="panel-heading">
+        <button class="btn btn-default small-margin-top small-margin-bottom col-md-2" ng-click="addNewUser()">Add new user</button>
+        <input class="user-search-input small-margin-left small-margin-top small-margin-bottom col-md-3" placeholder="Search user.." ng-model="queryString" />
     </div>
-    <!-- ReSharper disable Html.TagNotResolved -->
-    <uib-pagination total-items="numberOfUsers" ng-model="currentPage" ng-show="users.length > 0" ng-change="pageChanged()"></uib-pagination>
-    <!-- ReSharper restore Html.TagNotResolved -->
+    <div class="panel-body">
+        <div class="table-container">
+            <table class="table users-table" ng-show="users.length > 0" style="width:100%;">
+                <thead class="users-table-header">
+                    <tr class="">
+                        <th class="col-md-2">Username</th>
+                        <th class="col-md-3">Email</th>
+                        <th class="col-md-3">Role</th>
+                        <th class="col-md-1">Rank</th>
+                        <th class="col-md-1">Points</th>
+                        <th class="col-md-2">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="users-table-body">
+                    <tr ng-repeat="user in users">
+                        <td>{{user.username}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.role}}</td>
+                        <td>{{user.rank}}</td>
+                        <td>{{user.points}}</td>
+                        <td class="table-action">
+                            <i class="fa fa-pencil fa-2x small-margin-right" aria-hidden="true" title="Update {{user.username}}" ng-click="updateUser(user)"></i>
+                            <i class="fa fa-times fa-2x" aria-hidden="true" title="Remove {{user.username}}" ng-click="removeUser(user)"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="row" ng-show="users.length === 0">
+                <p class="col-md-10">No users found for " {{queryString}} "</p>
+            </div>
+            <!-- ReSharper disable Html.TagNotResolved -->
+            <uib-pagination class="pagination-numbers" total-items="numberOfUsers" ng-model="currentPage" ng-show="users.length > 0" ng-change="pageChanged()"></uib-pagination>
+            <!-- ReSharper restore Html.TagNotResolved -->
+        </div>
+    </div>
 </div>
-
-
