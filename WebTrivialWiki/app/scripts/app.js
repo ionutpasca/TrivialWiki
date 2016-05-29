@@ -2,19 +2,16 @@
     'use strict';
 
     App.module = angular.module('webTrivialWikiApp',
-        ['adminModule', 'ngAnimate', 'ngCookies', 'ngResource', 'ngRoute', 'ngSanitize', 'ngTouch', 'ui.bootstrap', 'angular-growl'])
+        ['adminModule', 'triviaModule', 'ngAnimate', 'ngCookies', 'ngResource', 'ngRoute', 'ngSanitize', 'ngTouch', 'ui.bootstrap', 'angular-growl'])
         .config(function ($routeProvider) {
             $routeProvider
             .when('/', {
                 templateUrl: 'views/about.html'
             })
-            .when('/login', {
-                templateUrl: 'views/User/login.html',
-                controller: 'loginController'
-            })
-            .when('/register', {
-                templateUrl: 'views/User/signUp.html',
-                controller: 'signUpController'
+            .when('/settings',
+            {
+                templateUrl: 'scripts/User/Settings/settings.html',
+                controller:'settingsController'
             })
             .when('/somethingWrong', {
                 templateUrl: 'views/somethingWrong.html'

@@ -107,6 +107,67 @@
         color:#fff;
     }
 
+.user-settings img {
+    max-height: 30px;
+    max-width: 30px;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.user-settings a {
+    color: #ccc;
+    vertical-align: central;
+}
+
+.user-settings:hover {
+    cursor: pointer;
+}
+
+.settings-dropdown {
+    right: 20px;
+    margin-top: -30px;
+    width: 250px;
+    text-align: center;
+    -ms-border-radius: 0;
+    border-radius: 0;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.settings-dropdown li{
+    display: block !important;
+}
+
+.settings-dropdown.smaller {
+    margin-top: -10px !important;
+}
+
+.settings-dropdown img {
+    max-height: 70px;
+    max-width: 70px;
+    /*margin-left: 10px;*/
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+    left: 40%;
+    vertical-align: central;
+}
+
+.settings-dropdown span {
+    margin-top: 10px;
+    horiz-align: center;
+}
+
+.profile-buttons button {
+    -ms-border-radius: 0;
+    border-radius: 0;
+    -webkit-box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.4);
+    -ms-box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.4);
+    box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.4);
+}
+
 .hvr-underline-from-center:before {
     height:2px;
     background:#ccc;

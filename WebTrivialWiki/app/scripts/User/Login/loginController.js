@@ -1,8 +1,8 @@
 ﻿(function (_) {
     'use strict';
 
-    App.module.controller('loginController', ['$scope', 'loginService', '$location', 'persistService', '$uibModal','$uibModalInstance',
-            function ($scope, loginService, $location, persistService, $modal, $modalInstance) {
+    App.module.controller('loginController', ['$scope', 'loginService', '$location', 'persistService', '$uibModalStack',
+            function ($scope, loginService, $location, persistService, $uibModalStack) {
         
         function init() {
             $scope.credentialsAreInvalid = false;
@@ -20,11 +20,12 @@
                 Password: $scope.password
             };
             loginService.login(params)
-                .then(function(data) {
+                .then(function (data) {
                     _.map(data, function(value, key) {
                         persistService.storeData(key, value);
                     });
                     persistService.storeData('isLoggedIn', true);
+                    $uibModalStack.dismissAll();
                     $location.path('/');
                 }, function() {
                     //ERROR

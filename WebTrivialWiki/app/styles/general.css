@@ -10,6 +10,10 @@
     margin-top: 10px;
 }
 
+.smaller-margin-bottom {
+    margin-bottom: 5px;
+}
+
 .small-margin-bottom{
     margin-bottom:10px;
 }
@@ -24,6 +28,14 @@
 
 .medium-margin-left{
     margin-left:50px !important;
+}
+
+.default-cursor {
+    cursor: default;
+}
+
+.pointer-cursor {
+    cursor: pointer;
 }
 
 .views {

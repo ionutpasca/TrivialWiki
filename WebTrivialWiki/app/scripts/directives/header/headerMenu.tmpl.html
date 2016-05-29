@@ -4,13 +4,38 @@
         <span class="wikiTitle" ng-click="javascript(0);">WikiTrivia</span>
         <ul class="navigation-bar">
             <li class="hvr-underline-from-center small-padding-bottom">
-                <a class="sliding-middle-out" ng-click="openLoginModal()">Login</a>
+                <a class="sliding-middle-out" ng-click="openLoginModal()" ng-show="!userIsLoggedIn()">Login</a>
             </li>
             <li class="hvr-underline-from-center small-padding-bottom">
-                <a ng-click="openRegisterModal()">Register</a>
+                <a ng-show="userIsLoggedIn()">Leaderboards</a>
             </li>
             <li class="hvr-underline-from-center small-padding-bottom">
+                <a ng-click="openRegisterModal()" ng-show="!userIsLoggedIn()">Register</a>
+            </li>
+            <li class="hvr-underline-from-center small-padding-bottom small-margin-right">
                 <a>Contact</a>
+            </li>
+            <li class="small-padding-bottom user-settings" ng-show="userIsLoggedIn()">
+                <img ng-show="!userHasAvatar()" src="../../../images/default_avatar.png"/>
+                <a class="dropdown-toggle" data-toggle="dropdown">{{getUserName()}}</a>
+                <ul class="dropdown-menu dropdown-menu-right settings-dropdown">
+                    <li class="default-cursor small-margin-top" ng-click="javascript(0);">
+                        <img ng-show="!userHasAvatar()" src="../../../images/default_avatar.png"/>
+                    </li>
+                    <li class="default-cursor small-margin-top">
+                        <span class="default-cursor">{{getUserName()}}  - {{getRank()}}
+                            <span ng-if="rank === 1">st position</span>
+                            <span ng-if="rank === 2">nd position</span>
+                            <span ng-if="rank === 3">rd position</span>
+                            <span ng-if="rank > 3">th position</span>
+                        </span>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="profile-buttons medium-margin-bottom">
+                        <button class="btn btn-default pull-left" ng-click="goToSettings()">Settings</button>
+                        <button class="btn btn-default pull-right" ng-click="signOut()">Sign out</button>
+                    </li>
+                </ul>
             </li>
         </ul>
     </div>

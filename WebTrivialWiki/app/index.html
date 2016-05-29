@@ -22,17 +22,19 @@
       <link rel="stylesheet" href="styles/modals/confirmationModal.css"/>
       <link rel="stylesheet" href="styles/modals/updateUserModal.css" />
       <link rel="stylesheet" href="styles/adminStyles.css" />
+      <link rel="stylesheet" href="styles/trivia/chat.css"/>
+      <link rel="stylesheet" href="styles/settings/settings.css" />
 
     <!-- endbuild -->
   </head>
-  <body ng-app="webTrivialWikiApp" on-scroll>
+  <body ng-app="webTrivialWikiApp">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <div>
         <!-- ReSharper disable Html.TagNotResolved -->
-        <header-menu></header-menu>
+        <header-menu on-scroll></header-menu>
         <!-- ReSharper restore Html.TagNotResolved -->
     </div>
 
@@ -61,14 +63,16 @@
     <script src="bower_components/lodash/lodash.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/angular-growl-v2/build/angular-growl.js"></script>
+    <script src="bower_components/signalr/jquery.signalR.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/common.js"></script>
     <script src="scripts/Admin/adminModule.js"></script>
+    <script src="scripts/Trivia/triviaModule.js"></script>
+    <script src="scripts/Trivia/Game/triviaController.js"></script>
     <script src="scripts/app.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="scripts/User/persistService.js"></script>
     <script src="scripts/User/userService.js"></script>
     <script src="scripts/User/Login/loginService.js"></script>
@@ -80,9 +84,10 @@
     <script src="scripts/directives/header/headerController.js"></script>
     <script src="scripts/directives/header/onScrollDirective.js"></script>
     <script src="scripts/Admin/ManageUsers/manageUsersController.js"></script>
-    <script src="scripts/Admin/ManageUsers/manageUsersService.js"></script>\
+    <script src="scripts/Admin/ManageUsers/manageUsersService.js"></script>
     <script src="scripts/Admin/ManageUsers/Modals/confirmDeleteController.js"></script>
     <script src="scripts/Admin/ManageUsers/Modals/updateUserController.js"></script>
     <script src="scripts/Admin/ManageUsers/Modals/addNewUserController.js"></script>
+    <script src="scripts/User/Settings/settingsController.js"></script>
   </body>
 </html>

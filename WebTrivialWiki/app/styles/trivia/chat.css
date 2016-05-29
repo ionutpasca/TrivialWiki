@@ -1,0 +1,36 @@
+﻿.chat-container {
+    position: absolute;
+    float: right;
+    top: 125px;
+    right: 7px;
+    height: calc(100% - 140px);
+    width: 19%;
+    -ms-opacity: 0.5;
+    opacity: 0.5;
+    background-color: #fff;
+    -webkit-box-shadow: 1px 2px 12px rgba(0, 0, 0, 0.4);
+    -ms-box-shadow: 1px 2px 12px rgba(0, 0, 0, 0.4);
+    box-shadow: 1px 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+/*.show-users-icon span:first-child {
+    font-size: 30px;
+    margin-top: 10px;
+    margin-right: 40px;
+    float: right;
+}*/
+
+.users-container {
+    position: absolute;
+    right: 2px;
+    max-width: 30px;
+    overflow: hidden;
+}
+
+/*.users-container .user-picture {
+    font-size: 40px;
+    margin-right: 5px;
+    height: 40px;
+    width: 40px;
+    margin-bottom: 15px;
+}*/
