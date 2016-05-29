@@ -5,9 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DestkopTrivialWiki"
         mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="300">
-    <Grid>
-        <TextBox x:Name="textBox" FontSize="50" HorizontalAlignment="Left" Height="130" Margin="70,90,0,0" TextWrapping="Wrap" Text="Hello" VerticalAlignment="Top" Width="180"/>
+        Title="MainWindow" Height="600" Width="800">
 
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="0.2*" />
+        </Grid.ColumnDefinitions>
+        <Menu Grid.Row="0" Grid.ColumnSpan="2" x:Name="menu" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Top" Height="20">
+            <MenuItem VerticalAlignment="Center" Header="File"/>
+            <MenuItem VerticalAlignment="Center" Header="About"/>
+        </Menu>
+        <DataGrid AutoGenerateColumns="False" 
+          Grid.Row="1"
+          HorizontalAlignment="Stretch" 
+          Name="dataGrid1" 
+          VerticalAlignment="Stretch">
+            <DataGrid.Columns >
+                <DataGridTextColumn Binding="{Binding Path=Name}" MinWidth="50" />
+                <DataGridTextColumn Binding="{Binding Path=Email}" MinWidth="50" />
+                <DataGridTextColumn Binding="{Binding Path=Points}" MinWidth="50" />
+                <DataGridTextColumn Binding="{Binding Path=Rank}" MinWidth="50" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,0,10,0">
+            <Button Margin="0,10,0,10" Name="Add" Click="AddUser_Click">Add</Button>
+            <Button Margin="0,10,0,10" Name="Delete">Delete</Button>
+            <Button Margin="0,10,0,10" Name="Update" Click="Update_Click">Update</Button>
+        </StackPanel>
     </Grid>
 </Window>
