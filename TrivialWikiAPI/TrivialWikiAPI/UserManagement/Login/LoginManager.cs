@@ -11,7 +11,7 @@ namespace TrivialWikiAPI.UserManagement.Login
         {
             using (var databaseContext = new DatabaseContext())
             {
-                var user = databaseContext.Users.Include("Roles")
+                var user = databaseContext.Users.Include("Role")
                     .Single(u => u.UserName == username && u.Password == password);
                 if (user == null)
                 {

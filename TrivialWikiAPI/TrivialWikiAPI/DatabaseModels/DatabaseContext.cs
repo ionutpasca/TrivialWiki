@@ -7,6 +7,7 @@ namespace TrivialWikiAPI.DatabaseModels
         public DbSet<ChatRoom> ChatRooms { get; set; }
         public DbSet<Friend> Friends { get; set; }
         public DbSet<Match> Matches { get; set; }
+        public DbSet<Message> Messages { get; set; }
         public DbSet<PrivateChat> PrivateChats { get; set; }
         public DbSet<QuestionSet> QuestionSets { get; set; }
         public DbSet<RelatedTopic> RelatedTopics { get; set; }

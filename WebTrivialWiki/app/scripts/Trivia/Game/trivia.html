@@ -1,7 +1,11 @@
 ﻿<div class="chat-container">
     <div class="show-users-icon">
         <!--<span class="glyphicon glyphicon-chevron-left"></span>-->
+
+        <input ng-model="message" class="form-control" placeholder="message"/>
+        <button class="btn btn-default" ng-click="sendMessage();">Send</button>
     </div>
+    <div ng-repeat="message in messages">{{message}}</div>
 </div>
 
 

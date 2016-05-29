@@ -1,16 +1,21 @@
 ﻿(function (angular) {
     'use strict';
-    angular.module('triviaModule').controller('triviaController', ['$scope', function ($scope) {
+    angular.module('triviaModule')
+    .controller('triviaController', ['$scope', '$rootScope', 'signalRFactory', 'chatService','persistService', function ($scope, $rootScope, signalR, chatService, persistService) {
+        $scope.messages = [];
+        $scope.text = "";
 
-        $scope.messages = [{
-            Name: 'George Clooney',
-            Message: "The only failure is not to try"
-        }, {
-            Name: 'Seth Rogen',
-            Message: "I grew up in Vancouver, man. That's where more than half of my style comes from."
-        }, {
-            Name: 'John Lydon',
-            Message: "There's nothing glorious in dying. Anyone can do it."
-        }];
+        signalR.on('addMessage', function (message) {
+            $scope.messages.push(message);
+        });
+
+        $scope.sendMessage = function () {
+            var UserName = persistService.readData('userName');
+            var Message = $scope.message;
+            chatService.sendMessage({ Message, UserName})
+            .then(function() {
+                //something
+            });
+        };
     }]);
 }).call(this, this.angular);
