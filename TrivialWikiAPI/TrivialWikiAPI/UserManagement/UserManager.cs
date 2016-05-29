@@ -219,5 +219,15 @@ namespace TrivialWikiAPI.UserManagement
             }
         }
 
+        public async Task ChangeUserAvatar(byte[] image, string username)
+        {
+            using (var databaseContext = new DatabaseContext())
+            {
+                var user = await databaseContext.Users
+                    .SingleAsync(u => u.UserName == username);
+                user.Avatar = image;
+                await databaseContext.SaveChangesAsync();
+            }
+        }
     }
 }

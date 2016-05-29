@@ -27,7 +27,7 @@ namespace TrivialWikiAPI.Chat
             }
         }
 
-        public void AddNewMessageToDatabase(MessageDto message)
+        public async Task AddNewMessageToDatabase(MessageDto message)
         {
             using (var databaseContext = new DatabaseContext())
             {
@@ -40,17 +40,17 @@ namespace TrivialWikiAPI.Chat
                 };
                 databaseContext.Messages.Add(dbMessage);
 
-                CleanDatabase(databaseContext);
-                databaseContext.SaveChanges();
+                await CleanDatabase(databaseContext);
+                await databaseContext.SaveChangesAsync();
             }
         }
 
-        private void CleanDatabase(DatabaseContext dbContext)
+        private async Task CleanDatabase(DatabaseContext dbContext)
         {
-            var messagesCount = dbContext.Messages.Count();
+            var messagesCount = await dbContext.Messages.CountAsync();
             if (messagesCount > 100)
             {
-                var messageToDelete = dbContext.Messages.First();
+                var messageToDelete = await dbContext.Messages.FirstAsync();
                 dbContext.Messages.Remove(messageToDelete);
             }
         }

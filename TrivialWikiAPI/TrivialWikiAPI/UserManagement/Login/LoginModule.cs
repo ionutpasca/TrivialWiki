@@ -1,5 +1,6 @@
 ﻿using Nancy;
 using Nancy.ModelBinding;
+using System;
 using TrivialWikiAPI.DatabaseModels;
 using TrivialWikiAPI.UserManagement.Login;
 using TrivialWikiAPI.Utilities;
@@ -41,7 +42,7 @@ namespace TrivialWikiAPI.UserManagement
 
             var data = new LoginResponse
             {
-                Avatar = loggedUser.Avatar,
+                Avatar = Convert.ToBase64String(loggedUser.Avatar),
                 UserName = loggedUser.UserName,
                 Email = loggedUser.Email,
                 Rank = loggedUser.Rank,

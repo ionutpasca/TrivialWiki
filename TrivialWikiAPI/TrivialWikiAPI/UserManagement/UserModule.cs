@@ -1,9 +1,11 @@
 ﻿using Nancy;
 using Nancy.ModelBinding;
 using Nancy.Security;
+using System.Drawing;
 using System.Threading.Tasks;
 using System.Web;
 using TrivialWikiAPI.DatabaseModels;
+using TrivialWikiAPI.Utilities;
 
 namespace TrivialWikiAPI.UserManagement
 {
@@ -37,9 +39,15 @@ namespace TrivialWikiAPI.UserManagement
 
         private async Task<object> ChangeAvatar()
         {
-            var httpRequest = HttpContext.Current.Request;
-            var token = this.Context.CurrentUser;
-            throw new System.NotImplementedException();
+            var currentUser = this.Context.CurrentUser;
+            var file = HttpContext.Current.Request.Files[0];
+            var bitmapImage = new Bitmap(file.InputStream);
+            var height = 200;
+            var width = (200 * bitmapImage.Width) / bitmapImage.Height;
+            var resizedImage = AvatarManager.ResizeImage(bitmapImage, file.FileName, width, height);
+            await userManager.ChangeUserAvatar(resizedImage, currentUser.UserName);
+
+            return HttpStatusCode.OK;
         }
 
         private async Task<Response> GetUsersBatch(int pageNumber)

@@ -9,6 +9,6 @@
         public string SecurityToken { get; set; }
         public string Role { get; set; }
         public int Rank { get; set; }
-        public byte[] Avatar { get; set; }
+        public string Avatar { get; set; }
     }
 }

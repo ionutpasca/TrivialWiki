@@ -26,6 +26,10 @@
                 persistService.readData('securityToken') !== undefined;
         };
 
+        $scope.getProfilePicture = function() {
+            return persistService.readData('avatar');
+        };
+
         $scope.userHasAvatar = function() {
             $scope.avatar = persistService.readData('avatar');
             return $scope.avatar !== null;

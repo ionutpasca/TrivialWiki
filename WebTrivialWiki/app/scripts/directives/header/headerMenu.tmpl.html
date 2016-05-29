@@ -17,10 +17,12 @@
             </li>
             <li class="small-padding-bottom user-settings" ng-show="userIsLoggedIn()">
                 <img ng-show="!userHasAvatar()" src="../../../images/default_avatar.png"/>
+                <img ng-show="userHasAvatar()" ng-src="data:image/JPEG;base64,{{avatar}}" >
                 <a class="dropdown-toggle" data-toggle="dropdown">{{getUserName()}}</a>
                 <ul class="dropdown-menu dropdown-menu-right settings-dropdown">
                     <li class="default-cursor small-margin-top" ng-click="javascript(0);">
                         <img ng-show="!userHasAvatar()" src="../../../images/default_avatar.png"/>
+                        <img ng-show="userHasAvatar()" ng-src="data:image/JPEG;base64,{{avatar}}">
                     </li>
                     <li class="default-cursor small-margin-top">
                         <span class="default-cursor">{{getUserName()}}  - {{getRank()}}

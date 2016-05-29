@@ -60,7 +60,8 @@
     </div>
     <div class="panel-body setting-body">
         <div class="box">
-            <img src="../../../images/default_avatar.png" ng-click="triggerUpload()"/>
+            <img ng-show="!userHasAvatar()" src="../../../images/default_avatar.png" ng-click="triggerUpload()"/>
+            <img ng-show="userHasAvatar()" ng-src="data:image/JPEG;base64,{{avatar}}"  ng-click="triggerUpload()">
             <span class="caption simple-caption">
                 <p>Change avatar</p>
             </span>
