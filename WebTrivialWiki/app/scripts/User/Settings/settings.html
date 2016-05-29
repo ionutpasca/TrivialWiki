@@ -9,7 +9,6 @@
                         Profile
                     </span>
                 </a>
-
             </li>
             <li class="has-subnav">
                 <a class="pointer-cursor">
@@ -60,17 +59,12 @@
         </div>
     </div>
     <div class="panel-body setting-body">
-            <!--<img ng-show="!userHasAvatar()" src="../../../images/default_avatar.png" />-->
-        <div id="box-1" class="box">
-            <img id="image-1" src="../../../images/default_avatar.png"/>
+        <div class="box">
+            <img src="../../../images/default_avatar.png" ng-click="triggerUpload()"/>
             <span class="caption simple-caption">
-                    <p>Change avatar</p>
+                <p>Change avatar</p>
             </span>
         </div>
-        <div class="change-image-container">
-
-        </div>
-
-
+        <input id="fileInput" class="image-uploader" type="file" nv-file-select="" uploader="uploader"/>
     </div>
 </div>

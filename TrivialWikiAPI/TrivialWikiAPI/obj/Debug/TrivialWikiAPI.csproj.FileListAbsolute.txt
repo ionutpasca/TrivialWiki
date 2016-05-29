@@ -85,16 +85,12 @@ F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\D
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.dll
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.pdb
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.AspNet.SignalR.Core.dll
-F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\TrivialWikiHubs.exe
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Owin.dll
-F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.Owin.Hosting.dll
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.Owin.Cors.dll
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.Owin.Security.dll
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\System.Web.Cors.dll
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.Owin.dll
-F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\TrivialWikiHubs.pdb
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.AspNet.SignalR.Core.xml
-F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.Owin.Hosting.xml
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.Owin.Cors.xml
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.Owin.xml
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.Migrations._0008.resources

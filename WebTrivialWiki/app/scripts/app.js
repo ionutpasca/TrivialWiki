@@ -2,7 +2,8 @@
     'use strict';
 
     App.module = angular.module('webTrivialWikiApp',
-        ['adminModule', 'triviaModule', 'ngAnimate', 'ngCookies', 'ngResource', 'ngRoute', 'ngSanitize', 'ngTouch', 'ui.bootstrap', 'angular-growl'])
+        ['adminModule', 'triviaModule', 'ngAnimate', 'ngCookies','angularFileUpload',
+            'ngResource', 'ngRoute', 'ngSanitize', 'ngTouch', 'ui.bootstrap', 'angular-growl'])
         .config(function ($routeProvider) {
             $routeProvider
             .when('/', {
@@ -20,6 +21,14 @@
                 redirectTo: '/'
             });
         });
+
+    App.module.run(['$http', 'persistService','$window', function ($http, persistService, $window) {
+        var authToken = persistService.readData('securityToken');
+        if (authToken === undefined) {
+            $window.location.href = 'http://localhost:9000/';
+        }
+        $http.defaults.headers.common.Authorization = authToken;
+    }]);
 
     App.module.factory('responseErrorInterceptor', ['$q', '$location', function ($q, $location) {
             var responseErrorMarker = {

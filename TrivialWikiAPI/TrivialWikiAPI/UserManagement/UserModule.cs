@@ -1,6 +1,8 @@
 ﻿using Nancy;
 using Nancy.ModelBinding;
+using Nancy.Security;
 using System.Threading.Tasks;
+using System.Web;
 using TrivialWikiAPI.DatabaseModels;
 
 namespace TrivialWikiAPI.UserManagement
@@ -11,6 +13,8 @@ namespace TrivialWikiAPI.UserManagement
 
         public UserModule()
         {
+            this.RequiresAuthentication();
+
             Get["/getUserBatch/{pageNumber}", true] = async (param, p) => await GetUsersBatch(param.PageNumber);
             Get["/emailExists/{email}", true] = async (param, p) => await GivenEmailExists(param.email);
             Get["/usernameExists/{username}", true] = async (param, p) => await GivenUsernameExists(param.username);
@@ -24,10 +28,18 @@ namespace TrivialWikiAPI.UserManagement
             };
             Post["/removeUser/{userName}", true] = async (param, p) => await RemoveUser(param.userName);
             Post["/addPointsToUser/{userName}/{points}", true] = async (param, p) => await AddPointsToUser(param.userName, param.points);
+            Post["/changeAvatar", true] = async (param, p) => await ChangeAvatar();
 
 
             Put["/changePassword", true] = async (param, p) => await ChangeUserPassword();
             Put["/changeUserRole/{userName}/{roleId}", true] = async (param, p) => await ChangeUserRole(param.userName, param.roleId);
+        }
+
+        private async Task<object> ChangeAvatar()
+        {
+            var httpRequest = HttpContext.Current.Request;
+            var token = this.Context.CurrentUser;
+            throw new System.NotImplementedException();
         }
 
         private async Task<Response> GetUsersBatch(int pageNumber)

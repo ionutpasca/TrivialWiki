@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSTagger", "POSTagger\POST
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WikipediaResourceFinder", "WikipediaResourceFinder\WikipediaResourceFinder.csproj", "{400BE6E8-5E92-4D67-847E-81E508FF582B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrivialWikiHubs", "TrivialWikiHubs\TrivialWikiHubs.csproj", "{83D66B92-0607-404D-A6C4-9F1B41194261}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{400BE6E8-5E92-4D67-847E-81E508FF582B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{400BE6E8-5E92-4D67-847E-81E508FF582B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{400BE6E8-5E92-4D67-847E-81E508FF582B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{83D66B92-0607-404D-A6C4-9F1B41194261}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{83D66B92-0607-404D-A6C4-9F1B41194261}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{83D66B92-0607-404D-A6C4-9F1B41194261}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{83D66B92-0607-404D-A6C4-9F1B41194261}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
