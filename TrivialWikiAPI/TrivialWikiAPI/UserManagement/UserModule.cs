@@ -1,6 +1,5 @@
 ﻿using Nancy;
 using Nancy.ModelBinding;
-using Nancy.Security;
 using System.Threading.Tasks;
 using TrivialWikiAPI.DatabaseModels;
 
@@ -12,7 +11,7 @@ namespace TrivialWikiAPI.UserManagement
 
         public UserModule()
         {
-            this.RequiresAuthentication();
+            //this.RequiresAuthentication();
             Get["/getUserBatch/{pageNumber}", true] = async (param, p) => await GetUsersBatch(param.PageNumber);
             Get["/emailExists/{email}", true] = async (param, p) => await GivenEmailExists(param.email);
             Get["/usernameExists/{username}", true] = async (param, p) => await GivenUsernameExists(param.username);

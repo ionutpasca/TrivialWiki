@@ -13,59 +13,52 @@ namespace DestkopTrivialWiki
     /// </summary>
     public partial class MainWindow : Window
     {
-        private string token;
+        private string token = "";
         HttpClient client;
-        public MainWindow(string token)
+        ObservableCollection<DataObject> list;
+        private int listLength;
+        public MainWindow()
         {
-            this.token = token;
+            //this.token = token;
             client = new HttpClient();
             client.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", token);
+            list = new ObservableCollection<DataObject>();
             InitializeComponent();
+            GetUsers(1, 0);
 
-            var responseString = client.GetStringAsync("http://localhost:4605/getUserBatch/1");
-
-            JObject joResponse = JObject.Parse(responseString.Result);
-            JArray array = (JArray)joResponse["users"];
-            Console.WriteLine(array.ToString());
-
-            var list = new ObservableCollection<DataObject>();
-            string name;
-            string email;
-            int points;
-            string role;
-            int rank;
-            foreach (JObject user in array)
-            {
-                name = (string)user.GetValue("username");
-                email = (string)user.GetValue("email");
-                points = Int32.Parse((string)user.GetValue("points"));
-                role = (string)user.GetValue("role");
-                rank = Int32.Parse((string)user.GetValue("rank"));
-                list.Add(new DataObject() { Name = name, Email = email, Points = points, Role = role, Rank = rank });
-
-            }
-            this.dataGrid1.ItemsSource = list;
+            AddBtn.IsEnabled = false;
+            dataGrid1.CanUserResizeColumns = false;
+            dataGrid1.CanUserResizeRows = false;
         }
 
         private async void AddUser_Click(object sender, RoutedEventArgs e)
         {
-            var selectedUser = (DataObject)this.dataGrid1.SelectedValue;
+            int index = dataGrid1.SelectedIndex;
+            if (index == -1)
+                return;
+            if (index == listLength)
+            {
+                var selectedUser = (DataObject)this.dataGrid1.SelectedValue;
 
-            var values = new Dictionary<string, string>
+                var values = new Dictionary<string, string>
             {
                 { "Username", selectedUser.Name },
-                { "Points", selectedUser.Points.ToString()},
-                { "Email", selectedUser.Email }
+                { "Email", selectedUser.Email },
+                { "Password", selectedUser.Password }
             };
 
-            var content = new FormUrlEncodedContent(values);
+                var content = new FormUrlEncodedContent(values);
 
-            var response = await client.PostAsync("http://localhost:4605/addNewUser", content);
+                var response = await client.PostAsync("http://localhost:4605/addNewUser", content);
 
-            var responseString = await response.Content.ReadAsStringAsync();
+                var responseString = await response.Content.ReadAsStringAsync();
 
-            Console.WriteLine(responseString.ToString());
+                Console.WriteLine(responseString.ToString());
 
+                list.RemoveAt(index);
+            }
+            AddBtn.IsEnabled = false;
+            dataGrid1.CanUserAddRows = true;
         }
 
         private async void Update_Click(object sender, RoutedEventArgs e)
@@ -90,6 +83,88 @@ namespace DestkopTrivialWiki
             Console.WriteLine(responseString.ToString());
 
         }
+
+        private async void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            int index = dataGrid1.SelectedIndex;
+            if (index == -1)
+                return;
+            if (index < listLength)
+            {
+                var selectedUser = (DataObject)this.dataGrid1.SelectedValue;
+
+                var values = new Dictionary<string, string>
+                {
+                };
+
+                var content = new FormUrlEncodedContent(values);
+
+                var response = await client.PostAsync("http://localhost:4605/removeUser/" + selectedUser.Name, content);
+
+                var responseString = await response.Content.ReadAsStringAsync();
+
+                Console.WriteLine(responseString.ToString());
+
+                list.RemoveAt(index);
+            }
+
+
+        }
+
+        private void dataGrid1_Selected(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void GetUsers(int index, int position)
+        {
+            var responseString = client.GetStringAsync("http://localhost:4605/getUserBatch/" + index);
+
+            JObject joResponse = JObject.Parse(responseString.Result);
+            JArray array = (JArray)joResponse["users"];
+            Console.WriteLine(array.ToString());
+            if (index == 1)
+            {
+                list.Clear();
+            }
+            string name;
+            string email;
+            int points;
+            string role;
+            int rank;
+
+            foreach (JObject user in array)
+            {
+                name = (string)user.GetValue("username");
+                email = (string)user.GetValue("email");
+                points = Int32.Parse((string)user.GetValue("points"));
+                role = (string)user.GetValue("role");
+                rank = Int32.Parse((string)user.GetValue("rank"));
+                if (position == 0)
+                    list.Add(new DataObject() { Name = name, Email = email, Points = points, Role = role, Rank = rank, Password = "Secret" });
+                else
+                    position--;
+            }
+            listLength = list.Count;
+            this.dataGrid1.ItemsSource = list;
+        }
+
+        private void dataGrid1_BeginningEdit(object sender, System.Windows.Controls.DataGridBeginningEditEventArgs e)
+        {
+            AddBtn.IsEnabled = true;
+
+        }
+
+        private void LoadBtn_Click(object sender, RoutedEventArgs e)
+        {
+            int index = (list.Count + 1) / 10 + 1;
+            GetUsers(index, list.Count % 10);
+        }
+
+        private void ResetBtn_Click(object sender, RoutedEventArgs e)
+        {
+            GetUsers(1, 0);
+        }
     }
 
     public class DataObject
@@ -99,5 +174,6 @@ namespace DestkopTrivialWiki
         public int Points { get; set; }
         public string Role { get; set; }
         public int Rank { get; set; }
+        public string Password { get; set; }
     }
 }
