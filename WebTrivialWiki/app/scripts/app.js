@@ -22,29 +22,26 @@
             });
         });
 
-    App.module.run(['$http', 'persistService','$window', function ($http, persistService, $window) {
+    App.module.run(['$http', 'persistService', function ($http, persistService) {
         var authToken = persistService.readData('securityToken');
-        if (authToken === undefined) {
-            $window.location.href = 'http://localhost:9000/';
-        }
         $http.defaults.headers.common.Authorization = authToken;
     }]);
 
     App.module.factory('responseErrorInterceptor', ['$q', '$location', function ($q, $location) {
-            var responseErrorMarker = {
-                'responseError': function (rejection) {
-                    if (rejection.status === 500 || rejection.status === 400) {
-                        $location.path('/somethingWrong');
-                    }
+        var responseErrorMarker = {
+            'responseError': function (rejection) {
+                if (rejection.status === 500 || rejection.status === 400) {
+                    $location.path('/somethingWrong');
                 }
-            };
-            return responseErrorMarker;
-        }])
-        .config([
-            '$httpProvider', function ($httpProvider) {
-                $httpProvider.interceptors.push('responseErrorInterceptor');
             }
-        ]);
+        };
+        return responseErrorMarker;
+    }])
+    .config([
+        '$httpProvider', function ($httpProvider) {
+            $httpProvider.interceptors.push('responseErrorInterceptor');
+        }
+    ]);
 
     App.module.config(['growlProvider', function (growlProvider) {
         growlProvider.globalTimeToLive(3000);

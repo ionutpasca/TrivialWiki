@@ -1,4 +1,4 @@
-﻿(function(angular) {
+﻿(function(angular, $) {
     angular.module('webTrivialWikiApp')
         .controller('settingsController', ['$scope', 'persistService','FileUploader', function ($scope, persistService, FileUploader) {
             var uploader = $scope.uploader = new FileUploader({
@@ -36,5 +36,7 @@
             uploader.onAfterAddingFile = function () {
                 uploader.queue[0].upload();
             };
+
+           
     }]);
-}).call(this, this.angular);
+}).call(this, this.angular, this.$);

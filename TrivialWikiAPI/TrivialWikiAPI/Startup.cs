@@ -1,6 +1,8 @@
-﻿using Microsoft.Owin.Cors;
+﻿using Microsoft.Owin;
+using Microsoft.Owin.Cors;
 using Owin;
 
+[assembly: OwinStartup(typeof(TrivialWikiAPI.Startup))]
 namespace TrivialWikiAPI
 {
     public class Startup
