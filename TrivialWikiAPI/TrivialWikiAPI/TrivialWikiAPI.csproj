@@ -170,6 +170,14 @@
     <Compile Include="Migrations\201605291528551_0008.Designer.cs">
       <DependentUpon>201605291528551_0008.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605301758548_0009.cs" />
+    <Compile Include="Migrations\201605301758548_0009.Designer.cs">
+      <DependentUpon>201605301758548_0009.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605302005456_0010.cs" />
+    <Compile Include="Migrations\201605302005456_0010.Designer.cs">
+      <DependentUpon>201605302005456_0010.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Roles\RolesManager.cs" />
@@ -178,6 +186,7 @@
     <Compile Include="UserManagement\Login\LoginManager.cs" />
     <Compile Include="UserManagement\Login\LoginModule.cs" />
     <Compile Include="UserManagement\Login\LoginResponse.cs" />
+    <Compile Include="UserManagement\Test.cs" />
     <Compile Include="UserManagement\UserManager.cs" />
     <Compile Include="UserManagement\UserModule.cs" />
     <Compile Include="UserManagement\UserResponse.cs" />
@@ -196,6 +205,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605291528551_0008.resx">
       <DependentUpon>201605291528551_0008.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605301758548_0009.resx">
+      <DependentUpon>201605301758548_0009.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605302005456_0010.resx">
+      <DependentUpon>201605302005456_0010.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

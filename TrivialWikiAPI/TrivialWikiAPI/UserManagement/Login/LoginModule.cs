@@ -1,6 +1,6 @@
 ﻿using Nancy;
 using Nancy.ModelBinding;
-using System;
+using Newtonsoft.Json;
 using TrivialWikiAPI.DatabaseModels;
 using TrivialWikiAPI.UserManagement.Login;
 using TrivialWikiAPI.Utilities;
@@ -42,7 +42,7 @@ namespace TrivialWikiAPI.UserManagement
 
             var data = new LoginResponse
             {
-                Avatar = Convert.ToBase64String(loggedUser.Avatar),
+                Avatar = loggedUser.Avatar,
                 UserName = loggedUser.UserName,
                 Email = loggedUser.Email,
                 Rank = loggedUser.Rank,
@@ -50,7 +50,10 @@ namespace TrivialWikiAPI.UserManagement
                 SecurityToken = loggedUser.SecurityToken
             };
 
-            return Response.AsJson(data);
+            var x = JsonConvert.SerializeObject(data, Formatting.Indented,
+                    new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
+            return x;
+            //return Response.AsJson(data);
         }
     }
 }

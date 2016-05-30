@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using TrivialWikiAPI.DatabaseModels;
 using TrivialWikiAPI.Utilities;
@@ -226,6 +227,17 @@ namespace TrivialWikiAPI.UserManagement
                 var user = await databaseContext.Users
                     .SingleAsync(u => u.UserName == username);
                 user.Avatar = image;
+                await databaseContext.SaveChangesAsync();
+            }
+        }
+
+        public async Task ChangeUserAvatar(string image, string username)
+        {
+            using (var databaseContext = new DatabaseContext())
+            {
+                var user = await databaseContext.Users
+                    .SingleAsync(u => u.UserName == username);
+                user.Avatar = Encoding.UTF8.GetBytes(image);
                 await databaseContext.SaveChangesAsync();
             }
         }

@@ -50,22 +50,23 @@
     </nav>
 </div>
 <div class="settings-container panel">
-    <div class="panel-heading" style="background-color: #5fa2db;">
+    <!--<div class="panel-heading" style="background-color: black; opacity: 0.7;">
         <div>
             <i class="fa fa-home fa-2x"></i>
             <span class="nav-text">
                 Profile
             </span>
         </div>
-    </div>
+    </div>-->
+    <!--<input id="fileInput" type="file" class="image-uploader" img-cropper-fileread image="cropper.sourceImage"/>-->
     <div class="panel-body setting-body">
         <div class="box">
             <img ng-show="!userHasAvatar()" src="../../../images/default_avatar.png" ng-click="triggerUpload()"/>
-            <img ng-show="userHasAvatar()" ng-src="data:image/JPEG;base64,{{avatar}}"  ng-click="triggerUpload()">
-            <span class="caption simple-caption">
+            <img ng-show="userHasAvatar()" ng-src="data:image/JPEG;base64,{{avatar}}" ng-click="triggerUpload()">
+            <span class="caption simple-caption" >
                 <p>Change avatar</p>
             </span>
         </div>
-        <input id="fileInput" class="image-uploader" type="file" nv-file-select="" uploader="uploader"/>
+        <input id="fileInput" type="file" class="image-uploader" img-cropper-fileread image="cropper.sourceImage" />
     </div>
 </div>

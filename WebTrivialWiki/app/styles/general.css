@@ -78,3 +78,9 @@
 .user-search-input:active, .user-search-input:focus {
     border: 1px solid #7D8BB3;
 }
+
+.modal-content {
+    -ms-border-radius: 0 !important;
+    border-radius: 0 !important;
+
+}

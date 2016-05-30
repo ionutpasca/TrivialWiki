@@ -99,3 +99,5 @@ F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\M
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.Owin.Host.SystemWeb.xml
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.Owin.Security.xml
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.Migrations._0009.resources
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.Migrations._0010.resources

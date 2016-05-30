@@ -11,15 +11,16 @@
                 params: params
             })
             .success(function (data) {
+                    debugger;
                 var user = {
-                    userName: data.userName,
-                    securityToken: data.securityToken,
-                    roles: data.roles,
-                    firstName: data.firstName,
-                    lastName: data.lastName,
-                    avatar: data.avatar,
-                    rank: data.rank,
-                    email: data.email
+                    userName: data.UserName,
+                    securityToken: data.SecurityToken,
+                    role: data.Role,
+                    firstName: data.FirstName,
+                    lastName: data.LastName,
+                    avatar: data.Avatar,
+                    rank: data.Rank,
+                    email: data.Email
                 };
 
                 def.resolve(user);
