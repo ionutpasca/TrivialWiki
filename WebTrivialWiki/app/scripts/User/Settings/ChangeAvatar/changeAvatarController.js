@@ -7,7 +7,6 @@
 
             $scope.uploadAvatar = function () {
                 var avatarAsBase64 = $scope.cropper.croppedImage.replace('data:image/png;base64,', '');
-                persistService.storeData('avatar', avatarAsBase64);
                 changeAvatarService.changeAvatar(avatarAsBase64)
                 .then(function() {
                     $uibModalStack.dismissAll();

@@ -2,10 +2,9 @@
 using Nancy.ModelBinding;
 using Newtonsoft.Json;
 using TrivialWikiAPI.DatabaseModels;
-using TrivialWikiAPI.UserManagement.Login;
 using TrivialWikiAPI.Utilities;
 
-namespace TrivialWikiAPI.UserManagement
+namespace TrivialWikiAPI.UserManagement.Login
 {
     public class LoginModule : NancyModule
     {
@@ -17,7 +16,7 @@ namespace TrivialWikiAPI.UserManagement
             Get["/loginWithFacebook"] = param => LoginUserWithFacebook();
         }
 
-        private dynamic LoginUserWithFacebook()
+        private static dynamic LoginUserWithFacebook()
         {
             return HttpStatusCode.OK;
         }
@@ -42,7 +41,6 @@ namespace TrivialWikiAPI.UserManagement
 
             var data = new LoginResponse
             {
-                Avatar = loggedUser.Avatar,
                 UserName = loggedUser.UserName,
                 Email = loggedUser.Email,
                 Rank = loggedUser.Rank,
@@ -50,10 +48,8 @@ namespace TrivialWikiAPI.UserManagement
                 SecurityToken = loggedUser.SecurityToken
             };
 
-            var x = JsonConvert.SerializeObject(data, Formatting.Indented,
+            return JsonConvert.SerializeObject(data, Formatting.Indented,
                     new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
-            return x;
-            //return Response.AsJson(data);
         }
     }
 }

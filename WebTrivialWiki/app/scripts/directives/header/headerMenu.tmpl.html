@@ -1,6 +1,6 @@
 ﻿<div class="header headerContainer">
     <div class="wikiLogo row">
-        <img class="wiki-logo-image" src="images/wikipedia-icon2.png" ng-click="javascript(0);" />
+        <img class="wiki-logo-image" src="images/wikipedia-icon2.png" ng-click="javascript(0);"/>
         <span class="wikiTitle" ng-click="javascript(0);">WikiTrivia</span>
         <ul class="navigation-bar">
             <li class="hvr-underline-from-center small-padding-bottom">
@@ -17,7 +17,7 @@
             </li>
             <li class="small-padding-bottom user-settings" ng-show="userIsLoggedIn()">
                 <img ng-show="!userHasAvatar()" src="../../../images/default_avatar.png"/>
-                <img ng-show="userHasAvatar()" ng-src="data:image/JPEG;base64,{{avatar}}" >
+                <img ng-show="userHasAvatar()" ng-src="data:image/JPEG;base64,{{avatar}}">
                 <a class="dropdown-toggle" data-toggle="dropdown">{{getUserName()}}</a>
                 <ul class="dropdown-menu dropdown-menu-right settings-dropdown">
                     <li class="default-cursor small-margin-top" ng-click="javascript(0);">

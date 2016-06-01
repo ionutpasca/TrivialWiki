@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.SignalR;
 using Nancy;
 using Nancy.ModelBinding;
+using System;
 using System.Threading.Tasks;
 
 namespace TrivialWikiAPI.Chat
@@ -17,7 +18,8 @@ namespace TrivialWikiAPI.Chat
 
         private async Task<object> GetMessageBatch(object skipCount)
         {
-            return await messageManager.GetMessagesBatch((int)skipCount);
+            var skip = Convert.ToInt32(skipCount);
+            return await messageManager.GetMessagesBatch(skip);
         }
 
         private Response AddMessageToDatabase()

@@ -1,12 +1,8 @@
 ﻿using Nancy;
-using Nancy.Extensions;
 using Nancy.ModelBinding;
 using Nancy.Security;
-using System.Drawing;
 using System.Threading.Tasks;
-using System.Web;
 using TrivialWikiAPI.DatabaseModels;
-using TrivialWikiAPI.Utilities;
 
 namespace TrivialWikiAPI.UserManagement
 {
@@ -31,36 +27,10 @@ namespace TrivialWikiAPI.UserManagement
             };
             Post["/removeUser/{userName}", true] = async (param, p) => await RemoveUser(param.userName);
             Post["/addPointsToUser/{userName}/{points}", true] = async (param, p) => await AddPointsToUser(param.userName, param.points);
-            Post["/changeAvatar", true] = async (param, p) => await ChangeAvatar();
-            Post["/changeAvatarAsBase64", true] = async (param, p) => await ChangeAvatarAsBase64();
+
 
             Put["/changePassword", true] = async (param, p) => await ChangeUserPassword();
             Put["/changeUserRole/{userName}/{roleId}", true] = async (param, p) => await ChangeUserRole(param.userName, param.roleId);
-        }
-
-        private async Task<object> ChangeAvatarAsBase64()
-        {
-            var base64Image = this.Request.Body.AsString();
-            if (base64Image == null)
-            {
-                return HttpStatusCode.BadRequest;
-            }
-            var currentUser = this.Context.CurrentUser;
-            await userManager.ChangeUserAvatar(base64Image, currentUser.UserName);
-            return HttpStatusCode.OK;
-        }
-
-        private async Task<object> ChangeAvatar()
-        {
-            var currentUser = this.Context.CurrentUser;
-            var file = HttpContext.Current.Request.Files[0];
-            var bitmapImage = new Bitmap(file.InputStream);
-            var height = 200;
-            var width = (200 * bitmapImage.Width) / bitmapImage.Height;
-            var resizedImage = AvatarManager.ResizeImage(bitmapImage, file.FileName, width, height);
-            await userManager.ChangeUserAvatar(resizedImage, currentUser.UserName);
-
-            return HttpStatusCode.OK;
         }
 
         private async Task<Response> GetUsersBatch(int pageNumber)

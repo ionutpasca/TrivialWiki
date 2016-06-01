@@ -11,7 +11,6 @@
                 params: params
             })
             .success(function (data) {
-                    debugger;
                 var user = {
                     userName: data.UserName,
                     securityToken: data.SecurityToken,

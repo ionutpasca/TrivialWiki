@@ -15,7 +15,7 @@ namespace TrivialWikiAPI.Chat
             {
                 var messages = await databaseContext.Messages
                     .OrderByDescending(m => m.Timestamp)
-                    .Skip(messagesToSkip)
+                    .Skip(messagesToSkip * 25)
                     .Take(25)
                     .Select(msg => new MessageDto()
                     {
@@ -27,7 +27,7 @@ namespace TrivialWikiAPI.Chat
             }
         }
 
-        public async Task AddNewMessageToDatabase(MessageDto message)
+        public void AddNewMessageToDatabase(MessageDto message)
         {
             using (var databaseContext = new DatabaseContext())
             {
@@ -40,17 +40,17 @@ namespace TrivialWikiAPI.Chat
                 };
                 databaseContext.Messages.Add(dbMessage);
 
-                await CleanDatabase(databaseContext);
-                await databaseContext.SaveChangesAsync();
+                CleanDatabase(databaseContext);
+                databaseContext.SaveChanges();
             }
         }
 
-        private async Task CleanDatabase(DatabaseContext dbContext)
+        private void CleanDatabase(DatabaseContext dbContext)
         {
-            var messagesCount = await dbContext.Messages.CountAsync();
+            var messagesCount = dbContext.Messages.Count();
             if (messagesCount > 100)
             {
-                var messageToDelete = await dbContext.Messages.FirstAsync();
+                var messageToDelete = dbContext.Messages.First();
                 dbContext.Messages.Remove(messageToDelete);
             }
         }

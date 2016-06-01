@@ -119,6 +119,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Avatars\ionut\ionut.jpg" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -178,19 +179,29 @@
     <Compile Include="Migrations\201605302005456_0010.Designer.cs">
       <DependentUpon>201605302005456_0010.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605302139261_0011.cs" />
+    <Compile Include="Migrations\201605302139261_0011.Designer.cs">
+      <DependentUpon>201605302139261_0011.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606011723248_0012.cs" />
+    <Compile Include="Migrations\201606011723248_0012.Designer.cs">
+      <DependentUpon>201606011723248_0012.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Roles\RolesManager.cs" />
     <Compile Include="Roles\RolesModule.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="UserManagement\Avatar\AvatarManager.cs" />
+    <Compile Include="UserManagement\Avatar\AvatarModule.cs" />
     <Compile Include="UserManagement\Login\LoginManager.cs" />
     <Compile Include="UserManagement\Login\LoginModule.cs" />
     <Compile Include="UserManagement\Login\LoginResponse.cs" />
-    <Compile Include="UserManagement\Test.cs" />
     <Compile Include="UserManagement\UserManager.cs" />
     <Compile Include="UserManagement\UserModule.cs" />
     <Compile Include="UserManagement\UserResponse.cs" />
-    <Compile Include="Utilities\AvatarManager.cs" />
+    <Compile Include="Utilities\DirectoryManager.cs" />
+    <Compile Include="Utilities\ImageManager.cs" />
     <Compile Include="Utilities\Encrypt.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -212,7 +223,14 @@
     <EmbeddedResource Include="Migrations\201605302005456_0010.resx">
       <DependentUpon>201605302005456_0010.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605302139261_0011.resx">
+      <DependentUpon>201605302139261_0011.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606011723248_0012.resx">
+      <DependentUpon>201606011723248_0012.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

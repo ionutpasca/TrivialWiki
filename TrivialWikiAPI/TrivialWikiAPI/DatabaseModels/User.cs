@@ -19,7 +19,6 @@ namespace TrivialWikiAPI.DatabaseModels
         public string Email { get; set; }
         public Role Role { get; set; }
         public ICollection<Achievement> Achievements { get; set; }
-        public byte[] Avatar { get; set; }
         public IEnumerable<string> Claims { get; set; }
         public int Points { get; set; }
         public int Rank { get; set; }

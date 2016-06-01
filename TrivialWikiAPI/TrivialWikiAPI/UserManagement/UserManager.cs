@@ -1,6 +1,5 @@
 ﻿using System.Data.Entity;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using TrivialWikiAPI.DatabaseModels;
 using TrivialWikiAPI.Utilities;
@@ -37,7 +36,7 @@ namespace TrivialWikiAPI.UserManagement
             }
         }
 
-        private async Task<int> GetNumberOfUsers(string queryString)
+        private static async Task<int> GetNumberOfUsers(string queryString)
         {
             using (var databaseContext = new DatabaseContext())
             {
@@ -116,7 +115,7 @@ namespace TrivialWikiAPI.UserManagement
             }
         }
 
-        private async Task UpdateUsersRankAfterOneUserIsRemoved()
+        private static async Task UpdateUsersRankAfterOneUserIsRemoved()
         {
             using (var databaseContext = new DatabaseContext())
             {
@@ -217,28 +216,6 @@ namespace TrivialWikiAPI.UserManagement
             using (var databaseContext = new DatabaseContext())
             {
                 return await databaseContext.Users.AnyAsync(u => u.Email == email);
-            }
-        }
-
-        public async Task ChangeUserAvatar(byte[] image, string username)
-        {
-            using (var databaseContext = new DatabaseContext())
-            {
-                var user = await databaseContext.Users
-                    .SingleAsync(u => u.UserName == username);
-                user.Avatar = image;
-                await databaseContext.SaveChangesAsync();
-            }
-        }
-
-        public async Task ChangeUserAvatar(string image, string username)
-        {
-            using (var databaseContext = new DatabaseContext())
-            {
-                var user = await databaseContext.Users
-                    .SingleAsync(u => u.UserName == username);
-                user.Avatar = Encoding.UTF8.GetBytes(image);
-                await databaseContext.SaveChangesAsync();
             }
         }
     }
