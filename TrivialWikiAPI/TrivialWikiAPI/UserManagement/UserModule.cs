@@ -16,7 +16,9 @@ namespace TrivialWikiAPI.UserManagement
 
             Get["/getUserBatch/{pageNumber}", true] = async (param, p) => await GetUsersBatch(param.PageNumber);
             Get["/emailExists/{email}", true] = async (param, p) => await GivenEmailExists(param.email);
-            Get["/usernameExists/{username}", true] = async (param, p) => await GivenUsernameExists(param.username);
+            Get["/usernameExists/{userName}", true] = async (param, p) => await GivenUsernameExists(param.userName);
+            Get["/accountCreationDate/{userName}"] = param => GetAccountCreationDate(param.userName);
+            Get["/userPoints/{userName}", true] = async (param, p) => await GetUserPoints(param.userName);
 
             Post["/addNewUser", true] = async (param, p) => await AddNewUserToDatabase();
             Post["/updateUser", true] = async (param, p) =>
@@ -27,10 +29,35 @@ namespace TrivialWikiAPI.UserManagement
             };
             Post["/removeUser/{userName}", true] = async (param, p) => await RemoveUser(param.userName);
             Post["/addPointsToUser/{userName}/{points}", true] = async (param, p) => await AddPointsToUser(param.userName, param.points);
+            Post["/changePassword/{userName}/{oldPass}/{newPass}", true] = async (param, p) => await ChangeUserPassword(param.userName, param.oldPass, param.newPass);
 
-
-            Put["/changePassword", true] = async (param, p) => await ChangeUserPassword();
             Put["/changeUserRole/{userName}/{roleId}", true] = async (param, p) => await ChangeUserRole(param.userName, param.roleId);
+        }
+
+        private async Task<Response> GetUserPoints(string userName)
+        {
+            if (userName == null)
+            {
+                return HttpStatusCode.BadRequest;
+            }
+            var userExists = await userManager.UserExists(userName);
+            if (!userExists)
+            {
+                return HttpStatusCode.BadRequest;
+            }
+
+            var points = await userManager.GetUserPoints(userName);
+            return this.Response.AsJson(points);
+        }
+
+        private Response GetAccountCreationDate(string userName)
+        {
+            if (userName == null)
+            {
+                return HttpStatusCode.BadRequest;
+            }
+            var result = userManager.GetAccountCreationDate(userName);
+            return this.Response.AsJson(result);
         }
 
         private async Task<Response> GetUsersBatch(int pageNumber)
@@ -43,21 +70,13 @@ namespace TrivialWikiAPI.UserManagement
         private async Task<Response> GivenUsernameExists(string username)
         {
             var usernameExists = await userManager.UserExists(username);
-            if (usernameExists)
-            {
-                return this.Response.AsJson(true);
-            }
-            return this.Response.AsJson(false);
+            return this.Response.AsJson(usernameExists);
         }
 
         private async Task<Response> GivenEmailExists(string email)
         {
             var userEmailExists = await userManager.EmailExists(email);
-            if (userEmailExists)
-            {
-                return this.Response.AsJson(true);
-            }
-            return this.Response.AsJson(false);
+            return this.Response.AsJson(userEmailExists);
         }
 
         private async Task<Response> AddNewUserToDatabase()
@@ -85,10 +104,7 @@ namespace TrivialWikiAPI.UserManagement
 
         private async Task<Response> RemoveUser(string userName)
         {
-            if (userName == null)
-            {
-                return HttpStatusCode.BadRequest;
-            }
+            if (userName == null) return HttpStatusCode.BadRequest;
             await userManager.RemoveUserFromDatabase(userName);
             return HttpStatusCode.OK;
         }
@@ -108,21 +124,26 @@ namespace TrivialWikiAPI.UserManagement
             return HttpStatusCode.OK;
         }
 
-        private async Task<Response> ChangeUserPassword()
+        private async Task<Response> ChangeUserPassword(string username, string oldPass, string newPass)
         {
-            var user = this.Bind<User>();
-            if (user?.UserName == null)
+            if (oldPass == null || newPass == null)
             {
                 return HttpStatusCode.BadRequest;
             }
 
-            var userExists = await userManager.UserExists(user.UserName);
+            var userExists = await userManager.UserExists(username);
             if (!userExists)
             {
                 return HttpStatusCode.BadRequest;
             }
 
-            await userManager.ChangeUserPassword(user);
+            var passwordsMath = await userManager.PasswordMathForUser(username, oldPass);
+            if (!passwordsMath)
+            {
+                return HttpStatusCode.NotFound;
+            }
+
+            await userManager.ChangeUserPassword(username, newPass);
             return HttpStatusCode.OK;
         }
 

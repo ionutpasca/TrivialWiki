@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using TrivialWikiAPI.DatabaseModels;
@@ -50,6 +51,7 @@ namespace TrivialWikiAPI.UserManagement
         {
             user.Points = 0;
             user.Password = Encrypt.GetMD5(user.Password);
+            user.AccountCreationDate = DateTime.Now;
 
             using (var databaseContext = new DatabaseContext())
             {
@@ -89,16 +91,16 @@ namespace TrivialWikiAPI.UserManagement
             }
         }
 
-        public async Task ChangeUserPassword(User user)
+        public async Task ChangeUserPassword(string username, string newPass)
         {
             using (var databaseContext = new DatabaseContext())
             {
-                var usr = await databaseContext.Users.SingleAsync(u => u.UserName == user.UserName);
+                var usr = await databaseContext.Users.SingleAsync(u => u.UserName == username);
                 if (usr == null)
                 {
                     return;
                 }
-                var password = Encrypt.GetMD5(user.Password);
+                var password = Encrypt.GetMD5(newPass);
                 usr.Password = password;
                 await databaseContext.SaveChangesAsync();
             }
@@ -216,6 +218,36 @@ namespace TrivialWikiAPI.UserManagement
             using (var databaseContext = new DatabaseContext())
             {
                 return await databaseContext.Users.AnyAsync(u => u.Email == email);
+            }
+        }
+
+        public DateTime GetAccountCreationDate(string userName)
+        {
+            using (var databaseContext = new DatabaseContext())
+            {
+                // ReSharper disable once PossibleNullReferenceException
+                return databaseContext.Users
+                    .FirstOrDefault(u => u.UserName == userName)
+                    .AccountCreationDate;
+            }
+        }
+
+        public async Task<bool> PasswordMathForUser(string username, string pass)
+        {
+            using (var databaseContext = new DatabaseContext())
+            {
+                var password = Encrypt.GetMD5(pass);
+                return await databaseContext.Users
+                    .AnyAsync(u => u.UserName == username && u.Password == password);
+            }
+        }
+
+        public async Task<int> GetUserPoints(string username)
+        {
+            using (var databaseContext = new DatabaseContext())
+            {
+                var user = await databaseContext.Users.SingleOrDefaultAsync(u => u.UserName == username);
+                return user.Points;
             }
         }
     }

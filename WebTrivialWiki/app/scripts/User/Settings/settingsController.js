@@ -1,8 +1,8 @@
-﻿(function (angular) {
+﻿(function (angular, moment) {
     'use strict';
 
     angular.module('webTrivialWikiApp')
-        .controller('settingsController', ['$scope', 'persistService','FileUploader','$uibModal', function ($scope, persistService, FileUploader,$uibModal) {
+        .controller('settingsController', ['$scope', 'userService', 'persistService', 'FileUploader', '$uibModal', function ($scope,userService, persistService, FileUploader, $uibModal) {
 
             $scope.cropper = {};
             $scope.cropper.sourceImage = null;
@@ -12,6 +12,22 @@
             $scope.bounds.right = 0;
             $scope.bounds.top = 0;
             $scope.bounds.bottom = 0;
+
+            function init() {
+                $scope.userName = persistService.readData('userName');
+                $scope.userRank = persistService.readData('rank');
+                $scope.userEmail = persistService.readData('email');
+
+                userService.getUserPoints($scope.userName)
+                .then(function(data) {
+                    $scope.userPoints = data;
+                });
+
+                userService.getAccountCreationDate($scope.userName)
+                .then(function (data) {
+                    $scope.accountCreationDate = moment(data).format('LL');
+                });
+            }
 
             //var uploader = $scope.uploader = new FileUploader({
             //    url: App.url + 'changeAvatar',
@@ -27,14 +43,11 @@
             //    }
             //});
 
-            $scope.getCurrentUserName = function () {
-                return persistService.readData('userName');
-            };
-
             $scope.openChangeAvatarModal = function () {
                 $uibModal.open({
-                    templateUrl: 'scripts/User/Settings/ChangeAvatar/changeAvatarModal.html',
+                    templateUrl: 'scripts/User/Avatar/changeAvatarModal.html',
                     controller: 'changeAvatarController',
+                    windowClass: 'change-avatar-modal',
                     resolve: {
                         cropper: function () {
                             return $scope.cropper;
@@ -46,29 +59,34 @@
                 });
             };
 
+            $scope.openChangePasswordModal = function() {
+                $uibModal.open({
+                    templateUrl: 'scripts/User/Settings/changePasswordModal.html',
+                    controller: 'changePasswordController',
+                    windowClass: 'change-password-modal',
+                    resolve: {
+                        userName: function() {
+                             return $scope.userName;
+                        }
+                    }
+                });
+            };
+
             $scope.triggerUpload = function () {
                 var fileUploader = angular.element('#fileInput');
                 fileUploader.trigger('click');
-            };
-
-            $scope.userHasAvatar = function() {
-                //$scope.avatar = persistService.readData('avatar');
-                //return $scope.avatar !== null;
             };
 
             $scope.signOut = function () {
                 persistService.clearLocalStorage();
             };
 
-            //uploader.onAfterAddingFile = function () {
-            //    uploader.queue[0].upload();
-            //};
-
             $scope.$watch('cropper.sourceImage', function (newVal) {
                 if (newVal !== null) {
                     $scope.openChangeAvatarModal();
                 }
             });
-            
+
+            init();
         }]);
-}).call(this, this.angular);
+}).call(this, this.angular, this.moment);

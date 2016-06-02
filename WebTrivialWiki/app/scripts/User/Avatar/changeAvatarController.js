@@ -5,10 +5,18 @@
             $scope.cropper = cropper;
             $scope.bounds = bounds;
 
+            function disposeElements() {
+                cropper = '';
+                bounds = '';
+            }
+
             $scope.uploadAvatar = function () {
+                $scope.avatarIsSaving = true;
                 var avatarAsBase64 = $scope.cropper.croppedImage.replace('data:image/png;base64,', '');
                 changeAvatarService.changeAvatar(avatarAsBase64)
-                .then(function() {
+                .then(function () {
+                    $scope.avatarIsSaving = false;
+                        disposeElements();
                     $uibModalStack.dismissAll();
                 });
             };

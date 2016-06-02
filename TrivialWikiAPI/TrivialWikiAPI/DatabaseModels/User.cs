@@ -1,4 +1,5 @@
 ﻿using Nancy.Security;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -24,5 +25,6 @@ namespace TrivialWikiAPI.DatabaseModels
         public int Rank { get; set; }
         public string SecurityToken { get; set; }
         public Statistics Statistic { get; set; }
+        public DateTime AccountCreationDate { get; set; }
     }
 }

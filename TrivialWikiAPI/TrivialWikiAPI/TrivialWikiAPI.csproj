@@ -187,6 +187,10 @@
     <Compile Include="Migrations\201606011723248_0012.Designer.cs">
       <DependentUpon>201606011723248_0012.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606021617436_0013.cs" />
+    <Compile Include="Migrations\201606021617436_0013.Designer.cs">
+      <DependentUpon>201606021617436_0013.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Roles\RolesManager.cs" />
@@ -228,6 +232,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606011723248_0012.resx">
       <DependentUpon>201606011723248_0012.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606021617436_0013.resx">
+      <DependentUpon>201606021617436_0013.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

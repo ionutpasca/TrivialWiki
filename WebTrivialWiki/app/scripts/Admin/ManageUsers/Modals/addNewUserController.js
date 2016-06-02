@@ -29,18 +29,18 @@
                  $scope.emailExists = data;
                  if (data) return;
              })
-            .then(function (data) {
+            .then(function () {
                 usersService.usernameExistsInDatabase($scope.user.username)
                 .then(function (data) {
                     $scope.usernameExists = data;
                     if (data) return;
                 })
-                .then(function (data) {
+                .then(function () {
                     if (!$scope.usernameExists && !$scope.emailExists) {
                         $modalInstance.close($scope.user);
                     }
-                })
-            })
+                });
+            });
         };
 
         $scope.cancel = function () {
@@ -55,6 +55,8 @@
         $scope.$watch('user.username', function (newVal) {
             $scope.usernameExists = false;
         });
+
+        init();
     }]);
 
 }).call(this, this.angular);

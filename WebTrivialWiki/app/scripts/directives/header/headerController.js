@@ -20,27 +20,27 @@
             });
         };
 
-        $scope.userIsLoggedIn = function () {
-            return persistService.readData('isLoggedIn') === true &&
-                persistService.readData('userName') !== undefined &&
-                persistService.readData('securityToken') !== undefined;
-        };
-
-        $scope.getCurrentUserName = function() {
-            return persistService.readData('userName');
-        };
-
-        $scope.getRank = function () {
+        function init() {
+            $scope.userIsLoggedIn = persistService.readData('isLoggedIn');
+            if ($scope.userIsLoggedIn === '' || $scope.userIsLoggedIn === undefined) {
+                return;
+            }
             $scope.rank = persistService.readData('rank');
-            return $scope.rank;
-        };
+            $scope.userName = persistService.readData('userName');
+            $scope.userRole = persistService.readData('role');
+        }
+        init();
 
-        $scope.signOut = function() {
+        $scope.signOut = function () {
             persistService.clearLocalStorage();
         };
 
         $scope.goToSettings = function () {
             $location.url('/settings');
         };
+
+        $scope.openUserManagement = function () {
+            $location.url('/manageUsers');
+        }
     }]);
 }).call(this);

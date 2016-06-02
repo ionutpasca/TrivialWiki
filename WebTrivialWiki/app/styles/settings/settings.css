@@ -178,6 +178,7 @@ nav ul,nav li {
     cursor: pointer;
 	height: 200px;
 	float: left;
+    left: 13px;
 	position: relative;
 	overflow: hidden;
 	width: 200px;
@@ -232,19 +233,58 @@ nav ul,nav li {
 	display: none !important;
 }
 
-.change-avatar-modal {
-    margin-bottom: 14%;
-}
-
 .avatar-canvas {
     margin-left: 8%; 
     margin-top: 8%;
 }
 
 .crop-avatar-button {
-    margin-top: 15px; 
     margin-right: 8%; 
     float: right;
+}
+
+.user-data {
+    height: 200px;
+    -webkit-transition: all 300ms ease-out;
+    -moz-transition: all 300ms ease-out;
+    -ms-transition: all 300ms ease-out;
+    -o-transition: all 300ms ease-out;
+    transition: all 300ms ease-out;
+}
+
+.settings-info-item {
+    margin-left: 5%; 
+    font-size: 18px; 
+    font-weight: 500; 
+    color: #464646;
+}
+
+.settings-info-item span {
+    margin-left: -5px;
+}
+
+.changePassword-button {
+    position: absolute;
+    bottom: 0;
+}
+
+.password-input {
+    padding-left: 15px !important;
+    font-size: 25px !important;
+}
+
+.change-password-modal .modal-dialog{
+    max-height: 30% !important;
+}
+
+.change-avatar-modal .modal-content {
+    position: absolute;
+    -moz-min-width: 600px;
+    -ms-min-width: 600px;
+    -o-min-width: 600px;
+    -webkit-min-width: 600px;
+    min-width: 600px;
+    min-height: 420px;
 }
 
 @media only screen and (max-width: 750px) {
@@ -257,7 +297,16 @@ nav ul,nav li {
     }
 }
 
-@media only screen and (max-width: 390px) {
+@media only screen and (max-width: 550px) {
+    .user-data {
+        display: none !important;
+    }
+}
+
+@media only screen and (max-width: 840px) {
+    .user-data {
+        height: 150px !important;
+    }
     .settings-container {
         width: 55% !important;
     }

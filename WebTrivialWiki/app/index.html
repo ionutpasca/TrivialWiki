@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="bower_components/bootstrap-css-only/css/bootstrap.css" />
     <link rel="stylesheet" href="bower_components/hover/css/hover.css" />
     <link rel="stylesheet" href="bower_components/angular-growl-v2/build/angular-growl.css" />
+    <link rel="stylesheet" href="bower_components/loaders.css/loaders.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -25,8 +26,6 @@
       <link rel="stylesheet" href="styles/trivia/chat.css"/>
       <link rel="stylesheet" href="styles/trivia/generalTrivia.css" />
       <link rel="stylesheet" href="styles/settings/settings.css"/>
-
-
     <!-- endbuild -->
   </head>
   <body ng-app="webTrivialWikiApp">
@@ -70,6 +69,7 @@
     <script src="bower_components/angular-file-upload/dist/angular-file-upload.min.js"></script>
     <script src="bower_components/angular-img-cropper/dist/angular-img-cropper.min.js"></script>
     <script src="bower_components/angular-scroll-glue/src/scrollglue.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -78,8 +78,6 @@
     <script src="scripts/Admin/adminModule.js"></script>
     <script src="scripts/Trivia/triviaModule.js"></script>
     <script src="scripts/Trivia/Game/triviaController.js"></script>
-    <script src="scripts/Common/commonModule.js"></script>
-    <script src="scripts/Common/commonService.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/User/persistService.js"></script>
     <script src="scripts/User/userService.js"></script>
@@ -99,7 +97,8 @@
     <script src="scripts/User/Settings/settingsController.js"></script>
     <script src="scripts/Trivia/signalRFactory.js"></script>
     <script src="scripts/Trivia/Game/chatService.js"></script>
-    <script src="scripts/User/Settings/ChangeAvatar/changeAvatarController.js"></script>
-    <script src="scripts/User/Settings/ChangeAvatar/changeAvatarService.js"></script>
+    <script src="scripts/User/Avatar/changeAvatarController.js"></script>
+    <script src="scripts/User/Avatar/changeAvatarService.js"></script>
+    <script src="scripts/User/Settings/changePasswordController.js"></script>
   </body>
 </html>

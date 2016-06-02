@@ -1,4 +1,4 @@
-﻿<div class="change-avatar-modal">
+﻿<div>
     <div>
         <canvas class="avatar-canvas" width="500" height="300" image-cropper image="cropper.sourceImage"
                 cropped-image="cropper.croppedImage" crop-width="200" crop-height="200" min-width="150" min-height="150"
@@ -6,6 +6,11 @@
                 crop-area-bounds="bounds"></canvas>
     </div>
     <div>
-        <button class="btn btn-default crop-avatar-button" ng-click="uploadAvatar()">Crop avatar</button>
+        <button class="btn btn-default crop-avatar-button small-margin-top" ng-click="uploadAvatar()">Crop avatar</button>
+    </div>
+    <div>
+        <div class="small-margin-top" title="Saving.." ng-show="avatarIsSaving">
+            <div class="loader"><div class="loader-inner ball-clip-rotate"><div class="no-margin-top"></div></div></div>
+        </div>
     </div>
 </div>

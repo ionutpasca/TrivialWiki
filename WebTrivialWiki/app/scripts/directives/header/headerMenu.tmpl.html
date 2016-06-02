@@ -4,29 +4,33 @@
         <span class="wikiTitle" ng-click="javascript(0);">WikiTrivia</span>
         <ul class="navigation-bar">
             <li class="hvr-underline-from-center small-padding-bottom">
-                <a class="sliding-middle-out" ng-click="openLoginModal()" ng-show="!userIsLoggedIn()">Login</a>
+                <a class="sliding-middle-out" ng-click="openLoginModal()" ng-show="!userIsLoggedIn">Login</a>
+            </li>
+            <li class="hvr-underline-from-center small-padding-bottom" ng-show="userRole === 'Admin'">
+                <a ng-click="openUserManagement()">Manage users</a>
             </li>
             <li class="hvr-underline-from-center small-padding-bottom">
-                <a ng-show="userIsLoggedIn()">Leaderboards</a>
+                <a ng-show="userIsLoggedIn">Leaderboards</a>
             </li>
             <li class="hvr-underline-from-center small-padding-bottom">
-                <a ng-click="openRegisterModal()" ng-show="!userIsLoggedIn()">Register</a>
+                <a ng-click="openRegisterModal()" ng-show="!userIsLoggedIn">Register</a>
             </li>
-            <li class="hvr-underline-from-center small-padding-bottom small-margin-right">
+            
+            <li class="hvr-underline-from-center small-padding-bottom small-margin-right" ng-hide="userRole === 'Admin'">
                 <a>Contact</a>
             </li>
-            <li class="small-padding-bottom user-settings" ng-show="userIsLoggedIn()">
-                <img ng-show="!userHasAvatar()" src="http://localhost:4605/avatar/{{getCurrentUserName()}}"/>
+            <li class="small-padding-bottom user-settings" ng-show="userIsLoggedIn">
+                <img ng-show="!userHasAvatar()" ng-src="http://localhost:4605/avatar/{{userName}}"/>
                 <!--<img ng-show="userHasAvatar()" ng-src="http://localhost:4605/avatar/ionut">-->
-                <a class="dropdown-toggle" data-toggle="dropdown">{{getCurrentUserName()}}</a>
+                <a class="dropdown-toggle" data-toggle="dropdown">{{userName}}</a>
                 <ul class="dropdown-menu dropdown-menu-right settings-dropdown">
                     <li class="default-cursor small-margin-top" ng-click="javascript(0);">
                         <!--<img ng-show="!userHasAvatar()" src="../../../images/default_avatar.png"/>-->
-                        <img ng-show="!userHasAvatar()" src="http://localhost:4605/avatar/{{getCurrentUserName()}}" />
+                        <img ng-show="!userHasAvatar()" src="http://localhost:4605/avatar/{{userName}}" />
 
                     </li>
                     <li class="default-cursor small-margin-top">
-                        <span class="default-cursor">{{getCurrentUserName()}}  - {{getRank()}}
+                        <span class="default-cursor">{{userName}}  - {{rank}}
                             <span ng-if="rank === 1">st position</span>
                             <span ng-if="rank === 2">nd position</span>
                             <span ng-if="rank === 3">rd position</span>

@@ -1,22 +1,45 @@
 ﻿(function () {
-
     'use strict';
 
-    //App.module.service('userService', ['store', function (store) {
-    //    var service = this,
-    //        currentUser = null;
+    App.module.service('userService', ['$q','$http', function ($q, $http) {
 
-    //    service.setCurrentUser = function(user) {
-    //        currentUser = user;
-    //        store.set('user', user);
-    //        return currentUser;
-    //    };
+        this.getAccountCreationDate = function(username) {
+            var def = $q.defer();
 
-    //    service.getCurrentUser = function() {
-    //        if (!currentUser) {
-    //            currentUser = store.get('user');
-    //        }
-    //        return currentUser;
-    //    };
-    //}]);
+            $http.get(App.url + 'accountCreationDate/' + username)
+            .success(function(data) {
+                def.resolve(data);
+            })
+            .error(function(data) {
+                def.reject(data);
+            });
+            return def.promise;
+        };
+
+        this.getUserPoints = function(username) {
+            var def = $q.defer();
+
+            $http.get(App.url + 'userPoints/' + username)
+            .success(function (data) {
+                def.resolve(data);
+            })
+            .error(function (data) {
+                def.reject(data);
+            });
+            return def.promise;
+        };
+
+        this.changePassword = function(username, oldPass, newPass) {
+            var def = $q.defer();
+
+            $http.post(App.url + 'changePassword/' + username + '/' + oldPass + '/' + newPass)
+            .success(function (data) {
+                def.resolve(data);
+            })
+            .error(function (data) {
+                def.reject(data);
+            });
+            return def.promise;
+        };
+    }]);
 }).call(this);

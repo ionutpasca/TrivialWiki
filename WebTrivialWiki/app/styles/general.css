@@ -41,6 +41,10 @@
     border: none;
 }
 
+.no-margin-top {
+    margin-top: 0 !important;   
+}
+
 .center-modal {
     position: fixed;
     top:5%;
@@ -48,6 +52,11 @@
 
 .pagination>li>a, .pagination>li>span{
     color: #7D8BB3;
+}
+
+.no-radius-button {
+    -ms-border-radius: 0 !important;
+    border-radius: 0 !important;
 }
 
 .pagination>.active>a, 
@@ -81,4 +90,16 @@
 .modal-content {
     -ms-border-radius: 0 !important;
     border-radius: 0 !important;
+}
+
+.loader-container {
+    margin-top: 20px;
+}
+
+.loader-inner > div {
+    width: 35px;
+    height: 35px;
+    margin-left: 46%;
+    border: 2px solid #000 !important;
+    border-bottom-color: transparent !important;
 }
