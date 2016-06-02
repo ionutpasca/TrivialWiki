@@ -28,14 +28,12 @@ namespace TrivialWikiAPI.UserManagement.Avatar
 
         private static void SaveImageForChat(Image image, string userDirectory, string username)
         {
-            using (var bitmapImage = new Bitmap(image))
+            var bitmapImage = new Bitmap(image);
+            var resizedImage = ImageManager.ResizeImage(bitmapImage, 50, 50);
+            var imageToSave = ImageManager.ConvertBytesToImage(resizedImage);
+            using (var temp = new Bitmap(imageToSave))
             {
-                var resizedImage = ImageManager.ResizeImage(bitmapImage, 50, 50);
-                var imageToSave = ImageManager.ConvertBytesToImage(resizedImage);
-                using (var temp = new Bitmap(imageToSave))
-                {
-                    SaveImageToDirectory(temp, userDirectory, username, true);
-                }
+                SaveImageToDirectory(temp, userDirectory, username, true);
             }
         }
 
@@ -69,6 +67,10 @@ namespace TrivialWikiAPI.UserManagement.Avatar
 
         public MemoryStream GetAvatar(string avatarPath)
         {
+            if (!File.Exists(avatarPath))
+            {
+                return null;
+            }
             var avatar = Image.FromFile(avatarPath);
             return ImageManager.ImageToStream(avatar);
         }

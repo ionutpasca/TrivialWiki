@@ -15,8 +15,8 @@ namespace TrivialWikiAPI.Chat
             {
                 var messages = await databaseContext.Messages
                     .OrderByDescending(m => m.Timestamp)
-                    .Skip(messagesToSkip * 25)
-                    .Take(25)
+                    .Skip(messagesToSkip * 40)
+                    .Take(40)
                     .Select(msg => new MessageDto()
                     {
                         UserName = msg.Sender.UserName,
@@ -48,7 +48,7 @@ namespace TrivialWikiAPI.Chat
         private void CleanDatabase(DatabaseContext dbContext)
         {
             var messagesCount = dbContext.Messages.Count();
-            if (messagesCount > 100)
+            if (messagesCount > 250)
             {
                 var messageToDelete = dbContext.Messages.First();
                 dbContext.Messages.Remove(messageToDelete);

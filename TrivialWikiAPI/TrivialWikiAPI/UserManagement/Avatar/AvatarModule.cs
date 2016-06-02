@@ -24,7 +24,7 @@ namespace TrivialWikiAPI.UserManagement.Avatar
             const string ContentType = "image/jpg";
             var avatarPath = DirectoryManager.GetLocalPath() + $"Avatars\\{username}\\{username}_chat.jpg";
             var avatar = avatarManager.GetAvatar(avatarPath);
-            return Response.FromStream(avatar, ContentType);
+            return avatar == null ? HttpStatusCode.NotFound : Response.FromStream(avatar, ContentType);
         }
 
         private Response GetUserAvatar(string username)
@@ -32,7 +32,7 @@ namespace TrivialWikiAPI.UserManagement.Avatar
             const string ContentType = "image/jpg";
             var avatarPath = DirectoryManager.GetLocalPath() + $"Avatars\\{username}\\{username}.jpg";
             var avatar = avatarManager.GetAvatar(avatarPath);
-            return Response.FromStream(avatar, ContentType);
+            return avatar == null ? HttpStatusCode.NotFound : Response.FromStream(avatar, ContentType);
         }
 
         private Response ChangeAvatarAsBase64()

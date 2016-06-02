@@ -37,10 +37,9 @@
 .pointer-cursor {
     cursor: pointer;
 }
-
-/*.views {
-    margin-top:120px;
-}*/
+.no-border {
+    border: none;
+}
 
 .center-modal {
     position: fixed;
@@ -82,5 +81,4 @@
 .modal-content {
     -ms-border-radius: 0 !important;
     border-radius: 0 !important;
-
 }

@@ -1,19 +1,32 @@
-﻿<div style="position: absolute; width: 22%; right: 0;">
-    <div class="chat-container" style="">
+﻿<div class="trivia-container">
+    <div class="chat-container">
         <div>
-            <div style="overflow: auto; max-height: calc(100vh - 160px);" class="chat-messages">
-                <div ng-repeat="message in messages" style="max-width: 100%; max-height: 40px;">
-                    <p style="text-overflow: ellipsis; overflow: hidden;">{{message.message}}</p>
+            <div class="trivia-chat">
+                <div class="chat-messages" scroll-glue>
+                    <div class="chat-message" ng-repeat="message in messages| reverse">
+                        <div class="media nice-border-bottom">
+                            <div class="media-left">
+                                <a href="javascript(0)" class="default-cursor">
+                                    <!--<img class="media-object" ng-src="http://localhost:4605/chatAvatar/{{message.userName}}">-->
+                                    <img class="chat-avatar" ng-src="http://localhost:4605/chatAvatar/{{message.userName}}"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <span class="media-body chat-username">{{message.userName}}</span>
+                                <p class="user-message">{{message.message}}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="form-group" style="width: 90%; margin-left: 5%; bottom: 1%;">
+            <div class="form-group sent-message-input">
                 <div class="input-group input-group-sm">
                     <div class="icon-addon addon-md">
-                        <input type="text" placeholder="Send message" class="form-control chat-input" style="">
+                        <input type="text" placeholder="Send message" ng-model="messageToSend" class="form-control chat-input">
                     </div>
-                    <span class="input-group-btn send-message-container" style="">
-                        <button class="btn btn-default send-message-button" style="" type="button" ng-click="sendMessage();" title="Send" style="border: none;">
-                            <i class="fa fa-send send-message-gliphy" ></i>
+                    <span class="input-group-btn send-message-container">
+                        <button class="btn btn-default send-message-button no-border" type="button" ng-click="sendMessage();" title="Send message">
+                            <i class="fa fa-send send-message-gliphy"></i>
                         </button>
                     </span>
                 </div>
@@ -21,6 +34,3 @@
         </div>
     </div>
 </div>
-
-<img ng-src="http://localhost:4605/avatar/ionut"/>
-

@@ -1,7 +1,7 @@
-﻿(function () {
+﻿(function (angular) {
     'use strict';
 
-    angular.module('triviaModule', ['ngAnimate', 'ngRoute', 'ui.bootstrap', 'ngAnimate'])
+    angular.module('triviaModule', ['ngAnimate', 'ngRoute', 'ui.bootstrap', 'ngAnimate', 'luegg.directives'])
        .config(function ($routeProvider) {
            $routeProvider
                .when('/trivia',
@@ -11,4 +11,10 @@
                });
        });
 
-}).call(this);
+    angular.module('triviaModule').filter('reverse', function () {
+        return function (items) {
+            return items.slice().reverse();
+        };
+    });
+
+}).call(this, this.angular);

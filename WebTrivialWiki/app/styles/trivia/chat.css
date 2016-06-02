@@ -1,7 +1,6 @@
 ﻿.chat-container {
     float: right;
-    top: 125px;
-    margin-top: 80px; 
+    margin-top: 75px; 
     margin-right: 15px; 
     height: 90%;
     background-color: #fff;
@@ -53,13 +52,6 @@
     float: left;
     font-weight: normal;
 }
-
-/*.icon-addon .form-control:focus + .glyphicon,
-.icon-addon:hover .glyphicon,
-.icon-addon .form-control:focus + .fa,
-.icon-addon:hover .fa {
-    color: #2580db;
-}*/
 
 .send-message-container {
     padding-top: 5px; 
@@ -115,15 +107,15 @@
     -ms-box-shadow: none !important;
     box-shadow: none !important;
     border-color: inherit;
-    /*border: none;
-    text-decoration: none;*/
+}
+.chat-messages {
+    overflow: auto; 
+    max-height: calc(100vh - 160px);
 }
 
 .chat-messages::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
     background-color: white;
-    /*-ms-border-radius: 10px;
-    border-radius: 10px;*/
 }
 
 .chat-messages::-webkit-scrollbar {
@@ -131,7 +123,66 @@
 }
 
 .chat-messages::-webkit-scrollbar-thumb {
-    /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);*/
     background-color: #ccc;
     border-radius: 4px;
+}
+
+
+.bubble {
+    position: relative;
+    width: 80%px;
+    height: 84px;
+    padding: 0px;
+    background: #ccc;
+}
+
+.bubble:after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: -16px;
+    border-style: solid;
+    border-width: 12px 16px 12px 0;
+    border-color: transparent #ccc;
+    display: block;
+    width: 0;
+    z-index: 1;
+}
+
+.trivia-chat {
+    height: 90%; 
+    border-bottom: 1px solid #ccc; 
+    padding-left: 5px; 
+    padding-top: 5px;
+}
+.chat-message {
+    max-width: 100%;
+}
+
+.nice-border-bottom {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.chat-avatar {
+    max-height: 35px; 
+    max-width: 35px;
+    -ms-border-radius: 50%;
+    border-radius: 50%; 
+    margin-top: 5px;
+}
+
+.chat-username {
+    font-weight: 600; 
+    font-size: 17px;
+}
+
+.user-message {
+    font-weight: 400; 
+    font-size: 15px;
+}
+.sent-message-input {
+    width: 90%; 
+    margin-left: 5%; 
+    bottom: 1%; 
+    margin-top: 5px;
 }

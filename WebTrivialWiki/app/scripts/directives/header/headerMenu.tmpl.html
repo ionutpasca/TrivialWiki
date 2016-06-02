@@ -1,5 +1,5 @@
 ﻿<div class="header headerContainer">
-    <div class="wikiLogo row">
+    <div class="wikiLogo">
         <img class="wiki-logo-image" src="images/wikipedia-icon2.png" ng-click="javascript(0);"/>
         <span class="wikiTitle" ng-click="javascript(0);">WikiTrivia</span>
         <ul class="navigation-bar">
@@ -16,16 +16,17 @@
                 <a>Contact</a>
             </li>
             <li class="small-padding-bottom user-settings" ng-show="userIsLoggedIn()">
-                <img ng-show="!userHasAvatar()" src="../../../images/default_avatar.png"/>
-                <img ng-show="userHasAvatar()" ng-src="data:image/JPEG;base64,{{avatar}}">
-                <a class="dropdown-toggle" data-toggle="dropdown">{{getUserName()}}</a>
+                <img ng-show="!userHasAvatar()" src="http://localhost:4605/avatar/{{getCurrentUserName()}}"/>
+                <!--<img ng-show="userHasAvatar()" ng-src="http://localhost:4605/avatar/ionut">-->
+                <a class="dropdown-toggle" data-toggle="dropdown">{{getCurrentUserName()}}</a>
                 <ul class="dropdown-menu dropdown-menu-right settings-dropdown">
                     <li class="default-cursor small-margin-top" ng-click="javascript(0);">
-                        <img ng-show="!userHasAvatar()" src="../../../images/default_avatar.png"/>
-                        <img ng-show="userHasAvatar()" ng-src="data:image/JPEG;base64,{{avatar}}">
+                        <!--<img ng-show="!userHasAvatar()" src="../../../images/default_avatar.png"/>-->
+                        <img ng-show="!userHasAvatar()" src="http://localhost:4605/avatar/{{getCurrentUserName()}}" />
+
                     </li>
                     <li class="default-cursor small-margin-top">
-                        <span class="default-cursor">{{getUserName()}}  - {{getRank()}}
+                        <span class="default-cursor">{{getCurrentUserName()}}  - {{getRank()}}
                             <span ng-if="rank === 1">st position</span>
                             <span ng-if="rank === 2">nd position</span>
                             <span ng-if="rank === 3">rd position</span>

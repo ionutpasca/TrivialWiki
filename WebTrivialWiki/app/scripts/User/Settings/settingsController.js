@@ -27,9 +27,9 @@
             //    }
             //});
 
-            function getSecurityToken() {
-                return persistService.readData('securityToken');
-            }
+            $scope.getCurrentUserName = function () {
+                return persistService.readData('userName');
+            };
 
             $scope.openChangeAvatarModal = function () {
                 $uibModal.open({
@@ -52,8 +52,8 @@
             };
 
             $scope.userHasAvatar = function() {
-                $scope.avatar = persistService.readData('avatar');
-                return $scope.avatar !== null;
+                //$scope.avatar = persistService.readData('avatar');
+                //return $scope.avatar !== null;
             };
 
             $scope.signOut = function () {
