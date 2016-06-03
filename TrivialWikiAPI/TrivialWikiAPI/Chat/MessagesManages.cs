@@ -45,7 +45,7 @@ namespace TrivialWikiAPI.Chat
             }
         }
 
-        private void CleanDatabase(DatabaseContext dbContext)
+        private static void CleanDatabase(DatabaseContext dbContext)
         {
             var messagesCount = dbContext.Messages.Count();
             if (messagesCount > 250)

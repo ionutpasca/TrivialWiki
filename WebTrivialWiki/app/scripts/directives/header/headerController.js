@@ -41,6 +41,10 @@
 
         $scope.openUserManagement = function () {
             $location.url('/manageUsers');
-        }
+        };
+
+        $scope.openTrivia = function() {
+            $location.url('/trivia');
+        };
     }]);
 }).call(this);

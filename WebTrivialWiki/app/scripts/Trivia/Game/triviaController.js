@@ -2,7 +2,7 @@
     'use strict';
     angular.module('triviaModule')
     .controller('triviaController', ['$scope', '$rootScope',
-        'signalRFactory', 'chatService', 'persistService', function ($scope, $rootScope, signalR, chatService, persistService) {
+        'chatFactory', 'triviaFactory', 'chatService', 'persistService', function ($scope, $rootScope, chatFactory, triviaFactory, chatService, persistService) {
         $scope.messages = [];
         $scope.text = "";
         $scope.skip = 0;
@@ -16,12 +16,28 @@
             });
         }
 
-        signalR.on('addMessage', function (msg) {
+        chatFactory.on('addMessage', function (msg) {
             var newMessage = {
                 userName: msg.UserName,
                 message: msg.Message
             };
             $scope.messages.unshift(newMessage);
+        });
+
+        chatFactory.on('onConnected', function (res) {
+            debugger;
+        });
+
+        chatFactory.on('someoneConnected', function (res) {
+            debugger;
+        });
+
+        triviaFactory.on('addResponse', function(msg) {
+            //var newResponse = {
+            //    userName: msg.UserName,
+            //    message: msg.Message
+            //};
+            debugger;
         });
 
         $scope.getCurrentUserName = function() {

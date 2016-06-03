@@ -6,11 +6,14 @@
             <li class="hvr-underline-from-center small-padding-bottom">
                 <a class="sliding-middle-out" ng-click="openLoginModal()" ng-show="!userIsLoggedIn">Login</a>
             </li>
-            <li class="hvr-underline-from-center small-padding-bottom" ng-show="userRole === 'Admin'">
-                <a ng-click="openUserManagement()">Manage users</a>
+            <li class="hvr-underline-from-center small-padding-bottom">
+                <a ng-click="openTrivia()">QuizTriv</a>
             </li>
             <li class="hvr-underline-from-center small-padding-bottom">
                 <a ng-show="userIsLoggedIn">Leaderboards</a>
+            </li>
+            <li class="hvr-underline-from-center small-padding-bottom" ng-show="userRole === 'Admin'">
+                <a ng-click="openUserManagement()">Manage users</a>
             </li>
             <li class="hvr-underline-from-center small-padding-bottom">
                 <a ng-click="openRegisterModal()" ng-show="!userIsLoggedIn">Register</a>
