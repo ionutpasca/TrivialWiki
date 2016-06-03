@@ -17,10 +17,11 @@ namespace TrivialWikiAPI.Chat
             Post["/addMessage"] = _ => AddMessageToDatabase();
         }
 
-        private async Task<object> GetMessageBatch(object skipCount)
+        private async Task<Response> GetMessageBatch(int skipCount)
         {
             var skip = Convert.ToInt32(skipCount);
-            return await messageManager.GetMessagesBatch(skip);
+            var result = await messageManager.GetMessagesBatch(skip);
+            return this.Response.AsJson(result);
         }
 
         private Response AddMessageToDatabase()
