@@ -1,0 +1,49 @@
+﻿<Window x:Class="DestkopTrivialWiki.UserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DestkopTrivialWiki"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="800">
+
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="0.2*" />
+        </Grid.ColumnDefinitions>
+        <Menu Grid.Row="0" Grid.ColumnSpan="2" x:Name="menu" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Top" Height="20">
+            <MenuItem VerticalAlignment="Center" Header="File"/>
+            <MenuItem VerticalAlignment="Center" Header="About"/>
+        </Menu>
+        <DataGrid AutoGenerateColumns="False" 
+          Grid.Row="1" Grid.Column="0"
+          BeginningEdit="dataGrid1_BeginningEdit"
+          HorizontalAlignment="Stretch" 
+          HorizontalContentAlignment="Stretch"
+          ColumnWidth="*"
+          Name="DataGrid1" 
+          VerticalAlignment="Stretch">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name"     Binding="{Binding Path=Name}" MinWidth="50" />
+                <DataGridTextColumn Header="Email"    Binding="{Binding Path=Email}" MinWidth="50" />
+                <DataGridTextColumn Header="Points"   Binding="{Binding Path=Points}" MinWidth="50" />
+                <DataGridTextColumn Header="Rank"     Binding="{Binding Path=Rank}" MinWidth="50" />
+                <DataGridTextColumn Header="Role"     Binding="{Binding Path=Role}" MinWidth="50" />
+                <DataGridTextColumn Header="Password" Binding="{Binding Path=Password}" MinWidth="50" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,0,10,0">
+            <Button Margin="0,10,0,10" Name="AddBtn" Click="AddUser_Click">Add</Button>
+            <Button Margin="0,10,0,10" Name="DeleteBtn" Click="Delete_Click">Delete</Button>
+            <Button Margin="0,10,0,10" Name="UpdateBtn" Click="Update_Click">Update</Button>
+            <Button Margin="0,10,0,10" Name="ResetBtn" Click="ResetBtn_Click">Reset</Button>
+            <Button Margin="0,10,0,10" Name="LoadBtn" Click="LoadBtn_Click">Load more</Button>
+        </StackPanel>
+    </Grid>
+</Window>
