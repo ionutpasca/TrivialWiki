@@ -1,8 +1,9 @@
-﻿using Nancy;
+﻿using DatabaseManager.DatabaseModels;
+using DatabaseManager.UserManagement.Login;
+using Nancy;
 using Nancy.ModelBinding;
 using Newtonsoft.Json;
-using TrivialWikiAPI.DatabaseModels;
-using TrivialWikiAPI.Utilities;
+using WikiTrivia.Utilities;
 
 namespace TrivialWikiAPI.UserManagement.Login
 {

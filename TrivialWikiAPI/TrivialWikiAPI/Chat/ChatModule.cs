@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.SignalR;
+﻿using DatabaseManager.Chat;
+using Microsoft.AspNet.SignalR;
 using Nancy;
 using Nancy.ModelBinding;
 using System;

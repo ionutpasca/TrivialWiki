@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNet.SignalR;
+﻿using DatabaseManager.Trivia;
+using Microsoft.AspNet.SignalR;
 using Nancy;
 using Nancy.ModelBinding;
 using System.Threading.Tasks;
+using WikiTrivia.TriviaCore.Hubs;
 
 namespace TrivialWikiAPI.Trivia
 {

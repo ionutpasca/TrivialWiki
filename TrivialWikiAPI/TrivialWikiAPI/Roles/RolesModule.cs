@@ -1,4 +1,5 @@
-﻿using Nancy;
+﻿using DatabaseManager.Roles;
+using Nancy;
 using System.Threading.Tasks;
 
 namespace TrivialWikiAPI.Roles

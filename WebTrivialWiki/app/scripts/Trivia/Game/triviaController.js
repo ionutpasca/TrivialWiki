@@ -4,6 +4,7 @@
     .controller('triviaController', ['$scope', '$rootScope',
         'chatFactory', 'triviaFactory', 'chatService', 'persistService', function ($scope, $rootScope, chatFactory, triviaFactory, chatService, persistService) {
         $scope.messages = [];
+        $scope.triviaQuestions = [];
         $scope.text = "";
         $scope.skip = 0;
 
@@ -15,6 +16,14 @@
                 });
             });
         }
+
+        triviaFactory.on('addMessage', function (q) {
+            var question = {
+                sender: 'TriviaBot',
+                questionText: q.QuestionText
+            };
+            $scope.triviaQuestions.unshift(question);
+        });
 
         chatFactory.on('addMessage', function (msg) {
             var newMessage = {

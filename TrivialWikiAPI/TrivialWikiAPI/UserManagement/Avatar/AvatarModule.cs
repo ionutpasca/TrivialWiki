@@ -2,7 +2,7 @@
 using Nancy.Extensions;
 using System.Drawing;
 using System.Web;
-using TrivialWikiAPI.Utilities;
+using WikiTrivia.Utilities;
 
 namespace TrivialWikiAPI.UserManagement.Avatar
 {

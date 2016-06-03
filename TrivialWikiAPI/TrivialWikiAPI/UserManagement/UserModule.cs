@@ -1,8 +1,9 @@
-﻿using Nancy;
+﻿using DatabaseManager.DatabaseModels;
+using DatabaseManager.UserManagement;
+using Nancy;
 using Nancy.ModelBinding;
 using Nancy.Security;
 using System.Threading.Tasks;
-using TrivialWikiAPI.DatabaseModels;
 
 namespace TrivialWikiAPI.UserManagement
 {

@@ -140,22 +140,6 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Chat\ChatHub.cs" />
     <Compile Include="Chat\ChatModule.cs" />
-    <Compile Include="Chat\MessageDto.cs" />
-    <Compile Include="Chat\MessagesManages.cs" />
-    <Compile Include="DatabaseModels\Achievement.cs" />
-    <Compile Include="DatabaseModels\ChatRoom.cs" />
-    <Compile Include="DatabaseModels\DatabaseContext.cs" />
-    <Compile Include="DatabaseModels\Friend.cs" />
-    <Compile Include="DatabaseModels\Match.cs" />
-    <Compile Include="DatabaseModels\Message.cs" />
-    <Compile Include="DatabaseModels\PrivateChat.cs" />
-    <Compile Include="DatabaseModels\QuestionSet.cs" />
-    <Compile Include="DatabaseModels\RelatedTopic.cs" />
-    <Compile Include="DatabaseModels\Role.cs" />
-    <Compile Include="DatabaseModels\Statistics.cs" />
-    <Compile Include="DatabaseModels\Topic.cs" />
-    <Compile Include="DatabaseModels\TriviaMessage.cs" />
-    <Compile Include="DatabaseModels\User.cs" />
     <Compile Include="Migrations\201603021845246_InitialCreate.cs" />
     <Compile Include="Migrations\201603021845246_InitialCreate.Designer.cs">
       <DependentUpon>201603021845246_InitialCreate.cs</DependentUpon>
@@ -198,24 +182,14 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Roles\RolesManager.cs" />
     <Compile Include="Roles\RolesModule.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="Trivia\TriviaHub.cs" />
-    <Compile Include="Trivia\TriviaManager.cs" />
-    <Compile Include="Trivia\TriviaMessageDto.cs" />
     <Compile Include="Trivia\TriviaModule.cs" />
     <Compile Include="UserManagement\Avatar\AvatarManager.cs" />
     <Compile Include="UserManagement\Avatar\AvatarModule.cs" />
-    <Compile Include="UserManagement\Login\LoginManager.cs" />
     <Compile Include="UserManagement\Login\LoginModule.cs" />
     <Compile Include="UserManagement\Login\LoginResponse.cs" />
-    <Compile Include="UserManagement\UserManager.cs" />
     <Compile Include="UserManagement\UserModule.cs" />
-    <Compile Include="UserManagement\UserResponse.cs" />
-    <Compile Include="Utilities\DirectoryManager.cs" />
-    <Compile Include="Utilities\ImageManager.cs" />
-    <Compile Include="Utilities\Encrypt.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201603021845246_InitialCreate.resx">
@@ -249,7 +223,20 @@
       <DependentUpon>201606022252415_0014.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\DatabaseManager\DatabaseManager.csproj">
+      <Project>{e0a4d38b-cadc-49b1-bb3d-7990d8a97552}</Project>
+      <Name>DatabaseManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WikiTrivia.TriviaCore\WikiTrivia.TriviaCore.csproj">
+      <Project>{6026F073-FD4F-4761-8FDC-39EE1D7E9D64}</Project>
+      <Name>WikiTrivia.TriviaCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WikiTrivia.Utilities\WikiTrivia.Utilities.csproj">
+      <Project>{8B8B3F72-08EB-40B6-9C15-3D6D9BEE81F5}</Project>
+      <Name>WikiTrivia.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

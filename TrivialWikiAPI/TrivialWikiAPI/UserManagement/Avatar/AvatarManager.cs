@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using TrivialWikiAPI.Utilities;
+using WikiTrivia.Utilities;
 
 namespace TrivialWikiAPI.UserManagement.Avatar
 {
@@ -23,7 +23,10 @@ namespace TrivialWikiAPI.UserManagement.Avatar
         {
             var userDirectory = CreateDirectoryForUser(folderName, username);
             SaveImageToDirectory(image, userDirectory, username);
-            SaveImageForChat(image, userDirectory, username);
+            using (var bitmap = new Bitmap(image))
+            {
+                SaveImageForChat(bitmap, userDirectory, username);
+            }
         }
 
         private static void SaveImageForChat(Image image, string userDirectory, string username)
@@ -62,6 +65,12 @@ namespace TrivialWikiAPI.UserManagement.Avatar
         private static void SaveImageToDirectory(Image img, string directory, string username, bool imageIsForChat = false)
         {
             var path = imageIsForChat ? directory + "\\" + username + "_chat.jpg" : directory + "\\" + username + ".jpg";
+            if (File.Exists(path))
+            {
+                System.GC.Collect();
+                System.GC.WaitForPendingFinalizers();
+                File.Delete(path);
+            }
             img.Save(path, ImageFormat.Bmp);
         }
 

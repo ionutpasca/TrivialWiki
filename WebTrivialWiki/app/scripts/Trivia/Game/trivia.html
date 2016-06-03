@@ -35,6 +35,9 @@
     </div>
 </div>
 
-<div style="left: 20px; position: absolute; top: 75px; border: 1px solid black; width: 70%; height: 10%;">
-    
+<div class="nonStopTrivia" scroll-glue>
+    <div ng-repeat="question in triviaQuestions">
+        <span style="font-weight: 600; font-size: 17px;">{{question.sender}}:</span>
+        <span style="font-weight: 500; font-size: 16px;">{{question.questionText}}</span>
+    </div>
 </div>
