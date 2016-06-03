@@ -9,87 +9,46 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap-css-only/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/hover/css/hover.css" />
+    <link rel="stylesheet" href="bower_components/angular-growl-v2/build/angular-growl.css" />
+    <link rel="stylesheet" href="bower_components/loaders.css/loaders.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
       <link rel="stylesheet" href="styles/main.css">
       <link rel="stylesheet" href="styles/loginStyles.css"/>
+      <link rel="stylesheet" href="styles/header.css"/>
+      <link rel="stylesheet" href="styles/general.css"/>
+      <link rel="stylesheet" href="styles/modals/confirmationModal.css"/>
+      <link rel="stylesheet" href="styles/modals/updateUserModal.css" />
+      <link rel="stylesheet" href="styles/adminStyles.css" />
+      <link rel="stylesheet" href="styles/trivia/chat.css"/>
+      <link rel="stylesheet" href="styles/trivia/generalTrivia.css" />
+      <link rel="stylesheet" href="styles/settings/settings.css"/>
     <!-- endbuild -->
   </head>
   <body ng-app="webTrivialWikiApp">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <div id="fb-root"></div>
-    <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-            appId: '674147732724867',
-            cookie: true,
-            xfbml: true,
-            version: 'v2.5'
-        });
-      };
 
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "//connect.facebook.net/en_US/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
-    </script>
-
-  <!-- Add your site or application content here -->
-    <div class="header" ng-show="localStorage.isLoggedIn">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-
-            <a class="navbar-brand" href="#/">webTrivialWiki</a>
-          </div>
-
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
+    <div>
+        <!-- ReSharper disable Html.TagNotResolved -->
+        <header-menu on-scroll></header-menu>
+        <!-- ReSharper restore Html.TagNotResolved -->
     </div>
 
-    <div class="container">
-    <div ng-view=""></div>
+    <div style="width: 100% !important;">
+        <div class="views" ng-view=""></div>
     </div>
 
     <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
+        <div class="container">
+        </div>
     </div>
 
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
-    </script>
-
+    <div growl></div>
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -103,20 +62,43 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/ng-facebook/ngFacebook.js"></script>
     <script src="bower_components/lodash/lodash.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-growl-v2/build/angular-growl.js"></script>
+    <script src="bower_components/signalr/jquery.signalR.js"></script>
+    <script src="bower_components/angular-signalr-hub/signalr-hub.js"></script>
+    <script src="bower_components/angular-file-upload/dist/angular-file-upload.min.js"></script>
+    <script src="bower_components/angular-img-cropper/dist/angular-img-cropper.min.js"></script>
+    <script src="bower_components/angular-scroll-glue/src/scrollglue.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/common.js"></script>
+    <script src="scripts/Admin/adminModule.js"></script>
+    <script src="scripts/Trivia/triviaModule.js"></script>
+    <script src="scripts/Trivia/Game/triviaController.js"></script>
     <script src="scripts/app.js"></script>
+    <script src="scripts/User/persistService.js"></script>
     <script src="scripts/User/userService.js"></script>
-    <script src="scripts/controllers/main.js"></script>
-    <script src="scripts/controllers/about.js"></script>
+    <script src="scripts/headerAnimationOnScroll.js"></script>
     <script src="scripts/User/Login/loginService.js"></script>
     <script src="scripts/User/Login/loginController.js"></script>
     <script src="scripts/User/SignUp/signUpService.js"></script>
     <script src="scripts/User/SignUp/signUpController.js"></script>
     <script src="scripts/config.js"></script>
-    <!-- endbuild -->
-</body>
+    <script src="scripts/Directives/header/headerDirective.js"></script>
+    <script src="scripts/Directives/header/headerController.js"></script>
+    <script src="scripts/Admin/ManageUsers/manageUsersController.js"></script>
+    <script src="scripts/Admin/ManageUsers/manageUsersService.js"></script>
+    <script src="scripts/Admin/ManageUsers/Modals/confirmDeleteController.js"></script>
+    <script src="scripts/Admin/ManageUsers/Modals/updateUserController.js"></script>
+    <script src="scripts/Admin/ManageUsers/Modals/addNewUserController.js"></script>
+    <script src="scripts/User/Settings/settingsController.js"></script>
+    <script src="scripts/Trivia/signalRFactory.js"></script>
+    <script src="scripts/Trivia/Game/chatService.js"></script>
+    <script src="scripts/User/Avatar/changeAvatarController.js"></script>
+    <script src="scripts/User/Avatar/changeAvatarService.js"></script>
+    <script src="scripts/User/Settings/changePasswordController.js"></script>
+  </body>
 </html>

@@ -1,0 +1,42 @@
+﻿.table-container {
+    width:98%;
+    margin-left:1%;
+    font-family: Montserrat;
+}
+
+.users-table {
+    background-color:#fff;
+}
+
+.users-table-header {
+    border:2px solid #ddd;
+    margin-top:20px;
+    background-color: #f5f5f5;
+}
+
+.users-table-body {
+    border:2px solid #ddd;
+}
+
+.users-table-body tr:hover {
+    background-color: #f5f5f5;
+}
+
+.table-action i:hover{
+    cursor: pointer;
+}
+
+.pagination-numbers{
+    margin:0 !important;
+}
+
+.admin-panel{
+    position:relative;
+    top:90px;
+    margin-left:20px;
+    margin-right:20px;
+}
+
+.admin-panel > .panel-heading{
+    min-height:70px;
+}

@@ -1,0 +1,190 @@
+﻿.headerContainer {
+    top:0;
+    position: fixed;
+    width:100%;
+    height:120px;
+    display: block;
+    z-index: 1000;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+    .headerContainer.smaller {
+        -ms-opacity:0.9;
+        opacity:0.9;
+        height:60px;
+    }
+
+    .headerContainer.smaller1 {
+        -ms-opacity:1 !important;
+        opacity:1 !important;
+        height:60px;
+    }
+
+.navigation-bar {
+    display: inline-block !important;
+    float: right;
+    margin-top:45px;
+    margin-right: 70px;
+    font-family: Montserrat;
+    font-size: 20px;
+    -webkit-transition:all 0.3s;
+    -moz-transition:all 0.3s;
+    -ms-transition:all 0.3s;
+    -o-transition:all 0.3s;
+    transition:all 0.3s;
+}
+
+.navigation-bar li {
+        margin-left:10px;
+        margin-right:10px;
+        display:inline !important;
+    }
+    .navigation-bar li a{
+        color:#ccc;
+        display: inline; 
+    }
+    .navigation-bar a:hover {
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .navigation-bar.smaller {
+        margin-top:15px;
+        font-size: 15px;
+    }
+
+.wikiLogo {
+    position: absolute;
+    height:100%;
+    width: 100%;
+    display: block;
+    background: url('../images/blackBackground.jpg');
+    -ms-background-size: cover;
+    background-size: cover;
+    -moz-background-position-y: center;
+    -o-background-position-y: center;
+    background-position-y: center;
+}
+    
+ .wiki-logo-image {
+    height:80px;
+    width:80px;
+    margin-left:8%;
+    margin-top: 20px;
+     -webkit-transition:all 0.3s;
+     -moz-transition:all 0.3s;
+     -ms-transition:all 0.3s;
+     -o-transition:all 0.3s;
+     transition:all 0.3s;
+ }
+
+.wiki-logo-image.smaller {
+        height:50px;
+        width:50px;
+        margin-top:5px;
+    }
+    .wiki-logo-image img:hover {
+        cursor: pointer;
+    }
+
+.wikiTitle {
+    margin-top:30px;
+    margin-left:15px;
+    position: absolute;
+    color: #ccc;
+    font-family: Montserrat;
+    font-size: 40px;
+    -webkit-transition:all 0.3s;
+    -moz-transition:all 0.3s;
+    -ms-transition:all 0.3s;
+    -o-transition:all 0.3s;
+    transition:all 0.3s;
+}
+
+.wikiTitle.smaller {
+        margin-top:8px;
+        font-size:30px
+    }
+    .wikiTitle:hover {
+        cursor: pointer;
+        color:#fff;
+    }
+
+.user-settings img {
+    max-height: 30px;
+    max-width: 30px;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.user-settings a {
+    color: #ccc;
+    vertical-align: central;
+}
+
+.user-settings:hover {
+    cursor: pointer;
+}
+
+.settings-dropdown {
+    right: 20px;
+    margin-top: -30px;
+    width: 250px;
+    text-align: center;
+    -ms-border-radius: 0;
+    border-radius: 0;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.settings-dropdown li{
+    display: block !important;
+}
+
+.settings-dropdown.smaller {
+    margin-top: -10px !important;
+}
+
+.settings-dropdown img {
+    max-height: 70px;
+    max-width: 70px;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+    left: 40%;
+    vertical-align: central;
+}
+
+.settings-dropdown span {
+    margin-top: 10px;
+    horiz-align: center;
+}
+
+.profile-buttons button {
+    -ms-border-radius: 0;
+    border-radius: 0;
+}
+
+.hvr-underline-from-center:before {
+    height:2px;
+    background:#ccc;
+}
+
+@media (max-width: 800px) {
+    .headerContainer {
+        width:100%;
+    }
+    .wikiLogo {
+        width:150%;
+    }
+    .navigation-bar{
+        display: none !important;
+    }
+}
+
+

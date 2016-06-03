@@ -1,11 +1,11 @@
-﻿using System.Linq;
+﻿using DatabaseManager.DatabaseModels;
+using DatabaseManager.UserManagement.Login;
 using Nancy;
 using Nancy.ModelBinding;
-using TrivialWikiAPI.DatabaseModels;
-using TrivialWikiAPI.UserManagement.Login;
-using TrivialWikiAPI.Utilities;
+using Newtonsoft.Json;
+using WikiTrivia.Utilities;
 
-namespace TrivialWikiAPI.UserManagement
+namespace TrivialWikiAPI.UserManagement.Login
 {
     public class LoginModule : NancyModule
     {
@@ -14,6 +14,12 @@ namespace TrivialWikiAPI.UserManagement
         public LoginModule()
         {
             Get["/login"] = param => LoginUser();
+            Get["/loginWithFacebook"] = param => LoginUserWithFacebook();
+        }
+
+        private static dynamic LoginUserWithFacebook()
+        {
+            return HttpStatusCode.OK;
         }
 
         private dynamic LoginUser()
@@ -32,21 +38,19 @@ namespace TrivialWikiAPI.UserManagement
                 return HttpStatusCode.Unauthorized;
             }
 
-            var userRoles = loggedUser.Roles.Select(r => r.Name).ToList();
+            var userRole = loggedUser.Role.Name;
 
             var data = new LoginResponse
             {
-                Avatar = loggedUser.Avatar,
                 UserName = loggedUser.UserName,
-                FirstName = loggedUser.FirstName,
-                LastName = loggedUser.LastName,
                 Email = loggedUser.Email,
                 Rank = loggedUser.Rank,
-                Roles = userRoles,
+                Role = userRole,
                 SecurityToken = loggedUser.SecurityToken
             };
 
-            return Response.AsJson(data);
+            return JsonConvert.SerializeObject(data, Formatting.Indented,
+                    new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
         }
     }
 }

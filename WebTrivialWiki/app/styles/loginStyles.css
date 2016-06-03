@@ -1,4 +1,4 @@
-﻿.loginBackground {
+﻿/*.loginBackground {
     position: fixed;
     top:0px;
     left:0px;
@@ -10,22 +10,20 @@
     background-size: cover;
     font-family:Montserrat;
     overflow-y: auto;
-}
+}*/
 
-.logo {
-    width:213px;
+/*.logo {
+    width:100%;
     height:36px;
     background: url('http://i.imgur.com/fd8Lcso.png') no-repeat;
     margin: 30px auto;
-}
+}*/
 
 .login-block {
-    width:320px;
+    width:100%;
     padding:20px;
     background:#fff;
-    -ms-border-radius:5px;
-    border-radius:5px;
-    border-top:5px solid #ff656c;
+    border-top:5px solid #cc1935;
     margin: 0 auto;
 }
 
@@ -44,8 +42,6 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    -ms-border-radius: 5px;
-    border-radius: 5px;
     border: 1px solid #ccc;
     margin-bottom: 20px;
     font-size: 14px;
@@ -91,19 +87,17 @@
 }
 
 .login-block input:active, .login-block input:focus {
-    border: 1px solid #ff656c;
+    border: 1px solid #cc1935;
 }
 
 .login-block button {
     width: 100%;
     height: 40px;
-    background: #ff656c;
+    background: #cc1935;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    -ms-border-radius: 5px;
-    border-radius: 5px;
-    border: 1px solid #e15960;
+    border: 1px solid #cc1935;
     color: #fff;
     font-weight: bold;
     text-transform: uppercase;
@@ -114,7 +108,7 @@
 }
 
 .login-block button:hover {
-    background: #ff7b81;
+    background: #DD425A;
 }
 
 #facebookLink {
@@ -154,13 +148,10 @@
     background-color: #7D8BB3 !important;
 }
 
-.registerPanel {
-    margin-top:70px;
-}
-
 .errorMessage {
     margin-top:-5px !important;
     margin-left:5px;
-    font-size:13px;
-    color:red;
+    font-size:12px;
+    color:#e15960;
+    font-family: Montserrat;
 }

@@ -1,0 +1,43 @@
+﻿<div class="trivia-container">
+    <div class="chat-container">
+        <div>
+            <div class="trivia-chat">
+                <div class="chat-messages" scroll-glue>
+                    <div class="chat-message" ng-repeat="message in messages| reverse">
+                        <div class="media nice-border-bottom">
+                            <div class="media-left">
+                                <a href="javascript(0)" class="default-cursor">
+                                    <!--<img class="media-object" ng-src="http://localhost:4605/chatAvatar/{{message.userName}}">-->
+                                    <img class="chat-avatar" ng-src="http://localhost:4605/chatAvatar/{{message.userName}}"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <span class="media-body chat-username">{{message.userName}}</span>
+                                <p class="user-message">{{message.message}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group sent-message-input">
+                <div class="input-group input-group-sm">
+                    <div class="icon-addon addon-md">
+                        <input type="text" placeholder="Send message" ng-model="messageToSend" class="form-control chat-input">
+                    </div>
+                    <span class="input-group-btn send-message-container">
+                        <button class="btn btn-default send-message-button no-border" type="button" ng-click="sendMessage();" title="Send message">
+                            <i class="fa fa-send send-message-gliphy"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="nonStopTrivia" scroll-glue>
+    <div ng-repeat="question in triviaQuestions">
+        <span style="font-weight: 600; font-size: 17px;">{{question.sender}}:</span>
+        <span style="font-weight: 500; font-size: 16px;">{{question.questionText}}</span>
+    </div>
+</div>

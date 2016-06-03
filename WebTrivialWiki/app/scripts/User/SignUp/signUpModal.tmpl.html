@@ -1,0 +1,15 @@
+﻿<div>
+    <div class="login-block">
+        <h1>Register new account</h1>
+        <input id="username" type="text" placeholder="Username" ng-model="username" />
+        <input id="password" type="password" placeholder="Password" ng-model="password" />
+        <input id="password1" type="password" placeholder="Repeat password" ng-model="repeatedPassword" />
+        <p class="errorMessage" ng-show="passwordsDontMatch()">Passwords don't match!</p>
+        <input id="email" type="email" placeholder="Email" ng-model="email" />
+
+        <button title="Login" ng-click="registerNewAccount()">Register</button>
+        <div id="facebookLink">
+            <i class="fa fa-facebook" title="Register with facebook" ng-click=""></i>
+        </div>
+    </div>
+</div>

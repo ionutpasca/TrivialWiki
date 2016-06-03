@@ -1,20 +1,30 @@
-﻿using System.Linq;
+﻿using DatabaseManager.DatabaseModels;
 using Nancy;
 using Nancy.Authentication.Stateless;
 using Nancy.Bootstrapper;
 using Nancy.Security;
 using Nancy.TinyIoc;
-using TrivialWikiAPI.DatabaseModels;
+using System.Linq;
+using WikiTrivia.TriviaCore;
 
 namespace TrivialWikiAPI
 {
     public class Bootstrapper : DefaultNancyBootstrapper
     {
+        private readonly TriviaCore triviaCore = new TriviaCore();
         protected override void ApplicationStartup(TinyIoCContainer container, IPipelines pipelines)
         {
             base.ApplicationStartup(container, pipelines);
-
             ConfigStatelessAuthentication(pipelines);
+            triviaCore.Run();
+            //using (var dbC = new DatabaseContext())
+            //{
+            //    var questionSet = new QuestionSet() { QuestionText = "Which is the best IDE?", CorrectAnswer = "Visual Studion" };
+            //    var topic = new Topic() { Name = "IT" };
+            //    topic.Questions.Add(questionSet);
+            //    dbC.Topics.Add(topic);
+            //    dbC.SaveChanges();
+            //}
         }
 
         private void ConfigStatelessAuthentication(IPipelines pipelines)
@@ -42,15 +52,8 @@ namespace TrivialWikiAPI
             using (var databaseContext = new DatabaseContext())
             {
                 var user = databaseContext.Users
-                    .Include("Roles")
+                    .Include("Role")
                     .FirstOrDefault(u => u.SecurityToken == token);
-
-                if (user == null)
-                {
-                    return null;
-                }
-                var claims = user.Roles.Select(r => r.Name).ToList();
-                user.Claims = claims;
 
                 return user;
             }
