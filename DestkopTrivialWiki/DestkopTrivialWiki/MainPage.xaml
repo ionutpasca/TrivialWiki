@@ -1,0 +1,98 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DestkopTrivialWiki"
+      x:Class="DestkopTrivialWiki.MainPage"
+      mc:Ignorable="d" 
+      d:DesignHeight="600"
+      d:DesignWidth="1000"
+      ShowsNavigationUI="False"
+      Title="WikiTrivia"
+      Background="#FF323232" 
+      >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" 
+                Grid.Column="0"
+                Background="#FF323232"
+                Name="HomeBtn"
+                BorderBrush="#FF323232"
+             >
+            <Image Source="D:/Licenta/TrivialWiki/DestkopTrivialWiki/DestkopTrivialWiki/Images/wikipedia-icon2.png"
+               Margin="2" 
+               Height="100" 
+               Width="100"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center" 
+               MaxHeight="150" 
+               MaxWidth="150" 
+               MinWidth="50"
+               />
+        </Button>
+        <Button Content="Play" 
+                Grid.Column="1" 
+                Grid.Row="0" 
+                Name="PlayBtn"
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center" 
+                FontSize="36" 
+                Padding="40,5" 
+                Background="#FFCC1936" 
+                Foreground="White"
+                Click="PlayBtn_OnClick" 
+                BorderBrush="#FF080303">
+        </Button>
+
+        
+        <Border Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" 
+                Name="SideBar" Visibility="Collapsed"
+                BorderThickness="0,5,5,5" BorderBrush="#FF1F333C"
+                >
+            <StackPanel  
+                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    Background="DarkSlateGray">
+                <Button Content="Log in" 
+                        Name="LoginBtn" 
+                        BorderThickness="0"
+                        HorizontalAlignment="Stretch" 
+                        VerticalAlignment="Center"  
+                        Margin="0,0,20,10" 
+                        FontSize="18" 
+                        Padding="10,5" 
+                        Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                        Click="LoginBtn_OnClick">
+                </Button>
+                <Button Content="Manage Users" 
+                        Name="ManageBtn"
+                        HorizontalAlignment="Stretch" 
+                        VerticalAlignment="Top"  
+                        Margin="0,0,20,10" 
+                        FontSize="18" 
+                        Padding="10,5" 
+                        Click="ManageBtn_OnClick" 
+                        Visibility="Hidden">
+                </Button>
+            </StackPanel>
+        </Border>
+
+        <Button Grid.Row="1" Grid.Column="0" Name="SideBtn"
+                Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" 
+                Width="32" Height="32" FontSize="16" VerticalAlignment="Center" 
+                HorizontalAlignment="Left" Background="White" Click="SideBtn_OnClick"
+                >&gt;</Button>
+
+
+    </Grid>
+
+</Page>
