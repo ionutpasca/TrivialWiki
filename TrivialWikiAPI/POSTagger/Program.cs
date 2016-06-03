@@ -1,12 +1,4 @@
-﻿using edu.stanford.nlp.pipeline;
-using edu.stanford.nlp.tagger.maxent;
-using java.io;
-using java.util;
-using System;
-using System.IO;
-using WikipediaResourceFinder;
-using Console = System.Console;
-using StringReader = java.io.StringReader;
+﻿using java.util;
 
 namespace POSTagger
 {
@@ -15,44 +7,44 @@ namespace POSTagger
         private static ArrayList patternList;
         private static void Main(string[] args)
         {
-            var pattern = new Pattern(@"D:\Licenta\Files\Patterns.txt");
+            //var pattern = new Pattern(@"D:\Licenta\Files\Patterns.txt");
 
-            SetPatterns();
-            IResourceFinder res = new ResourceFinder();
-            //var wikiResult = res.GetWikipediaRawText("League_of_Legends");
-            const string text2 = "A rare black squirrel has become a regular visitor to a suburban garden";
-            var sentences = MaxentTagger.tokenizeText(new StringReader(text2)).toArray();
-            Map dict = new HashMap();
+            //SetPatterns();
+            //IResourceFinder res = new ResourceFinder();
+            ////var wikiResult = res.GetWikipediaRawText("League_of_Legends");
+            //const string text2 = "A rare black squirrel has become a regular visitor to a suburban garden";
+            //var sentences = MaxentTagger.tokenizeText(new StringReader(text2)).toArray();
+            //Map dict = new HashMap();
 
 
-            // Path to the folder with models extracted from `stanford - corenlp - 3.6.0 - models.jar`
-            const string jarRoot = @"..\..\..\..\paket-files\nlp.stanford.edu\stanford-corenlp-full-2015-12-09\models";
+            //// Path to the folder with models extracted from `stanford - corenlp - 3.6.0 - models.jar`
+            //const string jarRoot = @"..\..\..\..\paket-files\nlp.stanford.edu\stanford-corenlp-full-2015-12-09\models";
 
-            // Text for processing
-            const string text = "Kosgi Santosh sent an email to Stanford University. He didn't get a reply.";
+            //// Text for processing
+            //const string text = "Kosgi Santosh sent an email to Stanford University. He didn't get a reply.";
 
-            // Annotation pipeline configuration
-            var props = new Properties();
-            props.setProperty("annotators", "tokenize, ssplit, pos, lemma, ner, parse, dcoref");
-            props.setProperty("ner.useSUTime", "0");
+            //// Annotation pipeline configuration
+            //var props = new Properties();
+            //props.setProperty("annotators", "tokenize, ssplit, pos, lemma, ner, parse, dcoref");
+            //props.setProperty("ner.useSUTime", "0");
 
-            // We should change current directory, so StanfordCoreNLP could find all the model files automatically
-            var curDir = Environment.CurrentDirectory;
-            Directory.SetCurrentDirectory(jarRoot);
-            var pipeline = new StanfordCoreNLP(props);
-            Directory.SetCurrentDirectory(curDir);
+            //// We should change current directory, so StanfordCoreNLP could find all the model files automatically
+            //var curDir = Environment.CurrentDirectory;
+            //Directory.SetCurrentDirectory(jarRoot);
+            //var pipeline = new StanfordCoreNLP(props);
+            //Directory.SetCurrentDirectory(curDir);
 
-            // Annotation
-            var annotation = new Annotation(text);
-            pipeline.annotate(annotation);
+            //// Annotation
+            //var annotation = new Annotation(text);
+            //pipeline.annotate(annotation);
 
-            // Result - Pretty Print
-            using (var stream = new ByteArrayOutputStream())
-            {
-                pipeline.prettyPrint(annotation, new PrintWriter(stream));
-                Console.WriteLine(stream.toString());
-                stream.close();
-            }
+            //// Result - Pretty Print
+            //using (var stream = new ByteArrayOutputStream())
+            //{
+            //    pipeline.prettyPrint(annotation, new PrintWriter(stream));
+            //    Console.WriteLine(stream.toString());
+            //    stream.close();
+            //}
         }
 
         private static void SetPatterns()
