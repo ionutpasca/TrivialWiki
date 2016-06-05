@@ -24,7 +24,7 @@ namespace DestkopTrivialWiki
             client.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", token);
             list = new ObservableCollection<DataObject>();
             InitializeComponent();
-            //GetUsers(1, 0);
+            GetUsers(1, 0);
 
             AddBtn.IsEnabled = false;
             dataGrid1.CanUserResizeColumns = false;

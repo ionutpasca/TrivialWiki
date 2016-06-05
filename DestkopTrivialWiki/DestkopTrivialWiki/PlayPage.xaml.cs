@@ -9,39 +9,63 @@ namespace DestkopTrivialWiki
     public partial class PlayPage : Page
     {
         private bool firstOption;
-        public PlayPage()
+        private string token;
+        public PlayPage(string token)
         {
             InitializeComponent();
+            this.token = token;
         }
 
         private void HomeBtn_OnClick(object sender, RoutedEventArgs e)
         {
-            var main = new MainPage("");
+            var main = new MainPage(token);
             this.NavigationService?.Navigate(main);
         }
 
         private void InfiniteBtn_OnClick(object sender, RoutedEventArgs e)
         {
+            if (!PlayBtn.IsEnabled)
+                PlayBtn.IsEnabled = true;
             firstOption = true;
-            InfiniteTriviaDescription.Visibility = System.Windows.Visibility.Visible;
-            FriendsTriviaDescription.Visibility = System.Windows.Visibility.Collapsed;
+            InfiniteImage.Visibility = System.Windows.Visibility.Visible;
+            InfiniteDescription.Visibility = System.Windows.Visibility.Visible;
+            FriendsImage.Visibility = System.Windows.Visibility.Collapsed;
+            FriendsDescription.Visibility = System.Windows.Visibility.Collapsed;
         }
 
         private void FriendsBtn_OnClick(object sender, RoutedEventArgs e)
         {
-            InfiniteTriviaDescription.Visibility = System.Windows.Visibility.Collapsed;
-            FriendsTriviaDescription.Visibility = System.Windows.Visibility.Visible;
+            if (!PlayBtn.IsEnabled)
+                PlayBtn.IsEnabled = true;
+            firstOption = false;
+            InfiniteImage.Visibility = System.Windows.Visibility.Collapsed;
+            InfiniteDescription.Visibility = System.Windows.Visibility.Collapsed;
+            FriendsImage.Visibility = System.Windows.Visibility.Visible;
+            FriendsDescription.Visibility = System.Windows.Visibility.Visible;
         }
 
         private void StartFriendsBtn_OnClick(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Ba tu chiar esti prost?");
         }
 
         private void StartInfiniteBtn_OnClick(object sender, RoutedEventArgs e)
         {
-            var infinite = new GeneralGamePage();
+            var infinite = new GeneralGamePage(token);
             this.NavigationService?.Navigate(infinite);
+        }
+
+        private void PlayBtn_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (firstOption)
+            {
+                var infinite = new GeneralGamePage(token);
+                this.NavigationService?.Navigate(infinite);
+            }
+            else
+            {
+                var friends = new FriendsGame(token);
+                this.NavigationService?.Navigate(friends);
+            }
         }
     }
 }

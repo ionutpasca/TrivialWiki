@@ -1,50 +1,141 @@
-﻿using java.util;
+﻿using edu.stanford.nlp.pipeline;
+using java.io;
+using java.util;
+using Newtonsoft.Json.Linq;
+using System;
+using System.IO;
+using System.Linq;
+using WikipediaResourceFinder;
+using Console = System.Console;
 
 namespace POSTagger
 {
     internal class Program
     {
         private static ArrayList patternList;
+        private const string _jarRoot = @"D:\Licenta\stanford-corenlp-full-2015-12-09";
         private static void Main(string[] args)
         {
             //var pattern = new Pattern(@"D:\Licenta\Files\Patterns.txt");
 
             //SetPatterns();
-            //IResourceFinder res = new ResourceFinder();
-            ////var wikiResult = res.GetWikipediaRawText("League_of_Legends");
-            //const string text2 = "A rare black squirrel has become a regular visitor to a suburban garden";
-            //var sentences = MaxentTagger.tokenizeText(new StringReader(text2)).toArray();
-            //Map dict = new HashMap();
+            IResourceFinder res = new ResourceFinder();
+            //var text = res.GetWikipediaRawText("superman");
+            var text = "Bob likes books.";
+            //const string text = "Kosgi Santosh sent an email to Stanford University. He didn't get a reply. Superman is one of DC's most important superheroes.";
+            ProcessText(text);
+            ProcessJson();
+            Console.ReadLine();
+
+        }
+
+        public static void ProcessText(string text)
+        {
+
+            // Annotation pipeline configuration
+
+            var props = new Properties();
+            props.setProperty("annotators", "tokenize, ssplit, pos, lemma, ner, parse");
+            props.setProperty("ner.useSUTime", "0");
 
 
-            //// Path to the folder with models extracted from `stanford - corenlp - 3.6.0 - models.jar`
-            //const string jarRoot = @"..\..\..\..\paket-files\nlp.stanford.edu\stanford-corenlp-full-2015-12-09\models";
+            // We should change current directory, so StanfordCoreNLP could find all the model files automatically
+            var curDir = Environment.CurrentDirectory;
+            Directory.SetCurrentDirectory(_jarRoot);
+            var pipeline = new StanfordCoreNLP(props);
+            Directory.SetCurrentDirectory(curDir);
 
-            //// Text for processing
-            //const string text = "Kosgi Santosh sent an email to Stanford University. He didn't get a reply.";
+            // Annotation
+            var annotation = new Annotation(text);
+            pipeline.annotate(annotation);
+            // Result - Pretty Print
+            string conllOutput;
+            string jsonOutput;
+            using (var stream = new ByteArrayOutputStream())
+            {
+                pipeline.jsonPrint(annotation, new PrintWriter(stream));
+                jsonOutput = stream.toString();
+                stream.close();
+            }
 
-            //// Annotation pipeline configuration
-            //var props = new Properties();
-            //props.setProperty("annotators", "tokenize, ssplit, pos, lemma, ner, parse, dcoref");
-            //props.setProperty("ner.useSUTime", "0");
+            using (var file = new System.IO.StreamWriter(@"D:\Licenta\Files\OutputJson.txt"))
+            {
+                file.WriteLine(jsonOutput);
 
-            //// We should change current directory, so StanfordCoreNLP could find all the model files automatically
-            //var curDir = Environment.CurrentDirectory;
-            //Directory.SetCurrentDirectory(jarRoot);
-            //var pipeline = new StanfordCoreNLP(props);
-            //Directory.SetCurrentDirectory(curDir);
+            }
 
-            //// Annotation
-            //var annotation = new Annotation(text);
-            //pipeline.annotate(annotation);
+        }
 
-            //// Result - Pretty Print
-            //using (var stream = new ByteArrayOutputStream())
-            //{
-            //    pipeline.prettyPrint(annotation, new PrintWriter(stream));
-            //    Console.WriteLine(stream.toString());
-            //    stream.close();
-            //}
+        private static void ProcessJson()
+        {
+            int nrOfQuestions = 0, nrOfSentences = 0;
+            var jsonOutput = System.IO.File.ReadAllText(@"D:\Licenta\Files\OutputJson.txt");
+            var subjects = "";
+            var roots = "";
+
+            var joText = JObject.Parse(jsonOutput);
+            var joSentences = (JArray)joText["sentences"];
+            var file = new System.IO.StreamWriter(@"D:\Licenta\Files\OutputTest.txt");
+
+            foreach (JObject sentence in joSentences)
+            {
+                nrOfSentences++;
+                var tokens = sentence.GetValue("tokens");
+                var index = sentence.GetValue("index");
+                Console.WriteLine(index);
+
+                var bd = sentence.GetValue("basic-dependencies");
+                string answer = "";
+
+                foreach (JObject word in bd)
+                {
+                    JToken dep = word.GetValue("dep");
+                    var value = dep.ToString();
+                    if (value.Equals("ROOT"))
+                        roots += word.GetValue("dependentGloss") + ",";
+                    if (value.Equals("nsubj"))
+                    {
+                        subjects += word.GetValue("dependentGloss") + ",";
+                        answer = word.GetValue("dependentGloss").ToString();
+                    }
+
+                }
+                if (IsNotUseful(answer))
+                    continue;
+                string originalSentence = "";
+                foreach (JObject word in tokens)
+                {
+                    var txt = word.GetValue("word").ToString();
+                    if (txt.Equals(answer))
+                    {
+                        originalSentence += "____________ ";
+                        continue;
+                    }
+                    originalSentence += txt + word.GetValue("after");
+                }
+                originalSentence = nrOfQuestions + ":" + originalSentence;
+                file.WriteLine(originalSentence + "Answer:" + answer);
+                nrOfQuestions++;
+                //Console.WriteLine(originalSentence);
+
+            }
+            //Console.WriteLine(roots);
+            //Console.WriteLine(subjects);
+            Console.WriteLine("Sentences:" + nrOfSentences);
+            Console.WriteLine("Questions:" + nrOfQuestions);
+
+        }
+
+        private static bool IsNotUseful(string answer)
+        {
+            string pronouns = "I, me, he, she, herself, you, it, that, they, each, few, many, who, whoever, whose, someone, everybody, Me, He, She, Herself, You, It, That, They, Each, Few, Many, Who, Whoever, Whose, Someone, Everybody";
+            bool toreturn = pronouns.Contains(answer) || answer.Equals("");
+            return toreturn;
+        }
+        private static bool IsSubject(string subjects, string word)
+        {
+            var list = subjects.Split(',');
+            return list.Any(elem => elem.Equals(word));
         }
 
         private static void SetPatterns()
