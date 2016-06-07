@@ -2,27 +2,48 @@
     'use strict';
     angular.module('triviaModule')
     .controller('triviaController', ['$scope', '$rootScope',
-        'chatFactory', 'triviaFactory', 'chatService', 'persistService', function ($scope, $rootScope, chatFactory, triviaFactory, chatService, persistService) {
+        'chatFactory', 'triviaFactory', 'triviaService', 'persistService', function ($scope, $rootScope, chatFactory, triviaFactory, triviaService, persistService) {
         $scope.messages = [];
         $scope.triviaQuestions = [];
         $scope.text = "";
         $scope.skip = 0;
+        $scope.responseToSend = '';
 
-        function init() {
-            chatService.getMessages($scope.skip)
+        function initializeTriviaChat() {
+            $scope.messagesAreLoading = true;
+
+            triviaService.getMessages($scope.skip)
             .then(function (data) {
                 _.each(data, function (message) {
                     $scope.messages.push(message);
                 });
+                $scope.messagesAreLoading = false;
             });
         }
 
-        triviaFactory.on('addMessage', function (q) {
-            var question = {
-                sender: 'TriviaBot',
-                questionText: q.QuestionText
-            };
-            $scope.triviaQuestions.unshift(question);
+        function intializeTriviaHistory() {
+            $scope.triviaHistoryIsLoading = true;
+
+            triviaService.getTriviaHistory()
+            .then(function (data) {
+                _.each(data, function (message) {
+                    var historyQuestion = {
+                        MessageText: message.messageText,
+                        Sender: message.sender
+                    };
+                    $scope.triviaQuestions.unshift(historyQuestion);
+                });
+                $scope.triviaHistoryIsLoading = false;
+            });
+        }
+
+        function init() {
+            initializeTriviaChat();
+            intializeTriviaHistory();
+        }
+
+        triviaFactory.on('addMessage', function (question) {
+            $scope.triviaQuestions.push(question);
         });
 
         chatFactory.on('addMessage', function (msg) {
@@ -34,11 +55,9 @@
         });
 
         chatFactory.on('onConnected', function (res) {
-            debugger;
         });
 
         chatFactory.on('someoneConnected', function (res) {
-            debugger;
         });
 
         triviaFactory.on('addResponse', function(msg) {
@@ -46,24 +65,36 @@
             //    userName: msg.UserName,
             //    message: msg.Message
             //};
-            debugger;
         });
 
         $scope.getCurrentUserName = function() {
             return persistService.readData('userName');
         };
 
+        $scope.sendAnswer = function() {
+            if ($scope.responseToSend === '') {
+                return;
+            }
+            triviaService.sendAnswer($scope.responseToSend, $scope.getCurrentUserName())
+            .then(function() {
+                $scope.responseToSend = '';
+            });
+        };
+
         $scope.sendMessage = function () {
             if ($scope.messageToSend === undefined || $scope.messageToSend === '') {
                 return;
             }
-            var UserName = $scope.getCurrentUserName();
-            var Message = $scope.messageToSend;
-            chatService.sendMessage({ Message, UserName})
+            
+            triviaService.sendMessage($scope.messageToSend, $scope.getCurrentUserName())
             .then(function () {
-                $scope.messageToSend = null;
+                $scope.messageToSend = '';
             });
         };
+
+        $scope.senderIsTriviaBot = function(question) {
+            return question.Sender === 'TriviaBot';
+        }
 
         init();
     }]);

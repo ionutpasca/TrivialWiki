@@ -5,18 +5,16 @@ using Nancy.Bootstrapper;
 using Nancy.Security;
 using Nancy.TinyIoc;
 using System.Linq;
-using WikiTrivia.TriviaCore;
 
 namespace TrivialWikiAPI
 {
     public class Bootstrapper : DefaultNancyBootstrapper
     {
-        private readonly TriviaCore triviaCore = new TriviaCore();
         protected override void ApplicationStartup(TinyIoCContainer container, IPipelines pipelines)
         {
             base.ApplicationStartup(container, pipelines);
             ConfigStatelessAuthentication(pipelines);
-            triviaCore.Run();
+
             //using (var dbC = new DatabaseContext())
             //{
             //    var questionSet = new QuestionSet() { QuestionText = "Which is the best IDE?", CorrectAnswer = "Visual Studion" };

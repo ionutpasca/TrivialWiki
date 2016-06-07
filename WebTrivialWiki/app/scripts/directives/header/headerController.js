@@ -46,5 +46,13 @@
         $scope.openTrivia = function() {
             $location.url('/trivia');
         };
+
+        $scope.openLeaderboards = function() {
+            $location.url('/leaderboards');
+        };
+
+        $scope.goToHomePage = function() {
+            $location.url('/');
+        };
     }]);
 }).call(this);

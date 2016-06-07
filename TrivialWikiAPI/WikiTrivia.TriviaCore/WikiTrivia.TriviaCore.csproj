@@ -70,8 +70,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Hubs\TriviaHub.cs" />
-    <Compile Include="Models\TriviaQuestionDto.cs" />
-    <Compile Include="QuestionsManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TriviaCore.cs" />
   </ItemGroup>
@@ -80,10 +78,17 @@
       <Project>{E0A4D38B-CADC-49B1-BB3D-7990D8A97552}</Project>
       <Name>DatabaseManager</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WikiTrivia.Utilities\WikiTrivia.Utilities.csproj">
+      <Project>{8B8B3F72-08EB-40B6-9C15-3D6D9BEE81F5}</Project>
+      <Name>WikiTrivia.Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

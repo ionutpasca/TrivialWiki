@@ -144,6 +144,7 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Chat\ChatHub.cs" />
     <Compile Include="Chat\ChatModule.cs" />
+    <Compile Include="Leaderboard\LeaderboardModule.cs" />
     <Compile Include="Migrations\201603021845246_InitialCreate.cs" />
     <Compile Include="Migrations\201603021845246_InitialCreate.Designer.cs">
       <DependentUpon>201603021845246_InitialCreate.cs</DependentUpon>

@@ -25,7 +25,7 @@ namespace DatabaseManager.Trivia
             }
         }
 
-        public async Task AddTriviaMessageToDatabase(TriviaMessageDto response)
+        public void AddTriviaMessageToDatabase(TriviaMessageDto response)
         {
             using (var databaseContext = new DatabaseContext())
             {
@@ -36,18 +36,40 @@ namespace DatabaseManager.Trivia
                     Timestamp = DateTime.Now
                 };
                 databaseContext.TriviaMessages.Add(triviaMessage);
-                await CleanDatabase(databaseContext);
-                await databaseContext.SaveChangesAsync();
+                CleanDatabase(databaseContext);
+                databaseContext.SaveChanges();
             }
         }
 
-        private static async Task CleanDatabase(DatabaseContext databaseContext)
+        private static void CleanDatabase(DatabaseContext databaseContext)
         {
-            var messagesCount = await databaseContext.TriviaMessages.CountAsync();
+            var messagesCount = databaseContext.TriviaMessages.Count();
             if (messagesCount > 50)
             {
-                var messageToDelete = await databaseContext.TriviaMessages.FirstAsync();
+                var messageToDelete = databaseContext.TriviaMessages.First();
                 databaseContext.TriviaMessages.Remove(messageToDelete);
+            }
+        }
+
+        public TriviaQuestionDto GetNewQuestion()
+        {
+            using (var databaseContext = new DatabaseContext())
+            {
+                var rand = new Random();
+                var noOfQuestions = databaseContext.QuestionSets.Count();
+                var questionsToSkip = rand.Next(noOfQuestions);
+
+                var x = databaseContext.QuestionSets
+                    .OrderBy(u => u.Id)
+                    .Skip(questionsToSkip)
+                    .Take(1)
+                    .Select(q => new TriviaQuestionDto()
+                    {
+                        QuestionText = q.QuestionText,
+                        Answer = q.CorrectAnswer,
+                        Timestamp = DateTime.Now
+                    }).First();
+                return x;
             }
         }
     }

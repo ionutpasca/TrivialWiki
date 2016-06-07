@@ -20,6 +20,7 @@ namespace TrivialWikiAPI.UserManagement
             Get["/usernameExists/{userName}", true] = async (param, p) => await GivenUsernameExists(param.userName);
             Get["/accountCreationDate/{userName}"] = param => GetAccountCreationDate(param.userName);
             Get["/userPoints/{userName}", true] = async (param, p) => await GetUserPoints(param.userName);
+            
 
             Post["/addNewUser", true] = async (param, p) => await AddNewUserToDatabase();
             Post["/updateUser", true] = async (param, p) =>
@@ -33,6 +34,15 @@ namespace TrivialWikiAPI.UserManagement
             Post["/changePassword/{userName}/{oldPass}/{newPass}", true] = async (param, p) => await ChangeUserPassword(param.userName, param.oldPass, param.newPass);
 
             Put["/changeUserRole/{userName}/{roleId}", true] = async (param, p) => await ChangeUserRole(param.userName, param.roleId);
+        }
+
+        
+
+        private async Task<Response> GetUsersBatch(int pageNumber)
+        {
+            string queryString = this.Request.Query["queryString"];
+            var users = await userManager.GetUsersBatch(queryString, pageNumber);
+            return this.Response.AsJson(users);
         }
 
         private async Task<Response> GetUserPoints(string userName)
@@ -59,13 +69,6 @@ namespace TrivialWikiAPI.UserManagement
             }
             var result = userManager.GetAccountCreationDate(userName);
             return this.Response.AsJson(result);
-        }
-
-        private async Task<Response> GetUsersBatch(int pageNumber)
-        {
-            string queryString = this.Request.Query["queryString"];
-            var users = await userManager.GetUsersBatch(queryString, pageNumber);
-            return this.Response.AsJson(users);
         }
 
         private async Task<Response> GivenUsernameExists(string username)

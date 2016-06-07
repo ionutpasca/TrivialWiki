@@ -3,6 +3,11 @@
         <div>
             <div class="trivia-chat">
                 <div class="chat-messages" scroll-glue>
+                    <div class="chat-message">
+                        <div class="small-margin-top" title="Loading.." ng-show="messagesAreLoading">
+                            <div class="loader"><div class="loader-inner ball-clip-rotate"><div class="no-margin-top"></div></div></div>
+                        </div>
+                    </div>
                     <div class="chat-message" ng-repeat="message in messages| reverse">
                         <div class="media nice-border-bottom">
                             <div class="media-left">
@@ -35,9 +40,25 @@
     </div>
 </div>
 
-<div class="nonStopTrivia" scroll-glue>
-    <div ng-repeat="question in triviaQuestions">
-        <span style="font-weight: 600; font-size: 17px;">{{question.sender}}:</span>
-        <span style="font-weight: 500; font-size: 16px;">{{question.questionText}}</span>
+<div class="nonStopTrivia" style="font-family: Montserrat;">
+    <div class="triviaQuestions" style="" scroll-glue>
+        <div ng-repeat="question in triviaQuestions" class="small-margin-left">
+            <span style="font-weight: 500; font-size: 18px;" ng-class="{'red-color': senderIsTriviaBot(question) }">{{question.Sender}}:</span>
+            <span style="font-weight: 300; font-size: 16px;">{{question.MessageText}}</span>
+        </div>
+    </div>
+    <div style="position: absolute; bottom: 0; border-top: 1px solid #ccc; height:12%">
+        <div class="form-group sent-message-input">
+            <div class="input-group input-group-sm">
+                <div class="icon-addon addon-md">
+                    <input type="text" placeholder="Answer" ng-model="responseToSend" class="form-control chat-input">
+                </div>
+                <span class="input-group-btn send-message-container">
+                    <button class="btn btn-default" type="button" ng-click="sendAnswer()" title="Answer" style="margin-top: 4px; margin-left: 5px;">
+                        Send
+                    </button>
+                </span>
+            </div>
+        </div>
     </div>
 </div>
