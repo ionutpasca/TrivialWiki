@@ -8,7 +8,7 @@ namespace WikiTrivia.TriviaCore.Hubs
 {
     public static class TriviaUserHandler
     {
-        public static HashSet<string> ConnectedIds = new HashSet<string>();
+        public static HashSet<string> connectedUsers = new HashSet<string>();
     }
 
     [HubName("triviaHub")]
@@ -27,11 +27,17 @@ namespace WikiTrivia.TriviaCore.Hubs
 
         public override Task OnConnected()
         {
-            if (TriviaUserHandler.ConnectedIds.Contains(Context.ConnectionId))
+            var token = Context.Headers["User"];
+            if (token == null)
             {
                 return Task.FromResult(0);
             }
-            TriviaUserHandler.ConnectedIds.Add(Context.ConnectionId);
+
+            if (TriviaUserHandler.connectedUsers.Contains(token))
+            {
+                return Task.FromResult(0);
+            }
+            TriviaUserHandler.connectedUsers.Add(token);
             if (CurrentTriviaQuestion.currentTriviaQuestion == null)
             {
                 triviaCore.BroadcastQuestion();
@@ -41,7 +47,12 @@ namespace WikiTrivia.TriviaCore.Hubs
 
         public override Task OnDisconnected(bool stopCalled)
         {
-            TriviaUserHandler.ConnectedIds.Remove(Context.ConnectionId);
+            var token = Context.Headers["User"];
+            if (token == null)
+            {
+                return Task.FromResult(0);
+            }
+            TriviaUserHandler.connectedUsers.Remove(token);
             return base.OnDisconnected(stopCalled);
         }
     }

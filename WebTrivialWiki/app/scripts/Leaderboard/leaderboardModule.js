@@ -9,7 +9,7 @@
                 templateUrl: 'scripts/Leaderboard/leaderboard.html',
                 controller: 'leaderboardController'
             });
-    });;
+    });
 
 
 }).call(this, this.angular);

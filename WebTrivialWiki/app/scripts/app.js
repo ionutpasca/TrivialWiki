@@ -3,7 +3,7 @@
 
     App.module = angular.module('webTrivialWikiApp',
         ['adminModule', 'triviaModule', 'ngAnimate', 'ngCookies', 'angularFileUpload','leaderboardModule',
-            'angular-img-cropper', 'ngResource', 'ngRoute', 'ngSanitize', 'ngTouch', 'ui.bootstrap',
+            'angular-img-cropper', 'ngResource', 'ngRoute', 'ngSanitize', 'ui.bootstrap',
             'angular-growl'])
         .config(function ($routeProvider) {
             $routeProvider
@@ -25,7 +25,9 @@
 
     App.module.run(['$http', 'persistService', function ($http, persistService) {
         var authToken = persistService.readData('securityToken');
-        $http.defaults.headers.common.Authorization = authToken;
+        var user = persistService.readData('userName');
+        $http.defaults.headers.common.Authorization = authToken || '';
+        $.signalR.ajaxDefaults.headers = { User: user || '' };
     }]);
 
     App.module.factory('responseErrorInterceptor', ['$q', '$location', function ($q, $location) {

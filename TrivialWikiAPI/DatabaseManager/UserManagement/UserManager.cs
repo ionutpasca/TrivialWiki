@@ -150,6 +150,7 @@ namespace DatabaseManager.UserManagement
             var usersWithRankDepreciated = await databaseContext.Users
                 .Where(u =>
                     u.Points >= user.Points
+                    && u.Rank < user.Rank
                     && u.Points < (user.Points + points)
                     && u.UserName != user.UserName
                 ).ToListAsync();

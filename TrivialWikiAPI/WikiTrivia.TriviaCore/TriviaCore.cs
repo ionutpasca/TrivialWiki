@@ -8,7 +8,6 @@ namespace WikiTrivia.TriviaCore
     public static class CurrentTriviaQuestion
     {
         public static TriviaQuestionDto currentTriviaQuestion { get; set; }
-        public static int numberOfWrongAnswers { get; set; }
         public static int hintCommandsCount { get; set; }
     }
 
@@ -18,7 +17,7 @@ namespace WikiTrivia.TriviaCore
 
         public void BroadcastQuestion()
         {
-            if (TriviaUserHandler.ConnectedIds.Count == 0)
+            if (TriviaUserHandler.connectedUsers.Count == 0)
             {
                 return;
             }
@@ -32,6 +31,13 @@ namespace WikiTrivia.TriviaCore
             var context = GlobalHost.ConnectionManager.GetHubContext<TriviaHub>();
             context.Clients.All.AddMessage(questionToSend);
         }
+
+        public void BroadcastMessage(TriviaMessageDto message)
+        {
+            var context = GlobalHost.ConnectionManager.GetHubContext<TriviaHub>();
+            context.Clients.All.AddMessage(message);
+        }
+
         public void BroadcastHint(int hintNumber)
         {
             var hint = GetHintByNumber(hintNumber);
@@ -49,7 +55,7 @@ namespace WikiTrivia.TriviaCore
         private static void InitializeCurrentTriviaQuestion()
         {
             CurrentTriviaQuestion.currentTriviaQuestion = triviaManager.GetNewQuestion();
-            CurrentTriviaQuestion.numberOfWrongAnswers = 0;
+            CurrentTriviaQuestion.hintCommandsCount = 0;
             InitializeHintsForCurrentQuestion();
         }
 
