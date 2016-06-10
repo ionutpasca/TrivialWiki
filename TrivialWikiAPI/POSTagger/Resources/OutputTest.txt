@@ -1,0 +1,63 @@
+0:Pit ____________ is the common name for a type of dog. Answer:bull
+1:Formal ____________ often considered in North America to be of the pit bull type include the American Pit Bull Terrier, American Staffordshire Terrier, and Staffordshire Bull Terrier. Answer:breeds
+2:After the use of dogs in blood sports was banned, such dogs were used as catch dogs in the United States for semi-wild cattle and hogs, to hunt and drive livestock, and as family companions, although some ____________ still bred and used them for illegal dog fighting. Answer:owners
+3:This ____________ continues to this day, but is illegal in many nations.
+Answer:practice
+4:These blood sports were officially eliminated in 1835 as ____________ began to introduce animal welfare laws. Answer:Britain
+5:Since dogfights were cheaper to organize and far easier to conceal from the law than bull or bear baits, blood sport ____________ turned to pitting their dogs against each other instead. Answer:proponents
+6:For decades afterwards, ____________ fighting clandestinely took place in small areas of Britain and America. Answer:dog
+7:Pit ____________ successfully fill the role of companion dogs, police dogs, and therapy dogs. Answer:bulls
+8:Pit ____________ also constitute the majority of dogs used for illegal dog fighting in America. Answer:bulls
+9:In addition, law enforcement organisations report these dogs are used for other nefarious ____________ , such as guarding illegal narcotics operations, use against police, and as attack dogs.
+Answer:purposes
+10:In an effort to counter the fighting reputation of pit bull-type dogs, in 1996 the San Francisco ____________ for the Prevention of Cruelty to Animals renamed pit bull terriers to ``St. Francis Terriers'', so that people might be more likely to adopt them. Answer:Society
+11:60 temperament-screened dogs were adopted until the program was halted, after ____________ of the newly adopted pit bulls killed cats. Answer:several
+12:The New York City ____________ for Animal Care and Control tried a similar approach in 2004, relabeling their pit bulls as ``New Yorkies'', but dropped the idea in the face of overwhelming public opposition.
+Answer:Center
+13:The ____________ of these studies, breed identification and relevance  issues, and variable circumstances have given rise to intense controversy. Answer:interpretation
+14:In a 2014 literature review of dog bite ____________ , the American Veterinary Medical Association states that breed is a poor sole predictor of dog bites and that controlled ____________ show no increased risk in pit bulls, and has previously noted fundamental problems with tracking breed in dog bite related fatalities. Answer:studies
+15:In a 2013 study of 256 fatalities in the United States from 2000--2009, the AVMA determined that valid breed ____________ was possible for only 17.6% of cases. Answer:determination
+16:The Center for Disease Control and Prevention notes that studies on dog bite related fatalities which collect information by surveying news reports employ a methodology subject to potential errors, as some fatal attacks may not have been reported, a ____________ might not find all relevant news reports, and the dog breed might be misidentified.
+Answer:study
+17:Contrary to popular myth, pit ____________ do not have ``locking jaws''. Answer:bulls
+18:Pit bull-type dogs, like other ____________ , hunting and bull-baiting breeds, can exhibit a bite, hold, and shake behavior and at times refuse to release. Answer:terriers
+19:Widely reported pit bull ____________ in popular media have resulted in the enactment of breed-specific legislation in several jurisdictions. Answer:attacks
+20:In some ____________ breed specific bans have been reversed or prohibited by state legislation. Answer:cases
+21:These ____________ have also led to increased premiums for liability insurance.
+Answer:perceptions
+22:Such ____________ include Ontario, Miami, Denver, and Malden, Massachusetts, However a few ____________ , such as Singapore and Franklin County, Ohio, also classify the modern American Bulldog as a ``pit bull-type dog''. Answer:jurisdictions
+23:In the United Kingdom, a pit ____________ is an American Pit Bull Terrier.
+Answer:bull
+24:Courts in the United States and Canada have ruled that expert ____________ , when using published breed standards, is sufficient for the enforcement of breed-specific legislation.
+Answer:identification
+25:Approximately 550 jurisdictions have enacted breed-specific legislation  in response to a number of well-publicized incidents involving pit bull-type dogs, and some government ____________ such as the U.S. Army and Marine Corps have taken administrative action as well. Answer:organizations
+26:These ____________ range from outright bans on the possession of pit bull-type dogs, to restrictions and conditions on pit bull ownership. Answer:actions
+27:They often establish a legal presumption that a pit bull-type ____________ is prima facie a legally ``dangerous'' or ``vicious'' ____________ . Answer:dog
+28:In response, 16 states in the U.S. prohibited or restricted the ability of municipal governments within those states to enact BSL, though these restrictions do not affect military ____________ located within the states.
+Answer:installations
+29:It is now generally settled in caselaw that ____________ in the U.S. and Canada have the right to enact breed-specific legislation. Answer:jurisdictions
+30:Despite these holdings by the courts, there is some public skepticism over whether the ____________ are effective. Answer:laws
+31:One point of view is that pit bulls are a public safety issue that merits ____________ such as banning ownership, mandatory spay/neuter for all pit bulls, mandatory microchip implants and liability insurance, or prohibiting people convicted of a felony from owning pit bulls. Answer:actions
+32:Another point of view is that comprehensive ``dog bite'' ____________ , coupled with better consumer education and legally mandating responsible pet-keeping practices, is a better solution to the problem of dangerous pit bulls than BSL.
+Answer:legislation
+33:A third point of view is that breed-specific ____________ should not ban breeds entirely, but should instead strictly regulate the conditions under which specific breeds could be owned, for example, forbidding certain classes of individuals from owning them, specifying public areas from which they would be prohibited, and establishing conditions, such as requiring a dog to wear a muzzle, for taking specific breeds of dogs into public places. Answer:legislation
+34:Finally, some ____________ , such as in Australia, have forbidden the import of specific breeds, and are requiring the spay/neuter of all existing dogs of these breeds in an attempt to eliminate the breed's population slowly through natural attrition.
+Answer:governments
+35:The ASPCA said that along with putative over-reporting, false ____________ was a major contributor to public perceptions about the breed.
+Answer:reporting
+36:In England and Wales the Dangerous Dogs ____________ prohibits the ownership of American Pit Bull Terriers, along with three other breeds. Answer:Act
+37:The ____________ also bans the breeding, sale and exchange of these dogs. Answer:Act
+38:Dog owners in the United States can be held legally liable for ____________ inflicted or caused by their dogs. Answer:injuries
+39:In general, owners are considered liable if they were unreasonably careless in handling or restraining the dog, or if they knew beforehand that the dog had a tendency to cause injury ; however, dog owners are automatically considered liable if local laws hold an ____________ strictly liable for all damage caused by their dog, regardless of carelessness or foreknowledge of a dog's tendencies. Answer:owner
+40:Owners of rental properties may also be held liable if they knew an aggressive dog was living on their property and they did nothing to ensure the safety of other tenants at the property; as a result, many rental properties forbid pit bull-type dogs and any other breeds if the rental property's ____________ will not cover damage inflicted by that type of dog. Answer:insurance
+41:The dog breeds most often targeted by insurance companies include pit bull-type ____________ , Rottweilers, German Shepherd Dogs, Doberman Pinschers, Akitas , and Chows.
+Answer:dogs
+42:A spokeswoman for Farmers said those ____________ account for more than a quarter of the agency's dog bite claims.''
+Answer:breeds
+43:The following ____________ has a sampling of air carrier embargoes on dogs.
+Answer:table
+44:United ____________ formerly embargoed American Pit Bull Terriers for safety reasons. Answer:Airlines
+45:Pit bull breeds have become famous for their roles as ____________ , police dogs, search and rescue dogs, actors, television personalities, seeing eye dogs, and celebrity pets. Answer:soldiers
+46:____________ , the Bull Terrier mix Nipper and the American Staffordshire Terrier, Pete the Pup from the Little Rascals are the most well known. Answer:Historically
+47:____________ , Cesar Millan's right-hand dog was famous for his mellow temperament and his ability to interact calmly with ill-mannered dogs.
+Answer:Daddy

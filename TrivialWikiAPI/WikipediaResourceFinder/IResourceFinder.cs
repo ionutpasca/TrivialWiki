@@ -1,10 +1,11 @@
-﻿using WikipediaResourceFinder.Models;
+﻿using System.Threading.Tasks;
+using WikipediaResourceFinder.Models;
 
 namespace WikipediaResourceFinder
 {
     public interface IResourceFinder
     {
-        string GetWikipediaRawText(string topic);
-        void SaveRawTextToFile(WikipediaResponse response);
+        Task GetWikipediaRawText(string topic, string filePath);
+        Task SaveRawTextToFile(WikipediaResponse response, string filePath);
     }
 }

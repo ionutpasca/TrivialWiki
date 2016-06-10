@@ -1,28 +1,34 @@
-﻿using WikipediaResourceFinder;
+﻿using System.Configuration;
+using System.IO;
+using System.Threading.Tasks;
+using WikipediaResourceFinder;
 using Console = System.Console;
 
 namespace POSTagger
 {
     internal class Program
     {
+        private static readonly string wikipediaRawResultPath = ConfigurationManager.AppSettings["Tagger.WikipediaResult"];
+        private static readonly string cleanTextPath = ConfigurationManager.AppSettings["Tagger.CleanText"];
 
-        private static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            //var pattern = new Pattern(@"D:\Licenta\Files\Patterns.txt");
+            MainAsync().Wait();
+        }
 
-            //SetPatterns();
+        private static async Task MainAsync()
+        {
             IResourceFinder res = new ResourceFinder();
-            var text = res.GetWikipediaRawText("Pit_bull");
+            await res.GetWikipediaRawText("Pit_bull", wikipediaRawResultPath);
+            var text = File.ReadAllText(wikipediaRawResultPath);
+
             text = StringUtils.CleanText(text);
 
-            using (var file = new System.IO.StreamWriter(@"D:\Licenta\Files\CleanText.txt"))
+            using (var file = new StreamWriter(cleanTextPath))
             {
-                file.WriteLine(text);
-
+                await file.WriteLineAsync(text);
             }
             Console.WriteLine(text.Length);
-            //var text = "Bob likes books.";
-            //const string text = "Kosgi Santosh sent an email to Stanford University. He didn't get a reply. Superman is one of DC's most important superheroes.";
             Console.WriteLine("Process new data?");
             var answer = Console.ReadLine();
             var tpr = new TextProcessing();
@@ -30,12 +36,6 @@ namespace POSTagger
                 tpr.ProcessText(text);
             TextProcessing.ProcessJson();
             Console.ReadLine();
-
         }
-
-
-
-
-
     }
 }

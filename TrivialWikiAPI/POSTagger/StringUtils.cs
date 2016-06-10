@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Configuration;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -7,6 +8,10 @@ namespace POSTagger
 {
     public static class StringUtils
     {
+        private static readonly string referencesPath = ConfigurationManager.AppSettings["Tagger.References"];
+        private static readonly string newParsePath = ConfigurationManager.AppSettings["Tagger.newParsePath"];
+        private static readonly string listParsePath = ConfigurationManager.AppSettings["Tagger.ListParse"];
+
         public static string CleanText(string text)
         {
             var result = text;
@@ -37,7 +42,7 @@ namespace POSTagger
 
             } while (res1.Index != 0);
 
-            using (var file = new System.IO.StreamWriter(@"D:\Licenta\Files\References.txt"))
+            using (var file = new System.IO.StreamWriter(referencesPath))
             {
                 file.WriteLine(references);
             }
@@ -65,7 +70,7 @@ namespace POSTagger
                 result += spaces;
                 newline = parseSentence.IndexOf("\r\n", StringComparison.Ordinal);
             }
-            using (var file = new System.IO.StreamWriter(@"D:\Licenta\Files\NewParse.txt"))
+            using (var file = new System.IO.StreamWriter(newParsePath))
             {
                 file.WriteLine(result);
             }
@@ -93,7 +98,7 @@ namespace POSTagger
                 var lastItem = spaces + parseSentence;
                 result.Add(lastItem);
             }
-            using (var file = new System.IO.StreamWriter(@"D:\Licenta\Files\ListParse.txt"))
+            using (var file = new System.IO.StreamWriter(listParsePath))
             {
                 foreach (var variable in result)
                 {

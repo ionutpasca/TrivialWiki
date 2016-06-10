@@ -3,6 +3,7 @@ using java.io;
 using java.util;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using Console = System.Console;
@@ -11,8 +12,13 @@ namespace POSTagger
 {
     public class TextProcessing
     {
+        private static readonly string stanfordJarRoot = ConfigurationManager.AppSettings["Stanford.JarRoot"];
+        private static readonly string outputJsonPath = ConfigurationManager.AppSettings["Tagger.OutputJson"];
+        private static readonly string outputTestPath = ConfigurationManager.AppSettings["Tagger.outputTest"];
+        private static readonly string outputTestJsonPath = ConfigurationManager.AppSettings["Tagger.OutputTestJson"];
+
         private static ArrayList _patternList;
-        private const string JarRoot = @"D:\Licenta\stanford-corenlp-full-2015-12-09";
+        //private const string JarRoot = @"D:\Licenta\stanford-corenlp-full-2015-12-09";
 
         public TextProcessing()
         {
@@ -20,17 +26,13 @@ namespace POSTagger
         }
         public void ProcessText(string text)
         {
-
-            // Annotation pipeline configuration
-
             var props = new Properties();
             props.setProperty("annotators", "tokenize, ssplit, pos, lemma, ner, parse");
             props.setProperty("ner.useSUTime", "0");
 
-
             // We should change current directory, so StanfordCoreNLP could find all the model files automatically
             var curDir = Environment.CurrentDirectory;
-            Directory.SetCurrentDirectory(JarRoot);
+            Directory.SetCurrentDirectory(stanfordJarRoot);
             var pipeline = new StanfordCoreNLP(props);
             Directory.SetCurrentDirectory(curDir);
             Console.WriteLine("Starting to parse.");
@@ -40,7 +42,6 @@ namespace POSTagger
 
             // Result - Pretty Print
             Console.WriteLine("Parsing complete.. writing to file.");
-            string conllOutput;
             string jsonOutput;
             using (var stream = new ByteArrayOutputStream())
             {
@@ -49,7 +50,7 @@ namespace POSTagger
                 stream.close();
             }
 
-            using (var file = new System.IO.StreamWriter(@"D:\Licenta\Files\OutputJson.txt"))
+            using (var file = new System.IO.StreamWriter(outputJsonPath))
             {
                 file.WriteLine(jsonOutput);
 
@@ -60,19 +61,20 @@ namespace POSTagger
         public static void ProcessJson()
         {
             int nrOfQuestions = 0, nrOfSentences = 0;
-            var jsonOutput = System.IO.File.ReadAllText(@"D:\Licenta\Files\OutputJson.txt");
+            var jsonOutput = System.IO.File.ReadAllText(outputJsonPath);
             var subjects = "";
             var roots = "";
 
             var joText = JObject.Parse(jsonOutput);
             var joSentences = (JArray)joText["sentences"];
-            var file = new System.IO.StreamWriter(@"D:\Licenta\Files\OutputTest.txt");
-            var fileJson = new System.IO.StreamWriter(@"D:\Licenta\Files\OutputTestJson.txt");
+            var file = new StreamWriter(outputTestPath);
+            var fileJson = new StreamWriter(outputTestJsonPath);
             var jsonArray = new JArray();
             var sentenceForest = new ArrayList();
 
-            foreach (JObject sentence in joSentences)
+            foreach (var jToken in joSentences)
             {
+                var sentence = (JObject)jToken;
                 nrOfSentences++;
                 var tokens = sentence.GetValue("tokens");
                 var index = sentence.GetValue("index");
