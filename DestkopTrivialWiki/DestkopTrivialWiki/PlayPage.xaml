@@ -7,8 +7,8 @@
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="1000"
       Title="PlayPage"
+      xmlns:customText="clr-namespace:DestkopTrivialWiki"
       Background="#FF323232">
-
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
@@ -48,21 +48,24 @@
                 Padding="40,5" 
                 Background="#FFCC1936" 
                 Foreground="White"
-                BorderBrush="#FF080303">
+                BorderBrush="#FF080303"
+                IsEnabled="False"
+                Click="PlayBtn_OnClick">
         </Button>
-        <Border Grid.Row="1" Grid.Column="1"
-                BorderBrush="Aqua"
+        <Border Grid.Row="1" Grid.Column="0"
+                Grid.RowSpan="2" Grid.ColumnSpan="3"
                 BorderThickness="1">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2.5*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="2*"/>
-                    <RowDefinition Height="7*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Button Grid.Row="0" Grid.Column="0" 
+                <StackPanel Grid.Row="0" Grid.Column="0">
+                    <Button 
                         Name="InfiniteBtn"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
@@ -70,92 +73,75 @@
                         Background="#99CC1936" 
                         Foreground="White"
                         Padding="7"
+                        Margin="0,40,0,20"
                         Click="InfiniteBtn_OnClick">
-                    Infinite Trivia
-                </Button>
-                <Button Grid.Row="0" Grid.Column="1" 
+                        Infinite Trivia
+                    </Button>
+                    <customText:OutlinedTextBlock
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Center"
+                            x:Name="InfiniteDescription"
+                            Stroke="Black"
+                            StrokeThickness="2"
+                            FontSize="18"
+                            TextAlignment="Center"
+                            Margin="20"
+                            Fill="White"
+                            TextWrapping="Wrap"
+                            Visibility="Collapsed">
+                        Infinite trivia is a game mode where you battle with other users in order to become the leader of the pack.
+                    </customText:OutlinedTextBlock>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Grid.Column="0">
+                    <Button 
                         Name="FriendsBtn"
                         HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        VerticalAlignment="Bottom"
                         FontSize="18"
                         Background="#99CC1936" 
                         Foreground="White"
                         Padding="7"
+                        Margin="0,40,0,20"
                         Click="FriendsBtn_OnClick">
                     Play with friends
-                </Button>
-                <Grid   Name="InfiniteTriviaDescription"
-                        Grid.Row="1" Grid.Column="0"
-                        Grid.ColumnSpan="2"
-                        ClipToBounds="True"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch"
-                        Visibility="Collapsed">
-                    <Image 
-                       Name="InfiniteImage"
-                       Source="D:/Licenta/TrivialWiki/DestkopTrivialWiki/DestkopTrivialWiki/Images/infinite.jpg"
-                       VerticalAlignment="Stretch"
-                       HorizontalAlignment="Stretch"
-                       Stretch="Fill"
-                       ></Image>
-                    <TextBlock
-                           VerticalAlignment="Top"
-                           HorizontalAlignment="Left"
-                           Name="InfiniteDescription"
-                           FontSize="18"
-                           Foreground="White"
-                           Padding="50"
-                           TextWrapping="Wrap">
-                    Infinite trivia is a game mode where you battle with other users in order to become the leader of the pack.
-                    </TextBlock>
-                    <Button Name="StartInfiniteBtn"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        FontSize="18"
-                        Background="#99CC1936" 
-                        Foreground="White"
-                        Padding="7"
-                        Margin="0,20,0,0"
-                        Click="StartInfiniteBtn_OnClick">
-                        Start
                     </Button>
-                </Grid>
-                <Grid   Name="FriendsTriviaDescription"
-                        Grid.Row="1" Grid.Column="0"
-                        Grid.ColumnSpan="2"
-                        ClipToBounds="True"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch"
-                        Visibility="Collapsed">
-                    <Image 
-                       Name="FriendsImage"
-                       Source="D:/Licenta/TrivialWiki/DestkopTrivialWiki/DestkopTrivialWiki/Images/friends.jpg"
-                       VerticalAlignment="Stretch"
-                       HorizontalAlignment="Stretch"
-                       Stretch="Fill"
-                       ></Image>
-                    <TextBlock
-                           VerticalAlignment="Top"
-                           HorizontalAlignment="Left"
-                           Name="Description"
-                           FontSize="18"
-                           Foreground="White"
-                           Padding="50"
-                           TextWrapping="Wrap">
-                    In this mode you play with your friends to show them who is the boss of their mothers.
-                    </TextBlock>
-                    <Button Name="StartFriendsBtn"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        FontSize="18"
-                        Background="#99CC1936" 
-                        Foreground="White"
-                        Padding="7"
-                        Margin="0,20,0,0"
-                        Click="StartFriendsBtn_OnClick">
-                        Start
-                    </Button>
-                </Grid>
+                    <customText:OutlinedTextBlock
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Center"
+                               x:Name="FriendsDescription"
+                               FontSize="18"
+                               Fill="White"
+                               Stroke="Black"
+                               StrokeThickness="2"
+                               Margin="20"
+                               TextWrapping="Wrap"
+                               Visibility="Collapsed">
+                        In this mode you play a short game of trivia with your friends.
+                    </customText:OutlinedTextBlock>
+                </StackPanel>
+               
+                <Image 
+                    Name="InfiniteImage"
+                    Grid.Row="0" Grid.Column="1"
+                    Grid.RowSpan="2"
+                    Source="D:/Licenta/TrivialWiki/DestkopTrivialWiki/DestkopTrivialWiki/Images/infinite.jpg"
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch"
+                    Stretch="Fill"
+                    Visibility="Collapsed"
+                    ></Image>
+                
+            <Image 
+                Grid.Row="0" Grid.Column="1"
+                Grid.RowSpan="2"
+                Name="FriendsImage"
+                Source="D:/Licenta/TrivialWiki/DestkopTrivialWiki/DestkopTrivialWiki/Images/friends.jpg"
+                VerticalAlignment="Stretch"
+                HorizontalAlignment="Stretch"
+                Stretch="Fill"
+                Visibility="Collapsed"
+                ></Image>
+                
             </Grid>
         </Border>
     </Grid>

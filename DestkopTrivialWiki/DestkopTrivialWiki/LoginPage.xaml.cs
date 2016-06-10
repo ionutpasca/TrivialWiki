@@ -18,25 +18,39 @@ namespace DestkopTrivialWiki
 
         private void Button_OnClick(object sender, RoutedEventArgs e)
         {
-            if (Username.Text == "" || Password.Text == "") return;
+            if (Username.Text == "")
+            {
+                ErrorBlock.Text = "The username can not be empty!";
+                ErrorBlock.Visibility = Visibility.Visible;
+                return;
+            }
+            if (Password.Password == "")
+            {
+                ErrorBlock.Text = "The password can not be empty!";
+                ErrorBlock.Visibility = Visibility.Visible;
+                return;
+            }
             using (var client = new HttpClient())
             {
                 try
                 {
+                    if (Username.Text.Equals("") || Password.Password.Equals(""))
+                        throw new Exception("Username and password invalid!");
                     var responseString =
                         client.GetStringAsync("http://localhost:4605/login?username=" + Username.Text + "&password=" +
-                                              Password.Text).Result;
+                                              Password.Password).Result;
                     var joResponse = JObject.Parse(responseString);
-                    var main = new MainPage(joResponse.GetValue("securityToken").ToString());
+                    var main = new MainPage(joResponse.GetValue("SecurityToken").ToString());
                     this.NavigationService?.Navigate(main);
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Esti prost?");
+                    ErrorBlock.Text = "Username or password invalid! Please try again.";
+                    ErrorBlock.Visibility = Visibility.Visible;
                 }
             }
             Username.Text = "";
-            Password.Text = "";
+            Password.Password = "";
         }
         private void HomeBtn_OnClick(object sender, RoutedEventArgs e)
         {

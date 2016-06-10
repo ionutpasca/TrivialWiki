@@ -8,7 +8,7 @@ namespace DestkopTrivialWiki
     /// </summary>
     public partial class MainPage : Page
     {
-        private string token = "";
+        private readonly string token = "";
         public MainPage()
         {
             InitializeComponent();
@@ -18,8 +18,10 @@ namespace DestkopTrivialWiki
         {
             this.token = token;
             InitializeComponent();
-            if (this.token.Equals(""))
-                ManageBtn.Visibility = Visibility.Hidden;
+            if (this.token.Equals("")) return;
+            ManageBtn.Visibility = Visibility.Visible;
+            LoginBtn.Visibility = Visibility.Collapsed;
+            LogoutBtn.Visibility = Visibility.Visible;
         }
 
         private void LoginBtn_OnClick(object sender, System.Windows.RoutedEventArgs e)
@@ -37,7 +39,7 @@ namespace DestkopTrivialWiki
 
         private void PlayBtn_OnClick(object sender, RoutedEventArgs e)
         {
-            var playPage = new PlayPage();
+            var playPage = new PlayPage(token);
             this.NavigationService?.Navigate(playPage);
         }
 
@@ -55,6 +57,12 @@ namespace DestkopTrivialWiki
                 (sender as Button).Content = ">";
                 (sender as Button).HorizontalAlignment = HorizontalAlignment.Left;
             }
+        }
+
+        private void LogoutBtn_OnClick(object sender, RoutedEventArgs e)
+        {
+            var log = new LoginPage();
+            this.NavigationService?.Navigate(log);
         }
     }
 }

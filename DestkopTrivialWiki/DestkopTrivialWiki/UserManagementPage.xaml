@@ -10,21 +10,44 @@
       Title="UserManagementPage">
 
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="4*" />
-            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" 
+                Grid.Column="0"
+                Background="#FF323232"
+                Name="HomeBtn"
+                Click="HomeBtn_OnClick"
+                BorderBrush="#FF323232"
+             >
+            <Image Source="D:/Licenta/TrivialWiki/DestkopTrivialWiki/DestkopTrivialWiki/Images/wikipedia-icon2.png"
+               Margin="2" 
+               Height="100" 
+               Width="100"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center" 
+               MaxHeight="150" 
+               MaxWidth="150" 
+               MinWidth="50"
+               />
+        </Button>
         <DataGrid AutoGenerateColumns="False" 
-          Grid.Row="0"
-          BeginningEdit="dataGrid1_BeginningEdit"
-          HorizontalAlignment="Stretch" 
-          HorizontalContentAlignment="Stretch"
-          ColumnWidth="*"
-          Name="dataGrid1" 
-          VerticalAlignment="Stretch">
+                  Grid.Row="1" Grid.Column="0"
+                  Grid.RowSpan="2" Grid.ColumnSpan="2"
+                  BeginningEdit="dataGrid1_BeginningEdit"
+                  HorizontalAlignment="Stretch" 
+                  HorizontalContentAlignment="Stretch"
+                  ColumnWidth="*"
+                  Margin="10"
+                  Name="dataGrid1" 
+                  VerticalAlignment="Stretch">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name"     Binding="{Binding Path=Name}" MinWidth="50" />
                 <DataGridTextColumn Header="Email"    Binding="{Binding Path=Email}" MinWidth="50" />
@@ -35,13 +58,16 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,0,10,0">
+        <StackPanel Grid.Row="1" Grid.Column="2" 
+                    Grid.RowSpan="2"
+                    HorizontalAlignment="Stretch" 
+                    VerticalAlignment="Center" 
+                    Margin="10,0,10,0">
             <Button Margin="0,10,0,10" Name="AddBtn" Click="AddBtn_OnClick">Add</Button>
             <Button Margin="0,10,0,10" Name="DeleteBtn" Click="DeleteBtn_OnClickClick">Delete</Button>
             <Button Margin="0,10,0,10" Name="UpdateBtn" Click="UpdateBtn_OnClicklick">Update</Button>
             <Button Margin="0,10,0,10" Name="ResetBtn" Click="ResetBtn_OnClicksetBtn_Click">Reset</Button>
             <Button Margin="0,10,0,10" Name="LoadBtn" Click="LoadBtn_OnClickBtn_Click">Load more</Button>
-            <Button Margin="0,10,0,10" Name="HomeBtn" Click="HomeBtn_OnClick">Home</Button>
         </StackPanel>
     </Grid>
 </Page>
