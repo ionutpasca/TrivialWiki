@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNet.SignalR.Client;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 
 namespace DestkopTrivialWiki
 {
@@ -14,22 +14,29 @@ namespace DestkopTrivialWiki
     /// </summary>
     public partial class GeneralGamePage : Page
     {
-        private readonly HttpClient client;
+        private readonly HttpClient _client;
         private int skip = 1;
-        private readonly string token;
+        private readonly string _token;
+        private List<JObject> _questionSet;
+        private int _questionIndex;
+        private string currentAnswer;
         public GeneralGamePage(string token)
         {
-            this.token = token;
+            this._token = token;
+            this._questionSet = new List<JObject>();
+            this._questionIndex = 0;
             InitializeComponent();
             var chat = new Chat.Chat();
-            client = new HttpClient();
+            _client = new HttpClient();
             Connect();
             GetMessages();
+            GetQuestions();
+            LoadNextQuestion();
         }
 
         private void HomeBtn_OnClick(object sender, RoutedEventArgs e)
         {
-            var main = new MainPage(token);
+            var main = new MainPage(_token);
             this.NavigationService?.Navigate(main);
         }
 
@@ -37,7 +44,7 @@ namespace DestkopTrivialWiki
         {
             string request = "http://localhost:4605/getMessages/";
             request += 0;
-            var responseString = client.GetStringAsync(request);
+            var responseString = _client.GetStringAsync(request);
             var joResponse = JArray.Parse(responseString.Result);
 
             foreach (JObject message in joResponse)
@@ -57,8 +64,8 @@ namespace DestkopTrivialWiki
 
             var content = new FormUrlEncodedContent(values);
 
-            client.PostAsync("http://localhost:4605/addMessage", content);
-
+            await _client.PostAsync("http://localhost:4605/addMessage", content);
+            MessageSrc.Text = "";
         }
 
         public void Connect()
@@ -71,18 +78,47 @@ namespace DestkopTrivialWiki
             chatHubProxy.On("addMessage", message =>
             {
                 var toAdd = message["UserName"] + ":" + message["Message"];
+                ChatBox.Items.Insert(ChatBox.Items.Count, toAdd);
+
             }
             );
         }
 
-        private void ChatBox_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
+        private void AnswerBtn_OnClick(object sender, RoutedEventArgs e)
         {
-            if (VisualTreeHelper.GetChildrenCount(ChatBox) > 0)
+            var answerString = AnswerBox.Text;
+            AnswerBox.Text = "";
+            if (answerString.Length == 0) return;
+            if (answerString.Trim().ToLower().Equals(currentAnswer.ToLower()))
             {
-                Border border = (Border)VisualTreeHelper.GetChild(ChatBox, 0);
-                ScrollViewer scrollViewer = (ScrollViewer)VisualTreeHelper.GetChild(border, 0);
-                scrollViewer.ScrollToBottom();
+                MessageBox.Show("Tu esti bun ma!");
+                LoadNextQuestion();
             }
+            else
+            {
+                MessageBox.Show("Ba tu esti prost ?!");
+            }
+        }
+
+        private void GetQuestions()
+        {
+            var jsonOutput = System.IO.File.ReadAllText(@"D:\Licenta\Files\OutputTestJson.txt");
+            var joText = JObject.Parse(jsonOutput);
+            var questions = (JArray)joText["Questions"];
+            int index = 0;
+            foreach (var question in questions)
+            {
+                _questionSet.Insert(index, (JObject)question);
+                index++;
+            }
+        }
+
+        private void LoadNextQuestion()
+        {
+            var question = _questionSet.ElementAt(_questionIndex);
+            QuestionText.Text = (string)question.GetValue("Question");
+            currentAnswer = ((string)question.GetValue("Answer")).Trim();
+            _questionIndex++;
         }
     }
 }

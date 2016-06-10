@@ -54,40 +54,52 @@
               Grid.Column="0"  Grid.ColumnSpan="2" 
               Margin="10,10,0,10">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="1.5*"/>
                 <RowDefinition Height="1*"/>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="2*"/>
+                <RowDefinition Height="0.8*"/>
             </Grid.RowDefinitions>
-            <customText:OutlinedTextBlock HorizontalAlignment="Stretch" 
-                                          TextAlignment="Center"
-                                          Grid.Row="0" Grid.Column="0" 
-                                          Grid.ColumnSpan="2"
-                                          Margin="20" VerticalAlignment="Center"
-                                          Stroke="Crimson" StrokeThickness="2"
-                                          FontSize="30" Fill="#FFFFFDFD">
+            <TextBlock  HorizontalAlignment="Stretch" 
+                        VerticalAlignment="Center"
+                        TextAlignment="Center"
+                        Grid.Row="0" Grid.Column="0" 
+                        x:Name="QuestionText"
+                        TextWrapping="Wrap"
+                        Margin="20" 
+                        Foreground="#FFFFFDFD">
                 Question
-            </customText:OutlinedTextBlock>
-            <Button Margin="50" Grid.Row="1" Grid.Column="0" FontSize="24">Answer 1</Button>
-            <Button Margin="50" Grid.Row="1" Grid.Column="1" FontSize="24">Answer 2</Button>
-
-            <Button Margin="50" Grid.Row="2" Grid.Column="0" FontSize="24">Answer 3</Button>
-            <Button Margin="50" Grid.Row="2" Grid.Column="1" FontSize="24">Answer 4</Button>
+            </TextBlock>
+            <TextBox Grid.Row="1"
+                     Name="AnswerBox"
+                     HorizontalAlignment="Stretch"
+                     VerticalAlignment="Center"
+                     FontSize="20"
+                     Margin="20,0,20,0">
+            </TextBox>
+            <Button Name="AnswerBtn"
+                    Grid.Row="2"
+                    FontSize="20"
+                    VerticalAlignment="Center"
+                    Margin="20,0,20,0"
+                    Click="AnswerBtn_OnClick">
+                Answer
+            </Button>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="2"
               Grid.RowSpan="2"
               Margin="10,10,10,10" Grid.ColumnSpan="2">
+            <Grid.Resources>
+                
+            </Grid.Resources>
             <Grid.RowDefinitions>
                 <RowDefinition Height="15*"/>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <ListBox IsSynchronizedWithCurrentItem="True" local:ListBoxExtenders.AutoScrollToCurrentItem="True" 
-                     Grid.Row="0"
-                     Name="ChatBox" SourceUpdated="ChatBox_SourceUpdated"
+            <ListBox Grid.Row="0"
+                     Name="ChatBox"
                      >
             </ListBox>
 
@@ -96,7 +108,7 @@
             </TextBox>
             <Button Name="SendBtn" 
                     Grid.Row="2"
-                    HorizontalAlignment="Center"
+                    HorizontalAlignment="Stretch"
                     Padding="10,0,10,0"
                     Click="SendBtn_OnClick">
                 Send

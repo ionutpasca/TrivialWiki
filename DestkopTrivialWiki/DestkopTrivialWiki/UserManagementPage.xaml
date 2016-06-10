@@ -45,6 +45,7 @@
                   HorizontalAlignment="Stretch" 
                   HorizontalContentAlignment="Stretch"
                   ColumnWidth="*"
+                  Margin="10"
                   Name="dataGrid1" 
                   VerticalAlignment="Stretch">
             <DataGrid.Columns>

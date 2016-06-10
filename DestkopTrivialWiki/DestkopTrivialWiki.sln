@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DestkopTrivialWiki", "DestkopTrivialWiki\DestkopTrivialWiki.csproj", "{AECAA00B-EAD7-49EE-9F69-C563D4178E91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortableSignalR", "PortableSignalR\PortableSignalR.csproj", "{01FF5C5D-D867-48EF-AF2F-8E7968B6E680}"
+Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "Use Case", "Use Case\Use Case.modelproj", "{F7280EEB-76B4-45CD-94AE-0EAA3FED32AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{AECAA00B-EAD7-49EE-9F69-C563D4178E91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AECAA00B-EAD7-49EE-9F69-C563D4178E91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AECAA00B-EAD7-49EE-9F69-C563D4178E91}.Release|Any CPU.Build.0 = Release|Any CPU
-		{01FF5C5D-D867-48EF-AF2F-8E7968B6E680}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{01FF5C5D-D867-48EF-AF2F-8E7968B6E680}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{01FF5C5D-D867-48EF-AF2F-8E7968B6E680}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{01FF5C5D-D867-48EF-AF2F-8E7968B6E680}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7280EEB-76B4-45CD-94AE-0EAA3FED32AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7280EEB-76B4-45CD-94AE-0EAA3FED32AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7280EEB-76B4-45CD-94AE-0EAA3FED32AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7280EEB-76B4-45CD-94AE-0EAA3FED32AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

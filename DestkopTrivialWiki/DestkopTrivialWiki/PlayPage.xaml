@@ -116,7 +116,7 @@
                                Margin="20"
                                TextWrapping="Wrap"
                                Visibility="Collapsed">
-                        In this mode you play with your friends to show them who is the boss of their mothers.
+                        In this mode you play a short game of trivia with your friends.
                     </customText:OutlinedTextBlock>
                 </StackPanel>
                
