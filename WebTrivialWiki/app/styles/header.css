@@ -52,7 +52,7 @@
         cursor: pointer;
     }
     .navigation-bar.smaller {
-        margin-top:15px;
+        margin-top:18px;
         font-size: 15px;
     }
 
@@ -175,15 +175,105 @@
     background:#ccc;
 }
 
-@media (max-width: 800px) {
+.logo-container {
+    float: left;
+    width: 30%;
+    margin-left: 5%;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.small-menu-button {
+    position: absolute;
+    right: 25px;
+    top: 35px;
+    width: 40px;
+    height: 50px;
+    display: none;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.small-menu-button:hover {
+    cursor: pointer;
+}
+
+.small-menu-button.smaller {
+    margin-top: -20px;
+    height: 35px;
+}
+
+.slider-menu-container {
+    background-image: url('../../../images/blackBackground.jpg');
+}
+
+.side-menu {
+    top: 120px;
+    position: fixed;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.side-menu.smaller {
+    top: 60px;
+}
+
+.slider-menu-item {
+    font-family: Montserrat;
+    font-size: 17px;
+    font-weight: 400;
+    margin-top: 14px;
+    color: #ccc;
+}
+
+.md-sidenav-right {
+    width: 240px !important;
+}
+
+.side-menu-icon {
+    margin-top: 14px;
+    margin-left: 25px;
+    margin-right: 20px;
+}
+
+.slider-menu-row {
+    margin-bottom: 10px;
+}
+
+.slider-menu-row :hover {
+    cursor: pointer;
+    color: white;
+}
+
+.logout-slider-item {
+    position: absolute;
+    bottom: 15px;
+}
+
+@media (max-width: 1065px) {
     .headerContainer {
         width:100%;
     }
     .wikiLogo {
-        width:150%;
+        width:100%;
     }
     .navigation-bar{
         display: none !important;
+    }
+    .logo-container {
+        margin-left: 10%;
+    }
+    .small-menu-button {
+        display: block !important;
     }
 }
 

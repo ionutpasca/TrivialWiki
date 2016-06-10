@@ -1,10 +1,10 @@
-(function (angular) {
+(function (angular, $) {
     'use strict';
 
     App.module = angular.module('webTrivialWikiApp',
         ['adminModule', 'triviaModule', 'ngAnimate', 'ngCookies', 'angularFileUpload','leaderboardModule',
             'angular-img-cropper', 'ngResource', 'ngRoute', 'ngSanitize', 'ui.bootstrap',
-            'angular-growl'])
+            'angular-growl', 'ngMaterial'])
         .config(function ($routeProvider) {
             $routeProvider
             .when('/', {
@@ -50,4 +50,4 @@
         growlProvider.globalTimeToLive(3000);
     }]);
 
-}).call(this, this.angular);
+}).call(this, this.angular, this.$);
