@@ -36,6 +36,8 @@ namespace POSTagger
                 tpr.ProcessText(text);
             //TextProcessing.ProcessJson();
             var result = tpr.GetSentencesInformationFromJson();
+            var rez = ((SentenceInformation)result.get(0)).GetTokens();
+            Console.WriteLine(rez);
             Console.ReadLine();
         }
     }

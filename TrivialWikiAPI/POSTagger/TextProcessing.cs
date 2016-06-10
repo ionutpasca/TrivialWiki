@@ -3,7 +3,6 @@ using java.io;
 using java.util;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 using System.Linq;
@@ -130,12 +129,8 @@ namespace POSTagger
             var sentenceForest = new ArrayList();
             foreach (JObject sentence in joSentences)
             {
-                var parse = sentence.GetValue("parse");
-                var toParse = new string(parse.ToString().ToCharArray());
-                var tree = new ParseTree(StringUtils.ListParse(toParse), 0);
-
-                tree.ParseSubTrees();
-                sentenceForest.Add(tree);
+                var sentenceProc = new SentenceProcessing(sentence);
+                sentenceForest.Add(sentenceProc.GetParseTree());
             }
             return sentenceForest;
         }
@@ -149,34 +144,9 @@ namespace POSTagger
             var sentencesInformation = new ArrayList();
             foreach (JObject sentence in joSentences)
             {
-                // ParseTree
-                var parse = sentence.GetValue("parse");
-                var toParse = new string(parse.ToString().ToCharArray());
-                var tree = new ParseTree(StringUtils.ListParse(toParse), 0);
-                tree.ParseSubTrees();
-                // Dependencies
-                var basicDep = sentence.GetValue("collapsed-ccprocessed-dependencies");
-                var dependencies = new List<SentenceDependency>();
-                foreach (JObject word in basicDep)
-                {
-                    var dep = word.GetValue("dep").ToString();
-                    var governor = word.GetValue("governor").ToString();
-                    var governorGloss = word.GetValue("governorGloss").ToString();
-                    var dependent = word.GetValue("dependent").ToString();
-                    var dependentGloss = word.GetValue("dependentGloss").ToString();
-                    var sentenceDep = new SentenceDependency(dep, governor, governorGloss, dependent, dependentGloss);
-                    dependencies.Add(sentenceDep);
-                }
-                // Original sentence text
-                var tokens = sentence.GetValue("tokens");
-                var originalSentence = "";
-                foreach (JObject word in tokens)
-                {
-                    var txt = word.GetValue("word").ToString();
-                    originalSentence += txt + word.GetValue("after");
-                }
-
-                sentencesInformation.add(new SentenceInformation(originalSentence, tree, dependencies));
+                var sentenceProc = new SentenceProcessing(sentence);
+                var sentenceInfo = new SentenceInformation(sentenceProc.GetSentenceText(), sentenceProc.GetParseTree(), sentenceProc.GetDependencies(), sentenceProc.GetWordInformation());
+                sentencesInformation.add(sentenceInfo);
             }
             return sentencesInformation;
         }

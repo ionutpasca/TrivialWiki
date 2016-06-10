@@ -189,11 +189,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ParseTree.cs" />
+    <Compile Include="WordInformation.cs" />
     <Compile Include="Pattern.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SentenceDependency.cs" />
     <Compile Include="SentenceInformation.cs" />
+    <Compile Include="SentenceProcessing.cs" />
     <Compile Include="SentenceUtils.cs" />
     <Compile Include="StringUtils.cs" />
     <Compile Include="TextProcessing.cs" />

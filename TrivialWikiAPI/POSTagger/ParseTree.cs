@@ -27,7 +27,7 @@ namespace POSTagger
         public int Level { get; set; }
         public List<ParseTree> Children { get; set; }
         public string Value { get; set; }
-        public string Token { get; set; }
+        public string Tokens { get; set; }
         public ParseTree Parent { get; set; }
         public string StringParse { get; set; }
         public ArrayList ListParse { get; set; }
@@ -50,7 +50,7 @@ namespace POSTagger
                     {
                         continue;
                     }
-                    this.Token = elemValueParts[1];
+                    this.Tokens = elemValueParts[1];
                     TrimToken();
                     continue;
                 }
@@ -93,15 +93,24 @@ namespace POSTagger
         {
             var toReturn = "";
 
-            toReturn = Value + " " + Token + "\r\n";
+            toReturn = Value + " " + Tokens + "\r\n";
 
             return Children.Aggregate(toReturn, (current, child) => current + child.ToString());
+        }
+
+        public string GetTokens()
+        {
+            var toReturn = "";
+
+            toReturn = Tokens + " ";
+
+            return Children.Aggregate(toReturn, (current, child) => current + child.GetTokens());
         }
 
         private void TrimToken()
         {
             var pIndex = 0;
-            foreach (var t in Token)
+            foreach (var t in Tokens)
             {
                 if (t == '(')
                 {
@@ -113,7 +122,7 @@ namespace POSTagger
                 }
             }
             if (pIndex < 1) return;
-            Token = Token.Remove(Token.Length - pIndex);
+            Tokens = Tokens.Remove(Tokens.Length - pIndex);
         }
     }
 }
