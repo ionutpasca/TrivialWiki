@@ -2,6 +2,7 @@
 using java.io;
 using java.util;
 using Newtonsoft.Json.Linq;
+using POSTagger.Model;
 using System;
 using System.Configuration;
 using System.IO;

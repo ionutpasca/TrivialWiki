@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using POSTagger.Model;
 using System.Collections.Generic;
 
 namespace POSTagger
@@ -7,9 +8,9 @@ namespace POSTagger
     {
         public JObject Sentence { get; set; }
 
-        public SentenceProcessing(JObject Sentence)
+        public SentenceProcessing(JObject sentence)
         {
-            this.Sentence = Sentence;
+            this.Sentence = sentence;
         }
 
         public List<SentenceDependency> GetDependencies()

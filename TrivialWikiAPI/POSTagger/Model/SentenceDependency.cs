@@ -1,4 +1,4 @@
-﻿namespace POSTagger
+﻿namespace POSTagger.Model
 {
     public class SentenceDependency
     {

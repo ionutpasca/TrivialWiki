@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace POSTagger
+namespace POSTagger.Model
 {
     public class SentenceInformation
     {
