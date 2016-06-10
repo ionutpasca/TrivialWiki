@@ -120,20 +120,6 @@ namespace POSTagger
             fileJson.Close();
         }
 
-        public ArrayList GetSentenceTreesFromJson()
-        {
-            var jsonOutput = System.IO.File.ReadAllText(@"D:\Licenta\Files\OutputJson.txt");
-            var joText = JObject.Parse(jsonOutput);
-            var joSentences = (JArray)joText["sentences"];
-
-            var sentenceForest = new ArrayList();
-            foreach (JObject sentence in joSentences)
-            {
-                var sentenceProc = new SentenceProcessing(sentence);
-                sentenceForest.Add(sentenceProc.GetParseTree());
-            }
-            return sentenceForest;
-        }
 
         public ArrayList GetSentencesInformationFromJson()
         {
@@ -145,7 +131,7 @@ namespace POSTagger
             foreach (JObject sentence in joSentences)
             {
                 var sentenceProc = new SentenceProcessing(sentence);
-                var sentenceInfo = new SentenceInformation(sentenceProc.GetSentenceText(), sentenceProc.GetParseTree(), sentenceProc.GetDependencies(), sentenceProc.GetWordInformation());
+                var sentenceInfo = new SentenceInformation(sentenceProc.GetSentenceText(), sentenceProc.GetDependencies(), sentenceProc.GetWordInformation());
                 sentencesInformation.add(sentenceInfo);
             }
             return sentencesInformation;

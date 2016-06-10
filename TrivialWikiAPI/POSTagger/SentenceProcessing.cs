@@ -29,16 +29,6 @@ namespace POSTagger
             return dependencies;
         }
 
-        public ParseTree GetParseTree()
-        {
-            // ParseTree
-            var parse = Sentence.GetValue("parse");
-            var toParse = new string(parse.ToString().ToCharArray());
-            var tree = new ParseTree(StringUtils.ListParse(toParse), 0);
-            tree.ParseSubTrees();
-            return tree;
-        }
-
         public string GetSentenceText()
         {
             var tokens = Sentence.GetValue("tokens");
@@ -61,7 +51,8 @@ namespace POSTagger
                 var text = word.GetValue("word").ToString();
                 var pos = word.GetValue("pos").ToString();
                 var ner = word.GetValue("ner").ToString();
-                result.Insert(index, new WordInformation(text, pos, ner));
+                var lemma = word.GetValue("lemma").ToString();
+                result.Insert(index, new WordInformation(text, pos, ner, lemma));
             }
             return result;
         }

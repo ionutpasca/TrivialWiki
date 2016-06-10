@@ -188,7 +188,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ParseTree.cs" />
     <Compile Include="WordInformation.cs" />
     <Compile Include="Pattern.cs" />
     <Compile Include="Program.cs" />
