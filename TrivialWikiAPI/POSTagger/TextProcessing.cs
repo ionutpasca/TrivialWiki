@@ -57,7 +57,7 @@ namespace POSTagger
             Console.WriteLine("Processing complete.");
         }
 
-        public void ProcessJson()
+        public static void ProcessJson()
         {
             int nrOfQuestions = 0, nrOfSentences = 0;
             var jsonOutput = System.IO.File.ReadAllText(@"D:\Licenta\Files\OutputJson.txt");
@@ -131,6 +131,28 @@ namespace POSTagger
             fileJson.Write(jsonQuestions.ToString());
             file.Close();
             fileJson.Close();
+        }
+
+        public ArrayList getSentenceTreesFromJson()
+        {
+            var jsonOutput = System.IO.File.ReadAllText(@"D:\Licenta\Files\OutputJson.txt");
+            var joText = JObject.Parse(jsonOutput);
+            var joSentences = (JArray)joText["sentences"];
+
+            var sentenceForest = new ArrayList();
+            foreach (JObject sentence in joSentences)
+            {
+                var parse = sentence.GetValue("parse");
+                var toParse = new string(parse.ToString().ToCharArray());
+                var tree = new ParseTree(StringUtils.ListParse(toParse), 0);
+
+
+                tree.ParseSubTrees();
+                sentenceForest.Add(tree);
+
+
+            }
+            return sentenceForest;
         }
 
         private static bool IsNotUseful(string answer)

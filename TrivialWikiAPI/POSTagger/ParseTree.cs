@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace POSTagger
 {
@@ -62,7 +63,7 @@ namespace POSTagger
                     }
                     lastIndex = i;
                 }
-                if (i == ListParse.Count - 1)
+                if (i != ListParse.Count - 1) continue;
                 {
                     var subTree = new ParseTree(CopyPart(lastIndex, i), Level + 1);
                     Children.Add(subTree);
@@ -93,24 +94,20 @@ namespace POSTagger
             var toReturn = "";
 
             toReturn = Value + " " + Token + "\r\n";
-            foreach (var child in Children)
-            {
-                toReturn += child.ToString();
-            }
 
-            return toReturn;
+            return Children.Aggregate(toReturn, (current, child) => current + child.ToString());
         }
 
         private void TrimToken()
         {
-            int pIndex = 0;
-            for (var i = 0; i < Token.Length; i++)
+            var pIndex = 0;
+            foreach (var t in Token)
             {
-                if (Token[i] == '(')
+                if (t == '(')
                 {
                     pIndex--;
                 }
-                else if (Token[i] == ')')
+                else if (t == ')')
                 {
                     pIndex++;
                 }
