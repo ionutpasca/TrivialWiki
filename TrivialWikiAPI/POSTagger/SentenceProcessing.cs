@@ -53,7 +53,7 @@ namespace POSTagger
                 var pos = word.GetValue("pos").ToString();
                 var ner = word.GetValue("ner").ToString();
                 var lemma = word.GetValue("lemma").ToString();
-                result.Insert(index, new WordInformation(text, pos, ner, lemma));
+                result.Add(new WordInformation(text, pos, ner, lemma));
             }
             return result;
         }
