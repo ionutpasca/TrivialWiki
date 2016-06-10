@@ -1,7 +1,8 @@
-﻿<div class="header headerContainer">
+﻿<!--<div class="header headerContainer">
     <div class="wikiLogo">
         <img class="wiki-logo-image" src="images/wikipedia-icon2.png" ng-click="javascript(0);"/>
         <span class="wikiTitle" ng-click="goToHomePage()">WikiTrivia</span>
+        
         <ul class="navigation-bar">
             <li class="hvr-underline-from-center small-padding-bottom">
                 <a class="sliding-middle-out" ng-click="openLoginModal()" ng-show="!userIsLoggedIn">Login</a>
@@ -18,18 +19,16 @@
             <li class="hvr-underline-from-center small-padding-bottom">
                 <a ng-click="openRegisterModal()" ng-show="!userIsLoggedIn">Register</a>
             </li>
-            
+
             <li class="hvr-underline-from-center small-padding-bottom small-margin-right" ng-hide="userRole === 'Admin'">
                 <a>Contact</a>
             </li>
             <li class="small-padding-bottom user-settings" ng-show="userIsLoggedIn">
                 <img ng-show="!userHasAvatar()" ng-src="http://localhost:4605/avatar/{{userName}}"/>
-                <!--<img ng-show="userHasAvatar()" ng-src="http://localhost:4605/avatar/ionut">-->
                 <a class="dropdown-toggle" data-toggle="dropdown">{{userName}}</a>
                 <ul class="dropdown-menu dropdown-menu-right settings-dropdown">
                     <li class="default-cursor small-margin-top" ng-click="javascript(0);">
-                        <!--<img ng-show="!userHasAvatar()" src="../../../images/default_avatar.png"/>-->
-                        <img ng-show="!userHasAvatar()" src="http://localhost:4605/avatar/{{userName}}" />
+                        <img ng-show="!userHasAvatar()" src="http://localhost:4605/avatar/{{userName}}"/>
 
                     </li>
                     <li class="default-cursor small-margin-top">
@@ -48,5 +47,141 @@
                 </ul>
             </li>
         </ul>
+        <button type="button" ng-click="isCollapsed = !isCollapsed">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar" ></span>
+            <span class="icon-bar" ></span>
+            <span class="icon-bar"></span>
+        </button>
     </div>
+</div>-->
+
+<div class="header headerContainer" layout="column" style="position: fixed; width: 100%; z-index: 1000;">
+    <md-toolbar layout="row" class="wikiLogo">
+        <div class="logo-container">
+            <img class="wiki-logo-image" src="images/wikipedia-icon2.png" ng-click="javascript(0);" />
+            <span class="wikiTitle" ng-click="goToHomePage()">WikiTrivia</span>
+        </div>
+        <span flex></span>
+        <ul class="navigation-bar">
+            <li class="hvr-underline-from-center small-padding-bottom">
+                <a class="sliding-middle-out" ng-click="openLoginModal()" ng-show="!userIsLoggedIn">Login</a>
+            </li>
+            <li class="hvr-underline-from-center small-padding-bottom">
+                <a ng-click="openTrivia()">QuizTriv</a>
+            </li>
+            <li class="hvr-underline-from-center small-padding-bottom">
+                <a ng-show="userIsLoggedIn" ng-click="openLeaderboards()">Leaderboards</a>
+            </li>
+            <li class="hvr-underline-from-center small-padding-bottom" ng-show="userRole === 'Admin'">
+                <a ng-click="openUserManagement()">Manage users</a>
+            </li>
+            <li class="hvr-underline-from-center small-padding-bottom">
+                <a ng-click="openRegisterModal()" ng-show="!userIsLoggedIn">Register</a>
+            </li>
+
+            <li class="hvr-underline-from-center small-padding-bottom small-margin-right" ng-hide="userRole === 'Admin'">
+                <a>Contact</a>
+            </li>
+            <li class="small-padding-bottom user-settings" ng-show="userIsLoggedIn">
+                <img ng-show="!userHasAvatar()" ng-src="http://localhost:4605/avatar/{{userName}}"/>
+                <a class="dropdown-toggle" data-toggle="dropdown">{{userName}}</a>
+                <ul class="dropdown-menu dropdown-menu-right settings-dropdown">
+                    <li class="default-cursor small-margin-top" ng-click="javascript(0);">
+                        <img ng-show="!userHasAvatar()" src="http://localhost:4605/avatar/{{userName}}"/>
+
+                    </li>
+                    <li class="default-cursor small-margin-top">
+                        <span class="default-cursor">
+                            {{userName}}  - {{rank}}
+                            <span ng-if="rank === 1">st position</span>
+                            <span ng-if="rank === 2">nd position</span>
+                            <span ng-if="rank === 3">rd position</span>
+                            <span ng-if="rank > 3">th position</span>
+                        </span>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="profile-buttons medium-margin-bottom">
+                        <button class="btn btn-default pull-left" ng-click="goToSettings()">Settings</button>
+                        <button class="btn btn-default pull-right" ng-click="signOut()">Sign out</button>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <span flex></span>
+        <md-icon md-svg-icon="../../../images/ic_menu_24px.svg" class="ng-scope small-menu-button" aria-hidden="true" ng-click="toggleRight()">
+            <!--<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 18 18" fit="" preserveAspectRatio="xMidYMid meet" focusable="false">
+                <path d="M0 0h18v18h-18z" fill="none"></path>
+                <path d="M2 13.5h14v-1.5h-14v1.5zm0-4h14v-1.5h-14v1.5zm0-5.5v1.5h14v-1.5h-14z"></path>
+            </svg>-->
+        </md-icon>
+    </md-toolbar>
 </div>
+
+<div layout="column" ng-cloak>
+    <section layout="row" flex>
+        <md-sidenav class="md-sidenav-right md-whiteframe-4dp side-menu slider-menu-container" md-component-id="right">
+            <div layout="row" class="slider-menu-row" ng-show="!userIsLoggedIn">
+                <div layout="column" class="side-menu-icon">
+                    <div flex-gt-sm="66" flex="33">
+                        <img src="../../../images/icons/login.png"/>
+                    </div>
+                </div>
+                <div layout="column">
+                    <a class="slider-menu-item" ng-click="openLoginModal()">Login</a>
+                </div>
+            </div>
+            <div layout="row" class="slider-menu-row">
+                <div layout="column" class="side-menu-icon">
+                    <div flex-gt-sm="66" flex="33">
+                        <img src="../../../images/icons/game.png"/>
+                    </div>
+                </div>
+                <div layout="column">
+                    <a class="slider-menu-item" ng-click="openTrivia()">QuizTrivia</a>
+                </div>
+            </div>
+            <div layout="row" class="slider-menu-row">
+                <div layout="column" class="side-menu-icon">
+                    <div flex-gt-sm="66" flex="33">
+                        <img src="../../../images/icons/chart.png"/>
+                    </div>
+                </div>
+                <div layout="column">
+                    <a class="slider-menu-item" ng-click="openLeaderboards()">Leaderboards</a>
+                </div>
+            </div>
+            <div layout="row" class="slider-menu-row">
+                <div layout="column" class="side-menu-icon">
+                    <div flex-gt-sm="66" flex="33">
+                        <img src="../../../images/icons/gavel.png" />
+                    </div>
+                </div>
+                <div layout="column">
+                    <a class="slider-menu-item" ng-click="openUserManagement()">Manage users</a>
+                </div>
+            </div>
+            <div layout="row" class="slider-menu-row">
+                <div layout="column" class="side-menu-icon">
+                    <div flex-gt-sm="66" flex="33">
+                        <img src="../../../images/icons/settings.png" />
+                    </div>
+                </div>
+                <div layout="column">
+                    <a class="slider-menu-item" ng-click="goToSettings()">Settings</a>
+                </div>
+            </div>
+            <div layout="row" class="slider-menu-row logout-slider-item">
+                <div layout="column" class="side-menu-icon">
+                    <div flex-gt-sm="66" flex="33">
+                        <img src="../../../images/icons/logout.png" />
+                    </div>
+                </div>
+                <div layout="column">
+                    <a class="slider-menu-item" ng-click="goToSettings()">Sign out</a>
+                </div>
+            </div>
+        </md-sidenav>
+    </section>
+</div>
+

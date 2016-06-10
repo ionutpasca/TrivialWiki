@@ -10,6 +10,8 @@
                 $('.wiki-logo-image').addClass('smaller');
                 $('.wikiTitle').addClass('smaller');
                 $('.settings-dropdown').addClass('smaller');
+                $('.small-menu-button').addClass('smaller');
+                $('.side-menu ').addClass('smaller');
             }
 
             function removeResizeClasses() {
@@ -19,6 +21,8 @@
                 $('.wiki-logo-image').removeClass('smaller');
                 $('.wikiTitle').removeClass('smaller');
                 $('.settings-dropdown').removeClass('smaller');
+                $('.small-menu-button').removeClass('smaller');
+                $('.side-menu ').removeClass('smaller');
             }
 
             if (data.$$route && data.$$route.originalPath === '/') {

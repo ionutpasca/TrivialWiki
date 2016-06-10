@@ -51,7 +51,7 @@
         <div class="form-group sent-message-input">
             <div class="input-group input-group-sm">
                 <div class="icon-addon addon-md">
-                    <input type="text" placeholder="Answer" ng-model="responseToSend" class="form-control chat-input">
+                    <input type="text" placeholder="Answer" ng-model="responseToSend" ng-keydown="$event.which === 13 && sendAnswer()" class="form-control chat-input">
                 </div>
                 <span class="input-group-btn send-message-container">
                     <button class="btn btn-default" type="button" ng-click="sendAnswer()" title="Answer" style="margin-top: 4px; margin-left: 5px;">

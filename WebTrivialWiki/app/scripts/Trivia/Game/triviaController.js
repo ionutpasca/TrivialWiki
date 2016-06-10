@@ -71,7 +71,7 @@
             return persistService.readData('userName');
         };
 
-        $scope.sendAnswer = function() {
+        $scope.sendAnswer = function () {
             if ($scope.responseToSend === '') {
                 return;
             }

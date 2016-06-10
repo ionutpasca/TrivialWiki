@@ -1,8 +1,8 @@
 ﻿(function () {
     'use strict';
 
-    App.module.controller('headerController', ['$uibModal', '$scope', 'persistService', '$location',
-        function ($uibModal, $scope, persistService, $location) {
+    App.module.controller('headerController', ['$uibModal', '$scope','$timeout', 'persistService', '$location','$mdSidenav',
+        function ($uibModal, $scope, $timeout, persistService, $location, $mdSidenav) {
 
         $scope.openLoginModal = function () {
             $uibModal.open({
@@ -31,6 +31,33 @@
         }
         init();
 
+        function debounce(func, wait) {
+            var timer;
+            return function debounced() {
+                var context = $scope,
+                    args = Array.prototype.slice.call(arguments);
+                $timeout.cancel(timer);
+                timer = $timeout(function () {
+                    timer = undefined;
+                    func.apply(context, args);
+                }, wait || 10);
+            };
+        }
+
+        function buildDelayedToggler(navID) {
+            return debounce(function () {
+                $mdSidenav(navID)
+                  .toggle()
+                  .then(function () {
+                  });
+            }, 200);
+        }
+
+        $scope.toggleRight = buildDelayedToggler('right');
+        $scope.isOpenRight = function () {
+            return $mdSidenav('right').isOpen();
+        };
+
         $scope.signOut = function () {
             persistService.clearLocalStorage();
         };
@@ -54,5 +81,16 @@
         $scope.goToHomePage = function() {
             $location.url('/');
         };
-    }]);
+
+        $scope.toggleRight = function () {
+            $mdSidenav('right').toggle();
+        };
+
+        }]).controller('RightCtrl', function ($scope, $timeout, $mdSidenav) {
+            $scope.close = function () {
+                $mdSidenav('right').close()
+                  .then(function () {
+                  });
+            };
+        });
 }).call(this);
