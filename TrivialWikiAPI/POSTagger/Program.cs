@@ -34,7 +34,8 @@ namespace POSTagger
             var tpr = new TextProcessing();
             if (answer != null && answer.Equals("y"))
                 tpr.ProcessText(text);
-            TextProcessing.ProcessJson();
+            //TextProcessing.ProcessJson();
+            var result = tpr.GetSentencesInformationFromJson();
             Console.ReadLine();
         }
     }

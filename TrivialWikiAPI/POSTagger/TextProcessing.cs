@@ -3,6 +3,7 @@ using java.io;
 using java.util;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 using System.Linq;
@@ -60,10 +61,13 @@ namespace POSTagger
 
         public static void ProcessJson()
         {
+
+        }
+
+        public static void FillInTheGaps()
+        {
             int nrOfQuestions = 0, nrOfSentences = 0;
             var jsonOutput = System.IO.File.ReadAllText(outputJsonPath);
-            var subjects = "";
-            var roots = "";
 
             var joText = JObject.Parse(jsonOutput);
             var joSentences = (JArray)joText["sentences"];
@@ -77,36 +81,22 @@ namespace POSTagger
                 var sentence = (JObject)jToken;
                 nrOfSentences++;
                 var tokens = sentence.GetValue("tokens");
-                var index = sentence.GetValue("index");
-                var parse = sentence.GetValue("parse");
-                Console.WriteLine(index);
-                var toParse = new string(parse.ToString().ToCharArray());
-                var tree = new ParseTree(StringUtils.ListParse(toParse), 0);
-
-                Console.WriteLine(parse);
-                tree.ParseSubTrees();
-                Console.WriteLine(tree.ToString());
-                sentenceForest.Add(tree);
-
-                var bd = sentence.GetValue("basic-dependencies");
-                string answer = "";
+                var bd = sentence.GetValue("collapsed-ccprocessed-dependencies");
+                var answer = "";
 
                 foreach (JObject word in bd)
                 {
-                    JToken dep = word.GetValue("dep");
+                    var dep = word.GetValue("dep");
                     var value = dep.ToString();
-                    if (value.Equals("ROOT"))
-                        roots += word.GetValue("dependentGloss") + ",";
                     if (value.Equals("nsubj"))
                     {
-                        subjects += word.GetValue("dependentGloss") + ",";
                         answer = word.GetValue("dependentGloss").ToString();
                     }
 
                 }
                 if (IsNotUseful(answer))
                     continue;
-                string originalSentence = "";
+                var originalSentence = "";
                 foreach (JObject word in tokens)
                 {
                     var txt = word.GetValue("word").ToString();
@@ -122,11 +112,7 @@ namespace POSTagger
                 originalSentence = nrOfQuestions + ":" + originalSentence;
                 file.WriteLine(originalSentence + "Answer:" + answer);
                 nrOfQuestions++;
-                //Console.WriteLine(originalSentence);
-
             }
-            //Console.WriteLine(roots);
-            //Console.WriteLine(subjects);
             Console.WriteLine("Sentences:" + nrOfSentences);
             Console.WriteLine("Questions:" + nrOfQuestions);
             var jsonQuestions = new JObject { { "Questions", jsonArray } };
@@ -135,7 +121,7 @@ namespace POSTagger
             fileJson.Close();
         }
 
-        public ArrayList getSentenceTreesFromJson()
+        public ArrayList GetSentenceTreesFromJson()
         {
             var jsonOutput = System.IO.File.ReadAllText(@"D:\Licenta\Files\OutputJson.txt");
             var joText = JObject.Parse(jsonOutput);
@@ -148,13 +134,51 @@ namespace POSTagger
                 var toParse = new string(parse.ToString().ToCharArray());
                 var tree = new ParseTree(StringUtils.ListParse(toParse), 0);
 
-
                 tree.ParseSubTrees();
                 sentenceForest.Add(tree);
-
-
             }
             return sentenceForest;
+        }
+
+        public ArrayList GetSentencesInformationFromJson()
+        {
+            var jsonOutput = System.IO.File.ReadAllText(@"D:\Licenta\Files\OutputJson.txt");
+            var joText = JObject.Parse(jsonOutput);
+            var joSentences = (JArray)joText["sentences"];
+
+            var sentencesInformation = new ArrayList();
+            foreach (JObject sentence in joSentences)
+            {
+                // ParseTree
+                var parse = sentence.GetValue("parse");
+                var toParse = new string(parse.ToString().ToCharArray());
+                var tree = new ParseTree(StringUtils.ListParse(toParse), 0);
+                tree.ParseSubTrees();
+                // Dependencies
+                var basicDep = sentence.GetValue("collapsed-ccprocessed-dependencies");
+                var dependencies = new List<SentenceDependency>();
+                foreach (JObject word in basicDep)
+                {
+                    var dep = word.GetValue("dep").ToString();
+                    var governor = word.GetValue("governor").ToString();
+                    var governorGloss = word.GetValue("governorGloss").ToString();
+                    var dependent = word.GetValue("dependent").ToString();
+                    var dependentGloss = word.GetValue("dependentGloss").ToString();
+                    var sentenceDep = new SentenceDependency(dep, governor, governorGloss, dependent, dependentGloss);
+                    dependencies.Add(sentenceDep);
+                }
+                // Original sentence text
+                var tokens = sentence.GetValue("tokens");
+                var originalSentence = "";
+                foreach (JObject word in tokens)
+                {
+                    var txt = word.GetValue("word").ToString();
+                    originalSentence += txt + word.GetValue("after");
+                }
+
+                sentencesInformation.add(new SentenceInformation(originalSentence, tree, dependencies));
+            }
+            return sentencesInformation;
         }
 
         private static bool IsNotUseful(string answer)
