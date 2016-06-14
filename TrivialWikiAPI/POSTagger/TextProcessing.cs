@@ -122,6 +122,99 @@ namespace POSTagger
             fileJson.Close();
         }
 
+        public void BetterFill()
+        {
+            var sentences = GetSentencesInformationFromJson();
+            var nrOfQuestions = 0;
+            var no = 0;
+            var fileJson = new StreamWriter(outputTestJsonPath);
+            var jsonArray = new JArray();
+            foreach (SentenceInformation sentence in sentences)
+            {
+                no++;
+                var dep = sentence.GetSubject();
+                if (dep == null) continue;
+
+                var answerIndex = int.Parse(dep.Dependent);
+                var answerList = new SortedDictionary<int, string>();
+                answerList.Add(answerIndex, dep.DependentGloss + " ");
+
+                nrOfQuestions++;
+                var originalSentence = "";
+                var compIndexes = sentence.GetCompoundIndex(dep.Dependent, dep.Dependent);
+                foreach (var word in sentence.Words)
+                {
+                    if (word.Index == answerIndex)
+                    {
+                        originalSentence += "_______ ";
+                        continue;
+                    }
+                    if (compIndexes.Contains(word.Index))
+                    {
+                        originalSentence += "_______ ";
+                        answerList.Add(word.Index, word.Word + word.After);
+                        continue;
+                    }
+                    originalSentence += word.Word + word.After;
+                }
+                var an = answerList.ToString();
+                var finalAnswer = answerList.Keys.Aggregate("", (current, key) => current + answerList[key]);
+
+                var jsonObj = new JObject { { "index", nrOfQuestions }, { "Question", originalSentence }, { "Answer", finalAnswer.Trim() } };
+                jsonArray.Add(jsonObj);
+            }
+            var jsonQuestions = new JObject { { "Questions", jsonArray } };
+            fileJson.Write(jsonQuestions);
+            Console.WriteLine(nrOfQuestions + "/" + no);
+            fileJson.Close();
+        }
+
+        public void BetterFillNer()
+        {
+            var sentences = GetSentencesInformationFromJson();
+            var nrOfQuestions = 0;
+            var no = 0;
+            var fileJson = new StreamWriter(outputTestJsonPath);
+            var jsonArray = new JArray();
+            foreach (SentenceInformation sentence in sentences)
+            {
+                no++;
+                var dep = sentence.GetSubjectNer();
+                if (dep == null) continue;
+                var answerIndex = int.Parse(dep.Dependent);
+                var answerList = new SortedDictionary<int, string>();
+                answerList.Add(answerIndex, dep.DependentGloss + " ");
+
+                nrOfQuestions++;
+                var originalSentence = "";
+                var compIndexes = sentence.GetCompoundIndex(dep.Dependent, dep.Dependent);
+                foreach (var word in sentence.Words)
+                {
+                    if (word.Index == answerIndex)
+                    {
+                        originalSentence += "_______ ";
+                        continue;
+                    }
+                    if (compIndexes.Contains(word.Index))
+                    {
+                        originalSentence += "_______ ";
+                        answerList.Add(word.Index, word.Word + word.After);
+                        continue;
+                    }
+                    originalSentence += word.Word + word.After;
+                }
+                var an = answerList.ToString();
+                var finalAnswer = answerList.Keys.Aggregate("", (current, key) => current + answerList[key]);
+
+                var jsonObj = new JObject { { "index", nrOfQuestions }, { "Question", originalSentence }, { "Answer", finalAnswer.Trim() } };
+                jsonArray.Add(jsonObj);
+            }
+            var jsonQuestions = new JObject { { "Questions", jsonArray } };
+            fileJson.Write(jsonQuestions);
+            Console.WriteLine(nrOfQuestions + "/" + no);
+            fileJson.Close();
+        }
+
 
         public List<SentenceInformation> GetSentencesInformationFromJson()
         {

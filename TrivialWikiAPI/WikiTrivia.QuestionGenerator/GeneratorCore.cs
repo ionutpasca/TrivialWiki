@@ -43,7 +43,8 @@ namespace WikiTrivia.QuestionGenerator
             var firstWord = sentence.Words.FirstOrDefault();
             var questionText = sentence.SentenceText
                                            .Replace(firstWord.Word, firstWord.Word.ToLower())
-                                           .Replace(verbe.Word, verbe.Lemma);
+                                           .Replace(verbe.Word, verbe.Lemma)
+                                           .Replace(answer, "");
 
             if (answerWord.PartOfSpeech.ToLower() == "nn" ||
                    answerWord.PartOfSpeech.ToLower() == "nns")

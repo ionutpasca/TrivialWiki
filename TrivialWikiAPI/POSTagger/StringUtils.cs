@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -11,15 +12,23 @@ namespace POSTagger
         private static readonly string referencesPath = ConfigurationManager.AppSettings["Tagger.References"];
         private static readonly string newParsePath = ConfigurationManager.AppSettings["Tagger.newParsePath"];
         private static readonly string listParsePath = ConfigurationManager.AppSettings["Tagger.ListParse"];
+        public static readonly List<string> AcceptedPos = new List<string>() { "FW", "NN", "NNS", "NNP", "NNPS" };
 
         public static string CleanText(string text)
         {
             var result = text;
 
-            while (result.Contains("("))
+            while (result.Contains("(") && result.Contains(")"))
             {
                 var lrb = result.IndexOf("(", StringComparison.Ordinal);
                 var rrb = result.IndexOf(")", StringComparison.Ordinal);
+                if (lrb > rrb)
+                {
+                    result = result.Remove(rrb, 1);
+                    continue;
+                }
+                if (lrb < 0 || rrb < 0 || lrb > result.Length || rrb > result.Length) continue;
+
                 result = result.Remove(lrb, rrb - lrb + 1);
             }
             var regex = new Regex("={2,5}");

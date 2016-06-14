@@ -33,7 +33,10 @@ namespace POSTagger
             //}
             //Console.WriteLine(text.Length);
             //Console.WriteLine("Process new data?");
-
+            var text = "Bob likes trees";
+            TextProcessing trp = new TextProcessing();
+            trp.ProcessText(text);
+            trp.BetterFill();
             var resultList = SentenceGenerator.GetSentences();
 
             foreach (var res in resultList)
