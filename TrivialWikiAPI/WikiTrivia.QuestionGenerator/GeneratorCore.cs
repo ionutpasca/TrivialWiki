@@ -74,12 +74,12 @@ namespace WikiTrivia.QuestionGenerator
                 }
                 if (verbe.PartOfSpeech.ToLower() == "vbz")
                 {
-                    var question = $"What does {questionText}";
+                    var question = $"Who does {questionText}";
                     return new GeneratedQuestion { Answer = answer, Question = question };
                 }
                 if (verbe.PartOfSpeech.ToLower() == "vbp")
                 {
-                    var question = $"What do {questionText}";
+                    var question = $"Who do {questionText}";
                     return new GeneratedQuestion { Answer = answer, Question = question };
                 }
             }
