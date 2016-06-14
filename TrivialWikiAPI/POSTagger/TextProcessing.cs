@@ -4,6 +4,7 @@ using java.util;
 using Newtonsoft.Json.Linq;
 using POSTagger.Model;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 using System.Linq;
@@ -122,18 +123,19 @@ namespace POSTagger
         }
 
 
-        public ArrayList GetSentencesInformationFromJson()
+        public List<SentenceInformation> GetSentencesInformationFromJson()
         {
-            var jsonOutput = System.IO.File.ReadAllText(@"D:\Licenta\Files\OutputJson.txt");
+            var jsonOutput = System.IO.File.ReadAllText(outputJsonPath);
             var joText = JObject.Parse(jsonOutput);
             var joSentences = (JArray)joText["sentences"];
 
-            var sentencesInformation = new ArrayList();
-            foreach (JObject sentence in joSentences)
+            var sentencesInformation = new List<SentenceInformation>();
+            foreach (var jToken in joSentences)
             {
+                var sentence = (JObject)jToken;
                 var sentenceProc = new SentenceProcessing(sentence);
                 var sentenceInfo = new SentenceInformation(sentenceProc.GetSentenceText(), sentenceProc.GetDependencies(), sentenceProc.GetWordInformation());
-                sentencesInformation.add(sentenceInfo);
+                sentencesInformation.Add(sentenceInfo);
             }
             return sentencesInformation;
         }

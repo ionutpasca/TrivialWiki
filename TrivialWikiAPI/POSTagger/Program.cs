@@ -1,7 +1,8 @@
 ﻿using System.Configuration;
-using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
-using WikipediaResourceFinder;
+using WikiTrivia.QuestionGenerator;
+using WikiTrivia.QuestionGenerator.Model;
 using Console = System.Console;
 
 namespace POSTagger
@@ -10,6 +11,8 @@ namespace POSTagger
     {
         private static readonly string wikipediaRawResultPath = ConfigurationManager.AppSettings["Tagger.WikipediaResult"];
         private static readonly string cleanTextPath = ConfigurationManager.AppSettings["Tagger.CleanText"];
+        private static readonly string questionPath = ConfigurationManager.AppSettings["Tagger.Question"];
+
 
         public static void Main(string[] args)
         {
@@ -18,24 +21,32 @@ namespace POSTagger
 
         private static async Task MainAsync()
         {
-            IResourceFinder res = new ResourceFinder();
-            await res.GetWikipediaRawText("Pit_bull", wikipediaRawResultPath);
-            var text = File.ReadAllText(wikipediaRawResultPath);
+            //IResourceFinder res = new ResourceFinder();
+            //await res.GetWikipediaRawText("Pit_bull", wikipediaRawResultPath);
+            //var text = File.ReadAllText(wikipediaRawResultPath);
 
-            text = StringUtils.CleanText(text);
+            //text = StringUtils.CleanText(text);
 
-            using (var file = new StreamWriter(cleanTextPath))
+            //using (var file = new StreamWriter(cleanTextPath))
+            //{
+            //    await file.WriteLineAsync(text);
+            //}
+            //Console.WriteLine(text.Length);
+            //Console.WriteLine("Process new data?");
+
+            var resultList = SentenceGenerator.GetSentences();
+
+            foreach (var res in resultList)
             {
-                await file.WriteLineAsync(text);
+                var dependencies = res.Dependencies.Select(s => new SentenceDependencyDto(s.Dep, s.Governor,
+                    s.GovernorGloss, s.Dependent, s.DependentGloss)).ToList();
+
+                var words = res.Words.Select(w => new WordInformationDto(w.Word, w.PartOfSpeech, w.NamedEntityRecognition, w.Lemma)).ToList();
+
+                var sentenceInfo = new SentenceInformationDto(res.SentenceText, dependencies, words);
+                var question = QuestionGenerator.Generate(sentenceInfo);
             }
-            Console.WriteLine(text.Length);
-            Console.WriteLine("Process new data?");
-            var answer = Console.ReadLine();
-            var tpr = new TextProcessing();
-            if (answer != null && answer.Equals("y"))
-                tpr.ProcessText(text);
-            //TextProcessing.ProcessJson();
-            var result = tpr.GetSentencesInformationFromJson();
+
             Console.ReadLine();
         }
     }
