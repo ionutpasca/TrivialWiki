@@ -67,7 +67,21 @@ namespace WikiTrivia.QuestionGenerator
             }
             if (answerWord.NamedEntityRecognition.ToLower() == "person")
             {
-
+                if (verbe.PartOfSpeech.ToLower() == "vbd")
+                {
+                    var question = $"Who did {questionText}";
+                    return new GeneratedQuestion { Answer = answer, Question = question };
+                }
+                if (verbe.PartOfSpeech.ToLower() == "vbz")
+                {
+                    var question = $"What does {questionText}";
+                    return new GeneratedQuestion { Answer = answer, Question = question };
+                }
+                if (verbe.PartOfSpeech.ToLower() == "vbp")
+                {
+                    var question = $"What do {questionText}";
+                    return new GeneratedQuestion { Answer = answer, Question = question };
+                }
             }
 
             var answerPOS = Helper.FindWordInList(sentence.Words, answer);
