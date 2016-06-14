@@ -41,14 +41,14 @@ namespace WikiTrivia.QuestionGenerator
 
 
             var firstWord = sentence.Words.FirstOrDefault();
+            var questionText = sentence.SentenceText
+                                           .Replace(firstWord.Word, firstWord.Word.ToLower())
+                                           .Replace(verbe.Word, verbe.Lemma);
 
             if (answerWord.PartOfSpeech.ToLower() == "nn" ||
                    answerWord.PartOfSpeech.ToLower() == "nns")
             {
-                var questionText = sentence.SentenceText
-                                           .Replace(firstWord.Word, firstWord.Word.ToLower())
-                                           .Replace(verbe.Word, verbe.Lemma)
-                                           .Replace(answer, "?");
+
                 if (verbe.PartOfSpeech.ToLower() == "vbd")
                 {
                     var question = $"What did {questionText}";
@@ -64,6 +64,10 @@ namespace WikiTrivia.QuestionGenerator
                     var question = $"What do {questionText}";
                     return new GeneratedQuestion { Answer = answer, Question = question };
                 }
+            }
+            if (answerWord.NamedEntityRecognition.ToLower() == "person")
+            {
+
             }
 
             var answerPOS = Helper.FindWordInList(sentence.Words, answer);
