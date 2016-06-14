@@ -33,7 +33,7 @@ namespace WikiTrivia.QuestionGenerator
             if (answerCompound != null)
             {
                 var compoundIsBefore = CompoundIsBeforeDOBJ(sentence.Words, answerCompound.DependentGloss, answerWord.Word);
-                answer = compoundIsBefore ? $"{answerCompound} {answer}" : $"{answer} {answerCompound}";
+                answer = compoundIsBefore ? $"{answerCompound.DependentGloss} {answer}" : $"{answer} {answerCompound.DependentGloss}";
             }
 
 
