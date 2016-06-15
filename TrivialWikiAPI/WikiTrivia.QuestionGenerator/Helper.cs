@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using WikiTrivia.QuestionGenerator.Model;
 
@@ -22,6 +23,12 @@ namespace WikiTrivia.QuestionGenerator
         public static WordInformationDto FindWordInList(IEnumerable<WordInformationDto> words, string wordToFind)
         {
             return words.FirstOrDefault(w => w.Word == wordToFind);
+        }
+
+        public static string TrimQuestion(string question, string keyWordUsed)
+        {
+            var indexOfKey = question.IndexOf(keyWordUsed, StringComparison.Ordinal);
+            return indexOfKey != 0 ? question.Substring(indexOfKey, question.Length - indexOfKey) : question;
         }
     }
 }

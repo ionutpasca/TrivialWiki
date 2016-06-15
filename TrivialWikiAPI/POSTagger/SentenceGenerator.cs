@@ -28,12 +28,12 @@ namespace POSTagger
             var text11 = "Linux is the best operating system";
             var text12 = "The continent that has the fewest flowering plants is called Antarctica";
             var text13 = "The character was created by writer Jerry Siegel and artist Joe Shuster, high school students living in Cleveland, Ohio, in 1933. ";
-            var text14 = "The only element that begins with K is called Krypton";
+            var text14 = "Animals are multicellular, eukaryotic organisms of the kingdom Animalia (also called Metazoa)";
             //var text14 = "Uranus is the first planet ti be discovered using the telescope, in 1781.";
-            var text15 = "She gave me a raise";
-            var text16 = "They win the lottery";
-            var text17 = "Joe threw the ball";
-            var text18 = "Quinn ate cereal for breakfast.";
+            var text15 = "All animals are motile, meaning they can move spontaneously and independently, at some point in their lives";
+            var text16 = "Their body plan eventually becomes fixed as they develop, although some undergo a process of metamorphosis later on in their lives";
+            var text17 = "All animals are heterotrophs: they must ingest other organisms or their products for sustenance.";
+            var text18 = "Most known animal phyla appeared in the fossil record as marine species during the Cambrian explosion, about 542 million years ago";
             var tpr = new TextProcessing();
             tpr.ProcessText(text0);
             //TextProcessing.ProcessJson();
@@ -116,10 +116,10 @@ namespace POSTagger
 
             var resultList = new List<SentenceInformation>
             {
-                result[0],
-                result0[0],
-                result1[0],
-                result13[0],
+                //result[0],
+                //result0[0],
+                //result1[0],
+                //result13[0],
                 result14[0],
                 result15[0],
                 result16[0],

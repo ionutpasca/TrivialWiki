@@ -2,49 +2,161 @@
   "sentences": [
     {
       "index": 0,
-      "parse": "(ROOT\r\n  (S\r\n    (NP (NNP Quinn))\r\n    (VP (VBD ate)\r\n      (NP (NN cereal))\r\n      (PP (IN for)\r\n        (NP (NN breakfast))))\r\n    (. .)))",
+      "parse": "(ROOT\r\n  (S\r\n    (NP\r\n      (ADJP (RBS Most) (JJ known))\r\n      (NP (NN animal) (NN phyla)))\r\n    (VP (VBD appeared)\r\n      (PP (IN in)\r\n        (NP\r\n          (NP (DT the) (NN fossil) (NN record))\r\n          (PP (IN as)\r\n            (NP (JJ marine) (NNS species)))))\r\n      (PP (IN during)\r\n        (NP (DT the) (NNP Cambrian) (NN explosion)))\r\n      (, ,)\r\n      (PP (IN about)\r\n        (NP (CD 542))\r\n        (ADVP\r\n          (NP (CD million) (NNS years))\r\n          (IN ago))))))",
       "basic-dependencies": [
         {
           "dep": "ROOT",
           "governor": 0,
           "governorGloss": "ROOT",
+          "dependent": 5,
+          "dependentGloss": "appeared"
+        },
+        {
+          "dep": "advmod",
+          "governor": 2,
+          "governorGloss": "known",
+          "dependent": 1,
+          "dependentGloss": "Most"
+        },
+        {
+          "dep": "amod",
+          "governor": 4,
+          "governorGloss": "phyla",
           "dependent": 2,
-          "dependentGloss": "ate"
+          "dependentGloss": "known"
+        },
+        {
+          "dep": "compound",
+          "governor": 4,
+          "governorGloss": "phyla",
+          "dependent": 3,
+          "dependentGloss": "animal"
         },
         {
           "dep": "nsubj",
-          "governor": 2,
-          "governorGloss": "ate",
-          "dependent": 1,
-          "dependentGloss": "Quinn"
-        },
-        {
-          "dep": "dobj",
-          "governor": 2,
-          "governorGloss": "ate",
-          "dependent": 3,
-          "dependentGloss": "cereal"
+          "governor": 5,
+          "governorGloss": "appeared",
+          "dependent": 4,
+          "dependentGloss": "phyla"
         },
         {
           "dep": "case",
-          "governor": 5,
-          "governorGloss": "breakfast",
-          "dependent": 4,
-          "dependentGloss": "for"
+          "governor": 9,
+          "governorGloss": "record",
+          "dependent": 6,
+          "dependentGloss": "in"
+        },
+        {
+          "dep": "det",
+          "governor": 9,
+          "governorGloss": "record",
+          "dependent": 7,
+          "dependentGloss": "the"
+        },
+        {
+          "dep": "compound",
+          "governor": 9,
+          "governorGloss": "record",
+          "dependent": 8,
+          "dependentGloss": "fossil"
         },
         {
           "dep": "nmod",
-          "governor": 2,
-          "governorGloss": "ate",
-          "dependent": 5,
-          "dependentGloss": "breakfast"
+          "governor": 5,
+          "governorGloss": "appeared",
+          "dependent": 9,
+          "dependentGloss": "record"
+        },
+        {
+          "dep": "case",
+          "governor": 12,
+          "governorGloss": "species",
+          "dependent": 10,
+          "dependentGloss": "as"
+        },
+        {
+          "dep": "amod",
+          "governor": 12,
+          "governorGloss": "species",
+          "dependent": 11,
+          "dependentGloss": "marine"
+        },
+        {
+          "dep": "nmod",
+          "governor": 9,
+          "governorGloss": "record",
+          "dependent": 12,
+          "dependentGloss": "species"
+        },
+        {
+          "dep": "case",
+          "governor": 16,
+          "governorGloss": "explosion",
+          "dependent": 13,
+          "dependentGloss": "during"
+        },
+        {
+          "dep": "det",
+          "governor": 16,
+          "governorGloss": "explosion",
+          "dependent": 14,
+          "dependentGloss": "the"
+        },
+        {
+          "dep": "compound",
+          "governor": 16,
+          "governorGloss": "explosion",
+          "dependent": 15,
+          "dependentGloss": "Cambrian"
+        },
+        {
+          "dep": "nmod",
+          "governor": 5,
+          "governorGloss": "appeared",
+          "dependent": 16,
+          "dependentGloss": "explosion"
         },
         {
           "dep": "punct",
-          "governor": 2,
-          "governorGloss": "ate",
-          "dependent": 6,
-          "dependentGloss": "."
+          "governor": 5,
+          "governorGloss": "appeared",
+          "dependent": 17,
+          "dependentGloss": ","
+        },
+        {
+          "dep": "case",
+          "governor": 19,
+          "governorGloss": "542",
+          "dependent": 18,
+          "dependentGloss": "about"
+        },
+        {
+          "dep": "nmod",
+          "governor": 5,
+          "governorGloss": "appeared",
+          "dependent": 19,
+          "dependentGloss": "542"
+        },
+        {
+          "dep": "nummod",
+          "governor": 21,
+          "governorGloss": "years",
+          "dependent": 20,
+          "dependentGloss": "million"
+        },
+        {
+          "dep": "advmod",
+          "governor": 19,
+          "governorGloss": "542",
+          "dependent": 21,
+          "dependentGloss": "years"
+        },
+        {
+          "dep": "case",
+          "governor": 21,
+          "governorGloss": "years",
+          "dependent": 22,
+          "dependentGloss": "ago"
         }
       ],
       "collapsed-dependencies": [
@@ -52,43 +164,155 @@
           "dep": "ROOT",
           "governor": 0,
           "governorGloss": "ROOT",
+          "dependent": 5,
+          "dependentGloss": "appeared"
+        },
+        {
+          "dep": "advmod",
+          "governor": 2,
+          "governorGloss": "known",
+          "dependent": 1,
+          "dependentGloss": "Most"
+        },
+        {
+          "dep": "amod",
+          "governor": 4,
+          "governorGloss": "phyla",
           "dependent": 2,
-          "dependentGloss": "ate"
+          "dependentGloss": "known"
+        },
+        {
+          "dep": "compound",
+          "governor": 4,
+          "governorGloss": "phyla",
+          "dependent": 3,
+          "dependentGloss": "animal"
         },
         {
           "dep": "nsubj",
-          "governor": 2,
-          "governorGloss": "ate",
-          "dependent": 1,
-          "dependentGloss": "Quinn"
-        },
-        {
-          "dep": "dobj",
-          "governor": 2,
-          "governorGloss": "ate",
-          "dependent": 3,
-          "dependentGloss": "cereal"
+          "governor": 5,
+          "governorGloss": "appeared",
+          "dependent": 4,
+          "dependentGloss": "phyla"
         },
         {
           "dep": "case",
-          "governor": 5,
-          "governorGloss": "breakfast",
-          "dependent": 4,
-          "dependentGloss": "for"
+          "governor": 9,
+          "governorGloss": "record",
+          "dependent": 6,
+          "dependentGloss": "in"
         },
         {
-          "dep": "nmod:for",
-          "governor": 2,
-          "governorGloss": "ate",
-          "dependent": 5,
-          "dependentGloss": "breakfast"
+          "dep": "det",
+          "governor": 9,
+          "governorGloss": "record",
+          "dependent": 7,
+          "dependentGloss": "the"
+        },
+        {
+          "dep": "compound",
+          "governor": 9,
+          "governorGloss": "record",
+          "dependent": 8,
+          "dependentGloss": "fossil"
+        },
+        {
+          "dep": "nmod:in",
+          "governor": 5,
+          "governorGloss": "appeared",
+          "dependent": 9,
+          "dependentGloss": "record"
+        },
+        {
+          "dep": "case",
+          "governor": 12,
+          "governorGloss": "species",
+          "dependent": 10,
+          "dependentGloss": "as"
+        },
+        {
+          "dep": "amod",
+          "governor": 12,
+          "governorGloss": "species",
+          "dependent": 11,
+          "dependentGloss": "marine"
+        },
+        {
+          "dep": "nmod:as",
+          "governor": 9,
+          "governorGloss": "record",
+          "dependent": 12,
+          "dependentGloss": "species"
+        },
+        {
+          "dep": "case",
+          "governor": 16,
+          "governorGloss": "explosion",
+          "dependent": 13,
+          "dependentGloss": "during"
+        },
+        {
+          "dep": "det",
+          "governor": 16,
+          "governorGloss": "explosion",
+          "dependent": 14,
+          "dependentGloss": "the"
+        },
+        {
+          "dep": "compound",
+          "governor": 16,
+          "governorGloss": "explosion",
+          "dependent": 15,
+          "dependentGloss": "Cambrian"
+        },
+        {
+          "dep": "nmod:during",
+          "governor": 5,
+          "governorGloss": "appeared",
+          "dependent": 16,
+          "dependentGloss": "explosion"
         },
         {
           "dep": "punct",
-          "governor": 2,
-          "governorGloss": "ate",
-          "dependent": 6,
-          "dependentGloss": "."
+          "governor": 5,
+          "governorGloss": "appeared",
+          "dependent": 17,
+          "dependentGloss": ","
+        },
+        {
+          "dep": "case",
+          "governor": 19,
+          "governorGloss": "542",
+          "dependent": 18,
+          "dependentGloss": "about"
+        },
+        {
+          "dep": "nmod:about",
+          "governor": 5,
+          "governorGloss": "appeared",
+          "dependent": 19,
+          "dependentGloss": "542"
+        },
+        {
+          "dep": "nummod",
+          "governor": 21,
+          "governorGloss": "years",
+          "dependent": 20,
+          "dependentGloss": "million"
+        },
+        {
+          "dep": "advmod",
+          "governor": 19,
+          "governorGloss": "542",
+          "dependent": 21,
+          "dependentGloss": "years"
+        },
+        {
+          "dep": "case",
+          "governor": 21,
+          "governorGloss": "years",
+          "dependent": 22,
+          "dependentGloss": "ago"
         }
       ],
       "collapsed-ccprocessed-dependencies": [
@@ -96,77 +320,189 @@
           "dep": "ROOT",
           "governor": 0,
           "governorGloss": "ROOT",
+          "dependent": 5,
+          "dependentGloss": "appeared"
+        },
+        {
+          "dep": "advmod",
+          "governor": 2,
+          "governorGloss": "known",
+          "dependent": 1,
+          "dependentGloss": "Most"
+        },
+        {
+          "dep": "amod",
+          "governor": 4,
+          "governorGloss": "phyla",
           "dependent": 2,
-          "dependentGloss": "ate"
+          "dependentGloss": "known"
+        },
+        {
+          "dep": "compound",
+          "governor": 4,
+          "governorGloss": "phyla",
+          "dependent": 3,
+          "dependentGloss": "animal"
         },
         {
           "dep": "nsubj",
-          "governor": 2,
-          "governorGloss": "ate",
-          "dependent": 1,
-          "dependentGloss": "Quinn"
-        },
-        {
-          "dep": "dobj",
-          "governor": 2,
-          "governorGloss": "ate",
-          "dependent": 3,
-          "dependentGloss": "cereal"
+          "governor": 5,
+          "governorGloss": "appeared",
+          "dependent": 4,
+          "dependentGloss": "phyla"
         },
         {
           "dep": "case",
-          "governor": 5,
-          "governorGloss": "breakfast",
-          "dependent": 4,
-          "dependentGloss": "for"
+          "governor": 9,
+          "governorGloss": "record",
+          "dependent": 6,
+          "dependentGloss": "in"
         },
         {
-          "dep": "nmod:for",
-          "governor": 2,
-          "governorGloss": "ate",
-          "dependent": 5,
-          "dependentGloss": "breakfast"
+          "dep": "det",
+          "governor": 9,
+          "governorGloss": "record",
+          "dependent": 7,
+          "dependentGloss": "the"
+        },
+        {
+          "dep": "compound",
+          "governor": 9,
+          "governorGloss": "record",
+          "dependent": 8,
+          "dependentGloss": "fossil"
+        },
+        {
+          "dep": "nmod:in",
+          "governor": 5,
+          "governorGloss": "appeared",
+          "dependent": 9,
+          "dependentGloss": "record"
+        },
+        {
+          "dep": "case",
+          "governor": 12,
+          "governorGloss": "species",
+          "dependent": 10,
+          "dependentGloss": "as"
+        },
+        {
+          "dep": "amod",
+          "governor": 12,
+          "governorGloss": "species",
+          "dependent": 11,
+          "dependentGloss": "marine"
+        },
+        {
+          "dep": "nmod:as",
+          "governor": 9,
+          "governorGloss": "record",
+          "dependent": 12,
+          "dependentGloss": "species"
+        },
+        {
+          "dep": "case",
+          "governor": 16,
+          "governorGloss": "explosion",
+          "dependent": 13,
+          "dependentGloss": "during"
+        },
+        {
+          "dep": "det",
+          "governor": 16,
+          "governorGloss": "explosion",
+          "dependent": 14,
+          "dependentGloss": "the"
+        },
+        {
+          "dep": "compound",
+          "governor": 16,
+          "governorGloss": "explosion",
+          "dependent": 15,
+          "dependentGloss": "Cambrian"
+        },
+        {
+          "dep": "nmod:during",
+          "governor": 5,
+          "governorGloss": "appeared",
+          "dependent": 16,
+          "dependentGloss": "explosion"
         },
         {
           "dep": "punct",
-          "governor": 2,
-          "governorGloss": "ate",
-          "dependent": 6,
-          "dependentGloss": "."
+          "governor": 5,
+          "governorGloss": "appeared",
+          "dependent": 17,
+          "dependentGloss": ","
+        },
+        {
+          "dep": "case",
+          "governor": 19,
+          "governorGloss": "542",
+          "dependent": 18,
+          "dependentGloss": "about"
+        },
+        {
+          "dep": "nmod:about",
+          "governor": 5,
+          "governorGloss": "appeared",
+          "dependent": 19,
+          "dependentGloss": "542"
+        },
+        {
+          "dep": "nummod",
+          "governor": 21,
+          "governorGloss": "years",
+          "dependent": 20,
+          "dependentGloss": "million"
+        },
+        {
+          "dep": "advmod",
+          "governor": 19,
+          "governorGloss": "542",
+          "dependent": 21,
+          "dependentGloss": "years"
+        },
+        {
+          "dep": "case",
+          "governor": 21,
+          "governorGloss": "years",
+          "dependent": 22,
+          "dependentGloss": "ago"
         }
       ],
       "tokens": [
         {
           "index": 1,
-          "word": "Quinn",
-          "originalText": "Quinn",
-          "lemma": "Quinn",
+          "word": "Most",
+          "originalText": "Most",
+          "lemma": "most",
           "characterOffsetBegin": 0,
-          "characterOffsetEnd": 5,
-          "pos": "NNP",
-          "ner": "PERSON",
+          "characterOffsetEnd": 4,
+          "pos": "RBS",
+          "ner": "O",
           "before": "",
           "after": " "
         },
         {
           "index": 2,
-          "word": "ate",
-          "originalText": "ate",
-          "lemma": "eat",
-          "characterOffsetBegin": 6,
-          "characterOffsetEnd": 9,
-          "pos": "VBD",
+          "word": "known",
+          "originalText": "known",
+          "lemma": "known",
+          "characterOffsetBegin": 5,
+          "characterOffsetEnd": 10,
+          "pos": "JJ",
           "ner": "O",
           "before": " ",
           "after": " "
         },
         {
           "index": 3,
-          "word": "cereal",
-          "originalText": "cereal",
-          "lemma": "cereal",
-          "characterOffsetBegin": 10,
-          "characterOffsetEnd": 16,
+          "word": "animal",
+          "originalText": "animal",
+          "lemma": "animal",
+          "characterOffsetBegin": 11,
+          "characterOffsetEnd": 17,
           "pos": "NN",
           "ner": "O",
           "before": " ",
@@ -174,38 +510,230 @@
         },
         {
           "index": 4,
-          "word": "for",
-          "originalText": "for",
-          "lemma": "for",
-          "characterOffsetBegin": 17,
-          "characterOffsetEnd": 20,
-          "pos": "IN",
+          "word": "phyla",
+          "originalText": "phyla",
+          "lemma": "phyla",
+          "characterOffsetBegin": 18,
+          "characterOffsetEnd": 23,
+          "pos": "NN",
           "ner": "O",
           "before": " ",
           "after": " "
         },
         {
           "index": 5,
-          "word": "breakfast",
-          "originalText": "breakfast",
-          "lemma": "breakfast",
-          "characterOffsetBegin": 21,
-          "characterOffsetEnd": 30,
+          "word": "appeared",
+          "originalText": "appeared",
+          "lemma": "appear",
+          "characterOffsetBegin": 24,
+          "characterOffsetEnd": 32,
+          "pos": "VBD",
+          "ner": "O",
+          "before": " ",
+          "after": " "
+        },
+        {
+          "index": 6,
+          "word": "in",
+          "originalText": "in",
+          "lemma": "in",
+          "characterOffsetBegin": 33,
+          "characterOffsetEnd": 35,
+          "pos": "IN",
+          "ner": "O",
+          "before": " ",
+          "after": " "
+        },
+        {
+          "index": 7,
+          "word": "the",
+          "originalText": "the",
+          "lemma": "the",
+          "characterOffsetBegin": 36,
+          "characterOffsetEnd": 39,
+          "pos": "DT",
+          "ner": "O",
+          "before": " ",
+          "after": " "
+        },
+        {
+          "index": 8,
+          "word": "fossil",
+          "originalText": "fossil",
+          "lemma": "fossil",
+          "characterOffsetBegin": 40,
+          "characterOffsetEnd": 46,
+          "pos": "NN",
+          "ner": "O",
+          "before": " ",
+          "after": " "
+        },
+        {
+          "index": 9,
+          "word": "record",
+          "originalText": "record",
+          "lemma": "record",
+          "characterOffsetBegin": 47,
+          "characterOffsetEnd": 53,
+          "pos": "NN",
+          "ner": "O",
+          "before": " ",
+          "after": " "
+        },
+        {
+          "index": 10,
+          "word": "as",
+          "originalText": "as",
+          "lemma": "as",
+          "characterOffsetBegin": 54,
+          "characterOffsetEnd": 56,
+          "pos": "IN",
+          "ner": "O",
+          "before": " ",
+          "after": " "
+        },
+        {
+          "index": 11,
+          "word": "marine",
+          "originalText": "marine",
+          "lemma": "marine",
+          "characterOffsetBegin": 57,
+          "characterOffsetEnd": 63,
+          "pos": "JJ",
+          "ner": "O",
+          "before": " ",
+          "after": " "
+        },
+        {
+          "index": 12,
+          "word": "species",
+          "originalText": "species",
+          "lemma": "species",
+          "characterOffsetBegin": 64,
+          "characterOffsetEnd": 71,
+          "pos": "NNS",
+          "ner": "O",
+          "before": " ",
+          "after": " "
+        },
+        {
+          "index": 13,
+          "word": "during",
+          "originalText": "during",
+          "lemma": "during",
+          "characterOffsetBegin": 72,
+          "characterOffsetEnd": 78,
+          "pos": "IN",
+          "ner": "O",
+          "before": " ",
+          "after": " "
+        },
+        {
+          "index": 14,
+          "word": "the",
+          "originalText": "the",
+          "lemma": "the",
+          "characterOffsetBegin": 79,
+          "characterOffsetEnd": 82,
+          "pos": "DT",
+          "ner": "O",
+          "before": " ",
+          "after": " "
+        },
+        {
+          "index": 15,
+          "word": "Cambrian",
+          "originalText": "Cambrian",
+          "lemma": "Cambrian",
+          "characterOffsetBegin": 83,
+          "characterOffsetEnd": 91,
+          "pos": "NNP",
+          "ner": "MISC",
+          "before": " ",
+          "after": " "
+        },
+        {
+          "index": 16,
+          "word": "explosion",
+          "originalText": "explosion",
+          "lemma": "explosion",
+          "characterOffsetBegin": 92,
+          "characterOffsetEnd": 101,
           "pos": "NN",
           "ner": "O",
           "before": " ",
           "after": ""
         },
         {
-          "index": 6,
-          "word": ".",
-          "originalText": ".",
-          "lemma": ".",
-          "characterOffsetBegin": 30,
-          "characterOffsetEnd": 31,
-          "pos": ".",
+          "index": 17,
+          "word": ",",
+          "originalText": ",",
+          "lemma": ",",
+          "characterOffsetBegin": 101,
+          "characterOffsetEnd": 102,
+          "pos": ",",
           "ner": "O",
           "before": "",
+          "after": " "
+        },
+        {
+          "index": 18,
+          "word": "about",
+          "originalText": "about",
+          "lemma": "about",
+          "characterOffsetBegin": 103,
+          "characterOffsetEnd": 108,
+          "pos": "IN",
+          "ner": "O",
+          "before": " ",
+          "after": " "
+        },
+        {
+          "index": 19,
+          "word": "542",
+          "originalText": "542",
+          "lemma": "542",
+          "characterOffsetBegin": 109,
+          "characterOffsetEnd": 112,
+          "pos": "CD",
+          "ner": "DURATION",
+          "before": " ",
+          "after": " "
+        },
+        {
+          "index": 20,
+          "word": "million",
+          "originalText": "million",
+          "lemma": "million",
+          "characterOffsetBegin": 113,
+          "characterOffsetEnd": 120,
+          "pos": "CD",
+          "ner": "DURATION",
+          "before": " ",
+          "after": " "
+        },
+        {
+          "index": 21,
+          "word": "years",
+          "originalText": "years",
+          "lemma": "year",
+          "characterOffsetBegin": 121,
+          "characterOffsetEnd": 126,
+          "pos": "NNS",
+          "ner": "DURATION",
+          "before": " ",
+          "after": " "
+        },
+        {
+          "index": 22,
+          "word": "ago",
+          "originalText": "ago",
+          "lemma": "ago",
+          "characterOffsetBegin": 127,
+          "characterOffsetEnd": 130,
+          "pos": "IN",
+          "ner": "O",
+          "before": " ",
           "after": ""
         }
       ]
