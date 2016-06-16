@@ -10,27 +10,17 @@ namespace WikiTrivia.QuestionGenerator.Generators
         public static string GenerateAnswer(SentenceInformationDto sentence, SentenceDependencyDto sentenceDependency = null,
             WordInformationDto wordInformation = null, WordInformationDto subjectWord = null)
         {
-            var baseAnswer = GetBaseAnswer(sentenceDependency, wordInformation ?? subjectWord);
+            var baseAnswer = GetBaseAnswer(sentence, sentenceDependency, wordInformation ?? subjectWord);
             var answer = baseAnswer;
             var answerDet = GetWordDET(sentence, answer);
 
             if (answer != string.Empty)
             {
-                var answerCompound = GetWordCompound(sentence, baseAnswer);
-                if (answerCompound != null)
-                {
-                    var compoundIsBefore = CompoundIsBeforeDOBJ(sentence.Words, answerCompound.DependentGloss, baseAnswer);
-                    answer = compoundIsBefore ? $"{answerCompound.DependentGloss} {answer}" : $"{answer} {answerCompound.DependentGloss}";
-                }
+                answer = TreatAnswerCompound(sentence, baseAnswer, answer);
 
-                var answerPoss = GetAnswerPossession(sentence, baseAnswer);
-                if (answerPoss != null)
-                {
-                    var possCase = GetPossessionCase(sentence, answerPoss.DependentGloss);
-                    answer = possCase != null
-                        ? $"{answerPoss.DependentGloss}{possCase.DependentGloss} {answer}"
-                        : $"{answerPoss.DependentGloss} {answer}";
-                }
+                answer = TreatAnswerNumMod(sentence, baseAnswer, answer);
+
+                answer = TreatAnswerPossession(sentence, baseAnswer, answer);
             }
 
             if (subjectWord != null)
@@ -41,8 +31,6 @@ namespace WikiTrivia.QuestionGenerator.Generators
                     answer = $"{subjectAMOD.DependentGloss} {subjectWord.Word}";
                 }
             }
-
-            //var answerWord = Helper.FindWordInList(sentence.Words, answer);
 
             if (sentenceDependency != null && string.IsNullOrEmpty(answer))
             {
@@ -60,19 +48,55 @@ namespace WikiTrivia.QuestionGenerator.Generators
                 answer = $"{answerDet.DependentGloss} {answer}";
             }
 
-            
+            return answer;
+        }
+
+        private static string TreatAnswerPossession(SentenceInformationDto sentence, string baseAnswer, string answer)
+        {
+            var answerPoss = GetAnswerPossession(sentence, baseAnswer);
+            if (answerPoss != null)
+            {
+                var possCase = GetPossessionCase(sentence, answerPoss.DependentGloss);
+                answer = possCase != null
+                    ? $"{answerPoss.DependentGloss}{possCase.DependentGloss} {answer}"
+                    : $"{answerPoss.DependentGloss} {answer}";
+            }
 
             return answer;
         }
-        private static bool CompoundIsBeforeDOBJ(IEnumerable<WordInformationDto> words, string compound, string dobj)
+
+        private static string TreatAnswerNumMod(SentenceInformationDto sentence, string baseAnswer, string answer)
+        {
+            var answerNumMod = sentence.Dependencies.FirstOrDefault(d => d.Dep.ToLower() == "nummod" && d.GovernorGloss == baseAnswer);
+            if (answerNumMod != null)
+            {
+                var numModIsFirst = ElementIsBeforeWord(sentence.Words, answerNumMod.DependentGloss, baseAnswer);
+                answer = numModIsFirst ? $"{answerNumMod.DependentGloss} {answer}" : $"{answer} {answerNumMod.DependentGloss}";
+            }
+
+            return answer;
+        }
+
+        private static string TreatAnswerCompound(SentenceInformationDto sentence, string baseAnswer, string answer)
+        {
+            var answerCompound = GetWordCompound(sentence, baseAnswer).ToList();
+            foreach (var compound in answerCompound)
+            {
+                var compoundIsBefore = ElementIsBeforeWord(sentence.Words, compound.DependentGloss, baseAnswer);
+                answer = compoundIsBefore ? $"{compound.DependentGloss} {answer}" : $"{answer} {compound.DependentGloss}";
+            }
+            return answer;
+        }
+
+        private static bool ElementIsBeforeWord(IEnumerable<WordInformationDto> words, string element, string word)
         {
             foreach (var wordInformationDto in words)
             {
-                if (wordInformationDto.Word == compound)
+                if (wordInformationDto.Word == element)
                 {
                     return true;
                 }
-                if (wordInformationDto.Word == dobj)
+                if (wordInformationDto.Word == word)
                 {
                     return false;
                 }
@@ -95,18 +119,32 @@ namespace WikiTrivia.QuestionGenerator.Generators
             return sentence.Dependencies.FirstOrDefault(d => d.Dep.ToLower() == "det" && d.GovernorGloss == word);
         }
 
-        private static SentenceDependencyDto GetWordCompound(SentenceInformationDto sentence, string word)
+        private static IEnumerable<SentenceDependencyDto> GetWordCompound(SentenceInformationDto sentence, string word)
         {
-            return sentence.Dependencies.FirstOrDefault(d => d.Dep.ToLower() == "compound" && d.GovernorGloss == word);
+            return sentence.Dependencies.Where(d => d.Dep.ToLower() == "compound" && d.GovernorGloss == word);
         }
 
-        private static string GetBaseAnswer(SentenceDependencyDto sentenceDependency, WordInformationDto wordInformation)
+        private static string GetBaseAnswer(SentenceInformationDto sentence, SentenceDependencyDto sentenceDependency, WordInformationDto wordInformation)
         {
-            if (wordInformation != null)
+            if (sentenceDependency != null && wordInformation != null && wordInformation.NamedEntityRecognition.ToLower() == "person")
             {
                 return wordInformation.Word;
             }
-            return sentenceDependency != null ? sentenceDependency.GovernorGloss : string.Empty;
+            if (sentenceDependency != null)
+            {
+                var sentenceDep = Helper.FindWordInList(sentence.Words, sentenceDependency.DependentGloss);
+                if (sentenceDep.PartOfSpeech.ToLower() == "vb" ||
+                    sentenceDep.PartOfSpeech.ToLower() == "vbd" ||
+                    sentenceDep.PartOfSpeech.ToLower() == "vbg" ||
+                    sentenceDep.PartOfSpeech.ToLower() == "vbn" ||
+                    sentenceDep.PartOfSpeech.ToLower() == "vbp" ||
+                    sentenceDep.PartOfSpeech.ToLower() == "vbz")
+                {
+                    return sentenceDependency.GovernorGloss;
+                }
+                return sentenceDependency.DependentGloss;
+            }
+            return wordInformation != null ? wordInformation.Word : string.Empty;
         }
     }
 }

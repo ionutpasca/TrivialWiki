@@ -18,7 +18,8 @@ namespace WikiTrivia.QuestionGenerator.Generators
                 string question;
 
                 if (subject.NamedEntityRecognition.ToLower() == "person" ||
-                    subject.PartOfSpeech.ToLower() == "prp")
+                    subject.PartOfSpeech.ToLower() == "prp" ||
+                    subject.PartOfSpeech.ToLower() == "nnp")
                 {
                     question = sentence.SentenceText.Replace(answer, "Who");
                     question = Helper.TrimQuestion(question, "Who");

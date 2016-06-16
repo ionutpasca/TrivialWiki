@@ -28,7 +28,42 @@ namespace WikiTrivia.QuestionGenerator
         public static string TrimQuestion(string question, string keyWordUsed)
         {
             var indexOfKey = question.IndexOf(keyWordUsed, StringComparison.Ordinal);
-            return indexOfKey != 0 ? question.Substring(indexOfKey, question.Length - indexOfKey) : question;
+            return indexOfKey != -1 ?
+                question.Substring(indexOfKey, question.Length - indexOfKey) :
+                question;
+        }
+
+        public static string TrimQuestionAfter(string question, string keyWord)
+        {
+            var indexOfKey = question.IndexOf(keyWord, StringComparison.Ordinal);
+            return indexOfKey != -1
+                ? question.Substring(0, indexOfKey + keyWord.Length)
+                : question;
+        }
+
+        public static bool StringIsYear(string input)
+        {
+            return input.All(char.IsDigit) && input.Length <= 4;
+        }
+
+        public static bool SentenceContainsYear(SentenceInformationDto sentence)
+        {
+            if (sentence.Words.Any(w => w.NamedEntityRecognition.ToLower() == "data"))
+            {
+                return true;
+            }
+            var sentenceIN = sentence.Dependencies.Where(d => d.Dep == "nmod:in");
+            return sentenceIN.Any(sentenceDep => StringIsYear(sentenceDep.DependentGloss));
+        }
+
+        public static bool SentenceIsInvalid(SentenceInformationDto sentence)
+        {
+            return sentence.Words.Any(w => w.Word.ToLower() == "i");
+        }
+
+        public static WordInformationDto GetSentenceDate(SentenceInformationDto sentence)
+        {
+            return sentence.Words.FirstOrDefault(w => w.NamedEntityRecognition.ToLower() == "date");
         }
     }
 }

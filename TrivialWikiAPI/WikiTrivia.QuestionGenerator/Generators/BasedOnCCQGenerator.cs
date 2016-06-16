@@ -8,18 +8,6 @@ namespace WikiTrivia.QuestionGenerator.Generators
         {
             var subjectWord = Helper.FindWordInList(sentence.Words, subject.Word);
 
-            //var answer = subjectWord.Lemma;
-
-            //var sentenceAMOD = sentence.Dependencies.FirstOrDefault(d => d.Dep.ToLower() == "amod");
-            //if (sentenceAMOD != null && sentenceAMOD.GovernorGloss == subjectWord.Word)
-            //{
-            //    answer = $"{sentenceAMOD.DependentGloss} {answer}";
-            //}
-            //var subjectDET = sentence.Dependencies.FirstOrDefault(d => d.Dep.ToLower() == "det");
-            //if (subjectDET != null && subjectDET.GovernorGloss == subjectWord.Word)
-            //{
-            //    answer = $"{subjectDET.DependentGloss} {answer}";
-            //}
             string question;
             var answer = AnswerGenerator.GenerateAnswer(sentence, subjectWord: subjectWord);
 

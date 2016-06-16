@@ -11,12 +11,17 @@ namespace WikiTrivia.QuestionGenerator.Generators
             var subjectRelation = Helper.FindWordInList(sentence.Words, sentenceNSUBJ.GovernorGloss);
 
             var answer = AnswerGenerator.GenerateAnswer(sentence, subjectWord: subject);
-            if (subjectRelation.PartOfSpeech.ToLower() == "vbz")
+            if (subjectRelation.PartOfSpeech.ToLower() == "vbz" ||
+                subjectRelation.PartOfSpeech.ToLower() == "vbd" ||
+                subjectRelation.PartOfSpeech.ToLower() == "vbn")
             {
                 string question;
                 if (subject.NamedEntityRecognition.ToLower() == "person" ||
                     subject.PartOfSpeech.ToLower() == "prp" ||
-                    subject.PartOfSpeech.ToLower() == "prp$")
+                    subject.PartOfSpeech.ToLower() == "prp$" ||
+                    subject.PartOfSpeech.ToLower() == "nns" ||
+                    subject.PartOfSpeech.ToLower() == "nn" ||
+                    subject.PartOfSpeech.ToLower() == "nnp")
                 {
                     var questionText = sentence.SentenceText.Replace(answer, "Who ");
                     question = $"{questionText}?";

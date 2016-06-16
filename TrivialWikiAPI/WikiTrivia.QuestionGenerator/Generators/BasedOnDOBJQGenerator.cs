@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using WikiTrivia.QuestionGenerator.Model;
 
 namespace WikiTrivia.QuestionGenerator.Generators
@@ -12,7 +13,7 @@ namespace WikiTrivia.QuestionGenerator.Generators
             var answerWord = Helper.FindWordInList(sentence.Words, answer);
 
             answer = AnswerGenerator.GenerateAnswer(sentence, sentenceDOBJ);
-
+            var answerWords = answer.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             var verbe = Helper.FindWordInList(sentence.Words, sentenceDOBJ.GovernorGloss);
 
             var firstWord = sentence.Words.FirstOrDefault();
@@ -23,8 +24,11 @@ namespace WikiTrivia.QuestionGenerator.Generators
 
             string question;
             var questionText = sentence.SentenceText
-                    .Replace(firstWord.Word, firstWord.Word.ToLower())
-                    .Replace(answer, "");
+                .Replace(firstWord.Word, firstWord.Lemma);
+            foreach (var word in answerWords)
+            {
+                questionText = questionText.Replace($" {word}", " ");
+            }
 
             if (answerWord.PartOfSpeech.ToLower() == "nn" ||
                    answerWord.PartOfSpeech.ToLower() == "nns")
@@ -73,7 +77,8 @@ namespace WikiTrivia.QuestionGenerator.Generators
             SentenceDependencyDto sentenceDependency, WordInformationDto baseAnswer, bool isPast = false)
         {
 
-            if (baseAnswer.NamedEntityRecognition.ToLower() == "person")
+            if (baseAnswer.NamedEntityRecognition.ToLower() == "person" ||
+                baseAnswer.PartOfSpeech.ToLower() == "nnp")
             {
                 return isPast ?
                     $"Who did {questionText}?" :

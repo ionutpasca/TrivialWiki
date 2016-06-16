@@ -21,8 +21,8 @@ namespace POSTagger
 
         private static async Task MainAsync()
         {
-            //IResourceFinder res = new ResourceFinder();
-            //await res.GetWikipediaRawText("Pit_bull", wikipediaRawResultPath);
+            //var res = new ResourceFinder();
+            //await res.GetWikipediaRawText("Superman", wikipediaRawResultPath);
             //var text = File.ReadAllText(wikipediaRawResultPath);
 
             //text = StringUtils.CleanText(text);
@@ -31,19 +31,33 @@ namespace POSTagger
             //{
             //    await file.WriteLineAsync(text);
             //}
+
+            //tpr.ProcessText(text);
+
             //Console.WriteLine(text.Length);
             //Console.WriteLine("Process new data?");
 
-            var resultList = SentenceGenerator.GetSentences();
+            //var resultList = SentenceGenerator.GetSentences();
 
-            foreach (var res in resultList)
+            var tpr = new TextProcessing();
+            var resultList = tpr.GetSentencesInformationFromJson();
+
+            foreach (var sentence in resultList)
             {
-                var dependencies = res.Dependencies.Select(s => new SentenceDependencyDto(s.Dep, s.Governor,
+                var dependencies = sentence.Dependencies.Select(s => new SentenceDependencyDto(s.Dep, s.Governor,
                     s.GovernorGloss, s.Dependent, s.DependentGloss)).ToList();
 
-                var words = res.Words.Select(w => new WordInformationDto(w.Word, w.PartOfSpeech, w.NamedEntityRecognition, w.Lemma)).ToList();
+                var words = sentence.Words.Select(w => new WordInformationDto(w.Word, w.PartOfSpeech, w.NamedEntityRecognition, w.Lemma)).ToList();
 
-                var sentenceInfo = new SentenceInformationDto(res.SentenceText, dependencies, words);
+                var sentenceInfo = new SentenceInformationDto(sentence.SentenceText, dependencies, words);
+                if (Helper.SentenceIsInvalid(sentenceInfo))
+                {
+                    continue;
+                }
+                if (sentence.Dependencies.Count > 20 && !Helper.SentenceContainsYear(sentenceInfo))
+                {
+                    continue;
+                }
                 var question = QuestionGenerator.Generate(sentenceInfo);
             }
 
