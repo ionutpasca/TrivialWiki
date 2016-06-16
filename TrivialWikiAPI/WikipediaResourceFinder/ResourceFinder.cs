@@ -19,7 +19,6 @@ namespace WikipediaResourceFinder
                 {
                     var serializer = new JsonSerializer();
                     var result = serializer.Deserialize<WikipediaResponse>(new JsonTextReader(reader));
-
                     await SaveRawTextToFile(result, filePath);
                 }
             }

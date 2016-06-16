@@ -5,10 +5,17 @@ namespace DatabaseManager.DatabaseModels
 {
     public class Topic
     {
+        public Topic(string topicName)
+        {
+            Name = topicName;
+            RelatedTopics = new HashSet<RelatedTopic>();
+            Questions = new HashSet<QuestionSet>();
+        }
+
         public Topic()
         {
-            this.RelatedTopics = new HashSet<RelatedTopic>();
-            this.Questions = new HashSet<QuestionSet>();
+            RelatedTopics = new HashSet<RelatedTopic>();
+            Questions = new HashSet<QuestionSet>();
         }
 
         [Key]

@@ -123,3 +123,7 @@
     background-position: center;
     background-attachment: fixed;
 }
+
+.md-tabs .md-tab.md-active {
+    color: black !important;
+}

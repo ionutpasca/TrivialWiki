@@ -74,15 +74,30 @@ namespace WikiTrivia.QuestionGenerator
                         var verbe = Helper.FindWordInList(sentence.Words, subjectFromSentence.GovernorGloss);
                         var verbeAND = sentence.Dependencies.FirstOrDefault(d => d.Dep.ToLower() == "conj:and" &&
                                                 d.GovernorGloss == verbe.Word);
-                        var verbeAndWord = Helper.FindWordInList(sentence.Words, verbeAND.DependentGloss);
+
+                        if (verbeAND != null)
+                        {
+                            var verbeAndWord = Helper.FindWordInList(sentence.Words, verbeAND.DependentGloss);
+
+                            if (verbe.PartOfSpeech.ToLower() == "vbz")
+                            {
+                                var question = $"Where does {subject.Word} {verbeAndWord.Word} and {verbe.Word}?";
+                                return new GeneratedQuestion { Answer = answer, Question = question };
+                            }
+                            else
+                            {
+                                var question = $"Where did {subject.Word} {verbeAndWord.Lemma} and {verbe.Lemma}?";
+                                return new GeneratedQuestion { Answer = answer, Question = question };
+                            }
+                        }
                         if (verbe.PartOfSpeech.ToLower() == "vbz")
                         {
-                            var question = $"Where does {subject.Word} {verbeAndWord.Word} and {verbe.Word}?";
-                            return new GeneratedQuestion { Answer = answer, Question = question };
+                            var question = $"Where does {subject.Word}  {verbe.Word}?";
+                            return new GeneratedQuestion {Answer = answer, Question = question};
                         }
                         else
                         {
-                            var question = $"Where did {subject.Word} {verbeAndWord.Lemma} and {verbe.Lemma}?";
+                            var question = $"Where did {subject.Word} {verbe.Lemma}?";
                             return new GeneratedQuestion { Answer = answer, Question = question };
                         }
                     }

@@ -8,6 +8,10 @@ namespace WikiTrivia.QuestionGenerator.Generators
         public static GeneratedQuestion CreateQuestionBasedOnSubject(SentenceInformationDto sentence, SentenceDependencyDto subjectFromSentence,
            WordInformationDto subject)
         {
+            if (subjectFromSentence == null)
+            {
+                return null;
+            }
             var subjectRelationWord = Helper.FindWordInList(sentence.Words, subjectFromSentence.GovernorGloss);
             var answer = AnswerGenerator.GenerateAnswer(sentence, wordInformation: subject);
 

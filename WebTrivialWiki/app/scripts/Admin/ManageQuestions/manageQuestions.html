@@ -1,0 +1,33 @@
+﻿<div class="panel panel-default admin-panel">
+    <md-input-container class="topic-container">
+        <label>Topic</label>
+        <md-select ng-model="topicName">
+            <md-option ng-repeat="topic in topicNames" value="{{topic}}" ng-disabled="$index === 1">
+                <h4>{{topic}}</h4>
+            </md-option>
+        </md-select>
+    </md-input-container>
+
+
+    <div class="panel panel-default topics-panel">
+
+        <md-content>
+            <md-list>
+                <md-list-item class="md-3-line" ng-repeat="question in questions">
+                    <div class="md-list-item-text">
+                        <h3>{{question.topic}}</h3>
+                        <textarea ng-model="question.question"></textarea>
+                        <p>
+                            <b>Answer: </b><span>{{question.answer}}</span>
+                        </p>
+                    </div>
+
+
+
+                    <md-divider ng-if="!$last"></md-divider>
+                </md-list-item>
+            </md-list>
+        </md-content>
+
+    </div>
+</div>

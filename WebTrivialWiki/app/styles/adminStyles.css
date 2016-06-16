@@ -31,7 +31,8 @@
 }
 
 .admin-panel{
-    position:relative;
+    position:absolute;
+    width: 97%;
     top:90px;
     margin-left:20px;
     margin-right:20px;
@@ -39,4 +40,17 @@
 
 .admin-panel > .panel-heading{
     min-height:70px;
+}
+
+.topics-panel {
+    width: 96%;
+    margin-left: 2%;
+    max-height: 600px;
+    overflow: auto;
+}
+
+.topic-container {
+    width: 20%;
+    margin-left: 2%;
+    margin-top: 35px;
 }

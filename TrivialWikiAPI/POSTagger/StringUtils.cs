@@ -8,11 +8,11 @@ namespace POSTagger
 {
     public static class StringUtils
     {
-        private static readonly string referencesPath = ConfigurationManager.AppSettings["Tagger.References"];
+        //private static readonly string referencesPath = ConfigurationManager.AppSettings["Tagger.References"];
         private static readonly string newParsePath = ConfigurationManager.AppSettings["Tagger.newParsePath"];
         private static readonly string listParsePath = ConfigurationManager.AppSettings["Tagger.ListParse"];
 
-        public static string CleanText(string text)
+        public static string CleanText(string text, string referencesPath)
         {
             var result = text;
 

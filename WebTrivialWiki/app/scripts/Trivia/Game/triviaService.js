@@ -72,5 +72,19 @@
             return def.promise;
         }
 
+        this.addNewTopic = function(topic) {
+            var def = $q.defer();
+
+            $http.post( App.url + '/topic/'+topic)
+           .success(function (data) {
+               def.resolve(data);
+           })
+           .error(function (data) {
+               def.reject(data);
+           });
+
+            return def.promise;
+        }
+
     }]);
 }).call(this, this.angular);

@@ -66,8 +66,8 @@
             $location.url('/settings');
         };
 
-        $scope.openUserManagement = function () {
-            $location.url('/manageUsers');
+        $scope.openAdmin = function () {
+            $location.url('/admin');
         };
 
         $scope.openTrivia = function() {

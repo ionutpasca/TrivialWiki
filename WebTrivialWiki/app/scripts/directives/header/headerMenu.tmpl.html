@@ -74,7 +74,11 @@
                 <a ng-show="userIsLoggedIn" ng-click="openLeaderboards()">Leaderboards</a>
             </li>
             <li class="hvr-underline-from-center small-padding-bottom" ng-show="userRole === 'Admin'">
-                <a ng-click="openUserManagement()">Manage users</a>
+                <a data-toggle="dropdown">Admin</a>
+                <ul class="dropdown-menu admin-dropdown">
+                    <li class="small-margin-top"><a href="#/manageUsers">Manage users</a></li>
+                    <li class="small-margin-top"><a href="#/manageQuestions">Manage questions</a></li>
+                </ul>
             </li>
             <li class="hvr-underline-from-center small-padding-bottom">
                 <a ng-click="openRegisterModal()" ng-show="!userIsLoggedIn">Register</a>
@@ -158,7 +162,7 @@
                     </div>
                 </div>
                 <div layout="column">
-                    <a class="slider-menu-item" ng-click="openUserManagement()">Manage users</a>
+                    <a class="slider-menu-item" ng-click="openAdmin()">Admin</a>
                 </div>
             </div>
             <div layout="row" class="slider-menu-row">

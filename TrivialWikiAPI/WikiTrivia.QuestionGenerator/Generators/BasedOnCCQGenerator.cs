@@ -6,6 +6,10 @@ namespace WikiTrivia.QuestionGenerator.Generators
     {
         public static GeneratedQuestion TreatSimpleCCSentence(SentenceInformationDto sentence, WordInformationDto subject)
         {
+            if (subject.Word == null)
+            {
+                return null;
+            }
             var subjectWord = Helper.FindWordInList(sentence.Words, subject.Word);
 
             string question;

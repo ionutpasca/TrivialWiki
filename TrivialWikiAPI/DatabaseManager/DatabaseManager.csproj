@@ -42,8 +42,13 @@
       <HintPath>..\packages\Nancy.1.4.3\lib\net40\Nancy.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -72,6 +77,8 @@
     <Compile Include="Leaderboard\LeaderboardManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Roles\RolesManager.cs" />
+    <Compile Include="Topics\TopicQuestionDto.cs" />
+    <Compile Include="Topics\TopicsManager.cs" />
     <Compile Include="Trivia\TriviaManager.cs" />
     <Compile Include="Trivia\TriviaMessageDto.cs" />
     <Compile Include="Leaderboard\LeaderboardResponse.cs" />

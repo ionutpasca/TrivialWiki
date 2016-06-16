@@ -96,6 +96,13 @@
             return question.Sender === 'TriviaBot';
         }
 
+        $scope.addNewTopic = function () {
+            triviaService.addNewTopic('Superman')
+                .then(function() {
+                    debugger;
+                });
+        }
+
         init();
     }]);
 }).call(this, this.angular, this._);

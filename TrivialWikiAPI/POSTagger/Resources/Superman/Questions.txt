@@ -1,0 +1,902 @@
+[
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Superman is a fictional superhero appearing in American comic books published by DC Comics. ",
+    "Question": "Who is a fictional superhero appearing in American comic books published by DC Comics. ?",
+    "Answer": "Superman"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "The character was created by writer Jerry Siegel and artist Joe Shuster, high school students living in Cleveland, Ohio, in 1933. ",
+    "Question": "When was the character  created by writer Jerry Siegel and artist Joe Shuster, high school students living in Cleveland, Ohio, . ?",
+    "Answer": "1933"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "They sold Superman to Detective Comics, the future DC Comics, in 1938. ",
+    "Question": "When did they sell Superman to Detective Comics, the future DC Comics, . ?",
+    "Answer": "1938"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Superman resides and operates in the fictional American city of Metropolis. ",
+    "Question": "Where does Superman operates and resides?",
+    "Answer": "Metropolis"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Superman's love interest is generally Lois Lane, and his archenemy is supervillain Lex Luthor. ",
+    "Question": "Who is Superman's love interest  generally ?",
+    "Answer": "Lois Lane"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Like other characters in the DC Universe, several alternate versions of Superman have been depicted over the years.\n",
+    "Question": "What of Superman have been depicted over the years.\n",
+    "Answer": "versions"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Several actors have portrayed Superman in major motion pictures and TV series.\n",
+    "Question": "Who  have portrayed Superman in major motion pictures and TV series.\n?",
+    "Answer": "Several actors"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "In early 1933, Cleveland high school student Jerry Siegel wrote a short story, illustrated by his friend and classmate Joe Shuster, titled ``The Reign of the Superman'', which Siegel self-published in his fanzine, Science Fiction #3. ",
+    "Question": "When did , Cleveland high school student Jerry Siegel write a short story, illustrated by his friend and classmate Joe Shuster, titled ``The Reign of the Superman'', which Siegel self-published in his fanzine, Science Fiction #3. ?",
+    "Answer": "early 1933"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Siegel shared his idea with Shuster and they hastily put together a comic story titled ``The Superman'' and submitted it to Humor Publishing in Chicago, which released three proto-comic books in 1933. ",
+    "Question": "When did siegel share his idea with Shuster and they hastily put together a comic story titled ``The Superman'' and submitted it to Humor Publishing in Chicago, which released three proto-comic books . ?",
+    "Answer": "1933"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Although the duo received an encouraging letter, Humor published no further comics.\n\n",
+    "Question": "Who  received an encouraging letter, Humor published no further comics.\n\n?",
+    "Answer": "the duo"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Siegel solicited multiple artists and in 1934 Russell Keaton, who worked on the Buck Rogers comic strip, responded. ",
+    "Question": "Who  solicited multiple artists and in 1934 Russell Keaton, who worked on the Buck Rogers comic strip, responded. ?",
+    "Answer": "Siegel"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "However, the newspaper syndicates rejected their work and Keaton abandoned the project.\n",
+    "Question": "Who  rejected their work and Keaton abandoned the project.\n?",
+    "Answer": "the newspaper syndicates"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Siegel and Shuster reconciled and continued developing Superman. ",
+    "Question": "Who Siegel and Shuster reconciled and continued developing . ?",
+    "Answer": "Superman"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Siegel and Shuster entered the comics field professionally in 1935, producing detective and adventure stories for the New York-based comic-book publisher National Allied Publications. ",
+    "Question": "When did siegel and Shuster enter the comics field professionally , producing detective and adventure stories for the New York-based comic-book publisher National Allied Publications. ?",
+    "Answer": "1935"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Max Gaines, who worked at McClure Newspaper Syndicate, suggested they show their work to Detective Comics . ",
+    "Question": "Who , who worked at McClure Newspaper Syndicate, suggested they show their work to Detective Comics . ?",
+    "Answer": "Max Gaines"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Superman debuted as the cover feature of the anthology Action Comics #1 . ",
+    "Question": "Who  debuted as the cover feature of the anthology Action Comics #1 . ?",
+    "Answer": "Superman"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "The series was an immediate success, and reader feedback showed that Superman was responsible. ",
+    "Question": "Which was an immediate success, and reader feedback showed that Superman was responsible. ?",
+    "Answer": "The series"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "In June 1939, Detective Comics began a sister series, Superman, dedicated exclusively to the character. ",
+    "Question": "When did , Detective Comics begin a sister series, Superman, dedicated exclusively to the character. ?",
+    "Answer": "June 1939"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "A large number of other series and miniseries have been published as well. ",
+    "Question": "Who/What of other series and miniseries have been published as well. ?",
+    "Answer": "A large number"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Sales of Action Comics and Superman declined steadily from the 1950s onward, but rose again starting in 1987, peaking in 1992 with the storyline ``The Death of Superman''. ",
+    "Question": "When did sales of Action Comics and Superman decline steadily  onward, but rose again starting in 1987, peaking in 1992 with the storyline ``The Death of Superman''. ?",
+    "Answer": "the 1950s"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Beginning in January 1939, a Superman daily comic strip appeared in newspapers, syndicated through the McClure Syndicate. ",
+    "Question": "When did , a Superman daily comic strip appear in newspapers, syndicated through the McClure Syndicate. ?",
+    "Answer": "January 1939"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "A color Sunday version was added that November. ",
+    "Question": "A color Sunday version was added that November. ",
+    "Answer": "A Sunday color version"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Shuster drew the early strips, then passed the job to Wayne Boring. ",
+    "Question": "Who  drew the early strips, then passed the job to Wayne Boring. ?",
+    "Answer": "Shuster"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "From 1949 to 1956, the newspaper strips were drawn by Win Mortimer. ",
+    "Question": "Who drawn the strips?",
+    "Answer": "Mortimer"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Siegel wrote most of the comic-book and daily newspaper stories until he was conscripted in 1943. ",
+    "Question": "When was siegel wrote most of the comic-book and daily newspaper stories until he  conscripted . ?",
+    "Answer": "1943"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Siegel was furious because Detective did this without having bought the character. ",
+    "Question": "Who was furious because Detective did this without having bought the character. ?",
+    "Answer": "Siegel"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "After settling out-of-court for the rights to both characters, National fired the two creators. ",
+    "Question": "Who  fired the two creators. ?",
+    "Answer": "National"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Siegel was re-hired in 1957 but dismissed again in 1969 after he and Shuster filed a second lawsuit. ",
+    "Question": "When was siegel  re-hired  but dismissed again in 1969 after he and Shuster filed a second lawsuit. ?",
+    "Answer": "1957"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "In 1975, following a public outcry against poor treatment of comic creators, Warner Communications, which had bought National, agreed to insert the byline ``Superman created by Jerry Siegel and Joe Shuster'' into every Superman publication and production. ",
+    "Question": "When did , following a public outcry against poor treatment of comic creators, Warner Communications, which had bought National, agree to insert the byline ``Superman created by Jerry Siegel and Joe Shuster'' into every Superman publication and production. ?",
+    "Answer": "1975"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "In 2001, National, now known as DC Comics, agreed to add the line ``By Special Arrangement with the Jerry Siegel Family'' as part of a deal with the late Siegel's heirs to retain the rights to Superman.\n",
+    "Question": "When did , National, now known as DC Comics, agree to add the line ``By Special Arrangement with the Jerry Siegel Family'' as part of a deal with the late Siegel's heirs to retain the rights to Superman.\n?",
+    "Answer": "2001"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Siegel and Shuster were also avid moviegoers. ",
+    "Question": "Who and Shuster were also avid moviegoers. ?",
+    "Answer": "Siegel"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Popeye cartoons were also an influence.\n",
+    "Question": "Who were also an influence.\n?",
+    "Answer": "Popeye cartoons"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "The pair collected comic strips in their youth, with a favorite being Winsor McCay's fantastical Little Nemo. ",
+    "Question": "Who being The pair collected comic strips in their youth, with a favorite  ?",
+    "Answer": "Winsor McCay"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Shuster taught himself to draw by tracing over the art in the strips and magazines they collected.\n",
+    "Question": "Who  taught himself to draw by tracing over the art in the strips and magazines they collected.\n?",
+    "Answer": "Shuster"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "He collected fitness magazines and manuals and used their photographs as visual references for his art.\n",
+    "Question": "Who  collected fitness magazines and manuals and used their photographs as visual references for his art.\n?",
+    "Answer": "He"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "The visual design of Superman came from multiple influences. ",
+    "Question": "Who  of Superman came from multiple influences. ?",
+    "Answer": "The visual design"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Shuster first gave Superman laced sandals like those of strongmen and classical heroes. ",
+    "Question": "Who  first gave Superman laced sandals like those of strongmen and classical heroes. ?",
+    "Answer": "Shuster"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "The emblem on his chest may have been inspired by the uniforms of athletic teams. ",
+    "Question": "What on his chest may have been inspired by the uniforms of athletic teams. ",
+    "Answer": "The emblem"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Many pulp action heroes such as swashbucklers wore capes. ",
+    "Question": "What did many pulp action heroes such as swashbucklers wear . ?",
+    "Answer": "capes"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Superman's face was based on Johnny Weissmuller's.\n",
+    "Question": "What was based on Johnny Weissmuller's.\n",
+    "Answer": "Superman's face"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "In 1947, Siegel and Shuster sued Detective Comics for the rights to Superman and Superboy. ",
+    "Question": "When did , Siegel and Shuster sue Detective Comics for the rights to Superman and Superboy. ?",
+    "Answer": "1947"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "In 1969, Siegel and Shuster attempted to regain rights to Superman using the renewal option in the Copyright Act of 1909, but the court ruled Siegel and Shuster had transferred the renewal rights to Detective Comics in 1938. ",
+    "Question": "When did , Siegel and Shuster attempt to regain rights to Superman using the renewal option in the Copyright Act of 1909, but the court ruled Siegel and Shuster had transferred the renewal rights to Detective Comics in 1938. ?",
+    "Answer": "1969"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Siegel and Shuster appealed, but the appeals court upheld this decision.\n",
+    "Question": "Who  and Shuster appealed, but the appeals court upheld this decision.\n?",
+    "Answer": "Siegel"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "In 1975, Siegel and a number of other comic book writers and artists launched a campaign for better compensation and treatment of comic creators. ",
+    "Question": "When did , Siegel and a number of other comic book writers and artists launch a campaign for better compensation and treatment of comic creators. ?",
+    "Answer": "1975"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Siegel and Shuster upheld this bargain.\n",
+    "Question": "What did Siegel and Shuster uphold  .\n?",
+    "Answer": "this bargain"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Shuster died in 1992. ",
+    "Question": "When did shuster die . ?",
+    "Answer": "1992"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Siegel died in 1996. ",
+    "Question": "When did siegel die . ?",
+    "Answer": "1996"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "His heirs attempted to take the rights to Superman using the termination provision of the Copyright Act of 1976. ",
+    "Question": "When did his heirs attempted to take the rights to Superman using the termination provision of the Copyright Act . ?",
+    "Answer": "1976"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "The Siegels accepted DC's offer in an October 2001 letter.\n",
+    "Question": "Which  accepted DC's offer in an October 2001 letter.\n?",
+    "Answer": "The Siegels"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Both groups accepted. ",
+    "Question": "Who  accepted. ?",
+    "Answer": "Both groups"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "The Siegel heirs called off their deal with DC Comics and in 2004 sued DC for the rights to Superman and Superboy. ",
+    "Question": "When did the Siegel heirs call off their deal with DC Comics and  sued DC for the rights to Superman and Superboy. ?",
+    "Answer": "2004"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "In 2008, the judge ruled in favor of the Siegels. ",
+    "Question": "When did , the judge rule in favor of the Siegels. ?",
+    "Answer": "2008"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "In 2003, the Shuster heirs served a termination notice for Shuster's grant of his half of the copyright to Superman. ",
+    "Question": "When did , the Shuster heirs serve a termination notice for Shuster's grant of his half of the copyright to Superman. ?",
+    "Answer": "2003"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "DC Comics sued the Shuster heirs in 2010, and the court ruled in DC's favor on the grounds that the 1992 agreement with the Shuster heirs barred them from terminating the grant.\n",
+    "Question": "When did dc Comics sue the Shuster heirs , and the court ruled in dc's favor on the grounds that the 1992 agreement with the Shuster heirs barred them from terminating the grant.\n?",
+    "Answer": "2010"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Superman is due to enter the public domain in 2033. ",
+    "Question": "When did superman is due to enter the public domain . ?",
+    "Answer": "2033"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "However, this would only apply to the character as originally copyrighted in 1938, and trademarks on various aspects of the character can continue to be, in theory, renewed indefinitely.\n",
+    "Question": "When did however, this would only apply to the character as originally copyrighted , and trademarks on various aspects of the character can continue to be, in theory, renewed indefinitely.\n?",
+    "Answer": "1938"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "The ship lands in the American countryside, where the baby is adopted by the Kents. ",
+    "Question": "Who adopted the baby?",
+    "Answer": "Kents"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Writers developed Superman's powers gradually. ",
+    "Question": "What did Writers develop   gradually. ?",
+    "Answer": "Superman's powers"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Since the beginning, he has had superhuman strength and nigh-invulnerability. ",
+    "Question": "Who  beginning, Who  has had superhuman strength and nigh-invulnerability. ?",
+    "Answer": "he"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "X-ray vision is introduced in Action Comics #11  and heat vision in Superman #59 .\n",
+    "Question": "X-ray vision is introduced in Action Comics #11  and heat vision in Superman #59 .\n?",
+    "Answer": "X-ray vision heat"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "It first appeared in comics in the story ``Superman Returns To Krypton!''",
+    "Question": "Who  first appeared in comics in the story ``Superman Returns To Krypton!''?",
+    "Answer": "It"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Clark works as a newspaper journalist. ",
+    "Question": "Who  works as a newspaper journalist. ?",
+    "Answer": "Clark"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Action Comics #1 introduced Clark's colleague Lois Lane. ",
+    "Question": "Action Comics #1 introduced Clark's colleague Lois Lane. ?",
+    "Answer": "1 Comics"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "This love triangle has existed since the character's inception in 1933 and is present in most Superman stories. ",
+    "Question": "When did this love triangle has existed since the character's inception  and is present in most Superman stories. ?",
+    "Answer": "1933"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Superman, Byrne explained in 1995, ``had become trapped by the ridiculously high level of his own power. ",
+    "Question": "When did superman, Byrne explained , ``had become trapped by the ridiculously high level of his own power. ?",
+    "Answer": "1995"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "As Superman's editor at the time, Mike Carlin, recalled, ``We were stunned. ",
+    "Question": "What at the time, Mike Carlin, recalled, ``We were stunned. ?",
+    "Answer": "Superman's editor"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "... There is no way anybody could have planned what happened. ",
+    "Question": "Who  could have planned what happened. ?",
+    "Answer": "way anybody"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "All we could do was try to keep up with it.''\n",
+    "Question": "What  we could do was try to keep up with it.''\n?",
+    "Answer": "All"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "In 2011, DC Comics relaunched its entire line of comic books under the rubric The New 52. ",
+    "Question": "When did , DC Comics relaunch its entire line of comic books under the rubric The New 52. ?",
+    "Answer": "2011"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "In the new continuity, Clark is not married to Lois and his parents are dead. ",
+    "Question": "Who is not married to Lois and his parents are dead. ?",
+    "Answer": "Clark"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "2, #43 , Superman's identity is exposed to the whole world. ",
+    "Question": "What, #43 , Superman's identity is exposed to the whole world. ",
+    "Answer": "2"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "The alternate-universe version remained on Earth after the other died in Superman vol. ",
+    "Question": "Who  remained on Earth after the other died in Superman vol. ?",
+    "Answer": "The alternate-universe version"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Superman's age has varied through his history in comics. ",
+    "Question": "Who  has varied through his history in comics. ?",
+    "Answer": "Superman's age"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Action Comics #149  gives October as Superman's birthdate. ",
+    "Question": "What  #149  gives October as Superman's birthdate. ?",
+    "Answer": "Action Comics"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Comics of the 1960s through 1980s describe Superman's birthday as February 29. ",
+    "Question": "When did comics  through 1980s describe Superman's birthday as February 29. ?",
+    "Answer": "the 1960s"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Following the 1980s editorial-revamp DC called Crisis on Infinite Earths, Kent's birthday is given as February 29. ",
+    "Question": "What is given as February 29. ",
+    "Answer": "Kent's birthday"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Superman: Secret Origin #1  depicts Kent celebrating his birthday on December 1.\n",
+    "Question": "When did superman: Secret Origin #1  depicts Kent celebrating his birthday on December 1.\n?",
+    "Answer": "1 December"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "In the original Siegel and Shuster stories, Superman's personality is rough and aggressive. ",
+    "Question": "What is rough and aggressive. ?",
+    "Answer": "Superman's personality"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "This came to an end in late 1940 when new editor Whitney Ellsworth instituted a code of conduct for his characters to follow, banning Superman from ever killing. ",
+    "Question": "When did this come to an end  when new editor Whitney Ellsworth instituted a code of conduct for his characters to follow, banning Superman from ever killing. ?",
+    "Answer": "late 1940"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "The character was softened and given a sense of humanitarianism. ",
+    "Question": "Who/What was softened and given a sense of humanitarianism. ?",
+    "Answer": "The character"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Ellsworth's code, however, is not to be confused with ``the Comics Code'', which was created in 1954 by the Comics Code Authority and ultimately abandoned by every major comic book publisher by the early 21st century.\n",
+    "Question": "When was ellsworth's code, however, is not to be confused with ``the Comics Code'', which  created  by the Comics Code Authority and ultimately abandoned by every major comic book publisher by the early 21st century.\n?",
+    "Answer": "1954"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "By 1942, however, Superman was working side-by-side with the police. ",
+    "Question": "When did , however, Superman was working side-by-side with the police. ?",
+    "Answer": "1942"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "He adheres to an unwavering moral code instilled in him by his adoptive parents. ",
+    "Question": "Who  adheres to an unwavering moral code instilled in him by his adoptive parents. ?",
+    "Answer": "He"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Superman can be rather rigid in this trait, causing tensions in the superhero community. ",
+    "Question": "Who can be rather rigid in this trait, causing tensions in the superhero community. ?",
+    "Answer": "Superman"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "This was most notable with Wonder Woman, one of his closest friends, after she killed Maxwell Lord. ",
+    "Question": "What was most notable with Wonder Woman, one of his closest friends, after she killed Maxwell Lord. ?",
+    "Answer": "This"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Booster Gold had an initial icy relationship with the Man of Steel but grew to respect him.\n",
+    "Question": "Who  had an initial icy relationship with the Man of Steel but grew to respect him.\n?",
+    "Answer": "Booster Gold"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "In many ways, Clark is the most human of us all. ",
+    "Question": "Who is the most human of us all. ?",
+    "Answer": "Clark"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Both the multiverse established by the publishers in the 1960s and the Elseworlds line of comics established in 1989 have allowed writers to introduce variations on Superman. ",
+    "Question": "When did both the multiverse established by the publishers  and the Elseworlds line of comics established in 1989 have allowed writers to introduce variations on Superman. ?",
+    "Answer": "the 1960s"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "These have included differences in the nationality, race and morality of the character. ",
+    "Question": "Where did These include?",
+    "Answer": "character"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "In addition to these, the Bizarro character created in 1958 is a weird, imperfect duplicate of Superman. ",
+    "Question": "When did in addition to these, the Bizarro character created  is a weird, imperfect duplicate of Superman. ?",
+    "Answer": "1958"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "For example, Roy Thomas based rival publisher Marvel Comics' Hyperion character on Superman.\n",
+    "Question": "Who  based rival publisher Marvel Comics' Hyperion character on Superman.\n?",
+    "Answer": "Roy Thomas"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Siegel and Shuster compared his strength and leaping abilities to an ant and a grasshopper. ",
+    "Question": "Who  and Shuster compared his strength and leaping abilities to an ant and a grasshopper. ?",
+    "Answer": "Siegel"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "The source of Superman's powers has changed subtly over the course of his history. ",
+    "Question": "Who  of Superman's powers has changed subtly over the course of his history. ?",
+    "Answer": "The source"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "This situation mirrors that of Edgar Rice Burroughs' John Carter. ",
+    "Question": "Who  mirrors that of Edgar Rice Burroughs' John Carter. ?",
+    "Answer": "This situation"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "The only substance on Earth that can protect him from Kryptonite is lead, which blocks the radiation. ",
+    "Question": "What on Earth that can protect him from Kryptonite is lead, which blocks the radiation. ?",
+    "Answer": "The only substance"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Lead is also the only known substance that Superman cannot see through with his x-ray vision. ",
+    "Question": "Which is also the only known substance that Superman cannot see through with his x-ray vision. ?",
+    "Answer": "Lead"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Kryptonite was introduced in 1943 as a plot device to allow the radio-serial voice actor, Bud Collyer, to take some time off. ",
+    "Question": "When was kryptonite  introduced  as a plot device to allow the radio-serial voice actor, Bud Collyer, to take some time off. ?",
+    "Answer": "1943"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "This aggressiveness has since faded with subsequent creators restoring the mild mannerisms traditional to the character.\n",
+    "Question": "Who  has since faded with subsequent creators restoring the mild mannerisms traditional to the character.\n?",
+    "Answer": "This aggressiveness"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Team-ups with fellow comics icon Batman are common, inspiring many stories over the years. ",
+    "Question": "Who with fellow comics icon Batman are common, inspiring many stories over the years. ?",
+    "Answer": "Team-ups"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "In 2003, DC began to publish a new series featuring the two characters titled Superman/Batman or Batman/Superman. ",
+    "Question": "When did , DC begin to publish a new series featuring the two characters titled Superman/Batman or Batman/Superman. ?",
+    "Answer": "2003"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "An ongoing comic book series titled Superman/Wonder Woman debuted in 2013, which explores their relationship and shared adventures.\n",
+    "Question": "When did an ongoing comic book series titled Superman/Wonder Woman debut , which explores their relationship and shared adventures.\n?",
+    "Answer": "2013"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "The mad scientist Ultra-Humanite, introduced in Action Comics #13 , was Superman's first recurring villain. ",
+    "Question": "The mad scientist Ultra-Humanite, introduced in Action Comics #13 , was Superman's first recurring villain. ?",
+    "Answer": "The mad Ultra-Humanite"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "In 1944, the magical imp Mister Mxyzptlk, Superman's first recurring super-powered adversary, was introduced. ",
+    "Question": "When was , the magical imp Mister Mxyzptlk, Superman's first recurring super-powered adversary,  introduced. ?",
+    "Answer": "1944"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Superman's first alien villain, Brainiac, debuted in Action Comics #242 . ",
+    "Question": "Superman's first alien villain, Brainiac, debuted in Action Comics #242 . ?",
+    "Answer": "first villain"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Superman has come to be seen as both an American cultural icon and the first comic book superhero. ",
+    "Question": "Who  has come to be seen as both an American cultural icon and the first comic book superhero. ?",
+    "Answer": "Superman"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "The character's initial success led to similar characters being created. ",
+    "Question": "Who  led to similar characters being created. ?",
+    "Answer": "initial success"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Fox later had more success with the Blue Beetle. ",
+    "Question": "What did Fox later have more  with the Blue Beetle. ?",
+    "Answer": "success"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Fawcett Comics' Captain Marvel, launched in 1940, was Superman's main rival for popularity throughout the 1940s and was again the subject of a lawsuit, which Fawcett eventually settled in 1953 by cessation of the publication of Captain Marvel-related works. ",
+    "Question": "When did fawcett Comics' Captain Marvel, launched , was Superman's main rival for popularity throughout the 1940s and was again the subject of a lawsuit, which fawcett eventually settled in 1953 by cessation of the publication of Captain Marvel-related works. ?",
+    "Answer": "1940"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Superman became popular very quickly, with an additional title, Superman Quarterly, rapidly added. ",
+    "Question": "Who  became popular very quickly, with an additional title, Who  Quarterly, rapidly added. ?",
+    "Answer": "Superman"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "In 1940 the character was represented in the annual Macy's parade for the first time. ",
+    "Question": "When was  the character  represented in the annual Macy's parade for the first time. ?",
+    "Answer": "1940"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "In fact Superman had become popular to the extent that in 1942, with sales of the character's three titles standing at a combined total of over 1.5 million, Time was reporting that ``the Navy Department  ruled that Superman comic books should be included among essential supplies destined for the Marine garrison at Midway Islands.'' ",
+    "Question": "When be in fact Superman had come popular to the extent that , with sales of the character's three titles standing at a combined total of over 1.5 million, Time was reporting that ``the Navy Department  ruled that Superman comic books should  included among essential supplies destined for the Marine garrison at Midway Islands.'' ?",
+    "Answer": "1942"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "The earliest paraphernalia appeared in 1939, a button proclaiming membership in the Supermen of America club. ",
+    "Question": "When did the earliest paraphernalia appear , a button proclaiming membership in the Supermen of America club. ?",
+    "Answer": "1939"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Collyer was also cast as the voice of Superman in a series of 17 Superman animated cartoons produced by Fleischer Studios and Famous Studios for theatrical release in 1941--1943. ",
+    "Question": "When was collyer  also cast as the voice of Superman in a series of 17 Superman animated cartoons produced by Fleischer Studios and Famous Studios for theatrical release --1943. ?",
+    "Answer": "1941"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "In 1948, the movie serial Superman made Kirk Alyn the first actor to portray the hero onscreen.\n",
+    "Question": "When did , the movie serial Superman make Kirk Alyn the first actor to portray the hero onscreen.\n?",
+    "Answer": "1948"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "In 1951 came the television series Adventures of Superman starring George Reeves. ",
+    "Question": "When did  come the television series Adventures of Superman starring George Reeves. ?",
+    "Answer": "1951"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Television series featuring Superman and Superboy would also debut in the 1980s, 1990s and 2000s. ",
+    "Question": "When did television series featuring Superman and Superboy would also debut , 1990s and 2000s. ?",
+    "Answer": "the 1980s"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "In 1966 came the Broadway musical It's a Bird...It's a Plane...It's Superman, remade for television in 1975. ",
+    "Question": "When did  came the Broadway musical It's a Bird...It's a Plane...It's Superman, remade for television in 1975. ?",
+    "Answer": "1966"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Also in 1966, Superman starred in the first of several animated television series The New Adventures of Superman. ",
+    "Question": "When did also , Superman star in the first of several animated television series The New Adventures of Superman. ?",
+    "Answer": "1966"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Superman returned to movie theaters in 1978 with director Richard Donner's Superman, starring Christopher Reeve, which spawned three sequels. ",
+    "Question": "When did superman return to movie theaters  with director Richard Donner's superman, starring Christopher Reeve, which spawned three sequels. ?",
+    "Answer": "1978"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "In 2006, Bryan Singer directed the feature Superman Returns, starring Brandon Routh. ",
+    "Question": "When did , Bryan Singer direct the feature Superman Returns, starring Brandon Routh. ?",
+    "Answer": "2006"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "In 2013, director Zack Snyder rebooted the film franchise with Man of Steel, starring Henry Cavill. ",
+    "Question": "When did , director Zack Snyder reboot the film franchise with Man of Steel, starring Henry Cavill. ?",
+    "Answer": "2013"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Five for Fighting released ``Superman '' in 2000, which is from Superman's point of view, although Superman is never mentioned by name. ",
+    "Question": "When is five for Fighting released ``Superman '' , which  from Superman's point of view, although Superman  never mentioned by name. ?",
+    "Answer": "2000"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Parodies of Superman did not take long to appear, with Mighty Mouse introduced in ``The Mouse of Tomorrow'' animated short in 1942. ",
+    "Question": "When did parodies of Superman did not take long to appear, with Mighty Mouse introduced in ``The Mouse of Tomorrow'' animated short . ?",
+    "Answer": "1942"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "In 1943, Bugs Bunny was featured in a short, Super-Rabbit, which sees the character gaining powers through eating fortified carrots. ",
+    "Question": "When was , Bugs Bunny  featured in a short, Super-Rabbit, which sees the character gaining powers through eating fortified carrots. ?",
+    "Answer": "1943"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Jerry Seinfeld, a noted Superman fan, filled his series Seinfeld with references to the character and in 1997 asked for Superman to co-star with him in a commercial for American Express. ",
+    "Question": "When did jerry Seinfeld, a noted Superman fan, fill his series Seinfeld with references to the character and  asked for Superman to co-star with him in a commercial for American Express. ?",
+    "Answer": "1997"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "A rematch was staged in July 2015, with Superman winning again. ",
+    "Question": "When was a rematch  staged , with Superman winning again. ?",
+    "Answer": "July"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Superman was voiced during the battle simulations by the voice actor ItsJustSomeRandomGuy.\n",
+    "Question": "Who voiced superman?",
+    "Answer": "ItsJustSomeRandomGuy"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Superman's image was also used in an AIDS awareness campaign by French organization AIDES. ",
+    "Question": "What was also used in an AIDS awareness campaign by French organization AIDES. ",
+    "Answer": "Superman's image"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Superman has been interpreted and discussed in many forms in the years since his debut. ",
+    "Question": "Who has been interpreted and discussed in many forms in the years since his debut. ?",
+    "Answer": "Superman"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Writing in Time in 1971, Gerald Clarke stated: ``Superman's enormous popularity might be looked upon as signalling the beginning of the end for the Horatio Alger myth of the self-made man.'' ",
+    "Question": "When be writing in Time , Gerald Clarke stated: ``Superman's enormous popularity might  looked upon as signalling the ginning of the end for the Horatio Alger myth of the self-made man.'' ?",
+    "Answer": "1971"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "An influence on early Superman stories is the context of the Great Depression. ",
+    "Question": "Which on early Superman stories is the context of the Great Depression. ?",
+    "Answer": "An influence"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "The left-leaning perspective of creators Shuster and Siegel is reflected in early storylines. ",
+    "Question": "Who/What of creators Shuster and Siegel is reflected in early storylines. ?",
+    "Answer": "The left-leaning perspective"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "He writes that the character ``represented, in 1938, a kind of Corbusierian ideal. ",
+    "Question": "When did he writes that the character ``represented, , a kind of Corbusierian ideal. ?",
+    "Answer": "1938"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Superman has X-ray vision: walls become permeable, transparent. ",
+    "Question": "Who  has X-ray vision: walls become permeable, transparent. ?",
+    "Answer": "Superman"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Through his benign, controlled authority, Superman renders the city open, modernist and democratic; he furthers a sense that Le Corbusier described in 1925, namely, that `Everything is known to us'.''\n",
+    "Question": "When is through h benign, controlled authority, Superman renders the city open, modernt and democratic; he furthers a sense that Le Corbusier described , namely, that `Everything  known to us'.''\n?",
+    "Answer": "1925"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Superman he notes was very much part of that effort.\n",
+    "Question": "Who he notes was very much part of that effort.\n?",
+    "Answer": "Superman"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Superman's immigrant status is a key aspect of his appeal. ",
+    "Question": "Which is a key aspect of his appeal. ?",
+    "Answer": "immigrant status"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Aldo Regalado saw the character as pushing the boundaries of acceptance in America. ",
+    "Question": "Who  saw the character as pushing the boundaries of acceptance in America. ?",
+    "Answer": "Aldo Regalado"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Through the use of a dual identity, Superman allowed immigrants to identify with both their cultures. ",
+    "Question": "Who  allowed immigrants to identify with both their cultures. ?",
+    "Answer": "Superman"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Clark Kent represents the assimilated individual, allowing Superman to express the immigrants cultural heritage for the greater good. ",
+    "Question": "Who  represents the assimilated individual, allowing Superman to express the immigrants cultural heritage for the greater good. ?",
+    "Answer": "Clark Kent"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Some see Judaic themes in Superman. ",
+    "Question": "What do some see Judaic  in Superman. ?",
+    "Answer": "themes"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Simcha Weinstein notes that Superman's story has some parallels to that of Moses. ",
+    "Question": "Who  notes that Superman's story has some parallels to that of Moses. ?",
+    "Answer": "Simcha Weinstein"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "The Nazis also thought Superman was a Jew and in 1940 Joseph Goebbels publicly denounced Superman and his creator Siegel.\n",
+    "Question": "When did the Nazis also think Superman was a Jew and  Joseph Goebbels publicly denounced Superman and his creator Siegel.\n?",
+    "Answer": "1940"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "The character Superman and his various comic series have received various awards over the years.\n",
+    "Question": "Who  and his various comic series have received various awards over the years.\n?",
+    "Answer": "The character Superman"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Superman placed first on IGN's Top 100 Comic Book Heroes.\n",
+    "Question": "Who  placed first on IGN's Top 100 Comic Book Heroes.\n?",
+    "Answer": "Superman"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Empire magazine named him the greatest comic book character.\n",
+    "Question": "What did Empire magazine name him  greatest comic  .\n?",
+    "Answer": "the book character"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "The Reign of the Supermen is one of many storylines or works to have received a Comics Buyer's Guide Fan Award, winning the Favorite Comic Book Story category in 1993.\n",
+    "Question": "When did the Reign of the Supermen is one of many storylines or works to have received a Comics Buyer's Guide Fan Award, winning the Favorite Comic Book Story category .\n?",
+    "Answer": "1993"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Superman came in at number 2 in VH1's Top Pop Culture Icons 2004.\n",
+    "Question": "Who  came in at number 2 in VH1's Top Pop Culture Icons 2004.\n?",
+    "Answer": "Superman"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "Also in 2004, British moviegoers voted Superman the greatest superhero.\n",
+    "Question": "When did also , British moviegoers vote Superman the greatest superhero.\n?",
+    "Answer": "2004"
+  },
+  {
+    "Topic": "Superman",
+    "InitialSentence": "The Smallville television series has garnered Emmys for crew members and various other awards.\n",
+    "Question": "The Smallville television series has garnered Emmys for crew members and various other awards.\n?",
+    "Answer": "The television Smallville series"
+  }
+]
