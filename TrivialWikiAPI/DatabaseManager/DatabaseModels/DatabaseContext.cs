@@ -15,5 +15,6 @@ namespace DatabaseManager.DatabaseModels
         public DbSet<Topic> Topics { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<TriviaMessage> TriviaMessages { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
     }
 }

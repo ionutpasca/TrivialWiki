@@ -21,6 +21,7 @@ namespace DatabaseManager.DatabaseModels
         public Role Role { get; set; }
         public ICollection<Achievement> Achievements { get; set; }
         public IEnumerable<string> Claims { get; set; }
+        public ICollection<Notification> Notifications { get; set; }
         public int Points { get; set; }
         public int Rank { get; set; }
         public string SecurityToken { get; set; }

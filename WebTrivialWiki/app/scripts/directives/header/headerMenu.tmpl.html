@@ -88,8 +88,8 @@
                 <a>Contact</a>
             </li>
             <li class="small-padding-bottom user-settings" ng-show="userIsLoggedIn">
-                <img ng-show="!userHasAvatar()" ng-src="http://localhost:4605/avatar/{{userName}}"/>
-                <a class="dropdown-toggle" data-toggle="dropdown">{{userName}}</a>
+                <img class="headerImage" ng-show="!userHasAvatar()" ng-src="http://localhost:4605/avatar/{{userName}}"/>
+                <a class="dropdown-toggle headerUsername" data-toggle="dropdown">{{userName}}</a>
                 <ul class="dropdown-menu dropdown-menu-right settings-dropdown">
                     <li class="default-cursor small-margin-top" ng-click="javascript(0);">
                         <img ng-show="!userHasAvatar()" src="http://localhost:4605/avatar/{{userName}}"/>
@@ -111,13 +111,42 @@
                     </li>
                 </ul>
             </li>
+            <li>
+                <notification-icon class="custom-style dropdown-toggle" animation="bounce" 
+                                   data-toggle="dropdown" count="unseenNotifications">
+                    <i class="fa fa-envelope-o fa-3x"></i>
+                </notification-icon>
+                <div class="dropdown-menu dropdown-menu-right notifications-dropdown black-color">
+                    <p class="small-margin-bottom small-margin-top self-align" ng-show="notifications.length === 0">You have no notifications.</p>
+
+                    <ul dropdown-prevent-close style="padding-left: 0;">
+                        <li class="notifications-list" ng-repeat="not in notifications" ng-class="{'unseen-color': !not.seen}">
+                            <md-list-item class="notification-item">
+                            <div class="notificationRow">
+                                <div class="notification-image">
+                                    <img ng-src="http://localhost:4605/avatar/{{not.sender}}" alt="{{not.sender}}"/>
+                                </div>
+                                <div class="notification-data">
+                                    <span class="notification-sender">{{not.sender}} </span>
+                                    <span class="notification-text">{{ not.notificationText }}</span>
+                                    <span class="notification-date">{{ getNiceDateTime(not.notificationDate) }}</span>
+                                </div>
+                                <div class="notification-cercle" ng-show="!not.seen">
+                                    <i class="fa fa-circle-o small-circle" aria-hidden="true" ng-click="markNotificationAsSeen(not)"></i>
+                                    <md-tooltip class="mark-read-tooltip" md-visible="false" md-direction="bottom">
+                                        Mark as read
+                                    </md-tooltip>
+                                </div>
+                            </div>
+                            </md-list-item>
+                            <md-divider class="notifications-divider" ng-if="!$last"></md-divider>
+                        </li>
+                    </ul>
+                </div>
+            </li>
         </ul>
         <span flex></span>
         <md-icon md-svg-icon="../../../images/ic_menu_24px.svg" class="ng-scope small-menu-button" aria-hidden="true" ng-click="toggleRight()">
-            <!--<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 18 18" fit="" preserveAspectRatio="xMidYMid meet" focusable="false">
-                <path d="M0 0h18v18h-18z" fill="none"></path>
-                <path d="M2 13.5h14v-1.5h-14v1.5zm0-4h14v-1.5h-14v1.5zm0-5.5v1.5h14v-1.5h-14z"></path>
-            </svg>-->
         </md-icon>
     </md-toolbar>
 </div>

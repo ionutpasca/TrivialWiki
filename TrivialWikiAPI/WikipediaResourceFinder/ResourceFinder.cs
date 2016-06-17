@@ -1,10 +1,13 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using WikipediaResourceFinder.Models;
-// ReSharper disable AssignNullToNotNullAttribute
+using WikipediaResourceFinder.Models.Thumbnails;
 
+// ReSharper disable AssignNullToNotNullAttribute
 namespace WikipediaResourceFinder
 {
     public sealed class ResourceFinder : IResourceFinder
@@ -21,6 +24,18 @@ namespace WikipediaResourceFinder
                     var result = serializer.Deserialize<WikipediaResponse>(new JsonTextReader(reader));
                     await SaveRawTextToFile(result, filePath);
                 }
+            }
+        }
+
+        public string GetWikipediaImageForTopic(string topic)
+        {
+            using (var client = new WebClient())
+            {
+                var query = "https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&pithumbsize=100&titles=" + topic;
+                var response = client.DownloadString(new Uri(query));
+                var result = JsonConvert.DeserializeObject<RootThumbnail>(response);
+
+                return result.Query.Pages.FirstOrDefault().Value.Thumbnail.Source;
             }
         }
 

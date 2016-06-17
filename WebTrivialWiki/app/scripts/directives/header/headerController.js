@@ -1,8 +1,8 @@
-﻿(function () {
+﻿(function (moment, _) {
     'use strict';
 
-    App.module.controller('headerController', ['$uibModal', '$scope','$timeout', 'persistService', '$location','$mdSidenav',
-        function ($uibModal, $scope, $timeout, persistService, $location, $mdSidenav) {
+    App.module.controller('headerController', ['$uibModal', '$scope', '$timeout', 'headerService', 'persistService', '$location', '$mdSidenav',
+        function ($uibModal, $scope, $timeout, headerService, persistService, $location, $mdSidenav) {
 
         $scope.openLoginModal = function () {
             $uibModal.open({
@@ -20,6 +20,12 @@
             });
         };
 
+        function getNumberOfUnseenNotifications() {
+            return _.filter($scope.notifications, function(not) {
+                return not.seen === false;
+            }).length;
+        };
+
         function init() {
             $scope.userIsLoggedIn = persistService.readData('isLoggedIn');
             if ($scope.userIsLoggedIn === '' || $scope.userIsLoggedIn === undefined) {
@@ -28,6 +34,13 @@
             $scope.rank = persistService.readData('rank');
             $scope.userName = persistService.readData('userName');
             $scope.userRole = persistService.readData('role');
+            $scope.notifications = [];
+
+            headerService.getNotifications()
+            .then(function (data) {
+                $scope.notifications = data;
+                $scope.unseenNotifications = getNumberOfUnseenNotifications();
+            });
         }
         init();
 
@@ -86,6 +99,23 @@
             $mdSidenav('right').toggle();
         };
 
+        $scope.markNotificationAsSeen = function (notification) {
+            notification.seen = true;
+
+            headerService.markNotificationAsSeen(notification.id)
+            .then(function() {
+                $scope.unseenNotifications = getNumberOfUnseenNotifications();
+            });
+        };
+
+        $scope.getNiceDateTime = function(date) {
+            return moment(date).format('LL');
+        };
+
+        $scope.addTest = function() {
+            $scope.customPending = $scope.customPending + 1;
+        };
+
         }]).controller('RightCtrl', function ($scope, $timeout, $mdSidenav) {
             $scope.close = function () {
                 $mdSidenav('right').close()
@@ -93,4 +123,4 @@
                   });
             };
         });
-}).call(this);
+}).call(this, this.moment, this._);

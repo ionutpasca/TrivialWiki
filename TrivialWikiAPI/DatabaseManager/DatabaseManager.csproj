@@ -66,6 +66,7 @@
     <Compile Include="DatabaseModels\Friend.cs" />
     <Compile Include="DatabaseModels\Match.cs" />
     <Compile Include="DatabaseModels\Message.cs" />
+    <Compile Include="DatabaseModels\Notification.cs" />
     <Compile Include="DatabaseModels\PrivateChat.cs" />
     <Compile Include="DatabaseModels\QuestionSet.cs" />
     <Compile Include="DatabaseModels\RelatedTopic.cs" />
@@ -83,6 +84,14 @@
     <Compile Include="Migrations\201606171138145_0016.Designer.cs">
       <DependentUpon>201606171138145_0016.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606171453139_0017.cs" />
+    <Compile Include="Migrations\201606171453139_0017.Designer.cs">
+      <DependentUpon>201606171453139_0017.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606171453536_0018.cs" />
+    <Compile Include="Migrations\201606171453536_0018.Designer.cs">
+      <DependentUpon>201606171453536_0018.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Questions\QuestionsManager.cs" />
@@ -95,6 +104,7 @@
     <Compile Include="Leaderboard\LeaderboardResponse.cs" />
     <Compile Include="Trivia\TriviaQuestionDto.cs" />
     <Compile Include="UserManagement\Login\LoginManager.cs" />
+    <Compile Include="UserManagement\NotificationDto.cs" />
     <Compile Include="UserManagement\UserManager.cs" />
     <Compile Include="UserManagement\UserResponse.cs" />
   </ItemGroup>
@@ -114,6 +124,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606171138145_0016.resx">
       <DependentUpon>201606171138145_0016.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606171453139_0017.resx">
+      <DependentUpon>201606171453139_0017.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606171453536_0018.resx">
+      <DependentUpon>201606171453536_0018.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

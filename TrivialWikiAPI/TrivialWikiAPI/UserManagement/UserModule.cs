@@ -20,9 +20,10 @@ namespace TrivialWikiAPI.UserManagement
             Get["/usernameExists/{userName}", true] = async (param, p) => await GivenUsernameExists(param.userName);
             Get["/accountCreationDate/{userName}"] = param => GetAccountCreationDate(param.userName);
             Get["/userPoints/{userName}", true] = async (param, p) => await GetUserPoints(param.userName);
-            
+            Get["/notifications", true] = async (param, p) => await GetUserNotifications();
 
             Post["/addNewUser", true] = async (param, p) => await AddNewUserToDatabase();
+            Post["/markNotificationsAsSeen/{notificationId}", true] = async (param, p) => await MarkNotificationsAsSeen(param.notificationId);
             Post["/updateUser", true] = async (param, p) =>
             {
                 var user = this.Bind<UserResponse>();
@@ -36,13 +37,25 @@ namespace TrivialWikiAPI.UserManagement
             Put["/changeUserRole/{userName}/{roleId}", true] = async (param, p) => await ChangeUserRole(param.userName, param.roleId);
         }
 
-        
+        private async Task<Response> MarkNotificationsAsSeen(int notificationId)
+        {
+            var user = Context.CurrentUser;
+            await userManager.MarkNotificationsAsSeen(user.UserName, notificationId);
+            return HttpStatusCode.OK;
+        }
+
+        private async Task<Response> GetUserNotifications()
+        {
+            var user = Context.CurrentUser;
+            var notifications = await userManager.GetUserNotifications(user.UserName);
+            return Response.AsJson(notifications);
+        }
 
         private async Task<Response> GetUsersBatch(int pageNumber)
         {
-            string queryString = this.Request.Query["queryString"];
+            string queryString = Request.Query["queryString"];
             var users = await userManager.GetUsersBatch(queryString, pageNumber);
-            return this.Response.AsJson(users);
+            return Response.AsJson(users);
         }
 
         private async Task<Response> GetUserPoints(string userName)
@@ -58,7 +71,7 @@ namespace TrivialWikiAPI.UserManagement
             }
 
             var points = await userManager.GetUserPoints(userName);
-            return this.Response.AsJson(points);
+            return Response.AsJson(points);
         }
 
         private Response GetAccountCreationDate(string userName)
@@ -68,19 +81,19 @@ namespace TrivialWikiAPI.UserManagement
                 return HttpStatusCode.BadRequest;
             }
             var result = userManager.GetAccountCreationDate(userName);
-            return this.Response.AsJson(result);
+            return Response.AsJson(result);
         }
 
         private async Task<Response> GivenUsernameExists(string username)
         {
             var usernameExists = await userManager.UserExists(username);
-            return this.Response.AsJson(usernameExists);
+            return Response.AsJson(usernameExists);
         }
 
         private async Task<Response> GivenEmailExists(string email)
         {
             var userEmailExists = await userManager.EmailExists(email);
-            return this.Response.AsJson(userEmailExists);
+            return Response.AsJson(userEmailExists);
         }
 
         private async Task<Response> AddNewUserToDatabase()

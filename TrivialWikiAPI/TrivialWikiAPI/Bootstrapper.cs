@@ -5,6 +5,7 @@ using Nancy.Bootstrapper;
 using Nancy.Security;
 using Nancy.TinyIoc;
 using System.Linq;
+using WikipediaResourceFinder;
 
 namespace TrivialWikiAPI
 {
@@ -17,6 +18,19 @@ namespace TrivialWikiAPI
 
             //using (var dbC = new DatabaseContext())
             //{
+            //    var not = new Notification
+            //    {
+            //        NotificationText = "Welcome to WikiTrivia. We hope you have fun!",
+            //        Seen = false,
+            //        Sender = "WikiTrivia",
+            //        NotificationDate = DateTime.Now
+            //    };
+
+            //    var user = dbC.Users.Single(u => u.UserName == "ionut");
+            //    not.User = user;
+            //    dbC.Notifications.Add(not);
+            //    dbC.SaveChanges();
+
             //    var questionSet = new QuestionSet() { QuestionText = "Which is the best IDE?", CorrectAnswer = "Visual Studion" };
             //    var topic = new Topic() { Name = "IT" };
             //    topic.Questions.Add(questionSet);
@@ -36,6 +50,10 @@ namespace TrivialWikiAPI
             //    dbC.Users.Add(user);
             //    dbC.SaveChanges();
             //}
+
+
+            var rsfinder = new ResourceFinder();
+            rsfinder.GetWikipediaImageForTopic("computer_science");
         }
 
         private void ConfigStatelessAuthentication(IPipelines pipelines)

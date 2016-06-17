@@ -236,6 +236,10 @@
       <Project>{e0a4d38b-cadc-49b1-bb3d-7990d8a97552}</Project>
       <Name>DatabaseManager</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WikipediaResourceFinder\WikipediaResourceFinder.csproj">
+      <Project>{400BE6E8-5E92-4D67-847E-81E508FF582B}</Project>
+      <Name>WikipediaResourceFinder</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WikiTrivia.TriviaCore\WikiTrivia.TriviaCore.csproj">
       <Project>{6026F073-FD4F-4761-8FDC-39EE1D7E9D64}</Project>
       <Name>WikiTrivia.TriviaCore</Name>
