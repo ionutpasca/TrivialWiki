@@ -21,6 +21,19 @@ namespace TrivialWikiAPI
             //    var topic = new Topic() { Name = "IT" };
             //    topic.Questions.Add(questionSet);
             //    dbC.Topics.Add(topic);
+
+            //    var role = new Role() { Name = "Admin" };
+            //    dbC.Roles.Add(role);
+            //    dbC.SaveChanges();
+
+            //    var user = new User() { Email = "pascaionut@yahoo.com", UserName = "ionut" };
+            //    var pass = Encrypt.GetMD5("1234");
+            //    user.AccountCreationDate = DateTime.Now;
+            //    user.Password = pass;
+            //    var role1 = dbC.Roles.Single(r => r.Name == "Admin");
+            //    user.Role = role1;
+
+            //    dbC.Users.Add(user);
             //    dbC.SaveChanges();
             //}
         }

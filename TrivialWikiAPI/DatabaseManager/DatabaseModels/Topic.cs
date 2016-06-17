@@ -24,6 +24,6 @@ namespace DatabaseManager.DatabaseModels
 
         public ICollection<RelatedTopic> RelatedTopics { get; set; }
         public ICollection<QuestionSet> Questions { get; set; }
-
+        public bool IsActive { get; set; }
     }
 }

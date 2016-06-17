@@ -12,16 +12,36 @@ namespace TrivialWikiAPI.Topics
         public TopicsModule()
         {
             Get["/topicNames", true] = async (param, p) => await GetAllTopicNames();
-            Get["/topicsWithoutQuestions", true] = async (param, p) => await GetTopicsWithoutQuestions();
-            Get["/questions/{topic}"] = param => GetQuestionsForTopic(param.topic);
+            Get["/inactiveTopics", true] = async (param, p) => await GetInactiveTopics();
+
+            Get["/inactiveQuestions/{topic}", true] = async (param, p) => await GetInactiveQuestionsForTopic(param.topic);
+            Get["/activeQuestions/{topic}", true] = async (param, p) => await GetActiveQuestionsForTopic(param.topic);
+
 
             Post["/topic/{topicName}", true] = async (param, p) => await AddNewTopic(param.topicName);
+            Post["/enableTopic/{topicName}", true] = async (param, p) => await EnableTopic(param.topicName);
+        }
+        private async Task<object> EnableTopic(string topicName)
+        {
+            var topicExists = await topicsManager.TopicExists(topicName);
+            if (!topicExists)
+            {
+                return HttpStatusCode.NotFound;
+            }
+            await topicsManager.EnableTopic(topicName);
+            return HttpStatusCode.OK;
         }
 
-        private Response GetQuestionsForTopic(string topic)
+        private async Task<Response> GetActiveQuestionsForTopic(string topic)
         {
-            var questions = topicsManager.GetQuestionsForTopicFromFile(topic);
-            return Response.AsJson(questions);
+            var questions = await topicsManager.GetActiveQuestionsForTopic(topic);
+            return questions == null ? HttpStatusCode.NotFound : Response.AsJson(questions);
+        }
+
+        private async Task<Response> GetInactiveQuestionsForTopic(string topic)
+        {
+            var questions = await topicsManager.GetInactiveQuestionsForTopic(topic);
+            return questions == null ? HttpStatusCode.NotFound : Response.AsJson(questions);
         }
 
         private async Task<object> GetAllTopicNames()
@@ -30,9 +50,9 @@ namespace TrivialWikiAPI.Topics
             return Response.AsJson(topics);
         }
 
-        private async Task<object> GetTopicsWithoutQuestions()
+        private async Task<object> GetInactiveTopics()
         {
-            var topics = await topicsManager.GetTopicsWithoutQuestions();
+            var topics = await topicsManager.GetInactiveTopics();
             return Response.AsJson(topics);
         }
 
@@ -53,6 +73,7 @@ namespace TrivialWikiAPI.Topics
             //await tagger.ProcessWikipediaText(topicName);
 
             //tagger.GenerateQuestions(topicName);
+            await topicsManager.SaveQuestionsFromFile(topicName);
             return HttpStatusCode.OK;
         }
     }

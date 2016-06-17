@@ -1,28 +1,68 @@
 ﻿<div class="panel panel-default admin-panel">
-    <md-input-container class="topic-container">
+    
+    <div class="spinner medium-margin-bottom" ng-show="topicsAreLoading"></div>
+    <md-input-container class="topic-container" ng-hide="topicsAreLoading">
         <label>Topic</label>
         <md-select ng-model="topicName">
-            <md-option ng-repeat="topic in topicNames" value="{{topic}}" ng-disabled="$index === 1">
+            <md-option ng-repeat="topic in inactiveTopics" value="{{topic}}" ng-click="clearSelected()">
                 <h4>{{topic}}</h4>
             </md-option>
         </md-select>
     </md-input-container>
 
+    <div style="float: right; width: 75%;">
+        <div class="savePartialQuestions" ng-show="selectedQuestions.length > 0">
+            <button type="button" class="btn btn-success montserratFont" ng-click="updateQuestions()">Save selected</button>
+        </div>
 
-    <div class="panel panel-default topics-panel">
+        <div class="savePartialQuestions" ng-show="selectedQuestions.length > 0">
+            <button type="button" class="btn btn-danger montserratFont" ng-click="deleteQuestions()">Delete selected</button>
+        </div>
 
-        <md-content>
-            <md-list>
+        <div class="enableTopicButton" ng-show="topicName !== undefined">
+            <button type="button" class="btn btn-default montserratFont" ng-click="enableTopic()">Enable topic</button>
+        </div>
+    </div>
+
+    <div ng-hide="topicsAreLoading || topicName === undefined">
+        <md-checkbox class="inactiveQuestionCheckbox questionSelectCheck montserratFont" ng-checked="invalidQuestionsAreSelected()" ng-click="selectQuestionType(0)" style="color:black">
+            Inactive questions
+        </md-checkbox>
+
+        <md-checkbox class="questionSelectCheck montserratFont" ng-checked="!invalidQuestionsAreSelected()" ng-click="selectQuestionType(1)">
+            Active questions
+        </md-checkbox>
+
+        <span class="pull-right medium-margin-right montserratFont" ng-show="selectedQuestions.length > 0">
+            {{selectedQuestions.length}} selected
+        </span>
+    </div>
+
+    <div class="panel panel-default topics-panel" ng-hide="topicName === undefined">
+        <md-content >
+            <div class="spinner medium-margin-bottom" ng-show="questionsAreLoading"></div>
+
+            <md-list ng-hide="questionsAreLoading">
+                <span class="montserratFont small-margin-left" ng-show="questions.length === 0">There are no 
+                    <span ng-show="invalidQuestionsAreSelected()">invalid</span>
+                    <span ng-show="!invalidQuestionsAreSelected()">valid</span> questions.
+                </span>
                 <md-list-item class="md-3-line" ng-repeat="question in questions">
-                    <div class="md-list-item-text">
-                        <h3>{{question.topic}}</h3>
-                        <textarea ng-model="question.question"></textarea>
-                        <p>
-                            <b>Answer: </b><span>{{question.answer}}</span>
-                        </p>
+                    <!--<md-checkbox ng-checked="questionIsSelected(question)" ng-click="selectQuestion(question)">
+                    </md-checkbox>-->
+
+                    <div class="checkbox checkbox-info question-checkbox" ng-click="selectQuestion(question)">
+                        <input type="checkbox" ng-checked="questionIsSelected(question)">
                     </div>
 
 
+                    <div class="md-list-item-text medium-margin-bottom small-margin-left" stop-event="click">
+                        <!--<textarea ng-model="question.question" style="width: 80%;"></textarea>-->
+                        <a editable-text="question.question" stop-event="click">{{question.question}}</a>
+                        <p>
+                            <b class="red-color">Answer: </b><span>{{question.answer}}</span>
+                        </p>
+                    </div>
 
                     <md-divider ng-if="!$last"></md-divider>
                 </md-list-item>
@@ -30,4 +70,13 @@
         </md-content>
 
     </div>
+    <!--<div class="checkbox checkbox-info medium-margin-left" ng-click="selectInactive(question)">
+        <input id="checkbox" type="checkbox" ng-checked="inactiveQuestionsAreSelected()">
+        <span>Inactive Questions</span>
+        <input id="checkbox" type="checkbox" ng-checked="inactiveQuestionsAreSelected()">
+        <span class="medium-margin-left">Active Questions</span>
+    </div>
+    <div class="checkbox checkbox-info medium-margin-left" ng-click="selectInactive(question)">
+    </div>-->
+
 </div>

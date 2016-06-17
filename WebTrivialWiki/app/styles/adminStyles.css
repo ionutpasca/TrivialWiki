@@ -43,14 +43,64 @@
 }
 
 .topics-panel {
-    width: 96%;
+    width: 97%;
     margin-left: 2%;
-    max-height: 600px;
+    max-height: 450px;
     overflow: auto;
+    font-family: Montserrat;
 }
 
 .topic-container {
     width: 20%;
     margin-left: 2%;
-    margin-top: 35px;
+    margin-top: 30px;
 }
+
+.editable-wrap {
+    width: 96%;
+}
+
+.editable-controls {
+    width: 100%;
+}
+
+.editable-input {
+    width: 90% !important;
+}
+
+.question-checkbox {
+    margin-left: 20px;
+    margin-right: 20px;
+    align-self: center;  
+}
+
+.question-checkbox input {
+    height: 18px;
+    margin-top: -14px;
+    width: 18px;
+}
+
+.savePartialQuestions {
+    float: right;
+    margin-top: 40px;
+    margin-right: 15px;
+}
+
+.enableTopicButton {
+    float: left;
+    margin-top: 40px;
+}
+
+.inactiveQuestionCheckbox {
+    margin-left: 2%;
+}
+
+.question-checkbox input {
+    border: 1px solid #ccc;
+}
+
+md-checkbox.md-checked.questionSelectCheck .md-icon {
+ background-color: #cc1935;
+}
+
+

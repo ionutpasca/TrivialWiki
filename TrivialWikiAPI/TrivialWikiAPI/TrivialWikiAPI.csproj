@@ -187,6 +187,8 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Questions\QuestionModule.cs" />
+    <Compile Include="Questions\QuestionSetDto.cs" />
     <Compile Include="Roles\RolesModule.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Topics\TopicsModule.cs" />

@@ -9,6 +9,7 @@
         }
 
         $scope.login = function () {
+            $scope.userIsLogging = true;
             if ($scope.username === "" || $scope.username === undefined
                 || $scope.password === "" || $scope.password === undefined) {
                 $scope.credentialsAreInvalid = true;
@@ -27,6 +28,7 @@
                     persistService.storeData('isLoggedIn', true);
                     $uibModalStack.dismissAll();
                     $location.path('/');
+                    $scope.userIsLogging = false;
                 }, function() {
                     //ERROR
                 });
