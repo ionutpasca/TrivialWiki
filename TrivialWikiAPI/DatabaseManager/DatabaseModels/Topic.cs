@@ -21,9 +21,10 @@ namespace DatabaseManager.DatabaseModels
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
-
         public ICollection<RelatedTopic> RelatedTopics { get; set; }
         public ICollection<QuestionSet> Questions { get; set; }
+        public int Likes { get; set; }
         public bool IsActive { get; set; }
+        public string ThumbnailPath { get; set; }
     }
 }

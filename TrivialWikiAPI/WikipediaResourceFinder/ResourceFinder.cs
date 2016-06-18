@@ -31,7 +31,7 @@ namespace WikipediaResourceFinder
         {
             using (var client = new WebClient())
             {
-                var query = "https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&pithumbsize=100&titles=" + topic;
+                var query = "https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&pithumbsize=300&titles=" + topic;
                 var response = client.DownloadString(new Uri(query));
                 var result = JsonConvert.DeserializeObject<RootThumbnail>(response);
 

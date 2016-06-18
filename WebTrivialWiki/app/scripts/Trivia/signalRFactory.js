@@ -1,7 +1,8 @@
 ﻿(function(angular, $) {
     'use strict';
 
-    angular.module('triviaModule').factory('chatFactory',['$rootScope', function($rootScope) {
+    angular.module('triviaModule')
+    .factory('chatFactory', ['$rootScope', function ($rootScope) {
         return {
             on: function(eventName, callback) {
                 var connection = $.hubConnection();

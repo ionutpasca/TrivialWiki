@@ -1,0 +1,33 @@
+﻿.md-button.md-fab.proposeTopic-button {
+    background-color: #cc1935;
+}
+
+.md-button.md-fab.proposeTopic-button:hover {
+    background-color: #DD425A;
+}
+
+.proposeTopic-button {
+    position: fixed;
+    bottom: 30px;
+    right: 7%;
+}
+
+.proposeTopic-error {
+    font-size: 10px;
+    margin-top: -5px;
+    display: block;
+}
+
+.proposeTopic-input {
+    top: 15px;
+    width: 300px;
+    margin: 0; 
+    color: #ccc; 
+    border-color: #ccc;
+}
+
+.proposeTopic-label {
+    color: #ccc; 
+    font-weight: 300; 
+    border-color: #ccc;
+}

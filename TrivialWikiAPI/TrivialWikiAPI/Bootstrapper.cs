@@ -5,7 +5,6 @@ using Nancy.Bootstrapper;
 using Nancy.Security;
 using Nancy.TinyIoc;
 using System.Linq;
-using WikipediaResourceFinder;
 
 namespace TrivialWikiAPI
 {
@@ -50,13 +49,9 @@ namespace TrivialWikiAPI
             //    dbC.Users.Add(user);
             //    dbC.SaveChanges();
             //}
-
-
-            var rsfinder = new ResourceFinder();
-            rsfinder.GetWikipediaImageForTopic("computer_science");
         }
 
-        private void ConfigStatelessAuthentication(IPipelines pipelines)
+        private static void ConfigStatelessAuthentication(IPipelines pipelines)
         {
             var config = new StatelessAuthenticationConfiguration(ctx => AuthenticateUser(ReadAuthToken(ctx)));
             StatelessAuthentication.Enable(pipelines, config);

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DatabaseManager.UserManagement
+namespace DatabaseManager.UserManagement.Notifications
 {
     public class NotificationDto
     {

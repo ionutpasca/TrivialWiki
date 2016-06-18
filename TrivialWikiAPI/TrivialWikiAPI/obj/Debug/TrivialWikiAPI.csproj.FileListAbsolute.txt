@@ -130,3 +130,5 @@ F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\D
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.Migrations._0014.resources
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\WikipediaResourceFinder.dll
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\WikipediaResourceFinder.pdb
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\WikiTrivia.Core.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\WikiTrivia.Core.pdb

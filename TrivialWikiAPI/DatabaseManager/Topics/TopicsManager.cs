@@ -23,12 +23,28 @@ namespace DatabaseManager.Topics
             }
         }
 
-        public async Task<IEnumerable<string>> GetInactiveTopics()
+        public async Task<IEnumerable<DetailedTopic>> GetDetailedTopics()
         {
             using (var databaseContext = new DatabaseContext())
             {
                 return await databaseContext.Topics
-                    .Where(t => t.IsActive == false)
+                    .Where(t => t.IsActive)
+                    .Select(t => new DetailedTopic
+                    {
+                        TopicName = t.Name,
+                        Likes = t.Likes,
+                        ThumbnailUrl = t.ThumbnailPath
+                    })
+                    .ToListAsync();
+            }
+        }
+
+        public async Task<IEnumerable<string>> GetTopics(bool activeTopics = true)
+        {
+            using (var databaseContext = new DatabaseContext())
+            {
+                return await databaseContext.Topics
+                    .Where(t => t.IsActive == activeTopics)
                     .Select(t => t.Name)
                     .ToListAsync();
             }
@@ -80,12 +96,33 @@ namespace DatabaseManager.Topics
             return null;
         }
 
-        public async Task AddNewTopicToDatabase(string topicName)
+        public async Task<bool> ProposedTopicExists(string topicName)
+        {
+            using (var databaseContext = new DatabaseContext())
+            {
+                return await databaseContext.ProposedTopics
+                    .AnyAsync(t => t.TopicName == topicName);
+            }
+        }
+
+        public async Task AddProposedTopic(string topicName, string username)
+        {
+            using (var databaseContext = new DatabaseContext())
+            {
+                var user = await databaseContext.Users.SingleOrDefaultAsync(u => u.UserName == username);
+                var topic = new ProposedTopic() { TopicName = topicName, User = user };
+                databaseContext.ProposedTopics.Add(topic);
+                await databaseContext.SaveChangesAsync();
+            }
+        }
+
+        public async Task AddNewTopicToDatabase(string topicName, string topicImageUrl)
         {
             using (var databaseContext = new DatabaseContext())
             {
                 var topic = new Topic(topicName) { IsActive = false };
                 databaseContext.Topics.Add(topic);
+                topic.ThumbnailPath = topicImageUrl;
                 await databaseContext.SaveChangesAsync();
             }
         }

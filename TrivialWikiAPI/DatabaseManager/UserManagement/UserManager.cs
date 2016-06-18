@@ -1,6 +1,5 @@
 ﻿using DatabaseManager.DatabaseModels;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
@@ -45,37 +44,6 @@ namespace DatabaseManager.UserManagement
                 return await databaseContext.Users
                     .Where(u => u.UserName.Contains(queryString))
                     .CountAsync();
-            }
-        }
-
-        public async Task<IEnumerable<NotificationDto>> GetUserNotifications(string username)
-        {
-            using (var databaseContext = new DatabaseContext())
-            {
-                var user = await databaseContext.Users.Include("Notifications")
-                            .SingleOrDefaultAsync(u => u.UserName == username);
-                return user.Notifications.Select(n => new NotificationDto
-                {
-                    Id = n.Id,
-                    NotificationDate = n.NotificationDate,
-                    NotificationText = n.NotificationText,
-                    Sender = n.Sender,
-                    Seen = n.Seen
-                })
-                .ToList();
-            }
-        }
-
-        public async Task MarkNotificationsAsSeen(string username, int notificationId)
-        {
-            using (var databaseContext = new DatabaseContext())
-            {
-                var user = await databaseContext.Users.Include("Notifications")
-                                .SingleOrDefaultAsync(u => u.UserName == username);
-
-                var notification = user.Notifications.Single(n => n.Id == notificationId);
-                notification.Seen = true;
-                await databaseContext.SaveChangesAsync();
             }
         }
 

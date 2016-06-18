@@ -1,8 +1,24 @@
 ﻿(function (moment, _) {
     'use strict';
 
-    App.module.controller('headerController', ['$uibModal', '$scope', '$timeout', 'headerService', 'persistService', '$location', '$mdSidenav',
-        function ($uibModal, $scope, $timeout, headerService, persistService, $location, $mdSidenav) {
+    App.module.controller('headerController', ['$uibModal', '$scope', '$timeout', 'headerService', 'persistService', '$location',
+        '$mdSidenav','notificationsHubFactory',
+        function ($uibModal, $scope, $timeout, headerService, persistService, $location, $mdSidenav, notificationHub) {
+
+        var notificationsProxy = notificationHub();
+
+        notificationsProxy.on('notify', function (res) {
+            debugger;
+            var notification = {
+                id: res.Id,
+                sender: res.Sender,
+                notificationText: res.NotificationText,
+                notificationDate: res.NotificationDate,
+                seen: res.Seen
+            };
+            $scope.notifications.unshift(notification);
+            $scope.unseenNotifications = getNumberOfUnseenNotifications();
+        });
 
         $scope.openLoginModal = function () {
             $uibModal.open({
@@ -34,11 +50,13 @@
             $scope.rank = persistService.readData('rank');
             $scope.userName = persistService.readData('userName');
             $scope.userRole = persistService.readData('role');
-            $scope.notifications = [];
-
             headerService.getNotifications()
             .then(function (data) {
-                $scope.notifications = data;
+                $scope.notifications = [];
+
+                _.each(data, function(not) {
+                    $scope.notifications.unshift(not);
+                });
                 $scope.unseenNotifications = getNumberOfUnseenNotifications();
             });
         }
@@ -93,6 +111,10 @@
 
         $scope.goToHomePage = function() {
             $location.url('/');
+        };
+
+        $scope.openTopics = function() {
+            $location.url('/topics');
         };
 
         $scope.toggleRight = function () {

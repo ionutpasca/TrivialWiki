@@ -1,0 +1,21 @@
+﻿<md-dialog ng-cloak>
+    <form>
+        <md-dialog-content class="no-padding-top">
+            <div class="md-dialog-content">
+                <h3 class="montserratFont no-margin-top">Propose topic</h3>
+                <md-input-container class="montserratFont proposeTopic-input">
+                    <label class="proposeTopic-label">Topic</label>
+                    <input ng-model="proposedTopic" class="montserratFont">
+                </md-input-container>
+                <span class="red-color proposeTopic-error" ng-show="topicIsInvalid">The topic must have at most 20 characters.</span>
+                <div class="spinner medium-margin-bottom" ng-show="topicIsSaving"></div>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button class="md-raised" ng-disabled="topicIsInvalid || topicIsSaving" ng-click="proposeTopic()" style="margin-right:20px; text-transform: none;">
+                Propose topic
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

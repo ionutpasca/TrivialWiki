@@ -68,6 +68,7 @@
     <Compile Include="DatabaseModels\Message.cs" />
     <Compile Include="DatabaseModels\Notification.cs" />
     <Compile Include="DatabaseModels\PrivateChat.cs" />
+    <Compile Include="DatabaseModels\ProposedTopic.cs" />
     <Compile Include="DatabaseModels\QuestionSet.cs" />
     <Compile Include="DatabaseModels\RelatedTopic.cs" />
     <Compile Include="DatabaseModels\Role.cs" />
@@ -92,11 +93,28 @@
     <Compile Include="Migrations\201606171453536_0018.Designer.cs">
       <DependentUpon>201606171453536_0018.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606172052109_0019.cs" />
+    <Compile Include="Migrations\201606172052109_0019.Designer.cs">
+      <DependentUpon>201606172052109_0019.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606172149542_0020.cs" />
+    <Compile Include="Migrations\201606172149542_0020.Designer.cs">
+      <DependentUpon>201606172149542_0020.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606172152010_0021.cs" />
+    <Compile Include="Migrations\201606172152010_0021.Designer.cs">
+      <DependentUpon>201606172152010_0021.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606181426273_0022.cs" />
+    <Compile Include="Migrations\201606181426273_0022.Designer.cs">
+      <DependentUpon>201606181426273_0022.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Questions\QuestionsManager.cs" />
     <Compile Include="Questions\UpdatedQuestion.cs" />
     <Compile Include="Roles\RolesManager.cs" />
+    <Compile Include="Topics\DetailedTopic.cs" />
     <Compile Include="Topics\TopicQuestionDto.cs" />
     <Compile Include="Topics\TopicsManager.cs" />
     <Compile Include="Trivia\TriviaManager.cs" />
@@ -104,7 +122,8 @@
     <Compile Include="Leaderboard\LeaderboardResponse.cs" />
     <Compile Include="Trivia\TriviaQuestionDto.cs" />
     <Compile Include="UserManagement\Login\LoginManager.cs" />
-    <Compile Include="UserManagement\NotificationDto.cs" />
+    <Compile Include="UserManagement\Notifications\NotificationDto.cs" />
+    <Compile Include="UserManagement\Notifications\NotificationsManager.cs" />
     <Compile Include="UserManagement\UserManager.cs" />
     <Compile Include="UserManagement\UserResponse.cs" />
   </ItemGroup>
@@ -130,6 +149,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606171453536_0018.resx">
       <DependentUpon>201606171453536_0018.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606172052109_0019.resx">
+      <DependentUpon>201606172052109_0019.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606172149542_0020.resx">
+      <DependentUpon>201606172149542_0020.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606172152010_0021.resx">
+      <DependentUpon>201606172152010_0021.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606181426273_0022.resx">
+      <DependentUpon>201606181426273_0022.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

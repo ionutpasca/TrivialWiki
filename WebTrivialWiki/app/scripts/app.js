@@ -2,7 +2,7 @@
     'use strict';
 
     App.module = angular.module('webTrivialWikiApp',
-        ['adminModule', 'triviaModule', 'ngAnimate', 'ngCookies', 'angularFileUpload','leaderboardModule',
+        ['adminModule', 'triviaModule','topicsModule', 'ngAnimate', 'ngCookies', 'angularFileUpload','leaderboardModule',
             'angular-img-cropper', 'ngResource', 'ngRoute', 'ngSanitize', 'ui.bootstrap',
             'angular-growl', 'ngMaterial', 'angular-notification-icons'])
         .config(function ($routeProvider) {

@@ -60,12 +60,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="WikiTriviaHub.cs" />
+    <Compile Include="Models\ConnectedUser.cs" />
+    <Compile Include="NotificationsCore.cs" />
+    <Compile Include="NotificationsHub.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DatabaseManager\DatabaseManager.csproj">
+      <Project>{E0A4D38B-CADC-49B1-BB3D-7990D8A97552}</Project>
+      <Name>DatabaseManager</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

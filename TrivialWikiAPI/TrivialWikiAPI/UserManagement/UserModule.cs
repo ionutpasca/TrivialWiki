@@ -1,5 +1,6 @@
 ﻿using DatabaseManager.DatabaseModels;
 using DatabaseManager.UserManagement;
+using DatabaseManager.UserManagement.Notifications;
 using Nancy;
 using Nancy.ModelBinding;
 using Nancy.Security;
@@ -10,7 +11,7 @@ namespace TrivialWikiAPI.UserManagement
     public class UserModule : NancyModule
     {
         private readonly UserManager userManager = new UserManager();
-
+        private readonly NotificationsManager notificationManager = new NotificationsManager();
         public UserModule()
         {
             this.RequiresAuthentication();
@@ -40,14 +41,14 @@ namespace TrivialWikiAPI.UserManagement
         private async Task<Response> MarkNotificationsAsSeen(int notificationId)
         {
             var user = Context.CurrentUser;
-            await userManager.MarkNotificationsAsSeen(user.UserName, notificationId);
+            await notificationManager.MarkNotificationsAsSeen(user.UserName, notificationId);
             return HttpStatusCode.OK;
         }
 
         private async Task<Response> GetUserNotifications()
         {
             var user = Context.CurrentUser;
-            var notifications = await userManager.GetUserNotifications(user.UserName);
+            var notifications = await notificationManager.GetUserNotifications(user.UserName);
             return Response.AsJson(notifications);
         }
 

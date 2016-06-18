@@ -73,6 +73,9 @@
             <li class="hvr-underline-from-center small-padding-bottom">
                 <a ng-show="userIsLoggedIn" ng-click="openLeaderboards()">Leaderboards</a>
             </li>
+            <li class="hvr-underline-from-center small-padding-bottom">
+                <a ng-show="userIsLoggedIn" ng-click="openTopics()">Topics</a>
+            </li>
             <li class="hvr-underline-from-center small-padding-bottom" ng-show="userRole === 'Admin'">
                 <a data-toggle="dropdown">Admin</a>
                 <ul class="dropdown-menu admin-dropdown">
@@ -112,32 +115,32 @@
                 </ul>
             </li>
             <li>
-                <notification-icon class="custom-style dropdown-toggle" animation="bounce" 
-                                   data-toggle="dropdown" count="unseenNotifications">
+                <notification-icon class="custom-style dropdown-toggle" animation="bounce"
+                                    data-toggle="dropdown" count="unseenNotifications">
                     <i class="fa fa-envelope-o fa-3x"></i>
                 </notification-icon>
-                <div class="dropdown-menu dropdown-menu-right notifications-dropdown black-color">
+                <div class="dropdown-menu dropdown-menu-right notifications-dropdown black-color" style="max-height: 300px; overflow: auto;">
                     <p class="small-margin-bottom small-margin-top self-align" ng-show="notifications.length === 0">You have no notifications.</p>
 
                     <ul dropdown-prevent-close style="padding-left: 0;">
                         <li class="notifications-list" ng-repeat="not in notifications" ng-class="{'unseen-color': !not.seen}">
                             <md-list-item class="notification-item">
-                            <div class="notificationRow">
-                                <div class="notification-image">
-                                    <img ng-src="http://localhost:4605/avatar/{{not.sender}}" alt="{{not.sender}}"/>
+                                <div class="notificationRow">
+                                    <div class="notification-image">
+                                        <img ng-src="http://localhost:4605/avatar/{{not.sender}}" alt="{{not.sender}}" />
+                                    </div>
+                                    <div class="notification-data">
+                                        <span class="notification-sender">{{not.sender}} </span>
+                                        <span class="notification-text">{{ not.notificationText }}</span>
+                                        <span class="notification-date">{{ getNiceDateTime(not.notificationDate) }}</span>
+                                    </div>
+                                    <div class="notification-cercle" ng-show="!not.seen">
+                                        <i class="fa fa-circle-o small-circle" aria-hidden="true" ng-click="markNotificationAsSeen(not)"></i>
+                                        <md-tooltip class="mark-read-tooltip" md-visible="false" md-direction="bottom">
+                                            Mark as read
+                                        </md-tooltip>
+                                    </div>
                                 </div>
-                                <div class="notification-data">
-                                    <span class="notification-sender">{{not.sender}} </span>
-                                    <span class="notification-text">{{ not.notificationText }}</span>
-                                    <span class="notification-date">{{ getNiceDateTime(not.notificationDate) }}</span>
-                                </div>
-                                <div class="notification-cercle" ng-show="!not.seen">
-                                    <i class="fa fa-circle-o small-circle" aria-hidden="true" ng-click="markNotificationAsSeen(not)"></i>
-                                    <md-tooltip class="mark-read-tooltip" md-visible="false" md-direction="bottom">
-                                        Mark as read
-                                    </md-tooltip>
-                                </div>
-                            </div>
                             </md-list-item>
                             <md-divider class="notifications-divider" ng-if="!$last"></md-divider>
                         </li>

@@ -25,6 +25,9 @@
 .medium-margin-bottom{
     margin-bottom:50px;
 }
+.medium-margin-top {
+    margin-top: 60px;
+}
 
 .medium-margin-left{
     margin-left:50px !important;
@@ -35,6 +38,10 @@
 }
 .default-cursor {
     cursor: default;
+}
+
+.no-padding-top {
+    padding-top: 0;
 }
 
 .pointer-cursor {
@@ -176,4 +183,12 @@
 
 .montserratFont {
     font-family: Montserrat;
+}   
+
+.tooltip-margin-top {
+    margin-top: -6px;
+}
+
+md-input-container:not(.md-input-invalid).md-input-focused .md-input {
+    border-color: #ccc;
 }

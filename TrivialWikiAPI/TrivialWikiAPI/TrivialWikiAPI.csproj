@@ -240,6 +240,10 @@
       <Project>{400BE6E8-5E92-4D67-847E-81E508FF582B}</Project>
       <Name>WikipediaResourceFinder</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WikiTrivia.Core\WikiTrivia.Core.csproj">
+      <Project>{f52ba459-49aa-4044-bfc5-e8607f5d8562}</Project>
+      <Name>WikiTrivia.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WikiTrivia.TriviaCore\WikiTrivia.TriviaCore.csproj">
       <Project>{6026F073-FD4F-4761-8FDC-39EE1D7E9D64}</Project>
       <Name>WikiTrivia.TriviaCore</Name>
