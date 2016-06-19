@@ -33,7 +33,7 @@ namespace WikiTrivia.QuestionGenerator.Generators
             if (answerWord.PartOfSpeech.ToLower() == "nn" ||
                    answerWord.PartOfSpeech.ToLower() == "nns")
             {
-                question = TreatObjectCase(verbe, questionText);
+                question = TreatObjectCase(sentence, verbe, questionText);
                 return new GeneratedQuestion { Answer = answer, Question = question };
             }
 
@@ -56,9 +56,16 @@ namespace WikiTrivia.QuestionGenerator.Generators
         }
 
 
-        private static string TreatObjectCase(WordInformationDto verbe, string questionText)
+        private static string TreatObjectCase(SentenceInformationDto sentence, WordInformationDto verbe, string questionText)
         {
             questionText = questionText.Replace(verbe.Word, verbe.Lemma);
+
+            var verbeAux =
+                sentence.Dependencies.FirstOrDefault(d => d.Dep.ToLower() == "aux" && d.GovernorGloss == verbe.Word);
+            if (verbeAux != null)
+            {
+                questionText = questionText.Replace(verbeAux.DependentGloss, "");
+            }
 
             switch (verbe.PartOfSpeech.ToLower())
             {

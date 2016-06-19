@@ -170,7 +170,8 @@ namespace DatabaseManager.Topics
 
         public async Task SaveQuestionsFromFile(string topic)
         {
-            var questionsPath = $@"{resultBasePath}\{topic}\Questions.txt";
+            var topicPath = topic.Replace(" ", "_");
+            var questionsPath = $@"{resultBasePath}\{topicPath}\Questions.txt";
             using (var file = File.OpenText(questionsPath))
             {
                 var serializer = new JsonSerializer();
@@ -185,7 +186,7 @@ namespace DatabaseManager.Topics
                     .ToList();
                 await SaveQuestionsToDatabase(questions, topic);
             }
-            ClearTopicFiles(topic);
+            ClearTopicFiles(topicPath);
         }
 
         private async Task SaveQuestionsToDatabase(IEnumerable<QuestionSet> questions, string topic)

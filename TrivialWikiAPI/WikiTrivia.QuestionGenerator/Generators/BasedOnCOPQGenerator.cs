@@ -17,8 +17,15 @@ namespace WikiTrivia.QuestionGenerator.Generators
             var answer = TreatSentenceCOP(sentence, subject, sentenceCOP);
 
             var copPartOfSpeech = Helper.FindWordInList(sentence.Words, sentenceCOP.GovernorGloss).PartOfSpeech;
+            var copVerbe = Helper.FindWordInList(sentence.Words, sentenceCOP.DependentGloss);
             var baseAnswer = Helper.FindWordInList(sentence.Words, sentenceCOP.GovernorGloss);
             string question;
+
+            if (copVerbe != null && copVerbe.Lemma == "be")
+            {
+                question = $"What {copVerbe.Word} {subjectWord.Word}";
+                return new GeneratedQuestion { Answer = answer, Question = question };
+            }
 
             if (subjectWord.NamedEntityRecognition.ToLower() == "person" ||
                 subjectWord.PartOfSpeech.ToLower() == "nnp" ||
@@ -53,9 +60,10 @@ namespace WikiTrivia.QuestionGenerator.Generators
         private static string TreatSentenceCOP(SentenceInformationDto sentence, WordInformationDto subject, SentenceDependencyDto sentenceCOP)
         {
             var sentenceCOPWord = Helper.FindWordInList(sentence.Words, sentenceCOP.GovernorGloss);
-            var answer = sentenceCOPWord.NamedEntityRecognition.ToLower() == "person" ?
-                AnswerGenerator.GenerateAnswer(sentence, sentenceCOP) :
-                AnswerGenerator.GenerateAnswer(sentence, subjectWord: subject);
+            //var answer = sentenceCOPWord.NamedEntityRecognition.ToLower() == "person" ?
+            //    AnswerGenerator.GenerateAnswer(sentence, sentenceCOP) :
+            //    AnswerGenerator.GenerateAnswer(sentence, subjectWord: subject);
+            var answer = AnswerGenerator.GenerateAnswer(sentence, sentenceCOP);
             return answer;
         }
     }

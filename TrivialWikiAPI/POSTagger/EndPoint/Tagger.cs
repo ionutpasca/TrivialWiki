@@ -62,7 +62,7 @@ namespace POSTagger.EndPoint
                 {
                     continue;
                 }
-                var generatedQuestion = QuestionGenerator.Generate(sentenceInfo);
+                 var generatedQuestion = QuestionGenerator.Generate(sentenceInfo);
                 if (string.IsNullOrEmpty(generatedQuestion?.Question))
                 {
                     continue;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using WikiTrivia.QuestionGenerator.Model;
 
 namespace WikiTrivia.QuestionGenerator
@@ -10,7 +11,7 @@ namespace WikiTrivia.QuestionGenerator
         public static string GetSubjectPossession(SentenceInformationDto res)
         {
             var subjectHasPossesion = res.Dependencies.FirstOrDefault(d => d.Dep.ToLower() == "nmod:poss");
-            var subjectPoss = string.Empty;
+            var subjectPoss = String.Empty;
 
             if (subjectHasPossesion != null)
             {
@@ -43,7 +44,7 @@ namespace WikiTrivia.QuestionGenerator
 
         public static bool StringIsYear(string input)
         {
-            return input.All(char.IsDigit) && input.Length <= 4;
+            return input.All(Char.IsDigit) && input.Length <= 4;
         }
 
         public static bool SentenceContainsYear(SentenceInformationDto sentence)
@@ -64,6 +65,33 @@ namespace WikiTrivia.QuestionGenerator
         public static WordInformationDto GetSentenceDate(SentenceInformationDto sentence)
         {
             return sentence.Words.FirstOrDefault(w => w.NamedEntityRecognition.ToLower() == "date");
+        }
+
+        public static bool ElementIsBeforeWord(IEnumerable<WordInformationDto> words, string element, string word)
+        {
+            foreach (var wordInformationDto in words)
+            {
+                if (wordInformationDto.Word == element)
+                {
+                    return true;
+                }
+                if (wordInformationDto.Word == word)
+                {
+                    return false;
+                }
+            }
+            return false;
+        }
+
+        public static string ConvertStringArrayToString(string[] array)
+        {
+            var builder = new StringBuilder();
+            foreach (var value in array)
+            {
+                builder.Append(value);
+                builder.Append('.');
+            }
+            return builder.ToString();
         }
     }
 }

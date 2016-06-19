@@ -15,13 +15,19 @@ namespace POSTagger
         public static string CleanText(string text, string referencesPath)
         {
             var result = text;
+            //var lrb = result.IndexOf("(", StringComparison.Ordinal);
+            //var rrb = result.IndexOf(")", StringComparison.Ordinal);
 
-            while (result.Contains("("))
-            {
-                var lrb = result.IndexOf("(", StringComparison.Ordinal);
-                var rrb = result.IndexOf(")", StringComparison.Ordinal);
-                result = result.Remove(lrb, rrb - lrb + 1);
-            }
+            //while (result.Contains("("))
+            //{
+            //    lrb = result.IndexOf("(", StringComparison.Ordinal);
+            //    rrb = result.IndexOf(")", StringComparison.Ordinal);
+            //    result = result.Remove(lrb, rrb - lrb + 1);
+            //}
+
+            const string paranthesisRegex = "(\\(.*\\))";
+            result = Regex.Replace(result, paranthesisRegex, "");
+
             var regex = new Regex("={2,5}");
             Match res1;
             var references = "";
