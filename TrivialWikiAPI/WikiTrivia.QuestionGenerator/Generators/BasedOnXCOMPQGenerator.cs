@@ -29,12 +29,12 @@ namespace WikiTrivia.QuestionGenerator.Generators
             {
                 if (subjectPossession != null)
                 {
-                    var question = $"How does {subjectPossession} {subject.Lemma} {predicate.Lemma}?";
+                    var question = $"How does {subjectPossession} {subject.Lemma} {predicate.Lemma}";
                     return new GeneratedQuestion { Answer = answer, Question = question };
                 }
                 else
                 {
-                    var question = $"How does {subject.Lemma} {predicate.Lemma}?";
+                    var question = $"How does {subject.Lemma} {predicate.Lemma}";
                     return new GeneratedQuestion { Answer = answer, Question = question };
                 }
             }

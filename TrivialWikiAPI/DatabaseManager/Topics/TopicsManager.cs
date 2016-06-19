@@ -96,6 +96,39 @@ namespace DatabaseManager.Topics
             return null;
         }
 
+        public async Task<ProposedTopic> GetProposedTopic(string topicName)
+        {
+            using (var databaseContext = new DatabaseContext())
+            {
+                return await databaseContext.ProposedTopics
+                    .Include("User")
+                    .FirstOrDefaultAsync(t => t.TopicName == topicName);
+            }
+        }
+
+        public async Task<IEnumerable<ProposedTopicDto>> GetProposedTopics()
+        {
+            using (var databaseContext = new DatabaseContext())
+            {
+                return await databaseContext.ProposedTopics.Include("User")
+                    .Select(t => new ProposedTopicDto
+                    {
+                        TopicName = t.TopicName,
+                        UserName = t.User.UserName
+                    }).ToListAsync();
+            }
+        }
+
+        public async Task DeleteProposedTopic(string topicName)
+        {
+            using (var databaseContext = new DatabaseContext())
+            {
+                var proposedTopic = await databaseContext.ProposedTopics.SingleOrDefaultAsync(t => t.TopicName == topicName);
+                databaseContext.ProposedTopics.Remove(proposedTopic);
+                await databaseContext.SaveChangesAsync();
+            }
+        }
+
         public async Task<bool> ProposedTopicExists(string topicName)
         {
             using (var databaseContext = new DatabaseContext())
@@ -150,11 +183,9 @@ namespace DatabaseManager.Topics
                     IsValidated = false
                 })
                     .ToList();
-
                 await SaveQuestionsToDatabase(questions, topic);
-
-                ClearTopicFiles(topic);
             }
+            ClearTopicFiles(topic);
         }
 
         private async Task SaveQuestionsToDatabase(IEnumerable<QuestionSet> questions, string topic)
@@ -173,9 +204,23 @@ namespace DatabaseManager.Topics
         private void ClearTopicFiles(string topic)
         {
             var topicPath = $@"{resultBasePath}\{topic}";
+            var files = Directory.GetFiles(topicPath);
+            var dirs = Directory.GetDirectories(topicPath);
+
+            foreach (var file in files)
+            {
+                File.SetAttributes(file, FileAttributes.Normal);
+                File.Delete(file);
+            }
+
+            foreach (var dir in dirs)
+            {
+                Directory.Delete(dir);
+            }
+
             if (Directory.Exists(topicPath))
             {
-                Directory.Delete(topicPath, true);
+                Directory.Delete(topicPath, false);
             }
         }
 

@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using WikipediaResourceFinder;
 using WikiTrivia.QuestionGenerator;
 using WikiTrivia.QuestionGenerator.Model;
+using WikiTrivia.Utilities;
+
 // ReSharper disable LoopCanBeConvertedToQuery
 
 namespace POSTagger.EndPoint
@@ -38,6 +40,7 @@ namespace POSTagger.EndPoint
 
         public void GenerateQuestions(string topic)
         {
+            topic = topic.Replace(" ", "_");
             var outputJsonPath = DirectoryManager.GetOutputJsonPath(topic);
 
             var tpr = new TextProcessing();
@@ -64,11 +67,13 @@ namespace POSTagger.EndPoint
                 {
                     continue;
                 }
+                var cleanQuestion = QuestionCleaner.RemovePunctuationFromEnd(generatedQuestion.Question);
+                cleanQuestion = $"{cleanQuestion}?";
                 var question = new TopicQuestion()
                 {
                     Topic = topic,
                     InitialSentence = sentence.SentenceText,
-                    Question = generatedQuestion.Question,
+                    Question = cleanQuestion,
                     Answer = generatedQuestion.Answer
                 };
                 questionList.Add(question);

@@ -8,7 +8,6 @@
         var notificationsProxy = notificationHub();
 
         notificationsProxy.on('notify', function (res) {
-            debugger;
             var notification = {
                 id: res.Id,
                 sender: res.Sender,

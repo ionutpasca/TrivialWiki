@@ -215,6 +215,10 @@
       <Project>{111C73E2-8FD4-4030-A565-31EF96406B20}</Project>
       <Name>WikiTrivia.QuestionGenerator</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WikiTrivia.Utilities\WikiTrivia.Utilities.csproj">
+      <Project>{8B8B3F72-08EB-40B6-9C15-3D6D9BEE81F5}</Project>
+      <Name>WikiTrivia.Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />

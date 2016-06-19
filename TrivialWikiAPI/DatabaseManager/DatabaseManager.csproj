@@ -115,6 +115,7 @@
     <Compile Include="Questions\UpdatedQuestion.cs" />
     <Compile Include="Roles\RolesManager.cs" />
     <Compile Include="Topics\DetailedTopic.cs" />
+    <Compile Include="Topics\ProposedTopicDto.cs" />
     <Compile Include="Topics\TopicQuestionDto.cs" />
     <Compile Include="Topics\TopicsManager.cs" />
     <Compile Include="Trivia\TriviaManager.cs" />

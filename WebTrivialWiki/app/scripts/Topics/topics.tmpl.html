@@ -18,11 +18,12 @@
 <div layout="row" style="position: absolute; height: 100%; width: 100%; margin-top: 90px;">
     <div flex="15"></div>
     <div flex="70">
-        <md-content class="md-padding medium-margin-top" layout-xs="column" layout-align="center" layout-wrap layout="row">
-            <md-card style="width: 280px;" ng-repeat="topic in test">
-                <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">
-                <md-card-actions layout="row" layout-align="end center">
-                    <span class="montserratFont" style="float: left; margin-right: 150px; font-size: 15px;">heeelo</span>
+        <div class="md-padding medium-margin-top" layout-xs="column" layout-align="center" layout="row">
+            <md-card  style="width: 280px;" ng-repeat="topic in topics">
+                <img ng-src="{{topic.thumbnailUrl}}" class="md-card-image" alt="Washed Out">
+                <md-card-actions layout="row" layout-align="center">
+                    <span class="montserratFont" style="float: left; font-size: 15px; align-self: center;">{{topic.topicName}}</span>
+                    <div flex></div>
                     <md-button class="md-icon-button" aria-label="Favorite">
                         <md-icon md-svg-icon="../images/icons/star.svg"></md-icon>
                         <md-tooltip class="mark-read-tooltip tooltip-margin-top" md-visible="false" md-direction="bottom">
@@ -31,7 +32,7 @@
                     </md-button>
                 </md-card-actions>
             </md-card>
-        </md-content>
+        </div>
     </div>
     <md-button class="md-fab proposeTopic-button hvr-buzz-out" aria-label="Eat cake" ng-click="showAdvanced($event)">
         <md-icon md-svg-src="../images/icons/plus.svg"></md-icon>

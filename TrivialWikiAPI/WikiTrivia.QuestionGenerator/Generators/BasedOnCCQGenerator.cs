@@ -20,12 +20,12 @@ namespace WikiTrivia.QuestionGenerator.Generators
                      subjectWord.PartOfSpeech.ToLower() == "prp" ||
                      subjectWord.NamedEntityRecognition.ToLower() == "person")
             {
-                question = $"{sentence.SentenceText.Replace(answer, "Who")}?";
+                question = $"{sentence.SentenceText.Replace(answer, "Who")}";
                 question = Helper.TrimQuestion(question, "Who");
             }
             else
             {
-                question = $"{sentence.SentenceText.Replace(answer, "Who/What")}?";
+                question = $"{sentence.SentenceText.Replace(answer, "Who/What")}";
                 question = Helper.TrimQuestion(question, "Who/What");
             }
             return new GeneratedQuestion { Answer = answer, Question = question };

@@ -21,8 +21,7 @@
             $http.post(App.url + 'proposeTopic/' + topic)
             .success(function (data) {
                 def.resolve(data);
-            }).error(function (data, status) {
-                    debugger;
+            }).error(function (data) {
                 def.reject(data);
             });
             return def.promise;

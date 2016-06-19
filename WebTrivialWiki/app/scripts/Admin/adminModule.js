@@ -4,6 +4,11 @@
     angular.module('adminModule', ['ngAnimate', 'ngRoute', 'ui.bootstrap', 'ngAnimate', 'ngMaterial', 'xeditable'])
     .config(function($routeProvider) {
         $routeProvider
+            .when('/manageTopics',
+            {
+                templateUrl: 'scripts/Admin/ManageTopics/manageTopics.html',
+                controller: 'manageTopicsController'
+            })
             .when('/manageQuestions',
             {
                 templateUrl: 'scripts/Admin/ManageQuestions/manageQuestions.html',

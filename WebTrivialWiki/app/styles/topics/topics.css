@@ -31,3 +31,7 @@
     font-weight: 300; 
     border-color: #ccc;
 }
+
+.processedTopic:hover {
+    background-color: #F5F5F5;
+}

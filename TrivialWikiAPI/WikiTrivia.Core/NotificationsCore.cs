@@ -10,6 +10,17 @@ namespace WikiTrivia.Core
     {
         private readonly NotificationsManager notificationsManager = new NotificationsManager();
 
+        public async Task SendTopicProcessedNotification(string username, string topicName)
+        {
+            var notification = new NotificationDto
+            {
+                NotificationDate = DateTime.Now,
+                NotificationText = $"Topic '{topicName}' has been processed.",
+                Sender = "WikiTrivia"
+            };
+            await NotifyUser(notification, username);
+        }
+
         public async Task SendProposedTopicNotification(string username, string topicName)
         {
             var notification = new NotificationDto

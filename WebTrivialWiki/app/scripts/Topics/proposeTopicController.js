@@ -9,8 +9,7 @@
         $scope.proposeTopic = function () {
             $scope.topicIsSaving = true;
             topicsService.proposeTopic($scope.proposedTopic)
-            .then(function(data) {
-                debugger;
+            .then(function() {
                 $scope.topicIsSaving = false;
                 $mdDialog.cancel();
             });

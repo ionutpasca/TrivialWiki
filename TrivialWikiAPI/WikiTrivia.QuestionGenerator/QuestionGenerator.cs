@@ -38,24 +38,26 @@ namespace WikiTrivia.QuestionGenerator
                     }
 
                     var firstWord = sentence.Words.First();
-
-                    var verbeWord = Helper.FindWordInList(sentence.Words, subjectFromSentence.GovernorGloss);
-                    var verbeAuxPass = sentence.Dependencies.FirstOrDefault(d => d.Dep.ToLower() == "auxpass" &&
-                                            d.GovernorGloss == verbeWord.Word);
-
                     var question = sentence.SentenceText.Replace(wordsToReplace, "")
                         .Replace(firstWord.Word, firstWord.Word.ToLower());
-                    if (verbeWord.PartOfSpeech.ToLower() == "vbd")
+                    if (subjectFromSentence != null)
                     {
-                        question = question.Replace(verbeWord.Word, verbeWord.Lemma);
+                        var verbeWord = Helper.FindWordInList(sentence.Words, subjectFromSentence.GovernorGloss);
+                        var verbeAuxPass = sentence.Dependencies.FirstOrDefault(d => d.Dep.ToLower() == "auxpass" &&
+                                                                                     d.GovernorGloss == verbeWord.Word);
+                        if (verbeWord.PartOfSpeech.ToLower() == "vbd")
+                        {
+                            question = question.Replace(verbeWord.Word, verbeWord.Lemma);
+                        }
+                        if (verbeAuxPass != null)
+                        {
+                            question = question.Replace(verbeAuxPass.DependentGloss, "");
+                            question = $"When {verbeAuxPass.DependentGloss} {question}";
+                            return new GeneratedQuestion { Answer = sentenceDate.Word, Question = question };
+                        }
                     }
-                    if (verbeAuxPass != null)
-                    {
-                        question = question.Replace(verbeAuxPass.DependentGloss, "");
-                        question = $"When {verbeAuxPass.DependentGloss} {question}?";
-                        return new GeneratedQuestion { Answer = sentenceDate.Word, Question = question };
-                    }
-                    question = $"When did {question}?";
+                    
+                    question = $"When did {question}";
                     return new GeneratedQuestion { Answer = composedAnswer, Question = question };
                 }
             }
@@ -65,12 +67,11 @@ namespace WikiTrivia.QuestionGenerator
                 var inWord = Helper.FindWordInList(sentence.Words, sentenceIN.DependentGloss);
                 if (inWord.PartOfSpeech.ToLower() == "nn")
                 {
-                    string answer;
                     var nounOF = sentence.Dependencies.FirstOrDefault(d => d.Dep == "nmod:of" &&
                                             d.GovernorGloss == inWord.Word);
                     if (nounOF != null)
                     {
-                        answer = nounOF.DependentGloss;
+                        var answer = nounOF.DependentGloss;
                         var verbe = Helper.FindWordInList(sentence.Words, subjectFromSentence.GovernorGloss);
                         var verbeAND = sentence.Dependencies.FirstOrDefault(d => d.Dep.ToLower() == "conj:and" &&
                                                 d.GovernorGloss == verbe.Word);
@@ -81,23 +82,23 @@ namespace WikiTrivia.QuestionGenerator
 
                             if (verbe.PartOfSpeech.ToLower() == "vbz")
                             {
-                                var question = $"Where does {subject.Word} {verbeAndWord.Word} and {verbe.Word}?";
+                                var question = $"Where does {subject.Word} {verbeAndWord.Word} and {verbe.Word}";
                                 return new GeneratedQuestion { Answer = answer, Question = question };
                             }
                             else
                             {
-                                var question = $"Where did {subject.Word} {verbeAndWord.Lemma} and {verbe.Lemma}?";
+                                var question = $"Where did {subject.Word} {verbeAndWord.Lemma} and {verbe.Lemma}";
                                 return new GeneratedQuestion { Answer = answer, Question = question };
                             }
                         }
                         if (verbe.PartOfSpeech.ToLower() == "vbz")
                         {
-                            var question = $"Where does {subject.Word}  {verbe.Word}?";
-                            return new GeneratedQuestion {Answer = answer, Question = question};
+                            var question = $"Where does {subject.Word}  {verbe.Word}";
+                            return new GeneratedQuestion { Answer = answer, Question = question };
                         }
                         else
                         {
-                            var question = $"Where did {subject.Word} {verbe.Lemma}?";
+                            var question = $"Where did {subject.Word} {verbe.Lemma}";
                             return new GeneratedQuestion { Answer = answer, Question = question };
                         }
                     }
@@ -133,7 +134,7 @@ namespace WikiTrivia.QuestionGenerator
                 if (answerWord.PartOfSpeech.ToLower() == "nnp" ||
                     answerWord.NamedEntityRecognition.ToLower() == "person")
                 {
-                    var question = $"Who {verbe.Word} {subj.ToLower()}?";
+                    var question = $"Who {verbe.Word} {subj.ToLower()}";
                     return new GeneratedQuestion { Answer = answer, Question = question };
                 }
 
@@ -171,12 +172,7 @@ namespace WikiTrivia.QuestionGenerator
             }
 
             var questionBasedOnSubject = BasedOnSubjectQGenerator.CreateQuestionBasedOnSubject(sentence, subjectFromSentence, subject);
-            if (questionBasedOnSubject != null)
-            {
-                return questionBasedOnSubject;
-            }
-
-            return null;
+            return questionBasedOnSubject;
         }
     }
 }

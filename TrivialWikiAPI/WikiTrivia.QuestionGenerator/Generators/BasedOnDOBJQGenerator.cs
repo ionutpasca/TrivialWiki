@@ -63,11 +63,11 @@ namespace WikiTrivia.QuestionGenerator.Generators
             switch (verbe.PartOfSpeech.ToLower())
             {
                 case "vbd":
-                    return $"What did {questionText}?";
+                    return $"What did {questionText}";
                 case "vbz":
-                    return $"What does {questionText}?";
+                    return $"What does {questionText}";
                 case "vbp":
-                    return $"What do {questionText}?";
+                    return $"What do {questionText}";
                 default:
                     return null;
             }
@@ -81,8 +81,8 @@ namespace WikiTrivia.QuestionGenerator.Generators
                 baseAnswer.PartOfSpeech.ToLower() == "nnp")
             {
                 return isPast ?
-                    $"Who did {questionText}?" :
-                    $"Who {questionText}?";
+                    $"Who did {questionText}" :
+                    $"Who {questionText}";
             }
 
             var dobjAux = sentence.Dependencies
@@ -90,9 +90,9 @@ namespace WikiTrivia.QuestionGenerator.Generators
             if (dobjAux != null)
             {
                 questionText = questionText.Replace(dobjAux.DependentGloss, "");
-                return $"How {dobjAux.DependentGloss} {questionText}?";
+                return $"How {dobjAux.DependentGloss} {questionText}";
             }
-            return $"How is {questionText}?";
+            return $"How is {questionText}";
         }
     }
 }

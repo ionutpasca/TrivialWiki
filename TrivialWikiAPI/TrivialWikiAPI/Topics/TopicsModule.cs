@@ -1,5 +1,6 @@
 ﻿using DatabaseManager.Topics;
 using Nancy;
+using POSTagger.EndPoint;
 using System.Threading.Tasks;
 using WikipediaResourceFinder;
 using WikiTrivia.Core;
@@ -10,7 +11,7 @@ namespace TrivialWikiAPI.Topics
     {
         private readonly TopicsManager topicsManager = new TopicsManager();
         private readonly NotificationsCore notificationCore = new NotificationsCore();
-        //private readonly Tagger tagger = new Tagger();
+        private readonly Tagger tagger = new Tagger();
 
         public TopicsModule()
         {
@@ -27,11 +28,45 @@ namespace TrivialWikiAPI.Topics
             Post["/topic/{topicName}", true] = async (param, p) => await AddNewTopic(param.topicName);
             Post["/enableTopic/{topicName}", true] = async (param, p) => await EnableTopic(param.topicName);
             Post["/proposeTopic/{topicName}", true] = async (param, p) => await ProposeTopic(param.topicName);
+            Post["/processTopic/{topicName}", true] = async (param, p) => await ProcessTopic(param.topicName);
+        }
+
+        private async Task<object> ProcessTopic(string topicName)
+        {
+            var topic = await topicsManager.GetProposedTopic(topicName);
+            if (topic == null)
+            {
+                return HttpStatusCode.BadRequest;
+            }
+            var currentUser = Context.CurrentUser;
+
+            var resourceFinder = new ResourceFinder();
+            var topicImage = resourceFinder.GetWikipediaImageForTopic(topicName);
+
+            await topicsManager.AddNewTopicToDatabase(topicName, topicImage);
+
+            topicName = topicName.Replace(" ", "_");
+            await tagger.GetWikipediaResources(topicName);
+            await tagger.ProcessWikipediaText(topicName);
+            tagger.GenerateQuestions(topicName);
+
+            await topicsManager.SaveQuestionsFromFile(topicName);
+
+
+            await notificationCore.SendTopicProcessedNotification(currentUser.UserName, topicName);
+            if (topic.User.UserName != currentUser.UserName)
+            {
+                await notificationCore.SendTopicProcessedNotification(topic.User.UserName, topicName);
+            }
+
+            await topicsManager.DeleteProposedTopic(topicName);
+            return HttpStatusCode.OK;
         }
 
         private async Task<object> GetProposedTopics()
         {
-            throw new System.NotImplementedException();
+            var proposedTopics = await topicsManager.GetProposedTopics();
+            return Response.AsJson(proposedTopics);
         }
 
         private async Task<object> GetTopicsWithDetails()
@@ -70,15 +105,6 @@ namespace TrivialWikiAPI.Topics
 
         private async Task<Response> GetActiveQuestionsForTopic(string topic)
         {
-            //var notification = new NotificationDto()
-            //{
-            //    NotificationDate = DateTime.Now,
-            //    NotificationText = "Text",
-            //    Sender = "WikiTrivia"
-            //};
-            //await notificationCore.NotifyUser(notification, Context.CurrentUser.UserName);
-
-
             var questions = await topicsManager.GetActiveQuestionsForTopic(topic);
             return questions == null ? HttpStatusCode.NotFound : Response.AsJson(questions);
         }

@@ -24,20 +24,20 @@ namespace WikiTrivia.QuestionGenerator.Generators
                     subject.PartOfSpeech.ToLower() == "nnp")
                 {
                     var questionText = sentence.SentenceText.Replace(answer, "Who ");
-                    question = $"{questionText}?";
+                    question = $"{questionText}";
                     question = Helper.TrimQuestion(question, "Who");
                     return new GeneratedQuestion { Answer = answer, Question = question };
                 }
                 if (subject.NamedEntityRecognition.ToLower() != "o")
                 {
                     var questionText = sentence.SentenceText.Replace(answer, "Which ");
-                    question = $"{questionText}?";
+                    question = $"{questionText}";
                     question = Helper.TrimQuestion(question, "Which");
                 }
                 else
                 {
                     var questionText = sentence.SentenceText.Replace(answer, "What ");
-                    question = $"{questionText}?";
+                    question = $"{questionText}";
                     question = Helper.TrimQuestion(question, "What");
                 }
                 return new GeneratedQuestion { Answer = answer, Question = question };

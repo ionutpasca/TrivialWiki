@@ -9,7 +9,7 @@ namespace WikiTrivia.QuestionGenerator.Generators
         {
 
             var subjectWord = Helper.FindWordInList(sentence.Words, subject.Word);
-            if (subject.PartOfSpeech.ToLower() == "prp" ||
+            if (subjectWord == null || subject.PartOfSpeech.ToLower() == "prp" ||
                 subject.PartOfSpeech.ToLower() == "nnps")
             {
                 return null;
@@ -24,7 +24,7 @@ namespace WikiTrivia.QuestionGenerator.Generators
                 subjectWord.PartOfSpeech.ToLower() == "nnp" ||
                 subjectWord.PartOfSpeech.ToLower() == "nns")
             {
-                question = $"{sentence.SentenceText.Replace(answer, "Who")}?";
+                question = $"{sentence.SentenceText.Replace(answer, "Who")}";
                 question = Helper.TrimQuestion(question, "Who");
                 return new GeneratedQuestion { Answer = answer, Question = question };
             }
@@ -34,13 +34,13 @@ namespace WikiTrivia.QuestionGenerator.Generators
                 var questionText = Helper.TrimQuestionAfter(sentence.SentenceText, answer);
                 questionText = questionText.Replace(answer, "")
                                     .Replace(sentenceCOP.DependentGloss, "");
-                question = $"Who {sentenceCOP.DependentGloss} {questionText}?";
+                question = $"Who {sentenceCOP.DependentGloss} {questionText}";
                 return new GeneratedQuestion { Answer = answer, Question = question };
             }
 
             question = copPartOfSpeech == "JJ" || copPartOfSpeech == "NNS" ?
-                $"{sentence.SentenceText.Replace(answer, "What")}?" :
-                $"{sentence.SentenceText.Replace(answer, "Which")}?";
+                $"{sentence.SentenceText.Replace(answer, "What")}" :
+                $"{sentence.SentenceText.Replace(answer, "Which")}";
             if (sentence.SentenceText + "?" == question)
             {
                 return null;

@@ -41,7 +41,11 @@
 }
 
 .no-padding-top {
-    padding-top: 0;
+    padding-top: 0 !important;
+}
+
+.small-padding-top {
+    padding-top: 15px !important;
 }
 
 .pointer-cursor {
