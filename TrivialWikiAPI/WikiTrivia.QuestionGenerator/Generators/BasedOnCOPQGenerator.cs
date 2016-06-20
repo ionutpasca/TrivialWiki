@@ -1,4 +1,5 @@
-﻿using WikiTrivia.QuestionGenerator.Model;
+﻿using System.Linq;
+using WikiTrivia.QuestionGenerator.Model;
 
 namespace WikiTrivia.QuestionGenerator.Generators
 {
@@ -7,19 +8,24 @@ namespace WikiTrivia.QuestionGenerator.Generators
         public static GeneratedQuestion TreatSimpleCOPSentence(SentenceInformationDto sentence, WordInformationDto subject,
            SentenceDependencyDto sentenceCOP)
         {
-
-            var subjectWord = Helper.FindWordInList(sentence.Words, subject.Word);
-            if (subjectWord == null || subject.PartOfSpeech.ToLower() == "prp" ||
-                subject.PartOfSpeech.ToLower() == "nnps")
-            {
-                return null;
-            }
-            var answer = TreatSentenceCOP(sentence, subject, sentenceCOP);
-
             var copPartOfSpeech = Helper.FindWordInList(sentence.Words, sentenceCOP.GovernorGloss).PartOfSpeech;
             var copVerbe = Helper.FindWordInList(sentence.Words, sentenceCOP.DependentGloss);
             var baseAnswer = Helper.FindWordInList(sentence.Words, sentenceCOP.GovernorGloss);
+            var subjectWord = Helper.FindWordInList(sentence.Words, subject.Word);
+
+            if (MustReturnNull(subjectWord))
+            {
+                return null;
+            }
+            var answer = AnswerGenerator.GenerateAnswer(sentence, sentenceCOP);
+
+            var firstWord = sentence.Words.First();
             string question;
+
+            if (baseAnswer.NamedEntityRecognition.ToLower() == "person" && copVerbe.Lemma == "be")
+            {
+                return TreatCaseWhereAnswerIsPerson(sentence, firstWord, copVerbe, answer);
+            }
 
             if (copVerbe != null && copVerbe.Lemma == "be")
             {
@@ -35,19 +41,17 @@ namespace WikiTrivia.QuestionGenerator.Generators
                 question = Helper.TrimQuestion(question, "Who");
                 return new GeneratedQuestion { Answer = answer, Question = question };
             }
+
             if (baseAnswer.NamedEntityRecognition.ToLower() == "person" ||
                 baseAnswer.PartOfSpeech.ToLower() == "nnp")
             {
-                var questionText = Helper.TrimQuestionAfter(sentence.SentenceText, answer);
-                questionText = questionText.Replace(answer, "")
-                                    .Replace(sentenceCOP.DependentGloss, "");
-                question = $"Who {sentenceCOP.DependentGloss} {questionText}";
-                return new GeneratedQuestion { Answer = answer, Question = question };
+                return TreatCaseWithPersonAndVerbeNot_IS_(sentence, sentenceCOP, answer);
             }
 
             question = copPartOfSpeech == "JJ" || copPartOfSpeech == "NNS" ?
                 $"{sentence.SentenceText.Replace(answer, "What")}" :
                 $"{sentence.SentenceText.Replace(answer, "Which")}";
+
             if (sentence.SentenceText + "?" == question)
             {
                 return null;
@@ -57,14 +61,31 @@ namespace WikiTrivia.QuestionGenerator.Generators
             return new GeneratedQuestion { Answer = answer, Question = question };
         }
 
-        private static string TreatSentenceCOP(SentenceInformationDto sentence, WordInformationDto subject, SentenceDependencyDto sentenceCOP)
+        private static bool MustReturnNull(WordInformationDto wordInfo)
         {
-            var sentenceCOPWord = Helper.FindWordInList(sentence.Words, sentenceCOP.GovernorGloss);
-            //var answer = sentenceCOPWord.NamedEntityRecognition.ToLower() == "person" ?
-            //    AnswerGenerator.GenerateAnswer(sentence, sentenceCOP) :
-            //    AnswerGenerator.GenerateAnswer(sentence, subjectWord: subject);
-            var answer = AnswerGenerator.GenerateAnswer(sentence, sentenceCOP);
-            return answer;
+            return wordInfo == null || wordInfo.PartOfSpeech.ToLower() == "prp" ||
+                   wordInfo.PartOfSpeech.ToLower() == "nnps";
+        }
+
+        private static GeneratedQuestion TreatCaseWithPersonAndVerbeNot_IS_(SentenceInformationDto sentence,
+            SentenceDependencyDto sentenceCOP, string answer)
+        {
+            var questionText = Helper.TrimQuestionAfter(sentence.SentenceText, answer);
+            questionText = questionText.Replace(answer, "")
+                .Replace(sentenceCOP.DependentGloss, "");
+            string question = $"Who {sentenceCOP.DependentGloss} {questionText}";
+            return new GeneratedQuestion { Answer = answer, Question = question };
+        }
+
+        private static GeneratedQuestion TreatCaseWhereAnswerIsPerson(SentenceInformationDto sentence,
+            WordInformationDto firstWord, WordInformationDto copVerbe, string answer)
+        {
+            var questionText = sentence.SentenceText
+                .Replace(firstWord.Word, firstWord.Lemma)
+                .Replace(copVerbe.Word, "")
+                .Replace(answer, "");
+            string question = $"Who {copVerbe.Word} {questionText}";
+            return new GeneratedQuestion { Answer = answer, Question = question };
         }
     }
 }

@@ -17,13 +17,15 @@ namespace WikiTrivia.QuestionGenerator.Generators
             {
                 subj = $"{subjectDet.DependentGloss} {subject.Word}";
             }
-            //var answer = AnswerGenerator.GenerateAnswer(sentence, subjectWord: subject);
 
-            var otherAgents = sentence.Dependencies.Where(d => d.Dep.ToLower() == "nmod:agent" &&
-                                                               d.GovernorGloss == sentenceAGENT.GovernorGloss &&
-                                                               d.DependentGloss != answer);
-            var connectionCC = sentence.Dependencies.FirstOrDefault(d => d.Dep.ToLower() == "cc" &&
-                                                                         d.GovernorGloss == answer);
+            var otherAgents = sentence.Dependencies.Where(d =>
+                    d.Dep.ToLower() == "nmod:agent" &&
+                    d.GovernorGloss == sentenceAGENT.GovernorGloss &&
+                    d.DependentGloss != answer);
+
+            var connectionCC = sentence.Dependencies.FirstOrDefault(d =>
+                        d.Dep.ToLower() == "cc" &&
+                        d.GovernorGloss == answer);
             if (connectionCC != null)
             {
                 foreach (var agent in otherAgents)

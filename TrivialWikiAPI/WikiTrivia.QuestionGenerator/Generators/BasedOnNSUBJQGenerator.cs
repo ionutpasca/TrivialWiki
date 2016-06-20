@@ -16,12 +16,7 @@ namespace WikiTrivia.QuestionGenerator.Generators
                 subjectRelation.PartOfSpeech.ToLower() == "vbn")
             {
                 string question;
-                if (subject.NamedEntityRecognition.ToLower() == "person" ||
-                    subject.PartOfSpeech.ToLower() == "prp" ||
-                    subject.PartOfSpeech.ToLower() == "prp$" ||
-                    subject.PartOfSpeech.ToLower() == "nns" ||
-                    subject.PartOfSpeech.ToLower() == "nn" ||
-                    subject.PartOfSpeech.ToLower() == "nnp")
+                if (SubjectIsReferingToPerson(subject))
                 {
                     var questionText = sentence.SentenceText.Replace(answer, "Who ");
                     question = $"{questionText}";
@@ -43,6 +38,16 @@ namespace WikiTrivia.QuestionGenerator.Generators
                 return new GeneratedQuestion { Answer = answer, Question = question };
             }
             return null;
+        }
+
+        private static bool SubjectIsReferingToPerson(WordInformationDto subject)
+        {
+            return subject.NamedEntityRecognition.ToLower() == "person" ||
+                   subject.PartOfSpeech.ToLower() == "prp" ||
+                   subject.PartOfSpeech.ToLower() == "prp$" ||
+                   subject.PartOfSpeech.ToLower() == "nns" ||
+                   subject.PartOfSpeech.ToLower() == "nn" ||
+                   subject.PartOfSpeech.ToLower() == "nnp";
         }
     }
 }

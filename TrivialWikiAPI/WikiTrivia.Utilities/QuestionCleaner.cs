@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace WikiTrivia.Utilities
 {
@@ -6,6 +7,7 @@ namespace WikiTrivia.Utilities
     {
         public static string RemovePunctuationFromEnd(string question)
         {
+            question = Regex.Replace(question, @"\s+", " ", RegexOptions.Multiline);
             var result = question;
             for (var i = question.Length - 1; i > 0; i--)
             {

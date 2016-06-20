@@ -54,22 +54,19 @@ namespace POSTagger.EndPoint
                 var words = GetSentenceWords(sentence);
 
                 var sentenceInfo = new SentenceInformationDto(sentence.SentenceText, dependencies, words);
-                if (Helper.SentenceIsInvalid(sentenceInfo))
+                if (MustContinue(sentence, sentenceInfo))
                 {
                     continue;
                 }
-                if (sentence.Dependencies.Count > 20 && !Helper.SentenceContainsYear(sentenceInfo))
-                {
-                    continue;
-                }
-                 var generatedQuestion = QuestionGenerator.Generate(sentenceInfo);
+                var generatedQuestion = QuestionGenerator.Generate(sentenceInfo);
                 if (string.IsNullOrEmpty(generatedQuestion?.Question))
                 {
                     continue;
                 }
                 var cleanQuestion = QuestionCleaner.RemovePunctuationFromEnd(generatedQuestion.Question);
+
                 cleanQuestion = $"{cleanQuestion}?";
-                var question = new TopicQuestion()
+                var question = new TopicQuestion
                 {
                     Topic = topic,
                     InitialSentence = sentence.SentenceText,
@@ -79,6 +76,19 @@ namespace POSTagger.EndPoint
                 questionList.Add(question);
             }
             DirectoryManager.WriteQuestionsToFile(questionList, topic);
+        }
+
+        private static bool MustContinue(SentenceInformation sentence, SentenceInformationDto sentenceInfoDto)
+        {
+            if (Helper.SentenceIsInvalid(sentenceInfoDto))
+            {
+                return true;
+            }
+            if (sentence.Dependencies.Count > 20 && !Helper.SentenceContainsYear(sentenceInfoDto))
+            {
+                return true;
+            }
+            return false;
         }
 
         private static IEnumerable<SentenceDependencyDto> GetSentenceDependency(SentenceInformation sentence)

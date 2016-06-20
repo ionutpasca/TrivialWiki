@@ -4,9 +4,7 @@ using Nancy.Authentication.Stateless;
 using Nancy.Bootstrapper;
 using Nancy.Security;
 using Nancy.TinyIoc;
-using System.Diagnostics;
 using System.Linq;
-using WikiTrivia.Utilities;
 
 namespace TrivialWikiAPI
 {
@@ -17,8 +15,6 @@ namespace TrivialWikiAPI
             base.ApplicationStartup(container, pipelines);
             ConfigStatelessAuthentication(pipelines);
 
-            var x = QuestionCleaner.RemovePunctuationFromEnd("hehe , dsada . ,?");
-            Debug.WriteLine(x);
             //using (var dbC = new DatabaseContext())
             //{
             //    var not = new Notification

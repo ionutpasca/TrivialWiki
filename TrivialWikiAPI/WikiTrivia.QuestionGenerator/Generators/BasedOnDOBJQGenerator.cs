@@ -21,7 +21,6 @@ namespace WikiTrivia.QuestionGenerator.Generators
             {
                 return null;
             }
-
             string question;
             var questionText = sentence.SentenceText
                 .Replace(firstWord.Word, firstWord.Lemma);
@@ -29,6 +28,32 @@ namespace WikiTrivia.QuestionGenerator.Generators
             {
                 questionText = questionText.Replace($" {word}", " ");
             }
+
+
+            var answerNMODOF = sentence.Dependencies.FirstOrDefault(d => d.Dep.ToLower() == "nmod:of" &&
+                    d.GovernorGloss == answerWord.Word);
+            var nmodOfString = " ";
+            if (answerNMODOF != null)
+            {
+                questionText = questionText.Replace(answerNMODOF.DependentGloss, "");
+                nmodOfString = $" of {answerNMODOF.DependentGloss} ";
+            }
+
+            var dobjNUMMode = sentence.Dependencies.FirstOrDefault(d => d.Dep.ToLower() == "nummod" &&
+                    d.GovernorGloss == sentenceDOBJ.DependentGloss);
+            if (dobjNUMMode != null)
+            {
+                if (verbe.PartOfSpeech.ToLower() == "vbd")
+                {
+                    questionText = questionText.Replace(verbe.Word, verbe.Lemma);
+                    question = $"How many {answerWord.Word}{nmodOfString}did {questionText}";
+                    return new GeneratedQuestion { Answer = answer, Question = question };
+                }
+                question = $"How many {answerWord.Word}{nmodOfString}{questionText}";
+                return new GeneratedQuestion { Answer = answer, Question = question };
+            }
+
+
 
             if (answerWord.PartOfSpeech.ToLower() == "nn" ||
                    answerWord.PartOfSpeech.ToLower() == "nns")

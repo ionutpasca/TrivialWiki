@@ -122,6 +122,8 @@ namespace WikiTrivia.QuestionGenerator.Generators
         private static string TreatAnswerCompound(SentenceInformationDto sentence, string baseAnswer, string answer)
         {
             var answerCompound = GetWordCompound(sentence, baseAnswer).ToList();
+            answerCompound = OrderByWordPosition(answerCompound, sentence.Words);
+
             foreach (var compound in answerCompound)
             {
                 var compoundIsBefore = Helper.ElementIsBeforeWord(sentence.Words, compound.DependentGloss, baseAnswer);
@@ -130,7 +132,23 @@ namespace WikiTrivia.QuestionGenerator.Generators
             return answer;
         }
 
-
+        private static List<SentenceDependencyDto> OrderByWordPosition(List<SentenceDependencyDto> initialList,
+           IEnumerable<WordInformationDto> wordInfo)
+        {
+            for (var i = 0; i < initialList.Count - 1; i++)
+            {
+                for (var j = 0; j < initialList.Count; j++)
+                {
+                    if (Helper.ElementIsBeforeWord(wordInfo, initialList[i].DependentGloss, initialList[j].DependentGloss))
+                    {
+                        var aux = initialList[i];
+                        initialList[i] = initialList[j];
+                        initialList[j] = aux;
+                    }
+                }
+            }
+            return initialList;
+        }
 
         private static SentenceDependencyDto GetAnswerPossession(SentenceInformationDto sentence, string answer)
         {
