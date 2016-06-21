@@ -67,14 +67,14 @@
             <li class="hvr-underline-from-center small-padding-bottom">
                 <a class="sliding-middle-out" ng-click="openLoginModal()" ng-show="!userIsLoggedIn">Login</a>
             </li>
-            <li class="hvr-underline-from-center small-padding-bottom">
+            <li class="hvr-underline-from-center small-padding-bottom"  ng-show="userIsLoggedIn">
                 <a ng-click="openTrivia()">QuizTriv</a>
             </li>
-            <li class="hvr-underline-from-center small-padding-bottom">
+            <li class="hvr-underline-from-center small-padding-bottom" ng-show="userIsLoggedIn">
                 <a ng-show="userIsLoggedIn" ng-click="openLeaderboards()">Leaderboards</a>
             </li>
-            <li class="hvr-underline-from-center small-padding-bottom">
-                <a ng-show="userIsLoggedIn" ng-click="openTopics()">Topics</a>
+            <li class="hvr-underline-from-center small-padding-bottom" ng-show="userIsLoggedIn">
+                <a ng-click="openTopics()">Topics</a>
             </li>
             <li class="hvr-underline-from-center small-padding-bottom" ng-show="userRole === 'Admin'">
                 <a data-toggle="dropdown">Admin</a>
@@ -88,7 +88,7 @@
                 <a ng-click="openRegisterModal()" ng-show="!userIsLoggedIn">Register</a>
             </li>
 
-            <li class="hvr-underline-from-center small-padding-bottom small-margin-right" ng-hide="userRole === 'Admin'">
+            <li class="hvr-underline-from-center small-padding-bottom small-margin-right" ng-hide="userRole === 'Admin' || !userIsLoggedIn">
                 <a>Contact</a>
             </li>
             <li class="small-padding-bottom user-settings" ng-show="userIsLoggedIn">
@@ -115,9 +115,9 @@
                     </li>
                 </ul>
             </li>
-            <li>
+            <li ng-show="userIsLoggedIn">
                 <notification-icon class="custom-style dropdown-toggle" animation="bounce"
-                                    data-toggle="dropdown" count="unseenNotifications">
+                                    data-toggle="dropdown" count="unseenNotifications" style="cursor: pointer;">
                     <i class="fa fa-envelope-o fa-3x"></i>
                 </notification-icon>
                 <div class="dropdown-menu dropdown-menu-right notifications-dropdown black-color" style="max-height: 300px; overflow: auto;">

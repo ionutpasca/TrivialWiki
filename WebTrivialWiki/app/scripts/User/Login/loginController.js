@@ -1,8 +1,8 @@
 ﻿(function (_) {
     'use strict';
 
-    App.module.controller('loginController', ['$scope', 'loginService', '$location', 'persistService', '$uibModalStack',
-            function ($scope, loginService, $location, persistService, $uibModalStack) {
+    App.module.controller('loginController', ['$scope', 'loginService', '$location', 'persistService', '$uibModalStack','$window',
+            function ($scope, loginService, $location, persistService, $uibModalStack, $window) {
         
         function init() {
             $scope.credentialsAreInvalid = false;
@@ -27,7 +27,7 @@
                     });
                     persistService.storeData('isLoggedIn', true);
                     $uibModalStack.dismissAll();
-                    $location.path('/');
+                    $window.location.reload();
                     $scope.userIsLogging = false;
                 }, function() {
                     //ERROR

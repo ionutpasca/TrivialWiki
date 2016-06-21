@@ -35,3 +35,8 @@
 .processedTopic:hover {
     background-color: #F5F5F5;
 }
+
+.proposeTopic-spinner {
+    position: absolute;
+    left: 45%;
+}

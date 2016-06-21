@@ -2,8 +2,8 @@
     'use strict';
 
     App.module.controller('headerController', ['$uibModal', '$scope', '$timeout', 'headerService', 'persistService', '$location',
-        '$mdSidenav','notificationsHubFactory',
-        function ($uibModal, $scope, $timeout, headerService, persistService, $location, $mdSidenav, notificationHub) {
+        '$mdSidenav','notificationsHubFactory','$window',
+        function ($uibModal, $scope, $timeout, headerService, persistService, $location, $mdSidenav, notificationHub, $window) {
 
         var notificationsProxy = notificationHub();
 
@@ -90,6 +90,7 @@
 
         $scope.signOut = function () {
             persistService.clearLocalStorage();
+            $window.location.reload();
         };
 
         $scope.goToSettings = function () {
