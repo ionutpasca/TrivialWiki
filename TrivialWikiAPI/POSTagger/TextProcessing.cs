@@ -124,7 +124,7 @@ namespace POSTagger
 
         public void BetterFill()
         {
-            var sentences = GetSentencesInformationFromJson();
+            var sentences = GetSentencesInformationFromJson(outputJsonPath);
             var nrOfQuestions = 0;
             var no = 0;
             var fileJson = new StreamWriter(outputTestJsonPath);
@@ -171,7 +171,7 @@ namespace POSTagger
 
         public void BetterFillNer()
         {
-            var sentences = GetSentencesInformationFromJson();
+            var sentences = GetSentencesInformationFromJson(outputJsonPath);
             var nrOfQuestions = 0;
             var no = 0;
             var fileJson = new StreamWriter(outputTestJsonPath);
