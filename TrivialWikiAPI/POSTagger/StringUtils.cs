@@ -9,28 +9,27 @@ namespace POSTagger
 {
     public static class StringUtils
     {
-        private static readonly string referencesPath = ConfigurationManager.AppSettings["Tagger.References"];
+        //private static readonly string referencesPath = ConfigurationManager.AppSettings["Tagger.References"];
         private static readonly string newParsePath = ConfigurationManager.AppSettings["Tagger.newParsePath"];
         private static readonly string listParsePath = ConfigurationManager.AppSettings["Tagger.ListParse"];
         public static readonly List<string> AcceptedPos = new List<string>() { "FW", "NN", "NNS", "NNP", "NNPS" };
 
-        public static string CleanText(string text)
+        public static string CleanText(string text, string referencesPath)
         {
             var result = text;
+            //var lrb = result.IndexOf("(", StringComparison.Ordinal);
+            //var rrb = result.IndexOf(")", StringComparison.Ordinal);
 
-            while (result.Contains("(") && result.Contains(")"))
-            {
-                var lrb = result.IndexOf("(", StringComparison.Ordinal);
-                var rrb = result.IndexOf(")", StringComparison.Ordinal);
-                if (lrb > rrb)
-                {
-                    result = result.Remove(rrb, 1);
-                    continue;
-                }
-                if (lrb < 0 || rrb < 0 || lrb > result.Length || rrb > result.Length) continue;
+            //while (result.Contains("("))
+            //{
+            //    lrb = result.IndexOf("(", StringComparison.Ordinal);
+            //    rrb = result.IndexOf(")", StringComparison.Ordinal);
+            //    result = result.Remove(lrb, rrb - lrb + 1);
+            //}
 
-                result = result.Remove(lrb, rrb - lrb + 1);
-            }
+            const string paranthesisRegex = "(\\(.*\\))";
+            result = Regex.Replace(result, paranthesisRegex, "");
+
             var regex = new Regex("={2,5}");
             Match res1;
             var references = "";

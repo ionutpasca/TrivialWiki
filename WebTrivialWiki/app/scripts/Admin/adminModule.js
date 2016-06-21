@@ -1,13 +1,27 @@
 ﻿(function(angular) {
     'use strict';
 
-    angular.module('adminModule', ['ngAnimate', 'ngRoute', 'ui.bootstrap', 'ngAnimate'])
-        .config(function($routeProvider) {
-            $routeProvider
-                .when('/manageUsers',
-                {
-                    templateUrl: 'scripts/Admin/ManageUsers/manageUsers.tmpl.html',
-                    controller: 'manageUsersController'
-                });
-        });
+    angular.module('adminModule', ['ngAnimate', 'ngRoute', 'ui.bootstrap', 'ngAnimate', 'ngMaterial', 'xeditable'])
+    .config(function($routeProvider) {
+        $routeProvider
+            .when('/manageTopics',
+            {
+                templateUrl: 'scripts/Admin/ManageTopics/manageTopics.html',
+                controller: 'manageTopicsController'
+            })
+            .when('/manageQuestions',
+            {
+                templateUrl: 'scripts/Admin/ManageQuestions/manageQuestions.html',
+                controller: 'manageQuestionsController'
+            })
+            .when('/manageUsers',
+            {
+                templateUrl: 'scripts/Admin/ManageUsers/manageUsers.tmpl.html',
+                controller: 'manageUsersController'
+            });
+    });
+
+    angular.module('adminModule').run(function(editableOptions) {
+        editableOptions.theme = 'bs3';
+    });
 }).call(this, this.angular);

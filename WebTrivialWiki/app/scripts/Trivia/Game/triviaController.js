@@ -95,7 +95,6 @@
         $scope.senderIsTriviaBot = function(question) {
             return question.Sender === 'TriviaBot';
         }
-
         init();
     }]);
 }).call(this, this.angular, this._);

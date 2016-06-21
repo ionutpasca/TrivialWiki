@@ -17,15 +17,41 @@ namespace TrivialWikiAPI
 
             //using (var dbC = new DatabaseContext())
             //{
+            //    var not = new Notification
+            //    {
+            //        NotificationText = "Welcome to WikiTrivia. We hope you have fun!",
+            //        Seen = false,
+            //        Sender = "WikiTrivia",
+            //        NotificationDate = DateTime.Now
+            //    };
+
+            //    var user = dbC.Users.Single(u => u.UserName == "ionut");
+            //    not.User = user;
+            //    dbC.Notifications.Add(not);
+            //    dbC.SaveChanges();
+
             //    var questionSet = new QuestionSet() { QuestionText = "Which is the best IDE?", CorrectAnswer = "Visual Studion" };
             //    var topic = new Topic() { Name = "IT" };
             //    topic.Questions.Add(questionSet);
             //    dbC.Topics.Add(topic);
+
+            //    var role = new Role() { Name = "Admin" };
+            //    dbC.Roles.Add(role);
+            //    dbC.SaveChanges();
+
+            //    var user = new User() { Email = "pascaionut@yahoo.com", UserName = "ionut" };
+            //    var pass = Encrypt.GetMD5("1234");
+            //    user.AccountCreationDate = DateTime.Now;
+            //    user.Password = pass;
+            //    var role1 = dbC.Roles.Single(r => r.Name == "Admin");
+            //    user.Role = role1;
+
+            //    dbC.Users.Add(user);
             //    dbC.SaveChanges();
             //}
         }
 
-        private void ConfigStatelessAuthentication(IPipelines pipelines)
+        private static void ConfigStatelessAuthentication(IPipelines pipelines)
         {
             var config = new StatelessAuthenticationConfiguration(ctx => AuthenticateUser(ReadAuthToken(ctx)));
             StatelessAuthentication.Enable(pipelines, config);

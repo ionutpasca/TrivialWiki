@@ -1,5 +1,7 @@
 ﻿using System.Linq;
+using WikiTrivia.QuestionGenerator.Generators;
 using WikiTrivia.QuestionGenerator.Model;
+// ReSharper disable ConvertIfStatementToReturnStatement
 
 namespace WikiTrivia.QuestionGenerator
 {
@@ -7,10 +9,31 @@ namespace WikiTrivia.QuestionGenerator
     {
         public static GeneratedQuestion Generate(SentenceInformationDto sentence)
         {
-            var subjectFromSentence = sentence.Dependencies.FirstOrDefault(d => d.Dep.ToLower() == "nsubjpass") ??
-                                      sentence.Dependencies.FirstOrDefault(d => d.Dep.ToLower() == "nsubj");
+            var sentenceDET = sentence.Dependencies.FirstOrDefault(d => d.Dep.ToLower() == "det");
+            var composedSubject = string.Empty;
+            if (sentenceDET != null)
+            {
+                composedSubject = $"{sentenceDET.DependentGloss} {sentenceDET.GovernorGloss}";
+            }
 
-            var subjectPossession = Helper.GetSubjectPossession(sentence);
+            SentenceDependencyDto subjectFromSentence;
+            var sentenceIN = sentence.Dependencies.FirstOrDefault(d => d.Dep == "nmod:in");
+            if (sentenceIN != null)
+            {
+                var verbeFromIn = sentenceIN.GovernorGloss;
+                subjectFromSentence = sentence.Dependencies.FirstOrDefault(d => (d.Dep.ToLower() == "nsubjpass" ||
+                                                d.Dep.ToLower() == "nsubj") && d.GovernorGloss == verbeFromIn);
+
+            }
+            else if (composedSubject != string.Empty)
+            {
+                subjectFromSentence = sentence.Dependencies.FirstOrDefault(d => d.Dep.ToLower() == "nsubj");
+            }
+            else
+            {
+                subjectFromSentence = sentence.Dependencies.FirstOrDefault(d => d.Dep.ToLower() == "nsubjpass") ??
+                                   sentence.Dependencies.FirstOrDefault(d => d.Dep.ToLower() == "nsubj");
+            }
 
             var subject = new WordInformationDto();
             if (subjectFromSentence != null)
@@ -18,46 +41,57 @@ namespace WikiTrivia.QuestionGenerator
                 subject = Helper.FindWordInList(sentence.Words, subjectFromSentence.DependentGloss);
             }
 
-            var sentenceDOBJ = sentence.Dependencies.FirstOrDefault(d => d.Dep.ToLower() == "dobj");
-            if (sentenceDOBJ != null)
+
+            var sentenceDate = Helper.GetSentenceDate(sentence);
+            if (sentenceDate != null)
             {
-                return GeneratorCore.TreatSentenceWithDOBJ(sentence, sentenceDOBJ);
+                return BasedOnDateGenerator.TreatDateSentence(sentence, sentenceDate, subjectFromSentence);
             }
 
-            var questionBasedOnSubject = GeneratorCore.CreateQuestionBasedOnSubject(sentence, subjectFromSentence, subject,
-                subjectPossession);
-            if (questionBasedOnSubject != null)
+            if (sentenceIN != null)
             {
-                return questionBasedOnSubject;
-            }
-
-            var sentenceNSUBJ = sentence.Dependencies.FirstOrDefault(d => d.Dep.ToLower() == "nsubj");
-            var sentenceNSUBJPASS = sentence.Dependencies.FirstOrDefault(d => d.Dep.ToLower() == "nsubjpass");
-
-            if (sentenceNSUBJ != null && sentenceNSUBJPASS == null)
-            {
-                return GeneratorCore.TreatSentenceWithNSUBJ(sentence, sentenceNSUBJ, subjectPossession, subject);
-            }
-
-            var sentenceXCOMP = sentence.Dependencies.FirstOrDefault(d => d.Dep.ToLower() == "xcomp");
-            if (sentenceXCOMP != null)
-            {
-                return GeneratorCore.TreatSimpleXCOMPSentence(sentence, subjectFromSentence, subjectPossession, subject, sentenceXCOMP);
-            }
-
-            var sentenceCC = sentence.Dependencies.FirstOrDefault(d => d.Dep.ToLower() == "cc");
-            if (sentenceCC != null)
-            {
-                return GeneratorCore.TreatSimpleCCSentence(sentence, subject);
+                return BasedOnINQGenerator.TreatSentenceWithIN(sentence, sentenceIN, subjectFromSentence, subject);
             }
 
             var sentenceCOP = sentence.Dependencies.FirstOrDefault(d => d.Dep.ToLower() == "cop");
             if (sentenceCOP != null)
             {
-                return GeneratorCore.TreatSimpleCOPSentence(sentence, subjectPossession, subject, sentenceCOP);
+                return BasedOnCOPQGenerator.TreatSimpleCOPSentence(sentence, subject, sentenceCOP);
             }
 
-            return null;
+            var sentenceAGENT = sentence.Dependencies.FirstOrDefault(d => d.Dep.ToLower() == "nmod:agent");
+            if (sentenceAGENT != null)
+            {
+                return BasedOnAGENTQGenerator.TreatSentenceWithAgent(sentence, sentenceAGENT, subject);
+            }
+
+            var sentenceDOBJ = sentence.Dependencies.FirstOrDefault(d => d.Dep.ToLower() == "dobj");
+            if (sentenceDOBJ != null)
+            {
+                return BasedOnDOBJQGenerator.TreatSentenceWithDOBJ(sentence, sentenceDOBJ);
+            }
+
+            var sentenceNSUBJ = sentence.Dependencies.FirstOrDefault(d => d.Dep.ToLower() == "nsubj");
+            var sentenceNSUBJPASS = sentence.Dependencies.FirstOrDefault(d => d.Dep.ToLower() == "nsubjpass");
+            if (sentenceNSUBJ != null && sentenceNSUBJPASS == null)
+            {
+                return BasedOnNSUBJQGenerator.TreatSentenceWithNSUBJ(sentence, sentenceNSUBJ, subject);
+            }
+
+            var sentenceXCOMP = sentence.Dependencies.FirstOrDefault(d => d.Dep.ToLower() == "xcomp");
+            if (sentenceXCOMP != null)
+            {
+                return BasedOnXCOMPQGenerator.TreatSimpleXCOMPSentence(sentence, subjectFromSentence, subject, sentenceXCOMP);
+            }
+
+            var sentenceCC = sentence.Dependencies.FirstOrDefault(d => d.Dep.ToLower() == "cc");
+            if (sentenceCC != null)
+            {
+                return BasedOnCCQGenerator.TreatSimpleCCSentence(sentence, subject);
+            }
+
+            var questionBasedOnSubject = BasedOnSubjectQGenerator.CreateQuestionBasedOnSubject(sentence, subjectFromSentence, subject);
+            return questionBasedOnSubject;
         }
     }
 }

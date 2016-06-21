@@ -8,6 +8,8 @@
         public string Dependent { get; }
         public string DependentGloss { get; }
 
+        public SentenceDependencyDto() { }
+
         public SentenceDependencyDto(string dep, string governor, string governorGloss, string dependent,
           string dependentGloss)
         {

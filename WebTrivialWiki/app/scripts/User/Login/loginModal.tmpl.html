@@ -5,8 +5,10 @@
         <input id="password" type="password" placeholder="Password" ng-model="password"/>
         <p class="errorMessage" ng-show="credentialsAreInvalid">Invalid credentials.</p>
         <button title="Login" ng-click="login()">Play</button>
-        <div id="facebookLink">
+        <div class="spinner logging-spinner" ng-show="userIsLogging"></div>
+
+        <!--<div id="facebookLink">
             <i class="fa fa-facebook" title="Login with facebook" ng-click="loginWithFacebook()"></i>
-        </div>
+        </div>-->
     </div>
 </div>

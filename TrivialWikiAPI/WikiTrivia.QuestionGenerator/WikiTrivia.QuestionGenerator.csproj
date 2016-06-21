@@ -40,7 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GeneratorCore.cs" />
+    <Compile Include="Generators\AnswerGenerator.cs" />
+    <Compile Include="Generators\BasedOnAGENTQGenerator.cs" />
+    <Compile Include="Generators\BasedOnCCQGenerator.cs" />
+    <Compile Include="Generators\BasedOnCOPQGenerator.cs" />
+    <Compile Include="Generators\BasedOnDateGenerator.cs" />
+    <Compile Include="Generators\BasedOnINQGenerator.cs" />
+    <Compile Include="Generators\BasedOnNSUBJQGenerator.cs" />
+    <Compile Include="Generators\BasedOnSubjectQGenerator.cs" />
+    <Compile Include="Generators\BasedOnDOBJQGenerator.cs" />
+    <Compile Include="Generators\BasedOnXCOMPQGenerator.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Model\GeneratedQuestion.cs" />
     <Compile Include="Model\SentenceDependencyDto.cs" />

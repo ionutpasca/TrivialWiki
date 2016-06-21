@@ -18,5 +18,6 @@ namespace DatabaseManager.DatabaseModels
         public int UsageCount { get; set; }
         public int CorrectAnswerCount { get; set; }
         public ICollection<Topic> Topics { get; set; }
+        public bool IsValidated { get; set; }
     }
 }

@@ -1,0 +1,302 @@
+[
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "Computer science is the scientific and practical approach to computation and its applications. ",
+    "Question": "Which is the scientific and practical approach to computation and its applications\u0000\u0000?",
+    "Answer": "Computer science"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "An alternate, more succinct definition of computer science is the study of automating algorithmic processes that scale. ",
+    "Question": "An alternate, more succinct definition of computer science is the study of automating algorithmic processes that scale\u0000\u0000?",
+    "Answer": "An alternate definition"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "A computer scientist specializes in the theory of computation and the design of computational systems.\n",
+    "Question": "Where does scientist  specializes?",
+    "Answer": "computation"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "Its fields can be divided into a variety of theoretical and practical disciplines. ",
+    "Question": "Who can be divided into a variety of theoretical and practical disciplines\u0000\u0000?",
+    "Answer": "Its fields"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "Further, algorithms for performing computations have existed since antiquity, even before the development of sophisticated computing equipment. ",
+    "Question": "Who  for performing computations have existed since antiquity, even before the development of sophisticated computing equipment\u0000\u0000?",
+    "Answer": "algorithms"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "Blaise Pascal designed and constructed the first working mechanical calculator, Pascal's calculator, in 1642. ",
+    "Question": "When did blaise Pascal designed and constructed the first working mechanical calculator, Pascal's calculator\u0000\u0000\u0000\u0000?",
+    "Answer": "1642"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "In 1673, Gottfried Leibniz demonstrated a digital mechanical calculator, called the Stepped Reckoner. ",
+    "Question": "When did , Gottfried Leibniz demonstrate a digital mechanical calculator, called the Stepped Reckoner\u0000\u0000?",
+    "Answer": "1673"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "In 1820, Thomas de Colmar launched the mechanical calculator industry when he released his simplified arithmometer, which was the first calculating machine strong enough and reliable enough to be used daily in an office environment. ",
+    "Question": "When did , Thomas de Colmar launch the mechanical calculator industry when he released his simplified arithmometer, which was the first calculating machine strong enough and reliable enough to be used daily in an office environment\u0000\u0000?",
+    "Answer": "1820"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "Charles Babbage started the design of the first automatic mechanical calculator, his Difference Engine, in 1822, which eventually gave him the idea of the first programmable mechanical calculator, his Analytical Engine. ",
+    "Question": "When did charles Babbage start the design of the first automatic mechanical calculator, his Difference Engine, , which eventually gave him the idea of the first programmable mechanical calculator, his Analytical Engine\u0000\u0000?",
+    "Answer": "1822"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "He started developing this machine in 1834 and ``in less than two years he had sketched out many of the salient features of the modern computer''. ",
+    "Question": "When did he start developing this machine  and ``in less than two years he had sketched out many of the salient features of the modern computer\u0000\u0000\u0000\u0000?",
+    "Answer": "1834"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "In 1843, during the translation of a French article on the Analytical Engine, Ada Lovelace wrote, in one of the many notes she included, an algorithm to compute the Bernoulli numbers, which is considered to be the first computer program. ",
+    "Question": "When is , during the translation of a French article on the Analytical Engine, Ada Lovelace wrote, in one of the many notes she included, an algorithm to compute the Bernoulli numbers, which  considered to be the first computer program\u0000\u0000?",
+    "Answer": "1843"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "When the machine was finished, some hailed it as ``Babbage's dream come true''.\n",
+    "Question": "How does Babbage machine finish?",
+    "Answer": "the machine"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "Computer science began to be established as a distinct academic discipline in the 1950s and early 1960s. ",
+    "Question": "When did computer science begin to be established as a distinct academic discipline  and early 1960s\u0000\u0000?",
+    "Answer": "the 1950s"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "The world's first computer science degree program, the Cambridge Diploma in Computer Science, began at the University of Cambridge Computer Laboratory in 1953. ",
+    "Question": "When did the world's first computer science degree program, the Cambridge Diploma in Computer Science, begin at the University of Cambridge Computer Laboratory\u0000\u0000\u0000?",
+    "Answer": "1953"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "The first computer science degree program in the United States was formed at Purdue University in 1962. ",
+    "Question": "When was the first computer science degree program in the United States  formed at Purdue University\u0000\u0000\u0000?",
+    "Answer": "1962"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "Time has seen significant improvements in the usability and effectiveness of computing technology. ",
+    "Question": "Where did Time see?",
+    "Answer": "technology"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "As computer adoption became more widespread and affordable, less human assistance was needed for common usage.\n",
+    "Question": "How does  assistance need?",
+    "Answer": "human assistance"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "The latter includes essential design software for integrated circuits.\n",
+    "Question": "What does the latter include essential   for integrated circuits.\n?",
+    "Answer": "design software"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "Although first proposed in 1956, the term ``computer science'' appears in a 1959 article in Communications of the ACM, in which Louis Fein argues for the creation of a Graduate School in Computer Sciences analogous to the creation of Harvard Business School in 1921, justifying the name by arguing that, like management science, the subject is applied and interdisciplinary in nature, while having the characteristics typical of an academic discipline. ",
+    "Question": "When is although first proposed , the term ``computer science'' appears in a 1959 article in Communications of the ACM, in which Lou Fein argues for the creation of a Graduate School in Computer Sciences analogous to the creation of Harvard Business School in 1921, justifying the name by arguing that, like management science, the subject  applied and interdciplinary in nature, while having the charactertics typical of an academic dcipline\u0000\u0000?",
+    "Answer": "1956"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "His efforts, and those of others such as numerical analyst George Forsythe, were rewarded: universities went on to create such programs, starting with Purdue in 1962. ",
+    "Question": "When were his efforts, and those of others such as numerical analyst George Forsythe,  rewarded: universities went on to create such programs, starting with Purdue\u0000\u0000\u0000?",
+    "Answer": "1962"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "Because of this, several alternative names have been proposed. ",
+    "Question": "What have been proposed\u0000\u0000?",
+    "Answer": "names"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "The first scientific institution to use the term was the Department of Datalogy at the University of Copenhagen, founded in 1969, with Peter Naur being the first professor in datalogy. ",
+    "Question": "When was the first scientific institution to use the term  the Department of Datalogy at the University of Copenhagen, founded , with Peter Naur being the first professor in datalogy\u0000\u0000?",
+    "Answer": "1969"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "The term is used mainly in the Scandinavian countries. ",
+    "Question": "What is used mainly in the Scandinavian countries\u0000\u0000?",
+    "Answer": "The term"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "Three months later in the same journal, comptologist was suggested, followed next year by hypologist. ",
+    "Question": "What was suggested, followed next year by hypologist\u0000\u0000?",
+    "Answer": "comptologist"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "The term computics has also been suggested. ",
+    "Question": "What has also been suggested\u0000\u0000?",
+    "Answer": "The term computics"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "Similar words have also been adopted in the UK . ",
+    "Question": "What have also been adopted in the UK\u0000\u0000\u0000?",
+    "Answer": "words"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "A number of computer scientists have argued for the distinction of three separate paradigms in computer science. ",
+    "Question": "Who  of computer scientists have argued for the distinction of three separate paradigms in computer science\u0000\u0000?",
+    "Answer": "A number"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "Peter Wegner argued that those paradigms are science, technology, and mathematics. ",
+    "Question": "Who argued that those paradigms are science, technology, and mathematics\u0000\u0000?",
+    "Answer": "Peter Wegner"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "Peter Denning's working group argued that they are theory, abstraction , and design. ",
+    "Question": "Which argued that they are theory, abstraction , and design\u0000\u0000?",
+    "Answer": "working group"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "According to Peter Denning, the fundamental question underlying computer science is, ``What can be  automated?'' ",
+    "Question": "What can be  automated\u0000\u0000\u0000\u0000?",
+    "Answer": "What"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "problem, one of the Millennium Prize Problems, is an open problem in the theory of computation.\n",
+    "Question": "Where did problem problem?",
+    "Answer": "computation"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "Information theory is related to the quantification of information. ",
+    "Question": "What is related to the quantification of information\u0000\u0000?",
+    "Answer": "Information theory"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "Coding theory is the study of the properties of codes  and their fitness for a specific application. ",
+    "Question": "Which is the study of the properties of codes  and their fitness for a specific application\u0000\u0000?",
+    "Answer": "Coding theory"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "Codes are studied for the purpose of designing efficient and reliable data transmission methods.\n",
+    "Question": "Who are studied for the purpose of designing efficient and reliable data transmission methods.\n?",
+    "Answer": "Codes"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "Algorithms and data structures is the study of commonly used computational methods and their computational efficiency.\n",
+    "Question": "Who and data structures is the study of commonly used computational methods and their computational efficiency.\n?",
+    "Answer": "Algorithms"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "They form an important theoretical underpinning for software engineering, especially where safety or security is involved. ",
+    "Question": "Who/What or security is involved\u0000\u0000?",
+    "Answer": "safety"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "For industrial use, tool support is required. ",
+    "Question": "What is required\u0000\u0000?",
+    "Answer": "tool support"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "The starting-point in the late 1940s was Alan Turing's question ``Can computers think?''",
+    "Question": "When did the starting-point  was Alan Turing's question ``Can computers think\u0000\u0000\u0000?",
+    "Answer": "the late 1940s"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "Cryptography is the practice and study of hiding  and therefore deciphering  information. ",
+    "Question": "Which is the practice and study of hiding  and therefore deciphering  information\u0000\u0000?",
+    "Answer": "Cryptography"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "This branch of computer science aims to manage networks between computers worldwide.\n",
+    "Question": "Who  of computer science aims to manage networks between computers worldwide.\n?",
+    "Answer": "This branch"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "A distributed system extends the idea of concurrency onto multiple computers connected through a network. ",
+    "Question": "Who  extends the idea of concurrency onto multiple computers connected through a network\u0000\u0000?",
+    "Answer": "A distributed system"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "Conferences are important events for computer science research. ",
+    "Question": "Who are important events for computer science research\u0000\u0000?",
+    "Answer": "Conferences"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "For example, in 2014, Code.org estimated that only 10 percent of high schools in the United States offered computer science education. ",
+    "Question": "When did for example, , Code.org estimate that only 10 percent of high schools in the United States offered computer science education\u0000\u0000?",
+    "Answer": "2014"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "However, computer science education is growing. ",
+    "Question": "However, computer science education is growing\u0000\u0000?",
+    "Answer": "science computer education"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "In most countries, there is a significant gender gap in computer science education. ",
+    "Question": "In most countries, there is a significant gender gap in computer science education\u0000\u0000?",
+    "Answer": "a significant gap"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "For example, in the US about 20% of computer science degrees in 2012 were conferred to women. ",
+    "Question": "When were for example, in the US about 20% of computer science degrees   conferred to women\u0000\u0000?",
+    "Answer": "2012"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "This gender gap also exists in other Western countries. ",
+    "Question": "Who  also exists in other Western countries\u0000\u0000?",
+    "Answer": "This gender gap"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "However, in some parts of the world, the gap is small or nonexistent. ",
+    "Question": "What is small or nonexistent\u0000\u0000?",
+    "Answer": "the gap"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "In 2011, approximately half of all computer science degrees in Malaysia were conferred to women. ",
+    "Question": "When were , approximately half of all computer science degrees in Malaysia  conferred to women\u0000\u0000?",
+    "Answer": "2011"
+  },
+  {
+    "Topic": "computer_science",
+    "InitialSentence": "In 2001, women made up 54.5% of computer science graduates in Guyana.\n",
+    "Question": "When did , women make up 54.5% of computer science graduates in Guyana.\n?",
+    "Answer": "2001"
+  }
+]

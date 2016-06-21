@@ -26,7 +26,7 @@ namespace POSTagger
         {
 
         }
-        public void ProcessText(string text)
+        public void ProcessText(string text, string outputPath)
         {
             var props = new Properties();
             props.setProperty("annotators", "tokenize, ssplit, pos, lemma, ner, parse");
@@ -52,7 +52,7 @@ namespace POSTagger
                 stream.close();
             }
 
-            using (var file = new System.IO.StreamWriter(outputJsonPath))
+            using (var file = new StreamWriter(outputPath))
             {
                 file.WriteLine(jsonOutput);
 
@@ -216,9 +216,9 @@ namespace POSTagger
         }
 
 
-        public List<SentenceInformation> GetSentencesInformationFromJson()
+        public List<SentenceInformation> GetSentencesInformationFromJson(string filePath)
         {
-            var jsonOutput = System.IO.File.ReadAllText(outputJsonPath);
+            var jsonOutput = System.IO.File.ReadAllText(filePath);
             var joText = JObject.Parse(jsonOutput);
             var joSentences = (JArray)joText["sentences"];
 
