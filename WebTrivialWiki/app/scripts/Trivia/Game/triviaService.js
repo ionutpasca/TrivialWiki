@@ -17,6 +17,32 @@
             return def.promise;
         }
 
+        this.getTableUsers = function (tableName) {
+            var def = $q.defer();
+            $http.get(App.url + '/getUsersFromTable/' + tableName)
+                .success(function (data) {
+                    def.resolve(data);
+                })
+                .error(function (data) {
+                    def.reject(data);
+                });
+
+            return def.promise;
+        }
+
+        this.getTableTopic = function(tableName) {
+            var def = $q.defer();
+            $http.get(App.url + '/getTableTopic/' + tableName)
+                .success(function (data) {
+                    def.resolve(data);
+                })
+                .error(function (data) {
+                    def.reject(data);
+                });
+
+            return def.promise;
+        }
+
         this.getUserFriends = function() {
             var def = $q.defer();
             $http.get(App.url + '/getFriends')

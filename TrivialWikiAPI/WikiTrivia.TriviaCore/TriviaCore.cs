@@ -1,4 +1,5 @@
 ﻿using DatabaseManager.Trivia;
+using DatabaseManager.UserManagement;
 using Microsoft.AspNet.SignalR;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace WikiTrivia.TriviaCore
     public sealed class TriviaCore
     {
         private static readonly TriviaManager triviaManager = new TriviaManager();
-
+        private static readonly UserManager userManager = new UserManager();
 
         public async Task InitializeTrivia()
         {
@@ -36,10 +37,11 @@ namespace WikiTrivia.TriviaCore
             TriviaUserHandler.TriviaTables.Add(mainTable);
         }
 
-        public async Task BroadcastQuestion(string tableName, string topic)
+        public async Task BroadcastQuestion(string tableName)
         {
             var table = TriviaUserHandler.TriviaTables.SingleOrDefault(t => t.TableName == tableName);
-            await InitializeCurrentTriviaQuestion(table, topic);
+
+            await InitializeCurrentTriviaQuestion(table, table.Topic);
 
             var questionMessage = table.CurrentTriviaQuestion.QuestionText;
             var questionToSend = new TriviaMessageDto
@@ -52,7 +54,15 @@ namespace WikiTrivia.TriviaCore
 
             var context = GlobalHost.ConnectionManager.GetHubContext<TriviaHub>();
             var clients = GetConnectedUsersForTable(tableName);
-            context.Clients.Users(clients).AddMessage(questionToSend);
+            context.Clients.Users(clients).AddQuestion(questionToSend);
+        }
+
+        public void BroadcastCorrectAnswer(TriviaMessageDto message, string tableName)
+        {
+            var context = GlobalHost.ConnectionManager.GetHubContext<TriviaHub>();
+            var clients = GetConnectedUsersForTable(tableName);
+
+            context.Clients.Clients(clients).CorrectAnswer(message);
         }
 
         public void BroadcastMessage(TriviaMessageDto message, string tableName)
@@ -60,7 +70,7 @@ namespace WikiTrivia.TriviaCore
             var context = GlobalHost.ConnectionManager.GetHubContext<TriviaHub>();
             var clients = GetConnectedUsersForTable(tableName);
 
-            context.Clients.Users(clients);
+            context.Clients.Clients(clients).AddMessage(message);
         }
 
         public void BroadcastHint(int hintNumber, string tableName)
@@ -70,13 +80,29 @@ namespace WikiTrivia.TriviaCore
             {
                 return;
             }
-            var questionToSend = new TriviaMessageDto { Sender = "Trivia Bot", MessageText = $"Hint : {hint}" };
+            var questionToSend = new TriviaMessageDto { Sender = "TriviaBot", MessageText = $"Hint : {hint}" };
             triviaManager.AddTriviaMessageToDatabase(questionToSend);
 
             var context = GlobalHost.ConnectionManager.GetHubContext<TriviaHub>();
             var clients = GetConnectedUsersForTable(tableName);
 
-            context.Clients.Users(clients).AddMessage(questionToSend);
+            context.Clients.Clients(clients).AddMessage(questionToSend);
+        }
+
+        public void SendConnectedUsers(string clientId, string tableName)
+        {
+            var context = GlobalHost.ConnectionManager.GetHubContext<TriviaHub>();
+
+            var table = TriviaUserHandler.TriviaTables.Single(t => t.TableName == tableName);
+            var users = table.ConnectedUsers.ToList();
+            var result = new List<UserWithPoints>();
+            foreach (var user in users)
+            {
+                var userPoints = userManager.GetUserPointsSync(user.Username);
+                result.Add(new UserWithPoints { Username = user.Username, Points = userPoints });
+            }
+
+            context.Clients.Client(clientId).SendConnectedUsers(result);
         }
 
         private static async Task InitializeCurrentTriviaQuestion(TriviaTable table, string topic)
@@ -144,7 +170,7 @@ namespace WikiTrivia.TriviaCore
                 Sender = "TriviaBot",
                 MessageText = questionMessage
             };
-            context.Clients.Client(connectionId).AddMessage(questionToSend);
+            context.Clients.Client(connectionId).AddQuestion(questionToSend);
         }
     }
 }

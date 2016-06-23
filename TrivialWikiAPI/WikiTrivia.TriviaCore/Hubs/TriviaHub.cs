@@ -41,17 +41,27 @@ namespace WikiTrivia.TriviaCore.Hubs
             });
 
             triviaCore.SendUserCurrentQuestion(connectionId, tableName);
+            triviaCore.SendConnectedUsers(connectionId, tableName);
 
             return (base.OnConnected());
         }
 
         public override Task OnDisconnected(bool stopCalled)
         {
-            var token = Context.Headers["User"];
-            if (token == null)
+            var tableName = Context.QueryString["tableName"];
+            var table = TriviaUserHandler.TriviaTables.SingleOrDefault(t => t.TableName == tableName);
+
+            var connectionId = Context.ConnectionId;
+            if (table == null)
             {
-                return Task.FromResult(0);
+                return base.OnDisconnected(stopCalled);
             }
+            var user = table.ConnectedUsers.SingleOrDefault(u => u.ConnectionId == connectionId);
+            if (user != null)
+            {
+                table.ConnectedUsers.Remove(user);
+            }
+
             return base.OnDisconnected(stopCalled);
         }
     }

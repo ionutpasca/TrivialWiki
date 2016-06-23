@@ -16,10 +16,4 @@
                });
        });
 
-    angular.module('triviaModule').filter('reverse', function () {
-        return function (items) {
-            return items.slice().reverse();
-        };
-    });
-
 }).call(this, this.angular);

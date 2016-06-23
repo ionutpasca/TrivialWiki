@@ -12,7 +12,7 @@
                         <div style="font-family: Montserrat; font-size: 15px;" ng-class="{'negative-margin-top': user.position === 1}">{{user.position}}</div>
                         <div style="max-width: 200px;">
                             <div class="hovereffect" >
-                                <img class="img-responsive" src="http://localhost:4605/avatar/{{user.username}}" alt="">
+                                <img class="img-responsive" ng-src="http://localhost:4605/avatar/{{user.username}}" alt="">
                                 <div class="overlay">
                                     <h2>{{user.username}}</h2>
                                     <h3>{{user.numberOfPoints}} points</h3>

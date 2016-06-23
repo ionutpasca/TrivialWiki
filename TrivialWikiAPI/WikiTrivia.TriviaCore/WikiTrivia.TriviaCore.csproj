@@ -72,6 +72,7 @@
     <Compile Include="Hubs\TriviaHub.cs" />
     <Compile Include="Models\ConnectedUser.cs" />
     <Compile Include="Models\TriviaTable.cs" />
+    <Compile Include="Models\UserWithPoints.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TriviaCore.cs" />
   </ItemGroup>

@@ -41,7 +41,7 @@
         function triviaFactory(tableName) {
             var connection = $.hubConnection();
             connection.url = 'http://localhost:4605/signalr';
-            connection.qs = { "tableName": tableName };
+            connection.qs = { 'tableName': tableName };
 
             var proxy = connection.createHubProxy('triviaHub');
 

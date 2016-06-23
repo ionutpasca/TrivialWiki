@@ -253,6 +253,15 @@ namespace DatabaseManager.UserManagement
             }
         }
 
+        public int GetUserPointsSync(string username)
+        {
+            using (var databaseContext = new DatabaseContext())
+            {
+                var user = databaseContext.Users.SingleOrDefault(u => u.UserName == username);
+                return user?.Points ?? 0;
+            }
+        }
+
         public List<string> GetAllFriendsForUser(string username)
         {
             using (var databaseContext = new DatabaseContext())

@@ -4,5 +4,6 @@
     {
         public string Sender { get; set; }
         public string MessageText { get; set; }
+        public string TableName { get; set; }
     }
 }

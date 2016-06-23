@@ -15,13 +15,13 @@
     .headerContainer.smaller {
         -ms-opacity:0.9;
         opacity:0.9;
-        height:60px;
+        height:64px;
     }
 
     .headerContainer.smaller1 {
         -ms-opacity:1 !important;
         opacity:1 !important;
-        height:60px;
+        height:64px;
     }
 
 .navigation-bar {

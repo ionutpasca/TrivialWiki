@@ -1,63 +1,84 @@
-﻿<div layout="row" style="position: absolute; height: 100%; width: 100%; background-color: #ededed"  layout-align="center">
-    <div flex="80" class="panel-shadow montserratFont" style="position: relative; margin-top: 75px; margin-bottom: 20px; margin-left: 20px;">
-        <div class="spinner connectingTable-spinner" ng-show="connecting"></div>
-
-        <div layout="row" style="position: absolute; height: 100%;" ng-show="!connecting">
-            <div flex="5" layout="row">dsadas</div>
-
-            <div flex="90">
-                <div class="small-margin-top" >
-                    <span style="font-size: 19px; font-weight: 300; margin-left: 20px;">{{tableName}}</span>
+﻿<md-progress-linear md-mode="determinate" value="{{determinateValue}}" class="newQuestion-progress" ng-show="newQuestionIsLoading"></md-progress-linear>
+<div layout="row" class="triviaTableContainer" layout-align="center">
+    <div flex="15" class="panel-shadow montserratFont triviaTablePanel">
+        <div class="spinner connectingTable-spinner tableUsers-spinner" ng-show="connectedUsersAreLoading"></div>
+        <div class="small-margin-top" style="height: 50px; width: 100%; text-align: center;" ng-show="!connectedUsersAreLoading">
+            <span class="small-margin-top" style="text-align: center; font-size: 16px;">You are playing against</span>
+        </div>
+        <div style="position: absolute; left: 0; width: 100%; text-align: left;">
+            <div ng-repeat="user in connectedUsers" flex="100" style="width: 100%; left: 0; padding-left: 7px; margin-top: 10px;">
+                <div style="position: relative;">
+                    <span style="width: 30%;">
+                        <img class="triviaUser-image" ng-src="http://localhost:4605/avatar/{{user.Username}}" />
+                        <md-tooltip class="mark-read-tooltip tooltip-margin-top" md-visible="false" md-direction="bottom">
+                            {{user.Username}}
+                        </md-tooltip>
+                    </span>
+                    <span style="clear: both;">{{user.Points}} points</span>
+                    <md-divider class="notifications-divider" ng-if="!$last" style="margin-right: 7px;"></md-divider>
                 </div>
-                <div style="height: 80%; position: relative;">
-                    <div style="font-size: 26px; text-align: center; margin-top: 60px;">
-                        <span style="display:block;">{{currentQuestion.MessageText}}</span>
-                        <span style="color: #ccc; font-size: 20px;">Topic: </span>
+            </div>
+        </div>
+    </div>
+
+    <div flex="60" class="panel-shadow montserratFont triviaTablePanel">
+        <div class="spinner connectingTable-spinner" ng-show="noQuestion" style="position: absolute; left: 45%; top: 20px;"></div>
+
+        <div layout="row" style="height: 100%;" ng-show="!noQuestion">
+
+            <div flex="100">
+                <div style="float: right; cursor: pointer;">
+                    <img src="../../../images/icons/back.svg" style="width: 30px; height: 30px; margin-top: 7px; margin-right: 10px;" />
+                    <md-tooltip class="mark-read-tooltip tooltip-margin-top" md-visible="false" md-direction="bottom">
+                        Leave table
+                    </md-tooltip>
+                </div>
+
+                <div class="small-margin-top" style="float: right;">
+                    <md-fab-speed-dial md-direction="left" class="md-scale md-fab-top-right" style="margin-right: 20px; top: 10px;">
+                        <md-fab-trigger>
+                            <img src="../../../images/icons/table.svg" style="width: 25px; height: 25px; margin-right: 20px; cursor: pointer;"/>
+                            <md-tooltip class="mark-read-tooltip tooltip-margin-top" md-visible="false" md-direction="bottom">
+                                Table info
+                            </md-tooltip>
+                        </md-fab-trigger>
+                        <md-fab-actions>
+                            <div class="montserratFont" style="margin-right: 20px;">
+                                <span><b>Table name:</b> <span>{{tableName}}</span></span>
+                            </div>
+                        </md-fab-actions>
+                    </md-fab-speed-dial>
+                </div>
+
+                <div style="height: 80%; position: relative; padding-left: 10px; padding-right: 10px;">
+                    <div style="font-size: 26px; text-align: center; margin-top: 50px; height: 35%;">
+                        <span style="display: block;">{{currentQuestion.MessageText}}</span>
+                        <span style="color: #ccc; font-size: 20px;">Topic: {{tableTopic}}</span>
                     </div>
 
-                    <div class="trivia-chat">
-                        <div class="chat-messages" scroll-glue>
-                            <div class="chat-message">
-                                <div class="small-margin-top" title="Loading.." ng-show="messagesAreLoading">
-                                    <div class="loader"><div class="loader-inner ball-clip-rotate"><div class="no-margin-top"></div></div></div>
-                                </div>
-                            </div>
-                            <div class="chat-message" ng-repeat="message in messages| reverse">
-                                <div class="media nice-border-bottom">
-                                    <div class="media-left">
-                                        <a href="javascript(0)" class="default-cursor">
-                                            <!--<img class="media-object" ng-src="http://localhost:4605/chatAvatar/{{message.userName}}">-->
-                                            <img class="chat-avatar" ng-src="http://localhost:4605/chatAvatar/{{message.userName}}" />
-                                        </a>
-                                    </div>
-                                    <div class="media-body">
-                                        <span class="media-body chat-username">{{message.userName}}</span>
-                                        <p class="user-message">{{message.message}}</p>
-                                    </div>
+                    <div class="trivia-chat" style="overflow: auto;" scroll-glue>
+                        <div scroll-glue>
+                            <div class="triviaQuestions" style="">
+                                <div ng-repeat="message in messages" class="small-margin-left">
+                                    <span style="font-weight: 500; font-size: 18px;" ng-class="{'red-color': senderIsTriviaBot(message) }">{{message.Sender}}:</span>
+                                    <span style="font-weight: 300; font-size: 16px;">{{message.MessageText}}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-
                     <div class="form-group sent-message-input" layout-align="center">
-                        <div flex="50" class="input-group input-group-sm" style="margin: 0px auto;">
+                        <div flex="60" class="input-group input-group-sm" style="margin: 0 auto;">
                             <div class="icon-addon addon-md">
-                                <input type="text" placeholder="Send message" ng-model="messageToSend" class="form-control chat-input" style="background-color: #ededed;">
+                                <input type="text" placeholder="Send response" ng-keydown="$event.which === 13 && sendAnswer()" ng-model="responseToSend" class="form-control chat-input" style="background-color: #ededed;">
                             </div>
                             <span class="input-group-btn send-message-container">
-                                <button class="btn btn-default send-message-button no-border" type="button" ng-click="sendMessage();" title="Send message" style="background-color: #ededed;">
+                                <button class="btn btn-default send-message-button no-border" type="button" ng-click="sendAnswer();" title="Send response" style="background-color: #ededed;">
                                     <i class="fa fa-send send-message-gliphy"></i>
                                 </button>
                             </span>
                         </div>
                     </div>
-                </div>
-                <div style="position: absolute; bottom: 20px; right: 20px; cursor: pointer;">
-                    <img src="../../../images/icons/back.svg" style="width: 50px; height: 50px;" />
-                    <md-tooltip class="mark-read-tooltip tooltip-margin-top" md-visible="false" md-direction="bottom">
-                        Leave table
-                    </md-tooltip>
                 </div>
             </div>
         </div>
