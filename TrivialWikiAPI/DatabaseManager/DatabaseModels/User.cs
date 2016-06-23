@@ -13,6 +13,7 @@ namespace DatabaseManager.DatabaseModels
             this.Claims = new HashSet<string>();
             this.Notifications = new List<Notification>();
             this.ProposedTopics = new List<ProposedTopic>();
+            this.Friends = new List<User>();
         }
 
         [Key]
@@ -30,5 +31,6 @@ namespace DatabaseManager.DatabaseModels
         public string SecurityToken { get; set; }
         public Statistics Statistic { get; set; }
         public DateTime AccountCreationDate { get; set; }
+        public ICollection<User> Friends { get; set; }
     }
 }

@@ -29,11 +29,11 @@ namespace DatabaseManager.Trivia
         {
             using (var databaseContext = new DatabaseContext())
             {
-                var triviaMessage = new TriviaMessage()
+                var triviaMessage = new TriviaMessage
                 {
                     Sender = response.Sender,
                     MessageText = response.MessageText,
-                    Timestamp = DateTime.Now
+                    Timestamp = DateTime.Now,
                 };
                 databaseContext.TriviaMessages.Add(triviaMessage);
                 CleanDatabase(databaseContext);
@@ -51,24 +51,27 @@ namespace DatabaseManager.Trivia
             }
         }
 
-        public TriviaQuestionDto GetNewQuestion()
+        public async Task<TriviaQuestionDto> GetNewQuestion(string topic)
         {
             using (var databaseContext = new DatabaseContext())
             {
                 var rand = new Random();
-                var noOfQuestions = databaseContext.QuestionSets.Count();
+                var noOfQuestions = await databaseContext.QuestionSets.CountAsync(t => t.Topic.Name == topic);
                 var questionsToSkip = rand.Next(noOfQuestions);
 
+
                 var x = databaseContext.QuestionSets
+                    .Where(t => t.Topic.Name == topic)
                     .OrderBy(u => u.Id)
                     .Skip(questionsToSkip)
                     .Take(1)
-                    .Select(q => new TriviaQuestionDto()
+                    .Select(q => new TriviaQuestionDto
                     {
                         QuestionText = q.QuestionText,
                         Answer = q.CorrectAnswer,
                         Timestamp = DateTime.Now
                     }).First();
+
                 return x;
             }
         }

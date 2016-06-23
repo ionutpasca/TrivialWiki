@@ -63,7 +63,6 @@
     <Compile Include="DatabaseModels\Achievement.cs" />
     <Compile Include="DatabaseModels\ChatRoom.cs" />
     <Compile Include="DatabaseModels\DatabaseContext.cs" />
-    <Compile Include="DatabaseModels\Friend.cs" />
     <Compile Include="DatabaseModels\Match.cs" />
     <Compile Include="DatabaseModels\Message.cs" />
     <Compile Include="DatabaseModels\Notification.cs" />
@@ -108,6 +107,26 @@
     <Compile Include="Migrations\201606181426273_0022.cs" />
     <Compile Include="Migrations\201606181426273_0022.Designer.cs">
       <DependentUpon>201606181426273_0022.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606211652112_0023.cs" />
+    <Compile Include="Migrations\201606211652112_0023.Designer.cs">
+      <DependentUpon>201606211652112_0023.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606211943122_0024.cs" />
+    <Compile Include="Migrations\201606211943122_0024.Designer.cs">
+      <DependentUpon>201606211943122_0024.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606221746436_0025.cs" />
+    <Compile Include="Migrations\201606221746436_0025.Designer.cs">
+      <DependentUpon>201606221746436_0025.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606221829506_0026.cs" />
+    <Compile Include="Migrations\201606221829506_0026.Designer.cs">
+      <DependentUpon>201606221829506_0026.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606231551420_0028.cs" />
+    <Compile Include="Migrations\201606231551420_0028.Designer.cs">
+      <DependentUpon>201606231551420_0028.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -162,6 +181,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606181426273_0022.resx">
       <DependentUpon>201606181426273_0022.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606211652112_0023.resx">
+      <DependentUpon>201606211652112_0023.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606211943122_0024.resx">
+      <DependentUpon>201606211943122_0024.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606221746436_0025.resx">
+      <DependentUpon>201606221746436_0025.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606221829506_0026.resx">
+      <DependentUpon>201606221829506_0026.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606231551420_0028.resx">
+      <DependentUpon>201606231551420_0028.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

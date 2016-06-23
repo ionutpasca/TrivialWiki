@@ -2,8 +2,13 @@
 using DatabaseManager.UserManagement;
 using Nancy;
 using Nancy.ModelBinding;
+using Nancy.Security;
+using System.Linq;
 using System.Threading.Tasks;
+using WikiTrivia.Core;
 using WikiTrivia.TriviaCore;
+using WikiTrivia.TriviaCore.Hubs;
+using WikiTrivia.TriviaCore.Models;
 
 namespace TrivialWikiAPI.Trivia
 {
@@ -15,37 +20,61 @@ namespace TrivialWikiAPI.Trivia
 
         public TriviaModule()
         {
+            this.RequiresAuthentication();
+
+            Get["/getOnlineUsers"] = param => GetOnlineUsers();
+            Get["/triviaTables"] = param => GetTriviaTables();
             Get["/getLastQuestions", true] = async (param, p) => await GetLastQuestions();
 
             Post["/addResponse", true] = async (param, p) => await AddResponseToDatabase();
         }
 
+        private Response GetTriviaTables()
+        {
+            var tables = TriviaUserHandler.TriviaTables.Select(t => new TriviaTableDto
+            {
+                TableName = t.TableName,
+                Topic = t.Topic
+            }).ToList();
+            return Response.AsJson(tables);
+        }
+
+        private Response GetOnlineUsers()
+        {
+            var users = WikiTriviaHandler.connectedUsers.Select(d => d.Username).ToList();
+            return Response.AsJson(users);
+        }
+
         private async Task<Response> AddResponseToDatabase()
         {
-            var currentQuestion = CurrentTriviaQuestion.currentTriviaQuestion;
+            var currentUser = Context.CurrentUser;
+
+            var table = triviaCore.GetTableForUser(currentUser.UserName);
+
+            var currentQuestion = table.CurrentTriviaQuestion;
             var sentResponse = this.Bind<TriviaMessageDto>();
             if (sentResponse?.Sender == null)
             {
                 return HttpStatusCode.BadRequest;
             }
             triviaManager.AddTriviaMessageToDatabase(sentResponse);
-            triviaCore.BroadcastMessage(sentResponse);
+            //triviaCore.BroadcastMessage(sentResponse);
 
             if (sentResponse.MessageText.ToLower() == currentQuestion.Answer.ToLower())
             {
-                var pointsToAdd = GetAwardedPoints();
+                var pointsToAdd = GetAwardedPoints(table);
                 await userManager.AddPointsToUser(sentResponse.Sender, pointsToAdd);
 
                 SendCorrectAnswerResponse(sentResponse.Sender, pointsToAdd);
-                triviaCore.BroadcastQuestion();
+                //triviaCore.BroadcastQuestion();
                 return HttpStatusCode.OK;
             }
 
-            if (sentResponse.MessageText.ToLower() == "hint" && CurrentTriviaQuestion.hintCommandsCount < 3)
+            if (sentResponse.MessageText.ToLower() == "hint" && table.HintCommandsCount < 3)
             {
-                CurrentTriviaQuestion.hintCommandsCount += 1;
-                var hintNumber = CurrentTriviaQuestion.hintCommandsCount;
-                triviaCore.BroadcastHint(hintNumber);
+                table.HintCommandsCount += 1;
+                var hintNumber = table.HintCommandsCount;
+                //triviaCore.BroadcastHint(hintNumber);
                 return HttpStatusCode.OK;
             }
 
@@ -54,9 +83,9 @@ namespace TrivialWikiAPI.Trivia
 
         private void SendCorrectAnswerResponse(string user, int receivedPoints)
         {
-            var response = new TriviaMessageDto() { Sender = "TriviaBot", MessageText = $"{user} gave the correct answer and received {receivedPoints} points!" };
+            var response = new TriviaMessageDto { Sender = "TriviaBot", MessageText = $"{user} gave the correct answer and received {receivedPoints} points!" };
             triviaManager.AddTriviaMessageToDatabase(response);
-            triviaCore.BroadcastMessage(response);
+            //triviaCore.BroadcastMessage(response);
         }
 
         private async Task<Response> GetLastQuestions()
@@ -65,9 +94,9 @@ namespace TrivialWikiAPI.Trivia
             return this.Response.AsJson(messages);
         }
 
-        private static int GetAwardedPoints()
+        private static int GetAwardedPoints(TriviaTable triviaTable)
         {
-            var hintsGiven = CurrentTriviaQuestion.hintCommandsCount;
+            var hintsGiven = triviaTable.HintCommandsCount;
             switch (hintsGiven)
             {
                 case 3:

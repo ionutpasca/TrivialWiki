@@ -144,6 +144,7 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Chat\ChatHub.cs" />
     <Compile Include="Chat\ChatModule.cs" />
+    <Compile Include="Friends\FriendsModule.cs" />
     <Compile Include="Leaderboard\LeaderboardModule.cs" />
     <Compile Include="Migrations\201603021845246_InitialCreate.cs" />
     <Compile Include="Migrations\201603021845246_InitialCreate.Designer.cs">
@@ -193,6 +194,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Topics\TopicsModule.cs" />
     <Compile Include="Trivia\TriviaModule.cs" />
+    <Compile Include="Trivia\TriviaTableDto.cs" />
     <Compile Include="UserManagement\Avatar\AvatarManager.cs" />
     <Compile Include="UserManagement\Avatar\AvatarModule.cs" />
     <Compile Include="UserManagement\Login\LoginModule.cs" />
@@ -236,10 +238,6 @@
       <Project>{e0a4d38b-cadc-49b1-bb3d-7990d8a97552}</Project>
       <Name>DatabaseManager</Name>
     </ProjectReference>
-    <ProjectReference Include="..\POSTagger\POSTagger.csproj">
-      <Project>{A6709F99-EE06-4F3F-B25F-3451621039C2}</Project>
-      <Name>POSTagger</Name>
-    </ProjectReference>
     <ProjectReference Include="..\WikipediaResourceFinder\WikipediaResourceFinder.csproj">
       <Project>{400BE6E8-5E92-4D67-847E-81E508FF582B}</Project>
       <Name>WikipediaResourceFinder</Name>
@@ -257,6 +255,7 @@
       <Name>WikiTrivia.Utilities</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

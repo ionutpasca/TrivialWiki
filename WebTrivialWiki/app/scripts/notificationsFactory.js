@@ -3,29 +3,6 @@
 
     App.module
     .factory('notificationsHubFactory', ['$rootScope', function ($rootScope) {
-        //return {
-        //    on: function (eventName, callback) {
-        //        var connection = $.hubConnection();
-        //        connection.url = 'http://localhost:4605/signalr';
-        //        var triviaMessageHubProxy = connection.createHubProxy('notificationsHub');
-
-        //        triviaMessageHubProxy.on(eventName,
-        //            function () {
-        //                var args = arguments;
-        //                $rootScope.$apply(function () {
-        //                    callback.apply(triviaMessageHubProxy, args);
-        //                });
-        //            });
-
-        //        $.signalR.connectionState = { connecting: 0, connected: 1, reconnecting: 2, disconnected: 4 };
-
-        //        if (connection.state === 4) {
-        //            //if ($.connection.hub && $.connection.hub.state === $.signalR.connectionState.disconnected) {
-        //            connection.start().done(function() {});
-        //        }
-        //        //}
-        //    }
-        //};
         function notificationsFactory() {
 
             var connection = $.hubConnection();

@@ -1,71 +1,56 @@
 ﻿(function (angular, _) {
     'use strict';
     angular.module('triviaModule')
-    .controller('triviaController', ['$scope', '$rootScope',
-        'chatFactory', 'triviaFactory', 'triviaService', 'persistService', function ($scope, $rootScope, chatFactory, triviaFactory, triviaService, persistService) {
+    .controller('triviaController', ['$scope', '$rootScope','triviaFactory', 'triviaService', 'persistService','$location',
+         function ($scope, $rootScope, triviaFactory, triviaService, persistService,$location) {
         $scope.messages = [];
         $scope.triviaQuestions = [];
         $scope.text = "";
         $scope.skip = 0;
         $scope.responseToSend = '';
 
-        function initializeTriviaChat() {
-            $scope.messagesAreLoading = true;
+        var triviaTableProxy;
+        //function initializeTriviaChat() {
+        //    $scope.messagesAreLoading = true;
 
-            triviaService.getMessages($scope.skip)
+        //    triviaService.getMessages($scope.skip)
+        //    .then(function (data) {
+        //        _.each(data, function (message) {
+        //            $scope.messages.push(message);
+        //        });
+        //        $scope.messagesAreLoading = false;
+        //    });
+        //}
+
+        //function intializeTriviaHistory() {
+        //    $scope.triviaHistoryIsLoading = true;
+
+        //    triviaService.getTriviaHistory()
+        //    .then(function (data) {
+        //        _.each(data, function (message) {
+        //            var historyQuestion = {
+        //                MessageText: message.messageText,
+        //                Sender: message.sender
+        //            };
+        //            $scope.triviaQuestions.unshift(historyQuestion);
+        //        });
+        //        $scope.triviaHistoryIsLoading = false;
+        //    });
+        //}
+
+
+        function getActiveTables() {
+            triviaService.getTriviaTables()
             .then(function (data) {
-                _.each(data, function (message) {
-                    $scope.messages.push(message);
-                });
-                $scope.messagesAreLoading = false;
-            });
-        }
-
-        function intializeTriviaHistory() {
-            $scope.triviaHistoryIsLoading = true;
-
-            triviaService.getTriviaHistory()
-            .then(function (data) {
-                _.each(data, function (message) {
-                    var historyQuestion = {
-                        MessageText: message.messageText,
-                        Sender: message.sender
-                    };
-                    $scope.triviaQuestions.unshift(historyQuestion);
-                });
-                $scope.triviaHistoryIsLoading = false;
+                $scope.tables = data;
             });
         }
 
         function init() {
-            initializeTriviaChat();
-            intializeTriviaHistory();
+            getActiveTables();
+            //initializeTriviaChat();
+            //intializeTriviaHistory();
         }
-
-        triviaFactory.on('addMessage', function (question) {
-            $scope.triviaQuestions.push(question);
-        });
-
-        chatFactory.on('addMessage', function (msg) {
-            var newMessage = {
-                userName: msg.UserName,
-                message: msg.Message
-            };
-            $scope.messages.unshift(newMessage);
-        });
-
-        chatFactory.on('onConnected', function (res) {
-        });
-
-        chatFactory.on('someoneConnected', function (res) {
-        });
-
-        triviaFactory.on('addResponse', function(msg) {
-            //var newResponse = {
-            //    userName: msg.UserName,
-            //    message: msg.Message
-            //};
-        });
 
         $scope.getCurrentUserName = function() {
             return persistService.readData('userName');
@@ -92,9 +77,15 @@
             });
         };
 
+
+        $scope.joinTable = function (table) {
+            $location.url('/trivia/' + table.tableName);
+        }
+
         $scope.senderIsTriviaBot = function(question) {
             return question.Sender === 'TriviaBot';
         }
+
         init();
     }]);
 }).call(this, this.angular, this._);

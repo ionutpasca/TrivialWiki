@@ -1,0 +1,78 @@
+﻿<div layout="row" style="position: absolute; height: 100%; width: 100%; background-color: #ededed"  layout-align="center">
+    <div flex="80" class="panel-shadow montserratFont" style="position: relative; margin-top: 75px; margin-bottom: 20px; margin-left: 20px;">
+        <div class="spinner connectingTable-spinner" ng-show="connecting"></div>
+
+        <div layout="row" style="position: absolute; height: 100%;" ng-show="!connecting">
+            <div flex="5" layout="row">dsadas</div>
+
+            <div flex="90">
+                <div class="small-margin-top" >
+                    <span style="font-size: 19px; font-weight: 300; margin-left: 20px;">{{tableName}}</span>
+                </div>
+                <div style="height: 80%; position: relative;">
+                    <div style="font-size: 26px; text-align: center; margin-top: 60px;">
+                        <span style="display:block;">{{currentQuestion.MessageText}}</span>
+                        <span style="color: #ccc; font-size: 20px;">Topic: </span>
+                    </div>
+
+                    <div class="trivia-chat">
+                        <div class="chat-messages" scroll-glue>
+                            <div class="chat-message">
+                                <div class="small-margin-top" title="Loading.." ng-show="messagesAreLoading">
+                                    <div class="loader"><div class="loader-inner ball-clip-rotate"><div class="no-margin-top"></div></div></div>
+                                </div>
+                            </div>
+                            <div class="chat-message" ng-repeat="message in messages| reverse">
+                                <div class="media nice-border-bottom">
+                                    <div class="media-left">
+                                        <a href="javascript(0)" class="default-cursor">
+                                            <!--<img class="media-object" ng-src="http://localhost:4605/chatAvatar/{{message.userName}}">-->
+                                            <img class="chat-avatar" ng-src="http://localhost:4605/chatAvatar/{{message.userName}}" />
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        <span class="media-body chat-username">{{message.userName}}</span>
+                                        <p class="user-message">{{message.message}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group sent-message-input" layout-align="center">
+                        <div flex="50" class="input-group input-group-sm" style="margin: 0px auto;">
+                            <div class="icon-addon addon-md">
+                                <input type="text" placeholder="Send message" ng-model="messageToSend" class="form-control chat-input" style="background-color: #ededed;">
+                            </div>
+                            <span class="input-group-btn send-message-container">
+                                <button class="btn btn-default send-message-button no-border" type="button" ng-click="sendMessage();" title="Send message" style="background-color: #ededed;">
+                                    <i class="fa fa-send send-message-gliphy"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div style="position: absolute; bottom: 20px; right: 20px; cursor: pointer;">
+                    <img src="../../../images/icons/back.svg" style="width: 50px; height: 50px;" />
+                    <md-tooltip class="mark-read-tooltip tooltip-margin-top" md-visible="false" md-direction="bottom">
+                        Leave table
+                    </md-tooltip>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div flex="20" class="panel-shadow montserratFont" style="margin-top: 75px; margin-bottom: 20px; margin-left: 20px; right: 0;" layout-align="center">
+        <div class="small-margin-top small-margin-left">
+            <span style="color: #ccc;">Online friends</span>
+        </div>
+        <md-divider class="small-margin-top"></md-divider>
+        <div class="small-margin-left small-margin-right" style="text-align: center; margin-top: 20px;">
+            <span style="font-size: 17px; font-weight: 300; display: block;">Your account doesn't have any connections yet</span>
+            <span class="small-margin-top" style="font-size: 13px; font-weight: 300; display: block;">You can invite someone from the main page</span>
+            <button class="btn btn-success hvr-grow-shadow" style="border-radius: 0; margin-top: 20px; height: 40px;"> Make some new friends</button>
+        </div>
+    </div>
+</div>

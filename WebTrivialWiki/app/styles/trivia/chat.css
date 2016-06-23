@@ -150,7 +150,9 @@
 }
 
 .trivia-chat {
-    height: 90%; 
+    height: 85%;
+    width: 50%;
+    margin: 0px auto;
     border-bottom: 1px solid #ccc; 
     padding-left: 5px; 
     padding-top: 5px;

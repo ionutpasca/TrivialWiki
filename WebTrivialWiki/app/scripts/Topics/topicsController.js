@@ -18,7 +18,6 @@
             topicsService.getTopics()
             .then(function (data) {
                 _.each(data, function (topic) {
-                    debugger;
                     topic.imageHeight = getImageHeight(topic.thumbnailUrl);
                     $scope.topics.push(topic);
                 });

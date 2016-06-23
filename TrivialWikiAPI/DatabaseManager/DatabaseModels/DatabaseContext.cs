@@ -5,7 +5,6 @@ namespace DatabaseManager.DatabaseModels
     public class DatabaseContext : DbContext
     {
         public DbSet<ChatRoom> ChatRooms { get; set; }
-        public DbSet<Friend> Friends { get; set; }
         public DbSet<Match> Matches { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<PrivateChat> PrivateChats { get; set; }

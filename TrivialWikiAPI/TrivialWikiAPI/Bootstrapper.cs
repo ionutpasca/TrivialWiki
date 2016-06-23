@@ -5,6 +5,7 @@ using Nancy.Bootstrapper;
 using Nancy.Security;
 using Nancy.TinyIoc;
 using System.Linq;
+using WikiTrivia.TriviaCore;
 
 namespace TrivialWikiAPI
 {
@@ -15,6 +16,8 @@ namespace TrivialWikiAPI
             base.ApplicationStartup(container, pipelines);
             ConfigStatelessAuthentication(pipelines);
 
+            var triviaCore = new TriviaCore();
+            triviaCore.InitializeTrivia();
             //using (var dbC = new DatabaseContext())
             //{
             //    var not = new Notification

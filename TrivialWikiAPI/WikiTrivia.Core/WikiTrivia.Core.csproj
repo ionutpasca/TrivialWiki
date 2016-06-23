@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\ConnectedUser.cs" />
+    <Compile Include="Models\TriviaTable.cs" />
     <Compile Include="NotificationsCore.cs" />
     <Compile Include="NotificationsHub.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

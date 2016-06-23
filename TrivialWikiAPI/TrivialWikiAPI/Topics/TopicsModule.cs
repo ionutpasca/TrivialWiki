@@ -1,6 +1,5 @@
 ﻿using DatabaseManager.Topics;
 using Nancy;
-using POSTagger.EndPoint;
 using System.Threading.Tasks;
 using WikipediaResourceFinder;
 using WikiTrivia.Core;
@@ -11,7 +10,7 @@ namespace TrivialWikiAPI.Topics
     {
         private readonly TopicsManager topicsManager = new TopicsManager();
         private readonly NotificationsCore notificationCore = new NotificationsCore();
-        private readonly Tagger tagger = new Tagger();
+        //private readonly Tagger tagger = new Tagger();
 
         public TopicsModule()
         {
@@ -46,9 +45,9 @@ namespace TrivialWikiAPI.Topics
             await topicsManager.AddNewTopicToDatabase(topicName, topicImage);
 
             topicName = topicName.Replace(" ", "_");
-            await tagger.GetWikipediaResources(topicName);
-            await tagger.ProcessWikipediaText(topicName);
-            tagger.GenerateQuestions(topicName);
+            //await tagger.GetWikipediaResources(topicName);
+            //await tagger.ProcessWikipediaText(topicName);
+            //tagger.GenerateQuestions(topicName);
 
             await topicsManager.SaveQuestionsFromFile(topicName);
 
