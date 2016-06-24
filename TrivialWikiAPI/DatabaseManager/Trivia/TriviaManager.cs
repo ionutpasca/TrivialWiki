@@ -25,7 +25,7 @@ namespace DatabaseManager.Trivia
             }
         }
 
-        public void AddTriviaMessageToDatabase(TriviaMessageDto response)
+        public async Task AddTriviaMessageToDatabase(TriviaMessageDto response)
         {
             using (var databaseContext = new DatabaseContext())
             {
@@ -37,7 +37,7 @@ namespace DatabaseManager.Trivia
                 };
                 databaseContext.TriviaMessages.Add(triviaMessage);
                 CleanDatabase(databaseContext);
-                databaseContext.SaveChanges();
+                await databaseContext.SaveChangesAsync();
             }
         }
 

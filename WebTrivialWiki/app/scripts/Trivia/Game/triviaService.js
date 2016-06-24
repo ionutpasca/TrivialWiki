@@ -1,8 +1,8 @@
-﻿(function(angular) {
+﻿(function(angular, $) {
     'use strict';
 
     angular.module('triviaModule')
-    .service('triviaService', ['$q', '$http', function ($q, $http) {
+    .service('triviaService', ['$q', '$http', '$rootScope', function ($q, $http, $rootScope) {
 
         this.getTriviaTables = function() {
             var def = $q.defer();
@@ -43,6 +43,32 @@
             return def.promise;
         }
 
+        this.getNextQuestion = function() {
+            var def = $q.defer();
+            $http.get(App.url + '/getNextQuestion')
+                .success(function (data) {
+                    def.resolve(data);
+                })
+                .error(function (data) {
+                    def.reject(data);
+                });
+
+            return def.promise;
+        }
+
+        this.getCurrentQuestion = function (tableName) {
+            var def = $q.defer();
+            $http.get(App.url + '/getCurrentQuestion/' + tableName)
+                .success(function (data) {
+                    def.resolve(data);
+                })
+                .error(function (data) {
+                    def.reject(data);
+                });
+
+            return def.promise;
+        }
+
         this.getUserFriends = function() {
             var def = $q.defer();
             $http.get(App.url + '/getFriends')
@@ -55,6 +81,8 @@
 
             return def.promise;
         }
+
+        
 
         //this.getMessages = function(skip) {
         //    var def = $q.defer();
@@ -138,4 +166,4 @@
         }
 
     }]);
-}).call(this, this.angular);
+}).call(this, this.angular, this.$);

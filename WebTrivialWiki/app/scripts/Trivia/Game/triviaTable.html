@@ -1,9 +1,10 @@
-﻿<md-progress-linear md-mode="determinate" value="{{determinateValue}}" class="newQuestion-progress" ng-show="newQuestionIsLoading"></md-progress-linear>
+﻿<div ng-init="init()"></div>
+<md-progress-linear md-mode="determinate" value="{{determinateValue}}" class="newQuestion-progress" ng-show="newQuestionIsLoading"></md-progress-linear>
 <div layout="row" class="triviaTableContainer" layout-align="center">
     <div flex="15" class="panel-shadow montserratFont triviaTablePanel">
         <div class="spinner connectingTable-spinner tableUsers-spinner" ng-show="connectedUsersAreLoading"></div>
         <div class="small-margin-top" style="height: 50px; width: 100%; text-align: center;" ng-show="!connectedUsersAreLoading">
-            <span class="small-margin-top" style="text-align: center; font-size: 16px;">You are playing against</span>
+            <span class="small-margin-top" style="text-align: center; font-size: 16px;">Connected users</span>
         </div>
         <div style="position: absolute; left: 0; width: 100%; text-align: left;">
             <div ng-repeat="user in connectedUsers" flex="100" style="width: 100%; left: 0; padding-left: 7px; margin-top: 10px;">
@@ -27,11 +28,20 @@
         <div layout="row" style="height: 100%;" ng-show="!noQuestion">
 
             <div flex="100">
-                <div style="float: right; cursor: pointer;">
+                <div style="float: right; cursor: pointer;" ng-click ="leaveTable()">
                     <img src="../../../images/icons/back.svg" style="width: 30px; height: 30px; margin-top: 7px; margin-right: 10px;" />
                     <md-tooltip class="mark-read-tooltip tooltip-margin-top" md-visible="false" md-direction="bottom">
                         Leave table
                     </md-tooltip>
+                </div>
+
+                <div class="small-margin-top" style="float: left;" ng-click="getNextQuestion()">
+                    <md-fab-trigger>
+                        <img src="../../../images/icons/repeat.svg" style="width: 25px; height: 25px; margin-left: 20px; cursor: pointer;" />
+                        <md-tooltip class="mark-read-tooltip tooltip-margin-top" md-visible="false" md-direction="bottom">
+                            Next question
+                        </md-tooltip>
+                    </md-fab-trigger>
                 </div>
 
                 <div class="small-margin-top" style="float: right;">
@@ -52,7 +62,7 @@
 
                 <div style="height: 80%; position: relative; padding-left: 10px; padding-right: 10px;">
                     <div style="font-size: 26px; text-align: center; margin-top: 50px; height: 35%;">
-                        <span style="display: block;">{{currentQuestion.MessageText}}</span>
+                        <span style="display: block;">{{currentQuestion.messageText}}</span>
                         <span style="color: #ccc; font-size: 20px;">Topic: {{tableTopic}}</span>
                     </div>
 

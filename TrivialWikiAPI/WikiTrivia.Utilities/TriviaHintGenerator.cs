@@ -18,11 +18,17 @@ namespace WikiTrivia.Utilities
             var newCharacterToShow = GetRandomCharacter(validCharacters);
 
             var indexesOfTheCharaterToShow = GetCharacterIndexes(answer, newCharacterToShow);
-
             foreach (var i in indexesOfTheCharaterToShow)
             {
                 hint[i] = newCharacterToShow;
             }
+
+            var indexesOfSpaces = GetCharacterIndexes(answer, ' ');
+            foreach (var i in indexesOfSpaces)
+            {
+                hint[i] = ' ';
+            }
+
             return CreateStringFromEnumerable(hint);
         }
 

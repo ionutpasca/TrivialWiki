@@ -21,7 +21,6 @@ namespace WikiTrivia.TriviaCore.Hubs
         {
             var token = Context.Headers["User"];
             var tableName = Context.QueryString["tableName"];
-
             if (token == null)
             {
                 return Task.FromResult(0);
@@ -34,12 +33,17 @@ namespace WikiTrivia.TriviaCore.Hubs
             }
 
             var connectionId = Context.ConnectionId;
-            table.ConnectedUsers.Add(new ConnectedUser()
+            if (triviaCore.TableHasUser(tableName, token))
+            {
+                return Task.FromResult(0);
+            }
+            table.ConnectedUsers.Add(new ConnectedUser
             {
                 Username = token,
                 ConnectionId = connectionId
             });
 
+            triviaCore.BroadcastUserConnected(token, tableName);
             triviaCore.SendUserCurrentQuestion(connectionId, tableName);
             triviaCore.SendConnectedUsers(connectionId, tableName);
 

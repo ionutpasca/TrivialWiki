@@ -50,11 +50,11 @@ namespace WikiTrivia.TriviaCore
                 MessageText = questionMessage
             };
 
-            triviaManager.AddTriviaMessageToDatabase(questionToSend);
+            await triviaManager.AddTriviaMessageToDatabase(questionToSend);
 
             var context = GlobalHost.ConnectionManager.GetHubContext<TriviaHub>();
             var clients = GetConnectedUsersForTable(tableName);
-            context.Clients.Users(clients).AddQuestion(questionToSend);
+            context.Clients.Clients(clients).AddQuestion(questionToSend);
         }
 
         public void BroadcastCorrectAnswer(TriviaMessageDto message, string tableName)
@@ -73,7 +73,13 @@ namespace WikiTrivia.TriviaCore
             context.Clients.Clients(clients).AddMessage(message);
         }
 
-        public void BroadcastHint(int hintNumber, string tableName)
+        public bool TableHasUser(string tableName, string username)
+        {
+            var table = TriviaUserHandler.TriviaTables.Single(t => t.TableName == tableName);
+            return table.ConnectedUsers.Any(u => u.Username == username);
+        }
+
+        public async Task BroadcastHint(int hintNumber, string tableName)
         {
             var hint = GetHintByNumber(hintNumber, tableName);
             if (hint == string.Empty)
@@ -81,7 +87,7 @@ namespace WikiTrivia.TriviaCore
                 return;
             }
             var questionToSend = new TriviaMessageDto { Sender = "TriviaBot", MessageText = $"Hint : {hint}" };
-            triviaManager.AddTriviaMessageToDatabase(questionToSend);
+            await triviaManager.AddTriviaMessageToDatabase(questionToSend);
 
             var context = GlobalHost.ConnectionManager.GetHubContext<TriviaHub>();
             var clients = GetConnectedUsersForTable(tableName);
@@ -171,6 +177,24 @@ namespace WikiTrivia.TriviaCore
                 MessageText = questionMessage
             };
             context.Clients.Client(connectionId).AddQuestion(questionToSend);
+        }
+
+        private List<string> GetConnectedUsersWithoutSpecificOne(string username, string tableName)
+        {
+            return TriviaUserHandler.TriviaTables.
+               FirstOrDefault(t => t.TableName == tableName)
+               .ConnectedUsers.Where(u => u.Username != username)
+               .Select(u => u.ConnectionId)
+               .ToList();
+        }
+
+        public void BroadcastUserConnected(string username, string tableName)
+        {
+            var userPoints = userManager.GetUserPointsSync(username);
+            var res = new UserWithPoints { Username = username, Points = userPoints };
+            var clients = GetConnectedUsersWithoutSpecificOne(username, tableName);
+            var context = GlobalHost.ConnectionManager.GetHubContext<TriviaHub>();
+            context.Clients.Clients(clients).NewUserConnected(res);
         }
     }
 }

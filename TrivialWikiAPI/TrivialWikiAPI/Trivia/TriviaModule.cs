@@ -26,10 +26,32 @@ namespace TrivialWikiAPI.Trivia
             Get["/getOnlineUsers"] = param => GetOnlineUsers();
             Get["/triviaTables"] = param => GetTriviaTables();
             Get["/getTableTopic/{tableName}"] = param => GetTableTopic(param.tableName);
+            Get["/getCurrentQuestion/{tableName}"] = param => GetCurrentQuestion(param.tableName);
             Get["/getLastQuestions", true] = async (param, p) => await GetLastQuestions();
             Get["/getUsersFromTable/{tableName}", true] = async (param, p) => await GetUsersFromTable(param.tableName);
+            Get["/getNextQuestion", true] = async (param, p) => await GetNextQuestion();
 
             Post["/addResponse", true] = async (param, p) => await AddResponseToDatabase();
+        }
+
+        private async Task<Response> GetNextQuestion()
+        {
+            var currentUser = Context.CurrentUser;
+            var table = triviaCore.GetTableForUser(currentUser.UserName);
+            await triviaCore.BroadcastQuestion(table.TableName);
+            return HttpStatusCode.OK;
+        }
+
+        private Response GetCurrentQuestion(string tableName)
+        {
+            var table = TriviaUserHandler.TriviaTables.Single(t => t.TableName == tableName);
+            var questionMessage = table.CurrentTriviaQuestion.QuestionText;
+            var questionToSend = new TriviaMessageDto
+            {
+                Sender = "TriviaBot",
+                MessageText = questionMessage
+            };
+            return Response.AsJson(questionToSend);
         }
 
         private Response GetTableTopic(string tableName)
@@ -41,7 +63,8 @@ namespace TrivialWikiAPI.Trivia
         private async Task<Response> GetUsersFromTable(string tableName)
         {
             var table = TriviaUserHandler.TriviaTables.Single(t => t.TableName == tableName);
-            var users = table.ConnectedUsers.Select(u => u.Username);
+            var users = table.ConnectedUsers.Select(u => u.Username)
+                .ToList();
             var response = new List<UserWithPoints>();
             foreach (var user in users.ToList())
             {
@@ -63,7 +86,10 @@ namespace TrivialWikiAPI.Trivia
 
         private Response GetOnlineUsers()
         {
-            var users = WikiTriviaHandler.connectedUsers.Select(d => d.Username).ToList();
+            var currentUser = Context.CurrentUser;
+            var users = WikiTriviaHandler.connectedUsers.Select(d => d.Username)
+                .Where(d => d != currentUser.UserName)
+                .ToList();
             return Response.AsJson(users);
         }
 
@@ -79,7 +105,7 @@ namespace TrivialWikiAPI.Trivia
             {
                 return HttpStatusCode.BadRequest;
             }
-            triviaManager.AddTriviaMessageToDatabase(sentResponse);
+            await triviaManager.AddTriviaMessageToDatabase(sentResponse);
             triviaCore.BroadcastMessage(sentResponse, table.TableName);
 
             if (sentResponse.MessageText.ToLower() == currentQuestion.Answer.ToLower())
@@ -87,7 +113,7 @@ namespace TrivialWikiAPI.Trivia
                 var pointsToAdd = GetAwardedPoints(table);
                 await userManager.AddPointsToUser(sentResponse.Sender, pointsToAdd);
 
-                SendCorrectAnswerResponse(sentResponse.Sender, pointsToAdd, table.TableName);
+                await SendCorrectAnswerResponse(sentResponse.Sender, pointsToAdd, table.TableName);
                 await triviaCore.BroadcastQuestion(table.TableName);
                 return HttpStatusCode.OK;
             }
@@ -96,17 +122,17 @@ namespace TrivialWikiAPI.Trivia
             {
                 table.HintCommandsCount += 1;
                 var hintNumber = table.HintCommandsCount;
-                triviaCore.BroadcastHint(hintNumber, table.TableName);
+                await triviaCore.BroadcastHint(hintNumber, table.TableName);
                 return HttpStatusCode.OK;
             }
 
             return HttpStatusCode.OK;
         }
 
-        private void SendCorrectAnswerResponse(string user, int receivedPoints, string tableName)
+        private async Task SendCorrectAnswerResponse(string user, int receivedPoints, string tableName)
         {
             var response = new TriviaMessageDto { Sender = "TriviaBot", MessageText = $"{user} gave the correct answer and received {receivedPoints} points!" };
-            triviaManager.AddTriviaMessageToDatabase(response);
+            await triviaManager.AddTriviaMessageToDatabase(response);
             triviaCore.BroadcastCorrectAnswer(response, tableName);
         }
 

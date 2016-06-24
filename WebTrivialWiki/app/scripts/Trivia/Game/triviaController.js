@@ -1,8 +1,8 @@
 ﻿(function (angular, _) {
     'use strict';
     angular.module('triviaModule')
-    .controller('triviaController', ['$scope', '$rootScope','triviaFactory', 'triviaService', 'persistService','$location',
-         function ($scope, $rootScope, triviaFactory, triviaService, persistService,$location) {
+    .controller('triviaController', ['$scope', '$rootScope','triviaFactory', 'triviaService', 'persistService','$window',
+         function ($scope, $rootScope, triviaFactory, triviaService, persistService, $window) {
         $scope.messages = [];
         $scope.triviaQuestions = [];
         $scope.text = "";
@@ -79,7 +79,8 @@
 
 
         $scope.joinTable = function (table) {
-            $location.url('/trivia/' + table.tableName);
+            $window.location.href = '#/trivia/' + table.tableName;
+            $window.location.reload();
         }
 
         $scope.senderIsTriviaBot = function(question) {
