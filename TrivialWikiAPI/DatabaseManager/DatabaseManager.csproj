@@ -42,8 +42,13 @@
       <HintPath>..\packages\Nancy.1.4.3\lib\net40\Nancy.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -55,14 +60,14 @@
   <ItemGroup>
     <Compile Include="Chat\MessageDto.cs" />
     <Compile Include="Chat\MessagesManager.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="DatabaseModels\Achievement.cs" />
     <Compile Include="DatabaseModels\ChatRoom.cs" />
     <Compile Include="DatabaseModels\DatabaseContext.cs" />
-    <Compile Include="DatabaseModels\Friend.cs" />
     <Compile Include="DatabaseModels\Match.cs" />
     <Compile Include="DatabaseModels\Message.cs" />
+    <Compile Include="DatabaseModels\Notification.cs" />
     <Compile Include="DatabaseModels\PrivateChat.cs" />
+    <Compile Include="DatabaseModels\ProposedTopic.cs" />
     <Compile Include="DatabaseModels\QuestionSet.cs" />
     <Compile Include="DatabaseModels\RelatedTopic.cs" />
     <Compile Include="DatabaseModels\Role.cs" />
@@ -70,11 +75,75 @@
     <Compile Include="DatabaseModels\Topic.cs" />
     <Compile Include="DatabaseModels\TriviaMessage.cs" />
     <Compile Include="DatabaseModels\User.cs" />
+    <Compile Include="Leaderboard\LeaderboardManager.cs" />
+    <Compile Include="Migrations\201606170917043_0015.cs" />
+    <Compile Include="Migrations\201606170917043_0015.Designer.cs">
+      <DependentUpon>201606170917043_0015.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606171138145_0016.cs" />
+    <Compile Include="Migrations\201606171138145_0016.Designer.cs">
+      <DependentUpon>201606171138145_0016.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606171453139_0017.cs" />
+    <Compile Include="Migrations\201606171453139_0017.Designer.cs">
+      <DependentUpon>201606171453139_0017.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606171453536_0018.cs" />
+    <Compile Include="Migrations\201606171453536_0018.Designer.cs">
+      <DependentUpon>201606171453536_0018.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606172052109_0019.cs" />
+    <Compile Include="Migrations\201606172052109_0019.Designer.cs">
+      <DependentUpon>201606172052109_0019.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606172149542_0020.cs" />
+    <Compile Include="Migrations\201606172149542_0020.Designer.cs">
+      <DependentUpon>201606172149542_0020.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606172152010_0021.cs" />
+    <Compile Include="Migrations\201606172152010_0021.Designer.cs">
+      <DependentUpon>201606172152010_0021.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606181426273_0022.cs" />
+    <Compile Include="Migrations\201606181426273_0022.Designer.cs">
+      <DependentUpon>201606181426273_0022.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606211652112_0023.cs" />
+    <Compile Include="Migrations\201606211652112_0023.Designer.cs">
+      <DependentUpon>201606211652112_0023.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606211943122_0024.cs" />
+    <Compile Include="Migrations\201606211943122_0024.Designer.cs">
+      <DependentUpon>201606211943122_0024.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606221746436_0025.cs" />
+    <Compile Include="Migrations\201606221746436_0025.Designer.cs">
+      <DependentUpon>201606221746436_0025.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606221829506_0026.cs" />
+    <Compile Include="Migrations\201606221829506_0026.Designer.cs">
+      <DependentUpon>201606221829506_0026.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606231551420_0028.cs" />
+    <Compile Include="Migrations\201606231551420_0028.Designer.cs">
+      <DependentUpon>201606231551420_0028.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Questions\QuestionsManager.cs" />
+    <Compile Include="Questions\UpdatedQuestion.cs" />
     <Compile Include="Roles\RolesManager.cs" />
+    <Compile Include="Topics\DetailedTopic.cs" />
+    <Compile Include="Topics\ProposedTopicDto.cs" />
+    <Compile Include="Topics\TopicQuestionDto.cs" />
+    <Compile Include="Topics\TopicsManager.cs" />
     <Compile Include="Trivia\TriviaManager.cs" />
     <Compile Include="Trivia\TriviaMessageDto.cs" />
+    <Compile Include="Leaderboard\LeaderboardResponse.cs" />
+    <Compile Include="Trivia\TriviaQuestionDto.cs" />
     <Compile Include="UserManagement\Login\LoginManager.cs" />
+    <Compile Include="UserManagement\Notifications\NotificationDto.cs" />
+    <Compile Include="UserManagement\Notifications\NotificationsManager.cs" />
     <Compile Include="UserManagement\UserManager.cs" />
     <Compile Include="UserManagement\UserResponse.cs" />
   </ItemGroup>
@@ -87,6 +156,47 @@
       <Project>{8B8B3F72-08EB-40B6-9C15-3D6D9BEE81F5}</Project>
       <Name>WikiTrivia.Utilities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201606170917043_0015.resx">
+      <DependentUpon>201606170917043_0015.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606171138145_0016.resx">
+      <DependentUpon>201606171138145_0016.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606171453139_0017.resx">
+      <DependentUpon>201606171453139_0017.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606171453536_0018.resx">
+      <DependentUpon>201606171453536_0018.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606172052109_0019.resx">
+      <DependentUpon>201606172052109_0019.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606172149542_0020.resx">
+      <DependentUpon>201606172149542_0020.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606172152010_0021.resx">
+      <DependentUpon>201606172152010_0021.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606181426273_0022.resx">
+      <DependentUpon>201606181426273_0022.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606211652112_0023.resx">
+      <DependentUpon>201606211652112_0023.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606211943122_0024.resx">
+      <DependentUpon>201606211943122_0024.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606221746436_0025.resx">
+      <DependentUpon>201606221746436_0025.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606221829506_0026.resx">
+      <DependentUpon>201606221829506_0026.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606231551420_0028.resx">
+      <DependentUpon>201606231551420_0028.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -18,14 +18,25 @@
                 </thead>
                 <tbody class="users-table-body">
                     <tr ng-repeat="user in users">
-                        <td>{{user.username}}</td>
-                        <td>{{user.email}}</td>
-                        <td>{{user.role}}</td>
-                        <td>{{user.rank}}</td>
-                        <td>{{user.points}}</td>
-                        <td class="table-action">
-                            <i class="fa fa-pencil fa-2x small-margin-right" aria-hidden="true" title="Update {{user.username}}" ng-click="updateUser(user)"></i>
-                            <i class="fa fa-times fa-2x" aria-hidden="true" title="Remove {{user.username}}" ng-click="removeUser(user)"></i>
+                        <td class="small-padding-top">{{user.username}}</td>
+                        <td class="small-padding-top">{{user.email}}</td>
+                        <td class="small-padding-top">{{user.role}}</td>
+                        <td class="small-padding-top">{{user.rank}}</td>
+                        <td class="small-padding-top">{{user.points}}</td>
+                        <td class="table-action no-padding-top">
+                            <md-button class="md-icon-button">
+                                <i class="fa fa-pencil fa-2x small-margin-right" aria-hidden="true" title="Update {{user.username}}" ng-click="updateUser(user)"></i>
+                                <md-tooltip class="mark-read-tooltip tooltip-margin-top" md-visible="false" md-direction="bottom">
+                                    Update user
+                                </md-tooltip>
+                            </md-button>
+
+                            <md-button class="md-icon-button">
+                                <i class="fa fa-times fa-2x" aria-hidden="true" title="Remove {{user.username}}" ng-click="removeUser(user)"></i>
+                                <md-tooltip class="mark-read-tooltip tooltip-margin-top" md-visible="false" md-direction="bottom">
+                                    Delete user
+                                </md-tooltip>
+                            </md-button>
                         </td>
                     </tr>
                 </tbody>

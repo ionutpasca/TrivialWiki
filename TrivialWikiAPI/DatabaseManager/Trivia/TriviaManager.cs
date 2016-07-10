@@ -29,25 +29,50 @@ namespace DatabaseManager.Trivia
         {
             using (var databaseContext = new DatabaseContext())
             {
-                var triviaMessage = new TriviaMessage()
+                var triviaMessage = new TriviaMessage
                 {
                     Sender = response.Sender,
                     MessageText = response.MessageText,
-                    Timestamp = DateTime.Now
+                    Timestamp = DateTime.Now,
                 };
                 databaseContext.TriviaMessages.Add(triviaMessage);
-                await CleanDatabase(databaseContext);
+                CleanDatabase(databaseContext);
                 await databaseContext.SaveChangesAsync();
             }
         }
 
-        private static async Task CleanDatabase(DatabaseContext databaseContext)
+        private static void CleanDatabase(DatabaseContext databaseContext)
         {
-            var messagesCount = await databaseContext.TriviaMessages.CountAsync();
+            var messagesCount = databaseContext.TriviaMessages.Count();
             if (messagesCount > 50)
             {
-                var messageToDelete = await databaseContext.TriviaMessages.FirstAsync();
+                var messageToDelete = databaseContext.TriviaMessages.First();
                 databaseContext.TriviaMessages.Remove(messageToDelete);
+            }
+        }
+
+        public async Task<TriviaQuestionDto> GetNewQuestion(string topic)
+        {
+            using (var databaseContext = new DatabaseContext())
+            {
+                var rand = new Random();
+                var noOfQuestions = await databaseContext.QuestionSets.CountAsync(t => t.Topic.Name == topic);
+                var questionsToSkip = rand.Next(noOfQuestions);
+
+
+                var x = databaseContext.QuestionSets
+                    .Where(t => t.Topic.Name == topic)
+                    .OrderBy(u => u.Id)
+                    .Skip(questionsToSkip)
+                    .Take(1)
+                    .Select(q => new TriviaQuestionDto
+                    {
+                        QuestionText = q.QuestionText,
+                        Answer = q.CorrectAnswer,
+                        Timestamp = DateTime.Now
+                    }).First();
+
+                return x;
             }
         }
     }

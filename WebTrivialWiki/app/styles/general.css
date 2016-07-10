@@ -25,13 +25,31 @@
 .medium-margin-bottom{
     margin-bottom:50px;
 }
+.medium-margin-top {
+    margin-top: 60px;
+}
 
 .medium-margin-left{
     margin-left:50px !important;
 }
 
+.medium-margin-right {
+    margin-right: 15px;
+}
 .default-cursor {
     cursor: default;
+}
+
+.pull-right {
+    float: right;
+}
+
+.no-padding-top {
+    padding-top: 0 !important;
+}
+
+.small-padding-top {
+    padding-top: 15px !important;
 }
 
 .pointer-cursor {
@@ -43,6 +61,22 @@
 
 .no-margin-top {
     margin-top: 0 !important;   
+}
+
+.negative-margin-top {
+    margin-top: -20px !important;
+}
+
+.red-color {
+    color: #cc1935;
+}
+
+.black-color {
+    color: black;
+}
+
+.self-align {
+    align-self: center;
 }
 
 .center-modal {
@@ -102,4 +136,114 @@
     margin-left: 46%;
     border: 2px solid #000 !important;
     border-bottom-color: transparent !important;
+}
+
+.main-page {
+    position: absolute;
+    margin-top: 15% !important;
+    width: 100%;
+    height: 60%;
+    background-repeat: no-repeat;
+    margin-top: 110px;
+    background-image: url('../images/pic.jpg');
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.md-tabs .md-tab.md-active {
+    color: black !important;
+}
+
+
+
+@keyframes spinner {
+    to {transform: rotate(360deg);}
+}
+ 
+@-webkit-keyframes spinner {
+    to {-webkit-transform: rotate(360deg);}
+}
+ 
+.spinner {
+    min-width: 30px;
+    min-height: 30px;
+}
+ 
+.spinner:before {
+    content: 'Loading…';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    margin-top: -10px;
+    margin-left: -10px;
+}
+ 
+.spinner:not(:required):before {
+    content: '';
+    border-radius: 50%;
+    border: 2px solid rgba(0, 0, 0, .3);
+    border-top-color: rgba(0, 0, 0, .6);
+    animation: spinner .6s linear infinite;
+    -webkit-animation: spinner .6s linear infinite;
+}
+
+.montserratFont {
+    font-family: Montserrat;
+}   
+
+.tooltip-margin-top {
+    margin-top: -6px;
+}
+
+md-input-container:not(.md-input-invalid).md-input-focused .md-input {
+    border-color: #ccc;
+}
+
+.gray-container {
+    position: absolute; 
+    height: 100%; 
+    width: 100%; 
+    background-color: #ededed
+}
+
+.gray-color {
+    color: #ccc;
+}
+
+.publicChat-container {
+    margin-top: 75px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    right: 0;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.no-connections-chat {
+    text-align: center; 
+    margin-top: 20px;
+}
+
+.no-connections-message {
+    font-size: 17px; 
+    font-weight: 300; 
+    display: block;
+}
+
+.invite-someone-message {
+    font-size: 13px; 
+    font-weight: 300; 
+    display: block;
+}
+
+.make-friends-button {
+    -ms-border-radius: 0;
+    border-radius: 0; 
+    margin-top: 20px; 
+    height: 40px;
 }

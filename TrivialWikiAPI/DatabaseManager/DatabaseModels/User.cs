@@ -11,6 +11,9 @@ namespace DatabaseManager.DatabaseModels
         {
             this.Achievements = new HashSet<Achievement>();
             this.Claims = new HashSet<string>();
+            this.Notifications = new List<Notification>();
+            this.ProposedTopics = new List<ProposedTopic>();
+            this.Friends = new List<User>();
         }
 
         [Key]
@@ -21,10 +24,13 @@ namespace DatabaseManager.DatabaseModels
         public Role Role { get; set; }
         public ICollection<Achievement> Achievements { get; set; }
         public IEnumerable<string> Claims { get; set; }
+        public ICollection<Notification> Notifications { get; set; }
+        public ICollection<ProposedTopic> ProposedTopics { get; set; }
         public int Points { get; set; }
         public int Rank { get; set; }
         public string SecurityToken { get; set; }
         public Statistics Statistic { get; set; }
         public DateTime AccountCreationDate { get; set; }
+        public ICollection<User> Friends { get; set; }
     }
 }

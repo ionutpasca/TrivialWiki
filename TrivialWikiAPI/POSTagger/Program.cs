@@ -1,32 +1,47 @@
-﻿using edu.stanford.nlp.ling;
-using edu.stanford.nlp.tagger.maxent;
-using java.io;
-using java.util;
-using WikipediaResourceFinder;
-using Console = System.Console;
+﻿using POSTagger.EndPoint;
+using System;
+using System.Configuration;
+using System.Threading.Tasks;
 
 namespace POSTagger
 {
     internal class Program
     {
-        private static void Main(string[] args)
+        private static readonly string wikipediaRawResultPath = ConfigurationManager.AppSettings["Tagger.WikipediaResult"];
+        private static readonly string cleanTextPath = ConfigurationManager.AppSettings["Tagger.CleanText"];
+        private static readonly string questionPath = ConfigurationManager.AppSettings["Tagger.Question"];
+
+        public static void Main(string[] args)
         {
-            var tagger = new MaxentTagger("wsj-0-18-bidirectional-nodistsim.tagger");
-
-            IResourceFinder res = new ResourceFinder();
-            res.GetWikipediaRawText("Faltceva");
-
-            var text = "A Part-Of-Speech Tagger (POS Tagger) is a piece of software that reads text"
-                       + "in some language and assigns parts of speech to each word (and other token),"
-                       + " such as noun, verb, adjective, etc., although generally computational "
-                       + "applications use more fine-grained POS tags like 'noun-plural'.";
-
-            var sentences = MaxentTagger.tokenizeText(new StringReader(text)).toArray();
-            foreach (ArrayList sentence in sentences)
+            Task.Run(async () =>
             {
-                var taggedSentence = tagger.tagSentence(sentence);
-                Console.WriteLine(Sentence.listToString(taggedSentence, false));
-            }
+                await MainAsync();
+            }).Wait();
+        }
+
+        private static async Task MainAsync()
+        {
+            //var res = new ResourceFinder();
+            //await res.GetWikipediaRawText("Superman", wikipediaRawResultPath);
+            //var text = File.ReadAllText(wikipediaRawResultPath);
+
+            //text = StringUtils.CleanText(text);
+
+            //using (var file = new StreamWriter(cleanTextPath))
+            //{
+            //    await file.WriteLineAsync(text);
+            //}
+
+            //tpr.ProcessText(text);
+
+            //Console.WriteLine(text.Length);
+            //Console.WriteLine("Process new data?");
+
+            var tagger = new Tagger();
+            const string topic = "Coca-Cola";
+            //await tagger.GetWikipediaResources(topic);
+            //await tagger.ProcessWikipediaText(topic);
+            tagger.GenerateQuestions(topic);
             Console.ReadLine();
         }
     }

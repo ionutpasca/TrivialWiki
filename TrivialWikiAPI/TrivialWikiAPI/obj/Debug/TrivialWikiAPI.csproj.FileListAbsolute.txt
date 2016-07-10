@@ -1,51 +1,3 @@
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.csprojResolveAssemblyReference.cache
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.Migrations.InitialCreate.resources
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.csproj.GenerateResource.Cache
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\ApplicationInsights.config
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\roslyn\csc.exe
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\roslyn\Microsoft.CodeAnalysis.dll
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\roslyn\Microsoft.CSharp.Core.targets
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\roslyn\Microsoft.VisualBasic.Core.targets
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\roslyn\System.Collections.Immutable.dll
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\roslyn\System.Reflection.Metadata.dll
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\roslyn\vbc.exe
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\roslyn\VBCSCompiler.exe
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\roslyn\VBCSCompiler.exe.config
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\TrivialWikiAPI.dll.config
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\TrivialWikiAPI.dll
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\TrivialWikiAPI.pdb
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\EntityFramework.dll
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\EntityFramework.SqlServer.dll
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.AI.Agent.Intercept.dll
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.AI.DependencyCollector.dll
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.AI.PerfCounterCollector.dll
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.AI.ServerTelemetryChannel.dll
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.AI.Web.dll
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.AI.WindowsServer.dll
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.ApplicationInsights.dll
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Nancy.Authentication.Stateless.dll
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Nancy.dll
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Nancy.Hosting.Aspnet.dll
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Newtonsoft.Json.dll
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\EntityFramework.xml
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\EntityFramework.SqlServer.xml
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.AI.DependencyCollector.xml
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.AI.ServerTelemetryChannel.xml
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.AI.Web.xml
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.AI.WindowsServer.xml
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.ApplicationInsights.xml
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Nancy.xml
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Nancy.Authentication.Stateless.xml
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Nancy.Hosting.Aspnet.xml
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Newtonsoft.Json.xml
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.dll
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.pdb
-D:\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.Migrations._0006.resources
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\ApplicationInsights.config
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\roslyn\csc.exe
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -62,17 +14,41 @@ F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\r
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\TrivialWikiAPI.dll.config
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\TrivialWikiAPI.dll
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\TrivialWikiAPI.pdb
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\DatabaseManager.dll
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\EntityFramework.dll
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\EntityFramework.SqlServer.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.AspNet.SignalR.Core.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.Owin.Cors.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.Owin.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.Owin.Host.SystemWeb.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.Owin.Security.dll
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Nancy.Authentication.Stateless.dll
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Nancy.dll
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Nancy.Hosting.Aspnet.dll
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Newtonsoft.Json.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Owin.dll
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\System.Collections.Immutable.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\System.Web.Cors.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\WikipediaResourceFinder.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\WikiTrivia.Core.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\WikiTrivia.TriviaCore.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\WikiTrivia.Utilities.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\DatabaseManager.pdb
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\WikipediaResourceFinder.pdb
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\WikiTrivia.Core.pdb
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\WikiTrivia.TriviaCore.pdb
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\WikiTrivia.Utilities.pdb
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\EntityFramework.xml
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\EntityFramework.SqlServer.xml
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.AspNet.SignalR.Core.xml
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.Owin.xml
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.Owin.Cors.xml
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.Owin.Host.SystemWeb.xml
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.Owin.Security.xml
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Nancy.xml
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Nancy.Authentication.Stateless.xml
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Nancy.Hosting.Aspnet.xml
@@ -81,33 +57,44 @@ F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\D
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.Migrations.InitialCreate.resources
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.Migrations._0006.resources
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.Migrations._0007.resources
-F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.csproj.GenerateResource.Cache
-F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.dll
-F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.pdb
-F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.AspNet.SignalR.Core.dll
-F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Owin.dll
-F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.Owin.Cors.dll
-F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.Owin.Security.dll
-F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\System.Web.Cors.dll
-F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.Owin.dll
-F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.AspNet.SignalR.Core.xml
-F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.Owin.Cors.xml
-F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.Owin.xml
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.Migrations._0008.resources
-F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
-F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.Owin.Host.SystemWeb.dll
-F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
-F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.Owin.Host.SystemWeb.xml
-F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\Microsoft.Owin.Security.xml
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.Migrations._0009.resources
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.Migrations._0010.resources
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.Migrations._0011.resources
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.Migrations._0012.resources
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.Migrations._0013.resources
 F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.Migrations._0014.resources
-F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\DatabaseManager.dll
-F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\WikiTrivia.Utilities.dll
-F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\DatabaseManager.pdb
-F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\WikiTrivia.Utilities.pdb
-F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\WikiTrivia.TriviaCore.dll
-F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\WikiTrivia.TriviaCore.pdb
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.csproj.GenerateResource.Cache
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\obj\Debug\TrivialWikiAPI.pdb
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\POSTagger.exe
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\IKVM.OpenJDK.Core.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\stanford-corenlp-3.6.0.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\WikiTrivia.QuestionGenerator.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\IKVM.Runtime.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\IKVM.OpenJDK.Util.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\IKVM.OpenJDK.Text.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\IKVM.OpenJDK.Security.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\slf4j-api.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\IKVM.OpenJDK.Misc.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\ejml-0.23.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\IKVM.OpenJDK.SwingAWT.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\IKVM.OpenJDK.XML.API.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\jollyday.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\xom.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\javax.json.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\joda-time.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\IKVM.OpenJDK.Jdbc.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\IKVM.OpenJDK.Media.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\IKVM.Runtime.JNI.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\IKVM.OpenJDK.Management.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\IKVM.OpenJDK.Naming.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\IKVM.OpenJDK.Beans.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\IKVM.AWT.WinForms.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\IKVM.OpenJDK.Charsets.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\IKVM.OpenJDK.XML.Bind.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\IKVM.OpenJDK.XML.Parse.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\IKVM.OpenJDK.Corba.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\IKVM.OpenJDK.Remoting.dll
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\POSTagger.pdb
+F:\Facultate\Semestrul 6\Licenta\TrivialWiki\TrivialWikiAPI\TrivialWikiAPI\bin\WikiTrivia.QuestionGenerator.pdb

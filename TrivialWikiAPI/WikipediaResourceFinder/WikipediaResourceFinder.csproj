@@ -51,6 +51,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -63,6 +64,11 @@
     <Compile Include="IResourceFinder.cs" />
     <Compile Include="Models\Page.cs" />
     <Compile Include="Models\Query.cs" />
+    <Compile Include="Models\Thumbnails\RootThumbnail.cs" />
+    <Compile Include="Models\Thumbnails\Thumbnail.cs" />
+    <Compile Include="Models\Thumbnails\Pageval.cs" />
+    <Compile Include="Models\Thumbnails\TPages.cs" />
+    <Compile Include="Models\Thumbnails\TQuery.cs" />
     <Compile Include="Models\WikipediaResponse.cs" />
     <Compile Include="ResourceFinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

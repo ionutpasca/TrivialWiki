@@ -5,6 +5,7 @@
     <title>WikiTrivia</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" href="images/wikipedia-icon.png" />
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
@@ -13,6 +14,10 @@
     <link rel="stylesheet" href="bower_components/hover/css/hover.css" />
     <link rel="stylesheet" href="bower_components/angular-growl-v2/build/angular-growl.css" />
     <link rel="stylesheet" href="bower_components/loaders.css/loaders.css" />
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="bower_components/angular-material-icons/angular-material-icons.css" />
+    <link rel="stylesheet" href="bower_components/angular-xeditable/dist/css/xeditable.css" />
+    <link rel="stylesheet" href="bower_components/angular-notification-icons/dist/angular-notification-icons.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -26,20 +31,19 @@
       <link rel="stylesheet" href="styles/trivia/chat.css"/>
       <link rel="stylesheet" href="styles/trivia/generalTrivia.css" />
       <link rel="stylesheet" href="styles/settings/settings.css"/>
+      <link href="styles/topics/topics.css" rel="stylesheet" />
+      <link href="styles/leaderboards/leaderboards.css" rel="stylesheet" />
     <!-- endbuild -->
   </head>
-  <body ng-app="webTrivialWikiApp">
+<body ng-app="webTrivialWikiApp" ng-cloak layout="column">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
     <div>
-        <!-- ReSharper disable Html.TagNotResolved -->
         <header-menu on-scroll></header-menu>
-        <!-- ReSharper restore Html.TagNotResolved -->
     </div>
 
-    <div style="width: 100% !important;">
+    <div style="width: 100% !important; background-color: #ededed;">
         <div class="views" ng-view=""></div>
     </div>
 
@@ -59,7 +63,6 @@
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/ng-facebook/ngFacebook.js"></script>
     <script src="bower_components/lodash/lodash.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
@@ -70,6 +73,12 @@
     <script src="bower_components/angular-img-cropper/dist/angular-img-cropper.min.js"></script>
     <script src="bower_components/angular-scroll-glue/src/scrollglue.js"></script>
     <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/angular-material-icons/angular-material-icons.min.js"></script>
+    <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
+    <script src="bower_components/angular-notification-icons/dist/angular-notification-icons.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -81,24 +90,44 @@
     <script src="scripts/app.js"></script>
     <script src="scripts/User/persistService.js"></script>
     <script src="scripts/User/userService.js"></script>
-    <script src="scripts/headerAnimationOnScroll.js"></script>
+    <script src="scripts/headerAnimationOnScroll.js"></script>    
+    <script src="scripts/notificationsFactory.js"></script>
     <script src="scripts/User/Login/loginService.js"></script>
     <script src="scripts/User/Login/loginController.js"></script>
     <script src="scripts/User/SignUp/signUpService.js"></script>
+    <script src="scripts/Leaderboard/leaderboardModule.js"></script>
+    <script src="scripts/Leaderboard/leaderboardService.js"></script>
+    <script src="scripts/Leaderboard/leaderboardController.js"></script>
     <script src="scripts/User/SignUp/signUpController.js"></script>
     <script src="scripts/config.js"></script>
-    <script src="scripts/Directives/header/headerDirective.js"></script>
-    <script src="scripts/Directives/header/headerController.js"></script>
+    <script src="scripts/directives/dropdownPreventClose.js"></script>
+    <script src="scripts/directives/header/headerService.js"></script>
+    <script src="scripts/directives/header/headerDirective.js"></script>
+    <script src="scripts/directives/header/headerController.js"></script>
+    <script src="scripts/directives/customHeight.js"></script>
     <script src="scripts/Admin/ManageUsers/manageUsersController.js"></script>
     <script src="scripts/Admin/ManageUsers/manageUsersService.js"></script>
     <script src="scripts/Admin/ManageUsers/Modals/confirmDeleteController.js"></script>
     <script src="scripts/Admin/ManageUsers/Modals/updateUserController.js"></script>
     <script src="scripts/Admin/ManageUsers/Modals/addNewUserController.js"></script>
+    <script src="scripts/Admin/ManageQuestions/manageQuestionsService.js"></script>
+    <script src="scripts/Admin/ManageQuestions/manageQuestionsController.js"></script>
+    <script src="scripts/Admin/ManageTopics/manageTopicsService.js"></script>
+    <script src="scripts/Admin/ManageTopics/manageTopicsController.js"></script>
+    <script src="scripts/Admin/stopEventDirective.js"></script>
     <script src="scripts/User/Settings/settingsController.js"></script>
     <script src="scripts/Trivia/signalRFactory.js"></script>
-    <script src="scripts/Trivia/Game/chatService.js"></script>
+    <script src="scripts/Trivia/Game/triviaService.js"></script>
+    <script src="scripts/Trivia/Game/triviaTableController.js"></script>
+    <script src="scripts/Trivia/Game/createTableController.js"></script>
     <script src="scripts/User/Avatar/changeAvatarController.js"></script>
     <script src="scripts/User/Avatar/changeAvatarService.js"></script>
     <script src="scripts/User/Settings/changePasswordController.js"></script>
-  </body>
+    <script src="scripts/Topics/topicsModule.js"></script>
+    <script src="scripts/Topics/topicsController.js"></script>
+    <script src="scripts/Topics/topicsService.js"></script>
+    <script src="scripts/Topics/proposeTopicController.js"></script>
+    <script src="scripts/directives/popoverTrigger.js"></script>
+    <script src="scripts/Trivia/Game/addFriendController.js"></script>
+</body>
 </html>

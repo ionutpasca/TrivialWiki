@@ -1,5 +1,6 @@
 ﻿using DatabaseManager.DatabaseModels;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
@@ -150,6 +151,7 @@ namespace DatabaseManager.UserManagement
             var usersWithRankDepreciated = await databaseContext.Users
                 .Where(u =>
                     u.Points >= user.Points
+                    && u.Rank < user.Rank
                     && u.Points < (user.Points + points)
                     && u.UserName != user.UserName
                 ).ToListAsync();
@@ -248,6 +250,41 @@ namespace DatabaseManager.UserManagement
             {
                 var user = await databaseContext.Users.SingleOrDefaultAsync(u => u.UserName == username);
                 return user.Points;
+            }
+        }
+
+        public int GetUserPointsSync(string username)
+        {
+            using (var databaseContext = new DatabaseContext())
+            {
+                var user = databaseContext.Users.SingleOrDefault(u => u.UserName == username);
+                return user?.Points ?? 0;
+            }
+        }
+
+        public List<string> GetAllFriendsForUser(string username)
+        {
+            using (var databaseContext = new DatabaseContext())
+            {
+                var user = databaseContext.Users.Include("Friends")
+                    .SingleOrDefault(u => u.UserName == username);
+                return user?.Friends.Select(f => f.UserName).ToList();
+            }
+        }
+
+        public async Task AddNewFriendToUser(string firstUser, string secondUser)
+        {
+            using (var databaseContext = new DatabaseContext())
+            {
+                var user1 = await databaseContext.Users.SingleOrDefaultAsync(u => u.UserName == firstUser);
+                var user2 = await databaseContext.Users.SingleOrDefaultAsync(u => u.UserName == secondUser);
+                if (user1.Friends.Any(u => u.UserName == secondUser))
+                {
+                    return;
+                }
+                user1.Friends.Add(user2);
+                user2.Friends.Add(user1);
+                await databaseContext.SaveChangesAsync();
             }
         }
     }

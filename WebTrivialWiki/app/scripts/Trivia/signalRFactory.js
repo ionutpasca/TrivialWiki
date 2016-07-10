@@ -1,42 +1,76 @@
 ﻿(function(angular, $) {
     'use strict';
 
-    angular.module('triviaModule').factory('chatFactory',['$rootScope', function($rootScope) {
-        return {
-            on: function(eventName, callback) {
-                var connection = $.hubConnection();
-                connection.url = 'http://localhost:4605/signalr';
-                var triviaMessageHubProxy = connection.createHubProxy('chatHub');
+    angular.module('triviaModule')
+    //.factory('chatFactory', ['$rootScope', function ($rootScope) {
+    //    function chatFactory() {
 
-                triviaMessageHubProxy.on(eventName,
-                    function() {
-                        var args = arguments;
-                        $rootScope.$apply(function () {
-                            callback.apply(triviaMessageHubProxy, args);
-                        });
-                    });
+    //        var connection = $.hubConnection();
+    //        connection.url = 'http://localhost:4605/signalr';
+    //        var proxy = connection.createHubProxy('chatHub');
 
-                connection.start().done(function() {});
-            }
-        };
-    }])
+    //        connection.start().done(function () { });
+
+    //        return {
+    //            on: function (eventName, callback) {
+    //                proxy.on(eventName,
+    //                function (result) {
+    //                    $rootScope.$apply(function () {
+    //                        if (callback) {
+    //                            callback(result);
+    //                        }
+    //                    });
+    //                });
+    //            },
+    //            invoke: function (methodName, callback) {
+    //                proxy.invoke(methodName)
+    //                .done(function (result) {
+    //                    $rootScope.$apply(function () {
+    //                        if (callback) {
+    //                            callback(result);
+    //                        }
+    //                    });
+    //                });
+    //            }
+    //        };
+    //    }
+
+    //    return chatFactory;
+    //}])
     .factory('triviaFactory',['$rootScope', function($rootScope) {
-        return {
-            on: function (eventName, callback) {
-                var connection = $.hubConnection();
-                connection.url = 'http://localhost:4605/signalr';
-                var triviaMessageHubProxy = connection.createHubProxy('triviaHub');
+        function triviaFactory(tableName) {
+            var connection = $.hubConnection();
+            connection.url = 'http://localhost:4605/signalr';
+            connection.qs = { 'tableName': tableName };
 
-                triviaMessageHubProxy.on(eventName,
-                    function () {
-                        var args = arguments;
+            var proxy = connection.createHubProxy('triviaHub');
+
+            connection.start().done(function () { });
+
+            return {
+                on: function (eventName, callback) {
+                    proxy.on(eventName,
+                    function (result) {
                         $rootScope.$apply(function () {
-                            callback.apply(triviaMessageHubProxy, args);
+                            if (callback) {
+                                callback(result);
+                            }
                         });
                     });
+                },
+                invoke: function (methodName, callback) {
+                    proxy.invoke(methodName)
+                    .done(function (result) {
+                        $rootScope.$apply(function () {
+                            if (callback) {
+                                callback(result);
+                            }
+                        });
+                    });
+                }
+            };
+        }
 
-                connection.start().done(function () { });
-            }
-        };
+        return triviaFactory;
     }]);
 }).call(this,this.angular, this.$);

@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WikiTrivia.Utilities", "Wik
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WikiTrivia.TriviaCore", "WikiTrivia.TriviaCore\WikiTrivia.TriviaCore.csproj", "{6026F073-FD4F-4761-8FDC-39EE1D7E9D64}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WikiTrivia.QuestionGenerator", "WikiTrivia.QuestionGenerator\WikiTrivia.QuestionGenerator.csproj", "{111C73E2-8FD4-4030-A565-31EF96406B20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WikiTrivia.Core", "WikiTrivia.Core\WikiTrivia.Core.csproj", "{F52BA459-49AA-4044-BFC5-E8607F5D8562}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{6026F073-FD4F-4761-8FDC-39EE1D7E9D64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6026F073-FD4F-4761-8FDC-39EE1D7E9D64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6026F073-FD4F-4761-8FDC-39EE1D7E9D64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{111C73E2-8FD4-4030-A565-31EF96406B20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{111C73E2-8FD4-4030-A565-31EF96406B20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{111C73E2-8FD4-4030-A565-31EF96406B20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{111C73E2-8FD4-4030-A565-31EF96406B20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F52BA459-49AA-4044-BFC5-E8607F5D8562}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F52BA459-49AA-4044-BFC5-E8607F5D8562}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F52BA459-49AA-4044-BFC5-E8607F5D8562}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F52BA459-49AA-4044-BFC5-E8607F5D8562}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

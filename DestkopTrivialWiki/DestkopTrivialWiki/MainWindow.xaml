@@ -5,9 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DestkopTrivialWiki"
         mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="300">
-    <Grid>
-        <TextBox x:Name="textBox" FontSize="50" HorizontalAlignment="Left" Height="130" Margin="70,90,0,0" TextWrapping="Wrap" Text="Hello" VerticalAlignment="Top" Width="180"/>
+        Title="MainWindow"
+        ResizeMode="NoResize"
+        >
+    <Page>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="7*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="9*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Grid.Column="0" Grid.RowSpan="2">
+                <StackPanel.Background>
+                    <RadialGradientBrush>
+                        <GradientStop Color="Black" Offset="1"/>
+                        <GradientStop Color="#FF8B2638"/>
+                    </RadialGradientBrush>
+                </StackPanel.Background>
+            </StackPanel>
+            <Image Margin="2" MinHeight="50" 
+                   Source="D:/Licenta/TrivialWiki/DestkopTrivialWiki/DestkopTrivialWiki/Images/wikipedia-icon2.png"
+                   Grid.Row="0"
+                   Grid.Column="0">
 
-    </Grid>
+            </Image>
+        </Grid>
+    </Page>
 </Window>

@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ejml-0.23, Version=0.23.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stanford.NLP.CoreNLP.3.6.0.0\lib\ejml-0.23.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="IKVM.AWT.WinForms, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
       <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.AWT.WinForms.dll</HintPath>
       <Private>True</Private>
@@ -145,15 +149,32 @@
       <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.Runtime.JNI.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="slf4j-api, Version=1.7.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Stanford.NLP.POSTagger.3.6.0.0\lib\slf4j-api.dll</HintPath>
+    <Reference Include="javax.json, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stanford.NLP.CoreNLP.3.6.0.0\lib\javax.json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="stanford-postagger-3.6.0, Version=3.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Stanford.NLP.POSTagger.3.6.0.0\lib\stanford-postagger-3.6.0.dll</HintPath>
+    <Reference Include="joda-time, Version=2.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stanford.NLP.CoreNLP.3.6.0.0\lib\joda-time.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="jollyday, Version=0.4.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stanford.NLP.CoreNLP.3.6.0.0\lib\jollyday.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="slf4j-api, Version=1.7.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stanford.NLP.CoreNLP.3.6.0.0\lib\slf4j-api.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="stanford-corenlp-3.6.0, Version=3.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stanford.NLP.CoreNLP.3.6.0.0\lib\stanford-corenlp-3.6.0.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -161,10 +182,25 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="xom, Version=1.2.10.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stanford.NLP.CoreNLP.3.6.0.0\lib\xom.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EndPoint\DirectoryManager.cs" />
+    <Compile Include="EndPoint\Tagger.cs" />
+    <Compile Include="Model\TopicQuestion.cs" />
+    <Compile Include="Model\WordInformation.cs" />
+    <Compile Include="Pattern.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Model\SentenceDependency.cs" />
+    <Compile Include="Model\SentenceInformation.cs" />
+    <Compile Include="SentenceProcessing.cs" />
+    <Compile Include="SentenceUtils.cs" />
+    <Compile Include="StringUtils.cs" />
+    <Compile Include="TextProcessing.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -175,6 +211,17 @@
       <Project>{400be6e8-5e92-4d67-847e-81e508ff582b}</Project>
       <Name>WikipediaResourceFinder</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WikiTrivia.QuestionGenerator\WikiTrivia.QuestionGenerator.csproj">
+      <Project>{111C73E2-8FD4-4030-A565-31EF96406B20}</Project>
+      <Name>WikiTrivia.QuestionGenerator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WikiTrivia.Utilities\WikiTrivia.Utilities.csproj">
+      <Project>{8B8B3F72-08EB-40B6-9C15-3D6D9BEE81F5}</Project>
+      <Name>WikiTrivia.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

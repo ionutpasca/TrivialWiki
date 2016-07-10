@@ -1,0 +1,49 @@
+﻿<!--<md-content ng-cloak style="top: 64px; width: 100%" layout-align="center">
+    <md-subheader class="md-warn" style="position: fixed; top: 64px; width: 100%; z-index: 1; opacity: 0.9; text-align: center; border-bottom: 1px solid #ccc;">
+        <div layout-xs="column" layout-align="center" layout="row">
+            <div flex-xs fex-gt-xs="50" layout="column">
+                <span style="font-family: Montserrat; font-size: 19px; color: #ccc; margin-top: 11px;">Available topics</span>
+            </div>
+            <div flex-xs fex-gt-xs="50" layout="column" style="width: 300px"></div>
+            <div flex-xs fex-gt-xs="50" layout="column" style="width: 300px">
+                <md-input-container class="montserratFont" style="margin: 0; margin-bottom: -15px; color: #ccc; border-color: #ccc;">
+                    <label style="color: #ccc; font-weight: 300; border-color: #ccc;">Search topic</label>
+                    <input ng-model="topic" class="montserratFont">
+                </md-input-container>
+            </div>
+        </div>
+    </md-subheader>
+</md-content>-->
+
+<div layout="row" style="position: absolute; height: 100%; width: 100%; margin-top: 90px;">
+    <div flex="5"></div>
+    <div flex="95">
+        <div class="md-padding medium-margin-top" layout-xs="column" layout-wrap layout="row">
+            <md-card  style="width: 280px;" ng-repeat="topic in topics" layout-wrap ng-show="topic.topicName !== 'Superman'">
+                <img ng-src="{{topic.thumbnailUrl}}" class="md-card-image" alt="Washed Out">
+                <md-card-actions layout="row" >
+                    <span class="montserratFont" style="float: left; font-size: 15px; align-self: center;">{{topic.topicName}}</span>
+                    <div flex></div>
+                    <md-button class="md-icon-button" aria-label="Favorite">
+                        <md-icon md-svg-icon="../images/icons/star.svg"></md-icon>
+                        <md-tooltip class="mark-read-tooltip tooltip-margin-top" md-visible="false" md-direction="bottom">
+                            Like topic
+                        </md-tooltip>
+                    </md-button>
+                </md-card-actions>
+            </md-card>
+        </div>
+    </div>
+    <md-button class="md-fab proposeTopic-button hvr-buzz-out" aria-label="Eat cake" ng-click="proposeNewTopic($event)">
+        <md-icon md-svg-src="../images/icons/plus.svg"></md-icon>
+        <md-tooltip class="mark-read-tooltip tooltip-margin-top" md-visible="false" md-direction="bottom">
+            Propose new topic
+        </md-tooltip>
+    </md-button>
+</div>
+
+
+
+
+
+

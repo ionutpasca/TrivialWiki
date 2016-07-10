@@ -1,0 +1,120 @@
+﻿<Page x:Class="DestkopTrivialWiki.GeneralGamePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DestkopTrivialWiki"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Background="#FF323232"
+      Title="GeneralGamePage"
+      xmlns:customText="clr-namespace:DestkopTrivialWiki">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2.5*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" 
+                Grid.Column="0"
+                Background="#FF323232"
+                Name="HomeBtn"
+                Click="HomeBtn_OnClick"
+                BorderBrush="#FF323232" Margin="0,0,0.0,0"
+             >
+            <Image Source="D:/Licenta/TrivialWiki/DestkopTrivialWiki/DestkopTrivialWiki/Images/wikipedia-icon2.png"
+               Margin="2" 
+               Height="100" 
+               Width="100"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center" 
+               MaxHeight="150" 
+               MaxWidth="150" 
+               MinWidth="50"
+               />
+        </Button>
+        <customText:OutlinedTextBlock 
+            HorizontalAlignment="Stretch" 
+            TextAlignment="Center"
+            Grid.Row="0" Grid.Column="1" 
+            Grid.ColumnSpan="3"
+            Margin="20" VerticalAlignment="Center"
+            Stroke="Black" StrokeThickness="2"
+            FontSize="30" Fill="#FFFFFDFD">
+            Best player : Johnny , Score : 50
+        </customText:OutlinedTextBlock>
+        <Grid Grid.Row="1" Grid.RowSpan="2" 
+              Grid.Column="0"  Grid.ColumnSpan="2" 
+              Margin="10,10,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.5*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="0.8*"/>
+            </Grid.RowDefinitions>
+            <TextBlock  HorizontalAlignment="Stretch" 
+                        VerticalAlignment="Center"
+                        TextAlignment="Center"
+                        Grid.Row="0" Grid.Column="0" 
+                        x:Name="QuestionText"
+                        TextWrapping="Wrap"
+                        Margin="20" 
+                        Foreground="#FFFFFDFD">
+                Question
+            </TextBlock>
+            <TextBox Grid.Row="1"
+                     Name="AnswerBox"
+                     HorizontalAlignment="Stretch"
+                     VerticalAlignment="Center"
+                     FontSize="20"
+                     Margin="20,0,20,0">
+            </TextBox>
+            <Button Name="AnswerBtn"
+                    Grid.Row="2"
+                    FontSize="20"
+                    VerticalAlignment="Center"
+                    Margin="20,0,20,0"
+                    Click="AnswerBtn_OnClick">
+                Answer
+            </Button>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="2"
+              Grid.RowSpan="2"
+              Margin="10,10,10,10" Grid.ColumnSpan="2">
+            <Grid.Resources>
+                
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="15*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <ListBox Grid.Row="0"
+                     Name="ChatBox"
+                     >
+            </ListBox>
+
+            <TextBox Grid.Row="1"
+                     Name="MessageSrc">
+            </TextBox>
+            <Button Name="SendBtn" 
+                    Grid.Row="2"
+                    HorizontalAlignment="Stretch"
+                    Padding="10,0,10,0"
+                    Click="SendBtn_OnClick">
+                Send
+            </Button>
+
+        </Grid>
+
+    </Grid>
+</Page>

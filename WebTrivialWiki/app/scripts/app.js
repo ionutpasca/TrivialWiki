@@ -1,10 +1,10 @@
-(function (angular) {
+(function (angular, $) {
     'use strict';
 
     App.module = angular.module('webTrivialWikiApp',
-        ['adminModule', 'triviaModule', 'ngAnimate', 'ngCookies', 'angularFileUpload',
-            'angular-img-cropper', 'ngResource', 'ngRoute', 'ngSanitize', 'ngTouch', 'ui.bootstrap',
-            'angular-growl'])
+        ['adminModule', 'triviaModule','topicsModule', 'ngAnimate', 'ngCookies', 'angularFileUpload','leaderboardModule',
+            'angular-img-cropper', 'ngResource', 'ngRoute', 'ngSanitize', 'ui.bootstrap',
+            'angular-growl', 'ngMaterial', 'angular-notification-icons'])
         .config(function ($routeProvider) {
             $routeProvider
             .when('/', {
@@ -25,7 +25,9 @@
 
     App.module.run(['$http', 'persistService', function ($http, persistService) {
         var authToken = persistService.readData('securityToken');
-        $http.defaults.headers.common.Authorization = authToken;
+        var user = persistService.readData('userName');
+        $http.defaults.headers.common.Authorization = authToken || '';
+        $.signalR.ajaxDefaults.headers = { User: user || '' };
     }]);
 
     App.module.factory('responseErrorInterceptor', ['$q', '$location', function ($q, $location) {
@@ -48,4 +50,4 @@
         growlProvider.globalTimeToLive(3000);
     }]);
 
-}).call(this, this.angular);
+}).call(this, this.angular, this.$);

@@ -1,4 +1,4 @@
-﻿(function (angular, $) {
+﻿(function (angular) {
     'use strict';
     angular.module('webTrivialWikiApp')
         .service('changeAvatarService', ['$http', '$q', function ($http, $q) {
@@ -21,4 +21,4 @@
             }
 
         }]);
-}).call(this, this.angular, this.$);
+}).call(this, this.angular);

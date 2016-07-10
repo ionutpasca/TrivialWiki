@@ -1,0 +1,35 @@
+﻿<div class="panel panel-default admin-panel">
+    <div class="spinner medium-margin-bottom" ng-show="topicsAreLoading"></div>
+    <div class="montserratFont" style="margin-top: 25px; margin-bottom: 20px;" ng-hide="topicsAreLoading">
+        <span style="font-size: 22px; margin-left: 25px;"> Proposed topics</span>
+    </div>
+    <div class="panel panel-default topics-panel" ng-hide="topicsAreLoading">
+        <md-content>
+            <md-list >
+                <md-list-item class="md-3-line processedTopic" style="min-height: 50px; height: 50px;" ng-repeat="topic in proposedTopics">
+
+                    <div style="width: 100%; height: 50px;">
+                        <div class="md-list-item-text pull-left" style="width: 35%; font-size: 17px; margin-left: 10px; margin-top: 10px;" stop-event="click">
+                            <span>{{topic.topicName}}</span>
+                        </div>
+                        <div class="pull-left" style="font-size: 17px; margin-top: 10px;">
+                            <span class="montserratFont" style="font-weight: 300;"> Proposed by: 
+                                <span class="red-color ">{{topic.userName}}</span>
+                            </span>
+                        </div>
+                        <div class="pull-right">
+                            <!--<button class="btn btn-default">Process</button>-->
+                            <md-button class="md-icon-button" aria-label="Favorite">
+                                <md-icon md-svg-icon="../images/icons/process.svg" ng-click="processTopic(topic)"></md-icon>
+                                <md-tooltip class="mark-read-tooltip tooltip-margin-top" md-visible="false" md-direction="bottom">
+                                    Process topic
+                                </md-tooltip>
+                            </md-button>
+                        </div>
+                    </div>
+                    <md-divider ng-if="!$last"></md-divider>
+                </md-list-item>
+            </md-list>
+        </md-content>
+    </div>
+</div>

@@ -1,68 +1,91 @@
 ﻿(function (angular, _) {
     'use strict';
     angular.module('triviaModule')
-    .controller('triviaController', ['$scope', '$rootScope',
-        'chatFactory', 'triviaFactory', 'chatService', 'persistService', function ($scope, $rootScope, chatFactory, triviaFactory, chatService, persistService) {
+    .controller('triviaController', ['$scope', '$rootScope','triviaFactory', 'triviaService', 'persistService','$window','$mdDialog',
+        function ($scope, $rootScope, triviaFactory, triviaService, persistService, $window, $mdDialog) {
         $scope.messages = [];
         $scope.triviaQuestions = [];
         $scope.text = "";
         $scope.skip = 0;
-
-        function init() {
-            chatService.getMessages($scope.skip)
+        $scope.responseToSend = '';
+    
+        function getActiveTables() {
+            triviaService.getTriviaTables()
             .then(function (data) {
-                _.each(data, function (message) {
-                    $scope.messages.push(message);
-                });
+                $scope.tables = data;
             });
         }
 
-        triviaFactory.on('addMessage', function (q) {
-            var question = {
-                sender: 'TriviaBot',
-                questionText: q.QuestionText
-            };
-            $scope.triviaQuestions.unshift(question);
-        });
+        function getFriends() {
+            triviaService.getUserFriends()
+            .then(function (data) {
+                    debugger;
+                $scope.friends = data;
+            });
+        }
 
-        chatFactory.on('addMessage', function (msg) {
-            var newMessage = {
-                userName: msg.UserName,
-                message: msg.Message
-            };
-            $scope.messages.unshift(newMessage);
-        });
-
-        chatFactory.on('onConnected', function (res) {
-            debugger;
-        });
-
-        chatFactory.on('someoneConnected', function (res) {
-            debugger;
-        });
-
-        triviaFactory.on('addResponse', function(msg) {
-            //var newResponse = {
-            //    userName: msg.UserName,
-            //    message: msg.Message
-            //};
-            debugger;
-        });
+        function init() {
+            getActiveTables();
+            getFriends();
+        }
 
         $scope.getCurrentUserName = function() {
             return persistService.readData('userName');
+        };
+
+        $scope.sendAnswer = function () {
+            if ($scope.responseToSend === '') {
+                return;
+            }
+            triviaService.sendAnswer($scope.responseToSend, $scope.getCurrentUserName())
+            .then(function() {
+                $scope.responseToSend = '';
+            });
         };
 
         $scope.sendMessage = function () {
             if ($scope.messageToSend === undefined || $scope.messageToSend === '') {
                 return;
             }
-            var UserName = $scope.getCurrentUserName();
-            var Message = $scope.messageToSend;
-            chatService.sendMessage({ Message, UserName})
+            
+            triviaService.sendMessage($scope.messageToSend, $scope.getCurrentUserName())
             .then(function () {
-                $scope.messageToSend = null;
+                $scope.messageToSend = '';
             });
+        };
+
+        $scope.createNewTable = function() {
+            $mdDialog.show({
+                clickOutsideToClose: true,
+                scope: $scope,
+                preserveScope: true,
+                templateUrl: 'scripts/Trivia/Game/createTable.html',
+                controller: 'createTableController'
+            });
+        };
+
+        $scope.addNewFriend = function() {
+            $mdDialog.show({
+                clickOutsideToClose: true,
+                scope: $scope,
+                preserveScope: true,
+                templateUrl: 'scripts/Trivia/Game/addFriend.html',
+                controller: 'addFriendController'
+            })
+            .finally(function() { getFriends(); } );
+        };
+
+        $scope.joinTable = function (table) {
+            $window.location.href = '#/trivia/' + table.tableName;
+            $window.location.reload();
+        };
+
+        $scope.senderIsTriviaBot = function(question) {
+            return question.Sender === 'TriviaBot';
+        };
+
+        $scope.tableIsPublic = function(table) {
+            return table.tableName === 'Public Table';
         };
 
         init();
