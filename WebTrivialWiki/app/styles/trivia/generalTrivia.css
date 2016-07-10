@@ -16,93 +16,114 @@
 }
 
 .triviaQuestions {
-    position: relative;
-    height: 88%; 
-    overflow: auto;
-    padding-top: 10px;
-    padding-bottom: 10px;
+	position: relative;
+	height: 88%; 
+	overflow: auto;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 .triviaQuestions::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
-    background-color: white;
+	-webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
+	background-color: white;
 }
 
 .triviaQuestions::-webkit-scrollbar {
-    width: 5px;
+	width: 5px;
 }
 
 .triviaQuestions::-webkit-scrollbar-thumb {
-    background-color: #ccc;
-    -ms-border-radius: 4px;
-    border-radius: 4px;
+	background-color: #ccc;
+	-ms-border-radius: 4px;
+	border-radius: 4px;
 }
 
 .panel-shadow {
-    -webkit-box-shadow: 1px 1px 12px  rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow: 1px 1px 12px  rgba(0, 0, 0, 0.1);
 	-ms-box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.1);
 	box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.1);
 }
 
 .hvr-outline-out:before {
-    border: red solid 4px;
+	border: red solid 4px;
 }
 
 .public-table:before {
-    background-image: url(../../../images/universe.jpg);
+	background-image: url(../../../images/universe.jpg);
 
    -webkit-filter: blur(5px);
-    -moz-filter: blur(5px);
-    -o-filter: blur(5px);
-    -ms-filter: blur(5px);
-    filter: blur(5px);
+	-moz-filter: blur(5px);
+	-o-filter: blur(5px);
+	-ms-filter: blur(5px);
+	filter: blur(5px);
 }
 
 .public-table {
-    width: 370px; 
+	width: 370px; 
 }
 
 .triviaTableContainer {
-    position: absolute; 
-    height: 100%; 
-    width: 100%; 
-    background-color: #ededed
+	position: absolute; 
+	height: 100%; 
+	width: 100%; 
+	background-color: #ededed
 }
 
 .triviaTablePanel {
-    position: relative; 
-    margin-top: 75px; 
-    margin-bottom: 20px; 
-    margin-left: 20px;
+	position: relative; 
+	margin-top: 75px; 
+	margin-bottom: 20px; 
+	margin-left: 20px;
 }
 
 .triviaUser-image {
-    max-height: 40px;
-    max-width: 40px;
-    -ms-border-radius: 50%;
-    border-radius: 50%;
+	max-height: 40px;
+	max-width: 40px;
+	-ms-border-radius: 50%;
+	border-radius: 50%;
 }
 
 
 .newQuestion-progress {
-    position: absolute; 
-    margin-top: 64px; 
-    z-index: 1;
+	position: absolute; 
+	margin-top: 64px; 
+	z-index: 1;
 }
 
 .tableUsers-spinner {   
-    position: absolute;
-     left: 40%; 
-     top: 20px;
+	position: absolute;
+	 left: 40%; 
+	 top: 20px;
 }
 
 
 md-progress-linear.md-default-theme .md-bar, 
 md-progress-linear .md-bar {
-    background-color: #DD425A;
+	background-color: #DD425A;
 }
 
 md-progress-linear.md-default-theme .md-container, 
 md-progress-linear .md-container {
-    background-color: #F8C5CD;
+	background-color: #F8C5CD;
+}
+
+.createTable-button {
+	position: absolute; 
+	bottom: 20px; 
+	right: 20px;
+}
+
+.md-button.md-fab.createTable-button {
+	background-color: #cc1935;
+}
+
+.md-button.md-fab.createTable-button:hover {
+	background-color: #DD425A;
+}
+
+.friends-list {
+    width: 100%; 
+    left: 0; 
+    padding-left: 7px; 
+    margin-top: 10px;
 }

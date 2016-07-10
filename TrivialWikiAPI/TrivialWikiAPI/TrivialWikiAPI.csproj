@@ -238,6 +238,10 @@
       <Project>{e0a4d38b-cadc-49b1-bb3d-7990d8a97552}</Project>
       <Name>DatabaseManager</Name>
     </ProjectReference>
+    <ProjectReference Include="..\POSTagger\POSTagger.csproj">
+      <Project>{A6709F99-EE06-4F3F-B25F-3451621039C2}</Project>
+      <Name>POSTagger</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WikipediaResourceFinder\WikipediaResourceFinder.csproj">
       <Project>{400BE6E8-5E92-4D67-847E-81E508FF582B}</Project>
       <Name>WikipediaResourceFinder</Name>

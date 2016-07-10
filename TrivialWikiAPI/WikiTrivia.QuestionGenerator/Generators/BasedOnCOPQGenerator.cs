@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Text.RegularExpressions;
 using WikiTrivia.QuestionGenerator.Model;
 
 namespace WikiTrivia.QuestionGenerator.Generators
@@ -17,7 +18,7 @@ namespace WikiTrivia.QuestionGenerator.Generators
             {
                 return null;
             }
-            var answer = AnswerGenerator.GenerateAnswer(sentence, sentenceCOP);
+            var answer = AnswerGenerator.GenerateAnswer(sentence, sentenceCOP, subjectWord:subjectWord);
 
             var firstWord = sentence.Words.First();
             string question;
@@ -25,6 +26,11 @@ namespace WikiTrivia.QuestionGenerator.Generators
             if (baseAnswer.NamedEntityRecognition.ToLower() == "person" && copVerbe.Lemma == "be")
             {
                 return TreatCaseWhereAnswerIsPerson(sentence, firstWord, copVerbe, answer);
+            }
+
+            if (subjectWord.PartOfSpeech.ToLower() == "nn")
+            {
+                return TreatCaseWhereAnswerIsObject(sentence, answer);
             }
 
             if (copVerbe != null && copVerbe.Lemma == "be")
@@ -85,6 +91,19 @@ namespace WikiTrivia.QuestionGenerator.Generators
                 .Replace(copVerbe.Word, "")
                 .Replace(answer, "");
             string question = $"Who {copVerbe.Word} {questionText}";
+            return new GeneratedQuestion { Answer = answer, Question = question };
+        }
+
+        private static GeneratedQuestion TreatCaseWhereAnswerIsObject(SentenceInformationDto sentence, string answer)
+        {
+            var answerWords = answer.Split(' ');
+            string questionText = null;
+            foreach (var answerWord in answerWords)
+            {
+                questionText = sentence.SentenceText
+                .Replace(answerWord, "");
+            }
+            string question = $"What {questionText}";
             return new GeneratedQuestion { Answer = answer, Question = question };
         }
     }

@@ -1,6 +1,6 @@
-﻿<div layout="row" style="position: absolute; height: 100%; width: 100%; background-color: #ededed">
+﻿<div layout="row" class="gray-container" >
     <div flex="80" class="panel-shadow montserratFont" style="position: relative; margin-top: 75px; margin-bottom: 20px; margin-left: 20px;">
-        <div ng-repeat="table in tables" layout-xs="column" layout-wrap layout="row" style="position: absolute;">
+        <div ng-repeat="table in tables" layout-xs="column" layout-wrap layout="row" style="float: left">
             <md-card class="public-table" md-theme="{{ showDarkTheme ? 'dark-purple' : 'default' }}" md-theme-watch style="">
                 <md-card-title>
                     <md-card-title-text style="z-index: 1;">
@@ -9,14 +9,13 @@
                         <span class="md-subhead small-margin-left" ng-repeat="topic in table.topics">{{topic}}</span>
                     </md-card-title-text>
 
-                    <md-card-title-media style="width: 37%;">
+                    <md-card-title-media style="width: 37%; height: 30px;" ng-show="tableIsPublic(table)">
                         <div class="md-media-sm card-media" style="width: 100%; height: 100%;">
-                            <img src="../../../images/know-it-all.png"/>
+                            <img src="../../../images/know-it-all.png" style="padding-right: 10px;"/>
                         </div>
                     </md-card-title-media>
                 </md-card-title>
                 <md-card-actions layout="row" layout-align="end center">
-                    <span class="small-margin-left" style="font-size: 10px; font-weight: 300;">dsada</span>
                     <div flex></div>
                     <md-button ng-click="joinTable(table)">Join</md-button>
                 </md-card-actions>
@@ -24,7 +23,7 @@
         </div>
 
 
-        <md-button class="md-fab proposeTopic-button hvr-grow-shadow" aria-label="Eat cake" style="position: absolute; bottom: 20px; right: 20px;">
+        <md-button class="md-fab createTable-button  hvr-grow-shadow" aria-label="Eat cake" ng-click="createNewTable($event)">
             <md-icon md-svg-src="../images/icons/plus.svg"></md-icon>
             <md-tooltip class="mark-read-tooltip tooltip-margin-top" md-visible="false" md-direction="bottom">
                 Create new table
@@ -32,15 +31,31 @@
         </md-button>
     </div>
 
-    <div flex="20" class="panel-shadow montserratFont" style="margin-top: 75px; margin-bottom: 20px; margin-left: 20px; right: 0;" layout-align="center">
+    <div flex="20" class="panel-shadow montserratFont publicChat-container" layout-align="center">
         <div class="small-margin-top small-margin-left">
-            <span style="color: #ccc;">Online friends</span>
+            <span class="gray-color">Friends</span>
+            <span class="pull-right" style="width: 25px; height: 25px; margin-right: 10px;">
+                <img src="../../../images/icons/addFriend.svg" ng-click="addNewFriend()"/>
+                <md-tooltip class="mark-read-tooltip tooltip-margin-top" md-visible="false" md-direction="bottom">
+                    Add new friend
+                </md-tooltip>
+            </span>
         </div>
         <md-divider class="small-margin-top"></md-divider>
-        <div class="small-margin-left small-margin-right" style="text-align: center; margin-top: 20px;">
-            <span style="font-size: 17px; font-weight: 300; display: block;">Your account doesn't have any connections yet</span>
-            <span class="small-margin-top" style="font-size: 13px; font-weight: 300; display: block;">You can invite someone from the main page</span>
-            <button class="btn btn-success hvr-grow-shadow" style="border-radius: 0; margin-top: 20px; height: 40px;"> Make some new friends</button>
+        <div class="friends-list" ng-repeat="friend in friends" flex="100" ng-show="friends.length !== 0">
+            <div style="position: relative;">
+                <span style="width: 30%;">
+                    <img class="triviaUser-image" ng-src="http://localhost:4605/avatar/{{friend}}" />
+                    <span style="font-family: montserrat">{{friend}}</span>
+                </span>
+                <md-divider class="notifications-divider" ng-if="!$last" style="margin-right: 7px;"></md-divider>
+            </div>
+        </div>
+
+        <div class="small-margin-left small-margin-right no-connections-chat" ng-show="friends.length === 0">
+            <span class="no-connections-message">Your account doesn't have any connections yet</span>
+            <span class="small-margin-top invite-someone-message">You can invite someone from the main page</span>
+            <button class="btn btn-success hvr-grow-shadow make-friends-button" ng-click="addNewFriend()"> Add new friends</button>
         </div>
     </div>
 

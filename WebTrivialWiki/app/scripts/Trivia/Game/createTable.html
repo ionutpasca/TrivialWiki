@@ -1,0 +1,35 @@
+﻿<md-dialog ng-cloak>
+    <form>
+        <md-dialog-content class="no-padding-top">
+            <div class="md-dialog-content">
+                <h4 class="montserratFont no-margin-top">Create new table</h4>
+                <md-input-container class="montserratFont proposeTopic-input">
+                    <label class="proposeTopic-label">Table name</label>
+                    <input ng-model="newTableName" class="montserratFont">
+                </md-input-container>
+
+                <md-autocomplete md-selected-item="selectedItem"
+                                 md-search-text="searchText"
+                                 md-items="item in querySearch(searchText)"
+                                 md-item-text="item.display"
+                                 md-min-length="0"
+                                 placeholder="Choose a topic" class="small-margin-top">
+                    <md-item-template>
+                        <span md-highlight-text="searchText" md-highlight-flags="^i">{{item}}</span>
+                    </md-item-template>
+                    <md-not-found>
+                        No topics matching "{{searchText}}" were found.
+                    </md-not-found>
+                </md-autocomplete>
+
+                <div class="spinner proposeTopic-spinner small-margin-top" ng-show="tableIsSaving"></div>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button class="md-raised" style="margin-right:20px; text-transform: none;" ng-click="createTable()">
+                Create table
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

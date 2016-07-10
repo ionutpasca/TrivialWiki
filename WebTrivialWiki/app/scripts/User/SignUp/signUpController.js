@@ -1,8 +1,8 @@
-﻿(function () {
+﻿(function (_) {
     'use strict';
 
-    App.module.controller('signUpController', ['$scope', 'signUpService', '$location', '$uibModalInstance',
-                function ($scope, signUpService, $location, $modalInstance) {
+    App.module.controller('signUpController', ['$scope', 'signUpService','persistService', 'loginService', '$location', '$uibModalStack','$window',
+                function ($scope, signUpService, persistService,loginService, $location, $modalInstance, $window) {
 
         $scope.passwordsDontMatch = function () {
             var pass = $scope.password ? $scope.password : '';
@@ -14,6 +14,7 @@
         };
 
         $scope.registerNewAccount = function () {
+            $scope.accountIsSaving = true;
             if ($scope.passwordsDontMatch()) {
                 return;
             }
@@ -22,12 +23,28 @@
                 Password: $scope.password,
                 Email: $scope.email,
             };
+            var params = {
+                Username: $scope.username,
+                Password: $scope.password
+            };
             signUpService.registerNewUser(newUser)
             .then(function () {
-                $location.path('/login');
+                loginService.login(params)
+                .then(function(data) {
+                    $modalInstance.dismissAll();
+
+                    _.map(data, function (value, key) {
+                        persistService.storeData(key, value);
+                    });
+                    persistService.storeData('isLoggedIn', true);
+                    $modalInstance.dismissAll();
+                    $scope.accountIsSaving = false;
+
+                    $window.location.reload();
+                });
             });
         };
 
     }]);
 
-}).call(this);
+}).call(this, this._);

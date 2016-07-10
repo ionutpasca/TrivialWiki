@@ -34,8 +34,11 @@ namespace WikipediaResourceFinder
                 var query = "https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&pithumbsize=300&titles=" + topic;
                 var response = client.DownloadString(new Uri(query));
                 var result = JsonConvert.DeserializeObject<RootThumbnail>(response);
-
-                return result.Query.Pages.FirstOrDefault().Value.Thumbnail.Source;
+                if (result.Query.Pages.FirstOrDefault().Value.Thumbnail != null)
+                {
+                    return result.Query.Pages.FirstOrDefault().Value.Thumbnail.Source;
+                }
+                return null;
             }
         }
 

@@ -1,0 +1,21 @@
+﻿<md-dialog ng-cloak>
+    <form>
+        <md-dialog-content class="no-padding-top">
+            <div class="md-dialog-content">
+                <h4 class="montserratFont no-margin-top">Add new friend</h4>
+                <md-input-container class="montserratFont proposeTopic-input">
+                    <label class="proposeTopic-label">User name</label>
+                    <input ng-model="friendName" class="montserratFont">
+                </md-input-container>
+
+                <div class="spinner proposeTopic-spinner small-margin-top" ng-show="requestIsPending"></div>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button class="md-raised" style="margin-right:20px; text-transform: none;" ng-click="addFriend()">
+                Add friend
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

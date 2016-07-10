@@ -7,7 +7,7 @@
             <span class="small-margin-top" style="text-align: center; font-size: 16px;">Connected users</span>
         </div>
         <div style="position: absolute; left: 0; width: 100%; text-align: left;">
-            <div ng-repeat="user in connectedUsers" flex="100" style="width: 100%; left: 0; padding-left: 7px; margin-top: 10px;">
+            <div ng-repeat="user in connectedUsers | orderBy: 'Points' : true" flex="100" style="width: 100%; left: 0; padding-left: 7px; margin-top: 10px;">
                 <div style="position: relative;">
                     <span style="width: 30%;">
                         <img class="triviaUser-image" ng-src="http://localhost:4605/avatar/{{user.Username}}" />
@@ -15,7 +15,7 @@
                             {{user.Username}}
                         </md-tooltip>
                     </span>
-                    <span style="clear: both;">{{user.Points}} points</span>
+                    <span style="clear: both;" ng-class="{'red-color':isCurrentUser(user.Username)}">{{user.Points}} points</span>
                     <md-divider class="notifications-divider" ng-if="!$last" style="margin-right: 7px;"></md-divider>
                 </div>
             </div>
@@ -94,16 +94,31 @@
         </div>
     </div>
 
-
-    <div flex="20" class="panel-shadow montserratFont" style="margin-top: 75px; margin-bottom: 20px; margin-left: 20px; right: 0;" layout-align="center">
+    <div flex="20" class="panel-shadow montserratFont publicChat-container" layout-align="center">
         <div class="small-margin-top small-margin-left">
-            <span style="color: #ccc;">Online friends</span>
+            <span class="gray-color">Friends</span>
+            <span class="pull-right" style="width: 25px; height: 25px; margin-right: 10px;">
+                <img src="../../../images/icons/addFriend.svg" ng-click="addNewFriend()" />
+                <md-tooltip class="mark-read-tooltip tooltip-margin-top" md-visible="false" md-direction="bottom">
+                    Add new friend
+                </md-tooltip>
+            </span>
         </div>
         <md-divider class="small-margin-top"></md-divider>
-        <div class="small-margin-left small-margin-right" style="text-align: center; margin-top: 20px;">
-            <span style="font-size: 17px; font-weight: 300; display: block;">Your account doesn't have any connections yet</span>
-            <span class="small-margin-top" style="font-size: 13px; font-weight: 300; display: block;">You can invite someone from the main page</span>
-            <button class="btn btn-success hvr-grow-shadow" style="border-radius: 0; margin-top: 20px; height: 40px;"> Make some new friends</button>
+        <div class="friends-list" ng-repeat="friend in friends" flex="100" ng-show="friends.length !== 0">
+            <div style="position: relative;">
+                <span style="width: 30%;">
+                    <img class="triviaUser-image" ng-src="http://localhost:4605/avatar/{{friend}}" />
+                    <span style="font-family: montserrat">{{friend}}</span>
+                </span>
+                <md-divider class="notifications-divider" ng-if="!$last" style="margin-right: 7px;"></md-divider>
+            </div>
+        </div>
+        <md-divider class="small-margin-top"></md-divider>
+        <div class="small-margin-left small-margin-right no-connections-chat" ng-show="friends.length === 0">
+            <span class="no-connections-message">Your account doesn't have any connections yet</span>
+            <span class="small-margin-top invite-someone-message">You can invite someone from the main page</span>
+            <button class="btn btn-success hvr-grow-shadow make-friends-button" ng-click="addNewFriend()"> Make some new friends</button>
         </div>
     </div>
 </div>

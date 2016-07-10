@@ -111,7 +111,7 @@ namespace WikiTrivia.TriviaCore
             context.Clients.Client(clientId).SendConnectedUsers(result);
         }
 
-        private static async Task InitializeCurrentTriviaQuestion(TriviaTable table, string topic)
+        public async Task InitializeCurrentTriviaQuestion(TriviaTable table, string topic)
         {
             table.CurrentTriviaQuestion = await triviaManager.GetNewQuestion(topic);
             table.HintCommandsCount = 0;
@@ -195,6 +195,31 @@ namespace WikiTrivia.TriviaCore
             var clients = GetConnectedUsersWithoutSpecificOne(username, tableName);
             var context = GlobalHost.ConnectionManager.GetHubContext<TriviaHub>();
             context.Clients.Clients(clients).NewUserConnected(res);
+        }
+
+        public void BroadcastUserDisconnected(string username, string tableName)
+        {
+            var clients = GetConnectedUsersWithoutSpecificOne(username, tableName);
+            if (clients.Count == 0 && tableName != "Public Table")
+            {
+                RemoveTable(tableName);
+            }
+            var context = GlobalHost.ConnectionManager.GetHubContext<TriviaHub>();
+            context.Clients.Clients(clients).UserDisconnected(username);
+        }
+
+        private static void RemoveTable(string tableName)
+        {
+            var table = TriviaUserHandler.TriviaTables.Single(t => t.TableName == tableName);
+            TriviaUserHandler.TriviaTables.Remove(table);
+        }
+
+        public void BroadcastPointsReceived(string username, string tableName, int numberOfPoints)
+        {
+            var clients = GetConnectedUsersForTable(tableName);
+            var context = GlobalHost.ConnectionManager.GetHubContext<TriviaHub>();
+            var response = new UserWithPoints { Username = username, Points = numberOfPoints };
+            context.Clients.Clients(clients).PointsReceived(response);
         }
     }
 }

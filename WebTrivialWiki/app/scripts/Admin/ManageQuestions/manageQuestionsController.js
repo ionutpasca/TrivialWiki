@@ -38,7 +38,7 @@
             $scope.toastPosition = angular.extend({}, toastPosition);
 
             $scope.topicsAreLoading = true;
-            questionsService.getTopicsWithoutQuestions()
+            questionsService.getTopicNames()
             .then(function (data) {
                 $scope.inactiveTopics = data;
                 $scope.topicsAreLoading = false;

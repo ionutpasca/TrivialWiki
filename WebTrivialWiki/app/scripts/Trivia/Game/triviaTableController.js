@@ -1,8 +1,8 @@
 ﻿(function (angular, _) {
     'use strict';
     angular.module('triviaModule')
-    .controller('triviaTableController', ['$scope', 'triviaFactory', 'triviaService', '$routeParams', 'persistService', '$interval', '$window',
-        function ($scope, triviaFactory, triviaService, $routeParams, persistService, $interval, $window) {
+    .controller('triviaTableController', ['$scope', 'triviaFactory','$mdDialog', 'triviaService', '$routeParams', 'persistService', '$interval', '$window',
+        function ($scope, triviaFactory,$mdDialog, triviaService, $routeParams, persistService, $interval, $window) {
 
         $scope.tableName = $routeParams.tableName;
         var triviaProxy = triviaFactory($scope.tableName);
@@ -12,6 +12,13 @@
                 .then(function(data) {
                     $scope.tableTopic = data;
                 });
+        }
+
+        function getFriends() {
+            triviaService.getUserFriends()
+            .then(function (data) {
+                $scope.friends = data;
+            });
         }
 
         function getUsersFromTable(tableName) {
@@ -66,6 +73,7 @@
             getUsersFromTable($scope.tableName);
             getQuestion($scope.tableName);
             resetMessages();
+            getFriends();
         }
         init();
 
@@ -104,8 +112,32 @@
             $scope.newQuestionIsLoading = true;
         });
 
+        triviaProxy.on('userDisconnected', function (res) {
+            $scope.connectedUsers = _.remove($scope.connectedUsers, function (user) {
+                return user.Username !== res;
+            });
+        });
+
+        triviaProxy.on('pointsReceived', function (res) {
+            var userToAddPoints = _.find($scope.connectedUsers, function (user) {
+                return user.Username === res.Username;
+            });
+            userToAddPoints.Points = userToAddPoints.Points + res.Points;
+        });
+
         $scope.getCurrentUserName = function () {
             return persistService.readData('userName');
+        };
+
+        $scope.addNewFriend = function () {
+            $mdDialog.show({
+                clickOutsideToClose: true,
+                scope: $scope,
+                preserveScope: true,
+                templateUrl: 'scripts/Trivia/Game/addFriend.html',
+                controller: 'addFriendController'
+            })
+            .finally(function () { getFriends(); });
         };
 
         $scope.sendAnswer = function () {
@@ -131,12 +163,16 @@
 
         $scope.senderIsTriviaBot = function (message) {
             return message.Sender === 'TriviaBot';
-        }
+        };
 
         $scope.leaveTable= function() {
             $window.location.href = '#/trivia';
             $window.location.reload();
-        }
+        };
+
+        $scope.isCurrentUser = function (username) {
+            return persistService.readData('userName') === username;
+        };
 
         $scope.$watch('connectedUsers', function(connUsers) {
             if (connUsers.length > 0) {

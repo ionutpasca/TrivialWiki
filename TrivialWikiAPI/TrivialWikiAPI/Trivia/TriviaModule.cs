@@ -32,6 +32,15 @@ namespace TrivialWikiAPI.Trivia
             Get["/getNextQuestion", true] = async (param, p) => await GetNextQuestion();
 
             Post["/addResponse", true] = async (param, p) => await AddResponseToDatabase();
+            Post["/createTable/{tableName}/{topic}", true] = async (param, p) => await CreateNewTable(param.tableName, param.topic);
+        }
+
+        private async Task<Response> CreateNewTable(string tableName, string topic)
+        {
+            var newTable = new TriviaTable { TableName = tableName, Topic = topic };
+            TriviaUserHandler.TriviaTables.Add(newTable);
+            await triviaCore.InitializeCurrentTriviaQuestion(newTable, topic);
+            return HttpStatusCode.OK;
         }
 
         private async Task<Response> GetNextQuestion()
@@ -114,6 +123,8 @@ namespace TrivialWikiAPI.Trivia
                 await userManager.AddPointsToUser(sentResponse.Sender, pointsToAdd);
 
                 await SendCorrectAnswerResponse(sentResponse.Sender, pointsToAdd, table.TableName);
+
+                triviaCore.BroadcastPointsReceived(currentUser.UserName, table.TableName, pointsToAdd);
                 await triviaCore.BroadcastQuestion(table.TableName);
                 return HttpStatusCode.OK;
             }

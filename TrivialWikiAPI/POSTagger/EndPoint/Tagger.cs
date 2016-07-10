@@ -12,97 +12,105 @@ using WikiTrivia.Utilities;
 
 namespace POSTagger.EndPoint
 {
-    public sealed class Tagger
-    {
-        public async Task GetWikipediaResources(string topic)
-        {
-            var res = new ResourceFinder();
-            var rawResultsPath = DirectoryManager.GetRawResultsPath(topic);
-            DirectoryManager.CreateDirectoryForTopic(topic);
-            await res.GetWikipediaRawText(topic, rawResultsPath);
-        }
+	public sealed class Tagger
+	{
+		public async Task GetWikipediaResources(string topic)
+		{
+			var res = new ResourceFinder();
+			var rawResultsPath = DirectoryManager.GetRawResultsPath(topic);
+			DirectoryManager.CreateDirectoryForTopic(topic);
+			await res.GetWikipediaRawText(topic, rawResultsPath);
+		}
 
-        public async Task ProcessWikipediaText(string topic)
-        {
-            var rawResultsPath = DirectoryManager.GetRawResultsPath(topic);
-            var cleanTextPath = DirectoryManager.GetCleanResultsPath(topic);
-            var outputJsonPath = DirectoryManager.GetOutputJsonPath(topic);
-            var referencesPath = DirectoryManager.GetReferencesPath(topic);
+		public async Task ProcessWikipediaText(string topic)
+		{
+			var rawResultsPath = DirectoryManager.GetRawResultsPath(topic);
+			var cleanTextPath = DirectoryManager.GetCleanResultsPath(topic);
+			var outputJsonPath = DirectoryManager.GetOutputJsonPath(topic);
+			var referencesPath = DirectoryManager.GetReferencesPath(topic);
 
-            var text = File.ReadAllText(rawResultsPath);
-            text = StringUtils.CleanText(text, referencesPath);
+			var text = File.ReadAllText(rawResultsPath);
+			text = StringUtils.CleanText(text, referencesPath);
 
-            await DirectoryManager.WriteTextToFile(text, cleanTextPath);
+			await DirectoryManager.WriteTextToFile(text, cleanTextPath);
 
-            var tpr = new TextProcessing();
-            tpr.ProcessText(text, outputJsonPath);
-        }
+			var tpr = new TextProcessing();
+			tpr.ProcessText(text, outputJsonPath);
+		}
 
-        public void GenerateQuestions(string topic)
-        {
-            topic = topic.Replace(" ", "_");
-            var outputJsonPath = DirectoryManager.GetOutputJsonPath(topic);
+		public void GenerateQuestions(string topic)
+		{
+			topic = topic.Replace(" ", "_");
+			var outputJsonPath = DirectoryManager.GetOutputJsonPath(topic);
 
-            var tpr = new TextProcessing();
-            var resultList = tpr.GetSentencesInformationFromJson(outputJsonPath);
+			var tpr = new TextProcessing();
+			var resultList = tpr.GetSentencesInformationFromJson(outputJsonPath);
 
-            var questionList = new List<TopicQuestion>();
-            foreach (var sentence in resultList)
-            {
-                var dependencies = GetSentenceDependency(sentence);
+			var questionList = new List<TopicQuestion>();
+			foreach (var sentence in resultList)
+			{
+				var dependencies = GetSentenceDependency(sentence);
 
-                var words = GetSentenceWords(sentence);
+				var words = GetSentenceWords(sentence);
 
-                var sentenceInfo = new SentenceInformationDto(sentence.SentenceText, dependencies, words);
-                if (MustContinue(sentence, sentenceInfo))
-                {
-                    continue;
-                }
-                var generatedQuestion = QuestionGenerator.Generate(sentenceInfo);
-                if (string.IsNullOrEmpty(generatedQuestion?.Question))
-                {
-                    continue;
-                }
-                var cleanQuestion = QuestionCleaner.RemovePunctuationFromEnd(generatedQuestion.Question);
+				var sentenceInfo = new SentenceInformationDto(sentence.SentenceText, dependencies, words);
+				if (MustContinue(sentence, sentenceInfo))
+				{
+					continue;
+				}
+				GeneratedQuestion generatedQuestion;
+				try
+				{
+					generatedQuestion = QuestionGenerator.Generate(sentenceInfo);
+				}
+				catch
+				{
+					continue;
+				}
+				if (string.IsNullOrEmpty(generatedQuestion?.Question))
+				{
+					continue;
+				}
+				var cleanQuestion = QuestionCleaner.RemovePunctuationFromEnd(generatedQuestion.Question);
 
-                cleanQuestion = $"{cleanQuestion}?";
-                var question = new TopicQuestion
-                {
-                    Topic = topic,
-                    InitialSentence = sentence.SentenceText,
-                    Question = cleanQuestion,
-                    Answer = generatedQuestion.Answer
-                };
-                questionList.Add(question);
-            }
-            DirectoryManager.WriteQuestionsToFile(questionList, topic);
-        }
+				cleanQuestion = $"{cleanQuestion}?";
+				var question = new TopicQuestion
+				{
+					Topic = topic,
+					InitialSentence = sentence.SentenceText,
+					Question = cleanQuestion,
+					Answer = generatedQuestion.Answer
+				};
+				questionList.Add(question);
+			}
+			DirectoryManager.WriteQuestionsToFile(questionList, topic);
+		}
 
-        private static bool MustContinue(SentenceInformation sentence, SentenceInformationDto sentenceInfoDto)
-        {
-            if (Helper.SentenceIsInvalid(sentenceInfoDto))
-            {
-                return true;
-            }
-            if (sentence.Dependencies.Count > 20 && !Helper.SentenceContainsYear(sentenceInfoDto))
-            {
-                return true;
-            }
-            return false;
-        }
+		private static bool MustContinue(SentenceInformation sentence, SentenceInformationDto sentenceInfoDto)
+		{
+			if (Helper.SentenceIsInvalid(sentenceInfoDto))
+			{
+				return true;
+			}
+			if (sentence.Dependencies.Count > 20 && !Helper.SentenceContainsYear(sentenceInfoDto))
+			{
+				return true;
+			}
+			return false;
+		}
 
-        private static IEnumerable<SentenceDependencyDto> GetSentenceDependency(SentenceInformation sentence)
-        {
-            return sentence.Dependencies.Select(s => new SentenceDependencyDto(s.Dep, s.Governor,
-                    s.GovernorGloss, s.Dependent, s.DependentGloss))
-                    .ToList();
-        }
+		private static IEnumerable<SentenceDependencyDto> GetSentenceDependency(SentenceInformation sentence)
+		{
+			return sentence.Dependencies.Select(s => new SentenceDependencyDto(s.Dep, s.Governor,
+					s.GovernorGloss, s.Dependent, s.DependentGloss))
+					.ToList();
+		}
 
-        private static IEnumerable<WordInformationDto> GetSentenceWords(SentenceInformation sentence)
-        {
-            return sentence.Words.Select(w => new WordInformationDto(w.Word, w.PartOfSpeech,
-                w.NamedEntityRecognition, w.Lemma))
-                .ToList();
-        }
-    }
+		private static IEnumerable<WordInformationDto> GetSentenceWords(SentenceInformation sentence)
+		{
+			return sentence.Words.Select(w => new WordInformationDto(w.Word, w.PartOfSpeech,
+				w.NamedEntityRecognition, w.Lemma))
+				.ToList();
+		}
+	}
 }

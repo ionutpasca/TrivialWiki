@@ -25,7 +25,7 @@
             });
         }
 
-        $scope.showAdvanced = function () {
+        $scope.proposeNewTopic = function () {
             $mdDialog.show({
                 clickOutsideToClose: true,
                 scope: $scope,

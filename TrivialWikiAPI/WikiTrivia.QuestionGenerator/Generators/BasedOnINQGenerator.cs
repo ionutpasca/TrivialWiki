@@ -15,7 +15,7 @@ namespace WikiTrivia.QuestionGenerator.Generators
             }
             var nounOF = sentence.Dependencies.FirstOrDefault(d => d.Dep == "nmod:of" &&
                                                                    d.GovernorGloss == inWord.Word);
-            if (nounOF == null)
+            if (nounOF == null || subjectFromSentence == null)
             {
                 return null;
             }

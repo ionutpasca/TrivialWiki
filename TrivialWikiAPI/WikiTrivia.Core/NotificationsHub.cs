@@ -15,6 +15,7 @@ namespace WikiTrivia.Core
     [HubName("notificationsHub")]
     public class NotificationsHub : Hub
     {
+        private readonly NotificationsCore notificationsCore = new NotificationsCore();
         public void AddNotification(string username, string notification)
         {
 
@@ -53,6 +54,10 @@ namespace WikiTrivia.Core
                 return Task.FromResult(0);
             }
             var user = WikiTriviaHandler.connectedUsers.SingleOrDefault(u => u.Username == token || u.ConnectionId == connectionId);
+            if (user != null)
+            {
+                notificationsCore.SendUserDisconnectedNotification(user.Username);
+            }
             WikiTriviaHandler.connectedUsers.Remove(user);
             return base.OnDisconnected(stopCalled);
         }

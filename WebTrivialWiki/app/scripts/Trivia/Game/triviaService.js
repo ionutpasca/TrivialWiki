@@ -1,8 +1,8 @@
-﻿(function(angular, $) {
+﻿(function(angular) {
     'use strict';
 
     angular.module('triviaModule')
-    .service('triviaService', ['$q', '$http', '$rootScope', function ($q, $http, $rootScope) {
+    .service('triviaService', ['$q', '$http', function ($q, $http) {
 
         this.getTriviaTables = function() {
             var def = $q.defer();
@@ -11,6 +11,19 @@
                     def.resolve(data);
                 })
                 .error(function(data) {
+                    def.reject(data);
+                });
+
+            return def.promise;
+        }
+
+        this.addNewFriend = function(username) {
+            var def = $q.defer();
+            $http.post(App.url + '/addFriend/' + username)
+                .success(function (data) {
+                    def.resolve(data);
+                })
+                .error(function (data) {
                     def.reject(data);
                 });
 
@@ -33,6 +46,32 @@
         this.getTableTopic = function(tableName) {
             var def = $q.defer();
             $http.get(App.url + '/getTableTopic/' + tableName)
+                .success(function (data) {
+                    def.resolve(data);
+                })
+                .error(function (data) {
+                    def.reject(data);
+                });
+
+            return def.promise;
+        }
+
+        this.getActiveTopics = function() {
+            var def = $q.defer();
+            $http.get(App.url + '/activeTopics')
+                .success(function (data) {
+                    def.resolve(data);
+                })
+                .error(function (data) {
+                    def.reject(data);
+                });
+
+            return def.promise;
+        }
+
+        this.createNewTable = function(tableName, topic) {
+            var def = $q.defer();
+            $http.post(App.url + '/createTable/' + tableName + '/' +topic)
                 .success(function (data) {
                     def.resolve(data);
                 })
@@ -166,4 +205,4 @@
         }
 
     }]);
-}).call(this, this.angular, this.$);
+}).call(this, this.angular);

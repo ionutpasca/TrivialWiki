@@ -63,6 +63,7 @@ namespace WikiTrivia.TriviaCore.Hubs
             var user = table.ConnectedUsers.SingleOrDefault(u => u.ConnectionId == connectionId);
             if (user != null)
             {
+                triviaCore.BroadcastUserDisconnected(user.Username, tableName);
                 table.ConnectedUsers.Remove(user);
             }
 

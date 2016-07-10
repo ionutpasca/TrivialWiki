@@ -266,7 +266,7 @@ namespace DatabaseManager.UserManagement
         {
             using (var databaseContext = new DatabaseContext())
             {
-                var user = databaseContext.Users
+                var user = databaseContext.Users.Include("Friends")
                     .SingleOrDefault(u => u.UserName == username);
                 return user?.Friends.Select(f => f.UserName).ToList();
             }

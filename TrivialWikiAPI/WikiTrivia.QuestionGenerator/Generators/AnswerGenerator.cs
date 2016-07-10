@@ -172,7 +172,8 @@ namespace WikiTrivia.QuestionGenerator.Generators
 
         private static string GetBaseAnswer(SentenceInformationDto sentence, SentenceDependencyDto sentenceDependency, WordInformationDto wordInformation)
         {
-            if (sentenceDependency != null && wordInformation != null && wordInformation.NamedEntityRecognition.ToLower() == "person")
+            if (sentenceDependency != null && wordInformation != null &&( wordInformation.NamedEntityRecognition.ToLower() == "person"
+                || wordInformation.PartOfSpeech.ToLower()=="nn"))
             {
                 return wordInformation.Word;
             }

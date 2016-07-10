@@ -1,44 +1,14 @@
 ﻿(function (angular, _) {
     'use strict';
     angular.module('triviaModule')
-    .controller('triviaController', ['$scope', '$rootScope','triviaFactory', 'triviaService', 'persistService','$window',
-         function ($scope, $rootScope, triviaFactory, triviaService, persistService, $window) {
+    .controller('triviaController', ['$scope', '$rootScope','triviaFactory', 'triviaService', 'persistService','$window','$mdDialog',
+        function ($scope, $rootScope, triviaFactory, triviaService, persistService, $window, $mdDialog) {
         $scope.messages = [];
         $scope.triviaQuestions = [];
         $scope.text = "";
         $scope.skip = 0;
         $scope.responseToSend = '';
-
-        var triviaTableProxy;
-        //function initializeTriviaChat() {
-        //    $scope.messagesAreLoading = true;
-
-        //    triviaService.getMessages($scope.skip)
-        //    .then(function (data) {
-        //        _.each(data, function (message) {
-        //            $scope.messages.push(message);
-        //        });
-        //        $scope.messagesAreLoading = false;
-        //    });
-        //}
-
-        //function intializeTriviaHistory() {
-        //    $scope.triviaHistoryIsLoading = true;
-
-        //    triviaService.getTriviaHistory()
-        //    .then(function (data) {
-        //        _.each(data, function (message) {
-        //            var historyQuestion = {
-        //                MessageText: message.messageText,
-        //                Sender: message.sender
-        //            };
-        //            $scope.triviaQuestions.unshift(historyQuestion);
-        //        });
-        //        $scope.triviaHistoryIsLoading = false;
-        //    });
-        //}
-
-
+    
         function getActiveTables() {
             triviaService.getTriviaTables()
             .then(function (data) {
@@ -46,10 +16,17 @@
             });
         }
 
+        function getFriends() {
+            triviaService.getUserFriends()
+            .then(function (data) {
+                    debugger;
+                $scope.friends = data;
+            });
+        }
+
         function init() {
             getActiveTables();
-            //initializeTriviaChat();
-            //intializeTriviaHistory();
+            getFriends();
         }
 
         $scope.getCurrentUserName = function() {
@@ -77,15 +54,39 @@
             });
         };
 
+        $scope.createNewTable = function() {
+            $mdDialog.show({
+                clickOutsideToClose: true,
+                scope: $scope,
+                preserveScope: true,
+                templateUrl: 'scripts/Trivia/Game/createTable.html',
+                controller: 'createTableController'
+            });
+        };
+
+        $scope.addNewFriend = function() {
+            $mdDialog.show({
+                clickOutsideToClose: true,
+                scope: $scope,
+                preserveScope: true,
+                templateUrl: 'scripts/Trivia/Game/addFriend.html',
+                controller: 'addFriendController'
+            })
+            .finally(function() { getFriends(); } );
+        };
 
         $scope.joinTable = function (table) {
             $window.location.href = '#/trivia/' + table.tableName;
             $window.location.reload();
-        }
+        };
 
         $scope.senderIsTriviaBot = function(question) {
             return question.Sender === 'TriviaBot';
-        }
+        };
+
+        $scope.tableIsPublic = function(table) {
+            return table.tableName === 'Public Table';
+        };
 
         init();
     }]);
